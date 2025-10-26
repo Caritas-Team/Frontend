@@ -5,7 +5,8 @@ on:
   pull_request:
     branches: [ develop, main ]
   push:
-    branches: [ develop ]
+    branches:
+      - '**'        # реагирует на push в любую ветку
 
 jobs:
   build-and-check:
