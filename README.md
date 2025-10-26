@@ -7,3 +7,30 @@
 - Экспорт отчётов в PDF и CSV
 - Адаптивный дизайн по макетам  
 - Простая и интуитивная работа 
+
+# Caritas Frontend
+
+Проект на React + TypeScript (Vite)  
+Node.js >= 18  
+React 19.2.0
+
+## Установка
+
+```bash
+npm install
+```
+
+## Запуск
+```
+npm run dev
+```
+
+## Сборка
+```
+npm run build
+```
+
+## Запуск Линтера
+```
+npm run lint
+```
