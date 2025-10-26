@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+echo "Husky работает — pre-push запущен!"
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "→ Lint"
