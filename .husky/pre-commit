@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+echo "→ Запуск pre-commit lint-staged"
+npx lint-staged

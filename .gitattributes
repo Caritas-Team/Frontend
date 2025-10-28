@@ -1,0 +1,6 @@
+# .gitattributes
+# Глобально использовать LF как конец строки
+* text=auto eol=lf
+
+# Убедиться, что shell-скрипты сохраняются в LF (важно для Husky)
+*.sh text eol=lf
