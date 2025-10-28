@@ -3,3 +3,7 @@ dist
 build
 coverage
 .env
+.vite
+.idea
+.vscode
+*.tsbuildinfo
