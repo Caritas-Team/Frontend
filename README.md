@@ -46,8 +46,8 @@ npm run lint
 npx prettier --write .
 ```
 
-Техническое задание: https://docs.google.com/document/d/1ACPNlOFdpLe5aR99oDZv0cOcPzkuqo_MmAWuXLL-7Co/edit?usp=share_link
+[Техническое задание](https://docs.google.com/document/d/1ACPNlOFdpLe5aR99oDZv0cOcPzkuqo_MmAWuXLL-7Co/edit?usp=share_link)
 
-ДИЗАЙН:https://www.figma.com/design/mdzZt3Fy5mnKsDPPXtJEO8/Каритас.-Команда-1?node-id=1-2&p=f&t=IBrpMFLJcxOnCJz4-0
+[ДИЗАЙН](https://www.figma.com/design/mdzZt3Fy5mnKsDPPXtJEO8/Каритас.-Команда-1?node-id=1-2&p=f&t=IBrpMFLJcxOnCJz4-0)
 
-https://www.figma.com/design/mdzZt3Fy5mnKsDPPXtJEO8/Каритас.-Команда-1?node-id=1011-9263&p=f&t=DHDK84lf3WvwNogS-0
+[Еще Figma](https://www.figma.com/design/mdzZt3Fy5mnKsDPPXtJEO8/Каритас.-Команда-1?node-id=1011-9263&p=f&t=DHDK84lf3WvwNogS-0)
