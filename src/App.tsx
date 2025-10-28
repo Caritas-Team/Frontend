@@ -7,7 +7,6 @@ function App() {
   return (
     <div>
       <h1>Caritas Frontend</h1>
-      <p>test test</p>
     </div>
   );
 }
