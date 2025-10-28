@@ -1,21 +1,27 @@
-// import { useState } from 'react'
-import './App.css'
+// src\App.tsx
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage.tsx'
-import ResultPage from './pages/ResultPage.tsx'
+import { lazy, Suspense } from 'react';
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ErrorBoundary from './ui/ErrorBoundary';
+import FallbackErrorView from './ui/FallbackErrorView';
+import { ROUTES } from './lib/routes';
 
-function App() {
-  // const [count, setCount] = useState(0)
+// ленивые импорты страниц
+const HomePage = lazy(() => import('./pages/Home'));
+const ResultPage = lazy(() => import('./pages/Result'));
 
+export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/result" element={<ResultPage />} />
-      </Routes>
+      <ErrorBoundary>
+        <Suspense fallback={<FallbackErrorView message="Загрузка…" />}>
+          <Routes>
+            <Route path={ROUTES.home} element={<HomePage />} />
+            <Route path={ROUTES.result} element={<ResultPage />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }
-
-export default App
