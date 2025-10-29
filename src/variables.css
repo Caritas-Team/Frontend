@@ -1,0 +1,196 @@
+:root {
+  /*переменные для палитры цветов*/
+  --blue: #5b93f4;
+  --blue-light: #e7f6ff;
+  --green: #67f4b1;
+  --green-light: #e7fff4;
+  --violet: #8550f6;
+  --violet-light: #f3edff;
+  --yellow: #f8d24e;
+  --white: #ffffff;
+  --black: #141414;
+  --gray-l: #e0e0e0;
+  --gray-2: #bfbfbf;
+  --gray-3: #6a6a6a;
+  --gray-4: #37474f;
+  --error: #ea4335;
+  --blue-secondary-hover: #7eadfe;
+  --blue-tertiary-pressed: #4976c3;
+
+  /* ЦВЕТА ТЕКСТА */
+
+  /* цвет основного текста */
+  --text-main-color: var(--black, #141414);
+
+  /* текст подписей на графиках и комментариях к результатам */
+  --text-supplementary-color: var(--gray-4, #37474f);
+
+  /* цвет текста кнопок со светлым фоном */
+  --text-for-light-button: var(--blue, #5b93f4);
+
+  /* цвет текста кнопок с ярким или темным фоном */
+  --text-for-dark-button: var(--white, #ffffff);
+
+  /* текст неактивных кнопок и плейсхолдеров, а также названия полей в результатах */
+  --text-disabled-color: var(--gray-3, #6a6a6a);
+
+  /* цвет выделенного текста для фона --background-input-color */
+  --text-accent1-color: var(--blue, #5b93f4);
+
+  /* цвет выделенного текста для фона --background-card-color */
+  --text-accent2-color: var(--green, #67f4b1);
+
+  /* цвет выделенного текста для фона --background-accent-color */
+  --text-accent3-color: var(--violet, #8550f6);
+
+  /* цвет для отображения ошибок и негативной динамики */
+  --error-color: var(--error, #ea4335);
+
+  /* обозначение неактивных дат в календаре */
+  --date-disabled-color: var(--gray-2, #bfbfbf);
+
+  /* ЦВЕТА ФОНА */
+
+  /* цвет основного фона */
+  --background-main-color: var(--white, #ffffff);
+
+  /* цвет фона полей ввода и фона графиков */
+  --background-input-color: var(--blue-light, #e7f6ff);
+
+  /* цвет фона карточки и секции "Словарный запас базовый" в результатах класса */
+  --background-card-color: var(--green-light, #e7fff4);
+
+  /* цвет фона раздела "Вербальные слова" */
+  --background-accent-color: var(--violet-light, #f3edff);
+
+  /* ЦВЕТА КНОПОК */
+
+  /* цвет неактивной кнопки */
+  --button-disabled-color: var(--gray-l, #e0e0e0);
+
+  /* цвет активной основной кнопки или вкладки */
+  --button-active-color: var(--blue, #5b93f4);
+
+  /* цвет активной основной кнопки или вкладки при hover'е */
+  --button-hover-color: var(--blue-secondary-hover, #7eadfe);
+
+  /* цвет светлой кнопки при hover'е */
+  --button-tertiary-hover-color: var(--blue-light, #e7f6ff);
+
+  /* цвет нажатой кнопки */
+  --button-pressed-color: var(--blue-tertiary-pressed, #4976c3);
+
+  /* ЦВЕТА ЧАРТОВ */
+
+  /* цвет для отображения данных предыдущего периода */
+  --chart-previous-period-data-color: var(--violet, #8550f6);
+
+  /* цвет для отображения текущих данных */
+  --chart-current-data-color: var(--green, #67f4b1);
+
+  /* цвет первой категории данных в круговых диаграммах */
+  --chart-circle-first-color: var(--violet, #8550f6);
+
+  /* цвет второй категории данных в круговых диаграммах */
+  --chart-circle-second-color: var(--green, #67f4b1);
+
+  /* цвет третьей категории данных в круговых диаграммах */
+  --chart-circle-third-sector-color: var(--blue, #5b93f4);
+
+  /* цвет четвертой категории данных в круговых диаграммах */
+  --chart-circle-fourth-sector-color: var(--yellow, #f8d24e);
+
+  /* ШРИФТ */
+  --main-font-family:
+    'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue';
+
+  /* ОСНОВНЫЕ ПАРАМЕТРЫ ТЕКСТА - в соответствии с названиями в Figma */
+
+  /* Headline1 */
+  --font-h1: 700 48px/1.2 var(--main-font-family);
+
+  /* Tablet headline1 */
+  --font-h1-tablet: 700 42px / calc(58 / 42) var(--main-font-family);
+
+  /* Mobile headline1 */
+  --font-h1-mobile: 700 28px/1.2 var(--main-font-family);
+
+  /* Headline2 */
+  --font-h2: 500 36px/1.2 var(--main-font-family);
+
+  /* Mobile headline2 */
+  --font-h2-mobile: 600 24px/1.2 var(--main-font-family);
+
+  /* Headline3 */
+  --font-h3: 500 28px/1 var(--main-font-family);
+
+  /* Body 20 */
+  --font-body-20: 400 20px/1.2 var(--main-font-family);
+
+  /* Body 16 Light - для формы калькулятора (текст светлой кнопки и вместо Field Light 18 в мобильной версии) */
+  --font-body-16-light: 300 16px/1.2 var(--main-font-family);
+
+  /* Body 16 Medium - для текста инструкции и текста ошибки в попапе */
+  --font-body-16-medium: 500 16px/1.2 var(--main-font-family);
+
+  /* Body 14 */
+  --font-body-14: 400 14px/1 var(--main-font-family);
+
+  /* Body 12 */
+  --font-body-12: 400 12px/1 var(--main-font-family);
+
+  /* Tag Bold 16 */
+  --font-tag-16-bold: 700 16px/1 var(--main-font-family);
+
+  /* Tag Medium 16 */
+  --font-tag-16-medium: 500 16px/1 var(--main-font-family);
+
+  /* Tag ExtraBold 14 - в том числе для подзаголовка калькулятора */
+  --font-tag-14-extra: 800 14px/1 var(--main-font-family);
+
+  /* Button SemiBold 20 */
+  --font-button-semi-20: 600 20px/1.2 var(--main-font-family);
+
+  /* Mobile Button SemiBold 16 - в мобильной версии - для кнопок форм калькулятора и диаграмм */
+  --font-button-semi-16-mobile: 600 16px/1.2 var(--main-font-family);
+
+  /*  Form SemiBold 18 */
+  --font-form-semi-18: 600 18px/1.2 var(--main-font-family);
+
+  /*  Form Bold 18 */
+  --font-form-bold-18: 700 18px/1.2 var(--main-font-family);
+
+  /*  Form Carret 30 */
+  --font-form-carret-30: 200 30px/1 var(--main-font-family);
+
+  /* Field Light 18 */
+  --font-field-light-18: 300 18px/1.2 var(--main-font-family);
+
+  /* Chart ExtraBold 20 */
+  --font-chart-extra-20: 800 20px/1 var(--main-font-family);
+
+  /* Chart Reg 16 */
+  --font-chart-reg-16: 400 16px/1 var(--main-font-family);
+
+  /* Chart Reg 15 */
+  --font-chart-reg-15: 400 15px / calc(24 / 15) var(--main-font-family);
+
+  /* Chart SemiBold 14 */
+  --font-chart-semi-14: 600 14px/1 var(--main-font-family);
+
+  /* Chart SemiBold 13 */
+  --font-chart-semi-13: 600 13px/1.25 var(--main-font-family);
+
+  /* Chart SemiBold 12 */
+  --font-chart-semi-12: 600 12px/1 var(--main-font-family);
+
+  /* Chart SemiBold 10 */
+  --font-chart-semi-10: 600 10px/1.25 var(--main-font-family);
+
+  /* StatusBar SemiBold 17 */
+  --font-status-bar-semi-17: 590 17px / calc(22 / 17) var(--main-font-family);
+
+  /* StatusBar 12 */
+  --font-status-bar-12: 510 12px / calc(14 / 12) var(--main-font-family);
+}
