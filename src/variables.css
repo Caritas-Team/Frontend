@@ -148,7 +148,7 @@
   /* Body 16 Medium - для текста инструкции и текста ошибки в попапе */
   --font-weight-body-16-medium: 500;
   --font-size-body-16-medium: 16px;
-  --line-height-body-16-mediun: 120%;
+  --line-height-body-16-medium: 120%;
 
   /* Body 14 */
   --font-weight-body-14: 400;
@@ -239,16 +239,6 @@
   --font-weight-chart-semi-10: 600;
   --font-size-chart-semi-10: 10px;
   --line-height-chart-semi-10: 125%;
-
-  /* StatusBar 17 */
-  --font-weight-status-bar-17: 510;
-  --font-size-status-bar-17: 20px;
-  --line-height-status-bar-17: 100%;
-
-  /* StatusBar 20 */
-  --font-weight-status-bar-medium-20: 510;
-  --font-size-status-bar-medium-20: 20px;
-  --line-height-status-bar-medium-20: calc(24 / 20);
 
   /* StatusBar SemiBold 17 */
   --font-weight-status-bar-semi-17: 590;
