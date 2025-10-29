@@ -99,4 +99,164 @@
 
   /* цвет четвертой категории данных в круговых диаграммах */
   --chart-circle-fourth-sector-color: var(--yellow, #f8d24e);
+
+  /* ШРИФТ */
+  --main-font-family: 'Nunito Sans';
+
+  /* ОСНОВНЫЕ ПАРАМЕТРЫ ТЕКСТА - в соответствии с названиями в Figma */
+
+  /* Headline1 */
+  --font-weight-h1: 700;
+  --font-size-h1: 48px;
+  --line-height-h1: 120%;
+
+  /* Tablet headline1 */
+  --font-weight-h1-tablet: 700;
+  --font-size-h1-tablet: 42px;
+  --line-height-h1-tablet: calc(58 / 42);
+
+  /* Mobile headline1 */
+  --font-weight-h1-mobile: 700;
+  --font-size-h1-mobile: 28px;
+  --line-height-h1-mobile: 120%;
+
+  /* Headline2 */
+  --font-weight-h2: 500;
+  --font-size-h2: 36px;
+  --line-height-h2: 120%;
+
+  /* Mobile headline2 */
+  --font-weight-h2-mobile: 600;
+  --font-size-h2-mobile: 24px;
+  --line-height-h2-mobile: 120%;
+
+  /* Headline3 */
+  --font-weight-h3: 500;
+  --font-size-h3: 28px;
+  --line-height-h3: 100%;
+
+  /* Body 20 */
+  --font-weight-body-20: 400;
+  --font-size-body-20: 20px;
+  --line-height-body-20: 120%;
+
+  /* Body 16 Light - для формы калькулятора (текст светлой кнопки и вместо Field Light 18 в мобильной версии) */
+  --font-weight-body-16-light: 300;
+  --font-size-body-16-light: 16px;
+  --line-height-body-16-light: 120%;
+
+  /* Body 16 Medium - для текста инструкции и текста ошибки в попапе */
+  --font-weight-body-16-medium: 500;
+  --font-size-body-16-medium: 16px;
+  --line-height-body-16-mediun: 120%;
+
+  /* Body 14 */
+  --font-weight-body-14: 400;
+  --font-size-body-14: 14px;
+  --line-height-body-14: 100%;
+
+  /* Body 12 */
+  --font-weight-body-12: 400;
+  --font-size-body-12: 12px;
+  --line-height-body-12: 100%;
+
+  /* Tag Bold 16 */
+  --font-weight-tag-16-bold: 700;
+  --font-size-tag-16-bold: 16px;
+  --line-height-tag-16-bold: 100%;
+
+  /* Tag Medium 16 */
+  --font-weight-tag-16-medium: 500;
+  --font-size-tag-16-medium: 16px;
+  --line-height-tag-16-medium: 100%;
+
+  /* Tag ExtraBold 14 - в том числе для подзаголовка калькулятора */
+  --font-weight-tag-14-extra: 800;
+  --font-size-tag-14-extra: 14px;
+  --line-height-tag-14-extra: 100%;
+
+  /* Button SemiBold 20 */
+  --font-weight-button-20: 600;
+  --font-size-button-20: 20px;
+  --line-height-button-20: 120%;
+
+  /* Mobile Button SemiBold 16 - в мобильной версии - для кнопок форм калькулятора и диаграмм */
+  --font-weight-button-mobile: 600;
+  --font-size-button-mobile: 16px;
+  --line-height-button-mobile: 120%;
+
+  /*  Form SemiBold 18 */
+  --font-weight-form-semi-18: 600;
+  --font-size-form-semi-18: 18px;
+  --line-height-form-semi-18: 120%;
+
+  /*  Form Bold 18 */
+  --font-weight-form-bold-18: 700;
+  --font-size-form-bold-18: 18px;
+  --line-height-form-bold-18: 120%;
+
+  /*  Form Carret 30 */
+  --font-weight-form-carret-30: 200;
+  --font-size-form-carret-30: 30px;
+  --line-height-form-carret-30: 100%;
+
+  /* Field Light 18 */
+  --font-weight-field-18: 300;
+  --font-size-field-18: 18px;
+  --line-height-field-18: 120%;
+
+  /* Chart ExtraBold 20 */
+  --font-weight-chart-extra-20: 800;
+  --font-size-chart-extra-20: 20px;
+  --line-height-chart-extra-20: 100%;
+
+  /* Chart Reg 16 */
+  --font-weight-chart-reg-16: 400;
+  --font-size-chart-reg-16: 16px;
+  --line-height-chart-reg-16: 100%;
+
+  /* Chart Reg 15 */
+  --font-weight-chart-reg-15: 400;
+  --font-size-chart-reg-15: 15px;
+  --line-height-chart-reg-15: calc(24 / 15);
+
+  /* Chart SemiBold 14 */
+  --font-weight-chart-semi-14: 600;
+  --font-size-chart-semi-14: 14px;
+  --line-height-chart-semi-14: 100%;
+
+  /* Chart SemiBold 13 */
+  --font-weight-chart-semi-13: 600;
+  --font-size-chart-semi-13: 13px;
+  --line-height-chart-semi-13: 125%;
+
+  /* Chart SemiBold 12 */
+  --font-weight-chart-semi-12: 600;
+  --font-size-chart-semi-12: 12px;
+  --line-height-chart-semi-12: 100%;
+
+  /* Chart SemiBold 10 */
+  --font-weight-chart-semi-10: 600;
+  --font-size-chart-semi-10: 10px;
+  --line-height-chart-semi-10: 125%;
+
+  /* StatusBar 17 */
+  --font-weight-status-bar-17: 510;
+  --font-size-status-bar-17: 20px;
+  --line-height-status-bar-17: 100%;
+
+  /* StatusBar 20 */
+  --font-weight-status-bar-medium-20: 510;
+  --font-size-status-bar-medium-20: 20px;
+  --line-height-status-bar-medium-20: calc(24 / 20);
+
+  /* StatusBar SemiBold 17 */
+  --font-weight-status-bar-semi-17: 590;
+  --font-size-status-bar-semi-17: 17px;
+  --line-height-status-bar-semi-17: calc(22 / 17);
+
+  /* StatusBar 12 */
+  --font-weight-status-bar-12: 510;
+  --font-size-status-bar-12: 12px;
+  --line-height-status-bar-12: calc(14 / 12);
 }
