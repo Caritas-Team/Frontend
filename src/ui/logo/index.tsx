@@ -1,16 +1,8 @@
-export interface LogoProps {
-  extClassName?: string;
-}
+import styles from './styles.module.css';
 
-export const Logo = ({ extClassName }: LogoProps) => {
-  <div className={extClassName}>
-    <svg
-      width="191"
-      height="79"
-      viewBox="0 0 191 79"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+export const Logo = () => (
+  <div className={styles.logo}>
+    <svg viewBox="0 0 191 79" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g id="logo-164-20.svg fill">
         <g id="logo-164-20.svg" clip-path="url(#clip0_219_16430)">
           <path
@@ -408,5 +400,5 @@ export const Logo = ({ extClassName }: LogoProps) => {
         </clipPath>
       </defs>
     </svg>
-  </div>;
-};
+  </div>
+);
