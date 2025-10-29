@@ -1,0 +1,102 @@
+:root {
+  /*переменные для палитры цветов*/
+  --blue: #5b93f4;
+  --blue-light: #e7f6ff;
+  --green: #67f4b1;
+  --green-light: #e7fff4;
+  --violet: #8550f6;
+  --violet-light: #f3edff;
+  --yellow: #f8d24e;
+  --white: #ffffff;
+  --black: #141414;
+  --gray-l: #e0e0e0;
+  --gray-2: #bfbfbf;
+  --gray-3: #6a6a6a;
+  --gray-4: #37474f;
+  --error: #ea4335;
+  --blue-secondary-hover: #7eadfe;
+  --blue-tertiary-pressed: #4976c3;
+
+  /* ЦВЕТА ТЕКСТА */
+
+  /* цвет основного текста */
+  --text-main-color: var(--black, #141414);
+
+  /* текст подписей на графиках и комментариях к результатам */
+  --text-supplementary-color: var(--gray-4, #37474f);
+
+  /* цвет текста кнопок со светлым фоном */
+  --text-for-light-button: var(--blue, #5b93f4);
+
+  /* цвет текста кнопок с ярким или темным фоном */
+  --text-for-dark-button: var(--white, #ffffff);
+
+  /* текст неактивных кнопок и плейсхолдеров, а также названия полей в результатах */
+  --text-disabled-color: var(--gray-3, #6a6a6a);
+
+  /* цвет выделенного текста для фона --background-input-color */
+  --text-accent1-color: var(--blue, #5b93f4);
+
+  /* цвет выделенного текста для фона --background-card-color */
+  --text-accent2-color: var(--green, #67f4b1);
+
+  /* цвет выделенного текста для фона --background-accent-color */
+  --text-accent3-color: var(--violet, #8550f6);
+
+  /* цвет для отображения ошибок и негативной динамики */
+  --error-color: var(--error, #ea4335);
+
+  /* обозначение неактивных дат в календаре */
+  --date-disabled-color: var(--gray-2, #bfbfbf);
+
+  /* ЦВЕТА ФОНА */
+
+  /* цвет основного фона */
+  --background-main-color: var(--white, #ffffff);
+
+  /* цвет фона полей ввода и фона графиков */
+  --background-input-color: var(--blue-light, #e7f6ff);
+
+  /* цвет фона карточки и секции "Словарный запас базовый" в результатах класса */
+  --background-card-color: var(--green-light, #e7fff4);
+
+  /* цвет фона раздела "Вербальные слова" */
+  --background-accent-color: var(--violet-light, #f3edff);
+
+  /* ЦВЕТА КНОПОК */
+
+  /* цвет неактивной кнопки */
+  --button-disabled-color: var(--gray-l, #e0e0e0);
+
+  /* цвет активной основной кнопки или вкладки */
+  --button-active-color: var(--blue, #5b93f4);
+
+  /* цвет активной основной кнопки или вкладки при hover'е */
+  --button-hover-color: var(--blue-secondary-hover, #7eadfe);
+
+  /* цвет светлой кнопки при hover'е */
+  --button-tertiary-hover-color: var(--blue-light, #e7f6ff);
+
+  /* цвет нажатой кнопки */
+  --button-pressed-color: var(--blue-tertiary-pressed, #4976c3);
+
+  /* ЦВЕТА ЧАРТОВ */
+
+  /* цвет для отображения данных предыдущего периода */
+  --chart-previous-period-data-color: var(--violet, #8550f6);
+
+  /* цвет для отображения текущих данных */
+  --chart-current-data-color: var(--green, #67f4b1);
+
+  /* цвет первой категории данных в круговых диаграммах */
+  --chart-circle-first-color: var(--violet, #8550f6);
+
+  /* цвет второй категории данных в круговых диаграммах */
+  --chart-circle-second-color: var(--green, #67f4b1);
+
+  /* цвет третьей категории данных в круговых диаграммах */
+  --chart-circle-third-sector-color: var(--blue, #5b93f4);
+
+  /* цвет четвертой категории данных в круговых диаграммах */
+  --chart-circle-fourth-sector-color: var(--yellow, #f8d24e);
+}
