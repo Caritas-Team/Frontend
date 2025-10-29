@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  font-family: var(--main-font-family, 'Nunito Sans', sans-serif);
+  font-family: var(--main-font-family);
 }
 
 h1,
