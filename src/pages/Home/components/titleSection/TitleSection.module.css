@@ -13,7 +13,7 @@
 }
 
 .subtitle {
-  color: var(--text-subtitle-colorб #555c66);
+  color: var(--text-subtitle-color, #555c66);
   font: var(--font-tag-14-extra);
 }
 
