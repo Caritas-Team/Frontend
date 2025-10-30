@@ -15,7 +15,7 @@
   box-sizing: border-box;
   max-width: 560px;
   max-height: 305px;
-  background-color: var(--card-bg-color);
+  background-color: var(--background-main-color);
   border-radius: 20px;
   transform: translate(-50%, -50%);
   animation: slide-in 0.3s ease;
@@ -26,6 +26,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .closeButton {
   position: absolute;
   top: 24px;

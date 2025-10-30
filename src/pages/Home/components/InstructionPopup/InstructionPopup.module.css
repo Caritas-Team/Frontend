@@ -1,7 +1,7 @@
 .popup {
   width: min-content;
   height: min-content;
-  background: #fff;
+  background: var(--background-main-color);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -12,14 +12,17 @@
     8px 4px 16px 0px rgba(0, 0, 0, 0.25);
   color: var(--text-main-color);
 }
+
 .info__icon {
   width: 60px;
   height: 60px;
 }
+
 .popup__title {
   font: var(--font-form-semi-18);
   text-align: left;
 }
+
 .popup__content {
   width: clamp(22.625rem, 1.2623rem + 40.9836vw, 32rem);
   font: var(--font-tag-16-medium);
