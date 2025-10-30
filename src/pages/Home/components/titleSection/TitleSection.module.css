@@ -13,7 +13,7 @@
 }
 
 .subtitle {
-  color: var(--text-main-color, #141414);
+  color: var(--text-subtitle-colorб #555c66);
   font: var(--font-tag-14-extra);
 }
 
@@ -25,6 +25,7 @@
 
   .subtitle {
     font: var(--font-chart-semi-13);
+    font-weight: 800;
   }
 }
 
