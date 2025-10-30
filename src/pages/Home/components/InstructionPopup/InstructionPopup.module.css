@@ -25,7 +25,7 @@
 
 .popup__content {
   width: clamp(22.625rem, 1.2623rem + 40.9836vw, 32rem);
-  font: var(--font-tag-16-medium);
+  font: var(--font-inst-popup);
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -35,6 +35,7 @@
 @media screen and (min-width: 321px) and (max-width: 833px) {
   .popup__content {
     width: clamp(14.5rem, 9.4416rem + 25.2918vw, 22.625rem);
+    font: var();
   }
 }
 
