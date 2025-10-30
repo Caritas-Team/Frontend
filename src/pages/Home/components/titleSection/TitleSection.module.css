@@ -1,0 +1,45 @@
+/* базовые стили для десктопной версии */
+.section {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  color: var(--text-accent1-color, #5b93f4);
+  font: var(--font-h1);
+}
+
+.subtitle {
+  color: var(--text-main-color, #141414);
+  font: var(--font-tag-14-extra);
+}
+
+/* стили для планшетной версии */
+@media (834px <= width < 1200px) {
+  .title {
+    font: var(--font-h1-tablet);
+  }
+
+  .subtitle {
+    font: var(--font-chart-semi-13);
+  }
+}
+
+/* Стили компонента для мобильной версии */
+@media (width < 834px) {
+  .title {
+    font: var(--font-h2-mobile);
+  }
+
+  .subtitle {
+    /* вместо display: none, для того, чтобы визуально убрать текст с экрана, 
+    но оставить доступным для скринридера (так как информация важная) */
+    position: absolute;
+    font-size: 5px;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+}
