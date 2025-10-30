@@ -1,3 +1,27 @@
+/*
+Использование компонента:
+const [isInstructionPopupOpen, setIsInstructionPopupOpen] = useState(false);
+
+const openInstructionPopup = () => setIsInstructionPopupOpen(true);
+const closeInstructionPopup = () => setIsInstructionPopupOpen(false);
+
+// ...
+
+return (
+  <div>
+    <button onClick={openInstructionPopup}>
+      Показать инструкцию
+    </button>
+    
+    <InstructionPopup 
+      isOpen={isInstructionPopupOpen}
+      doClose={closeInstructionPopup}
+    />
+  </div>
+);
+
+*/
+
 import styles from './InstructionPopup.module.css';
 import { ModalUI } from '../Modal';
 import type { FC } from 'react';
