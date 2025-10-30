@@ -24,7 +24,7 @@
   --text-main-color: var(--black, #141414);
 
   /* цвет подзаголовка на странице с формой */
-  --text-subtitle-color: var(var(--gray-5), #555c66);
+  --text-subtitle-color: var(--gray-5, #555c66);
 
   /* текст подписей на графиках и комментариях к результатам */
   --text-supplementary-color: var(--gray-4, #37474f);
