@@ -13,6 +13,7 @@
   --gray-2: #bfbfbf;
   --gray-3: #6a6a6a;
   --gray-4: #37474f;
+  --gray-5: #555c66;
   --error: #ea4335;
   --blue-secondary-hover: #7eadfe;
   --blue-tertiary-pressed: #4976c3;
@@ -21,6 +22,9 @@
 
   /* цвет основного текста */
   --text-main-color: var(--black, #141414);
+
+  /* цвет подзаголовка на странице с формой */
+  --text-subtitle-color: var(var(--gray-5), #555c66);
 
   /* текст подписей на графиках и комментариях к результатам */
   --text-supplementary-color: var(--gray-4, #37474f);
