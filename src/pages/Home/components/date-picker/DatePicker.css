@@ -1,0 +1,47 @@
+.date-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 10px;
+  width: 224px;
+  height: 114px;
+  background-color: var(--blue-light);
+  border-radius: 20px;
+}
+
+.date-label {
+  font-weight: 600;
+  padding-left: 16px;
+  font: var(--font-form-semi-18);
+}
+
+.date-required {
+  color: red;
+}
+
+.date-input {
+  padding-left: 16px;
+}
+
+input[type='date'] {
+  width: 141px;
+  height: 48px;
+  border-radius: 20px;
+  border: none;
+  padding-left: 8px;
+  font: var(--font-body-16-light);
+  letter-spacing: 0;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  transform: scale(1.5);
+  margin-right: 10px;
+}
+
+@media (max-width: 834px) {
+  .date-picker {
+    width: 280px;
+    height: 112px;
+  }
+}
