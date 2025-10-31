@@ -59,17 +59,21 @@ export const ValidErrorPopup: FC<ValidErrorPopupProps> = ({
           alt="Иконка ошибки валидации"
         />
         <h2 className={styles.popup__title}>Ошибка валидации отчетов!</h2>
-        <ul className={styles.popup__content}>
-          {errorsArray.map((error, index) => (
-            <li className={styles.popup__text} key={index}>
-              {error}
-            </li>
-          ))}
-        </ul>
-        <p className={styles.popup__text}>
-          Пожалуйста, поправьте и перезагрузите файлы
-        </p>
+        <div className={styles.popup__content}>
+          <ul className={styles.popup__list}>
+            {errorsArray.map((error, index) => (
+              <li className={styles.popup__text} key={index}>
+                {error}
+              </li>
+            ))}
+          </ul>
+          <p className={styles.popup__text}>
+            Пожалуйста, поправьте и перезагрузите файлы
+          </p>
+        </div>
       </div>
     </ModalUI>
   );
 };
+
+export default ValidErrorPopup;
