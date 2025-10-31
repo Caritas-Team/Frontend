@@ -33,8 +33,10 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 8px;
   color: var(--text-main-color);
+}
+.popup__text {
+  font: var(--font-inst-popup);
 }
 
 @media screen and (min-width: 321px) and (max-width: 833px) {
