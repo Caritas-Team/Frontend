@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import './DatePicker.css';
 
 type Props = {
@@ -5,14 +6,15 @@ type Props = {
   onChange: (value: string) => void;
   label?: string;
   required?: boolean;
+  error?: string;
 };
 
-export default function DatePicker({
+export const DatePicker: FC<Props> = ({
   value,
   onChange,
   label,
   required,
-}: Props) {
+}: Props) => {
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };
@@ -29,4 +31,4 @@ export default function DatePicker({
       </div>
     </div>
   );
-}
+};

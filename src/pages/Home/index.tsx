@@ -2,7 +2,7 @@
 
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../lib/routes';
-import DatePicker from './components/date-picker/DatePicker';
+import { DatePicker } from './components/date-picker';
 import { useState } from 'react';
 
 export default function HomePage() {
