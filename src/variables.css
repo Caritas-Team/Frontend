@@ -197,4 +197,10 @@
 
   /* StatusBar 12 */
   --font-status-bar-12: 510 12px / calc(14 / 12) var(--main-font-family);
+
+  /* шрифт подзаголовка страницы с формой для планшетной версии */
+  --font-subtitle-extra-13: 800 13px/1.25 var(--main-font-family);
+
+  /* шрифт подзаголовка страницы с формой для мобильной версии */
+  --font-subtitle-extra-12: 800 12px/1.25 var(--main-font-family);
 }
