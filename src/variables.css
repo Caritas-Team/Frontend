@@ -194,5 +194,5 @@
   /* StatusBar 12 */
   --font-status-bar-12: 510 12px / calc(14 / 12) var(--main-font-family);
   /*  */
-  --font-inst-popup: 500 16px/1, 2 var(--main-font-family);
+  --font-inst-popup: 500 16px/1.2 var(--main-font-family);
 }
