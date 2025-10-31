@@ -1,0 +1,1 @@
+export { CommunicativeFunction } from './CommunicatioveFunction';
