@@ -1,30 +1,41 @@
 .date-picker {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  gap: 10px;
-  width: 224px;
-  height: 114px;
+  display: inline-block;
+  min-width: 224px;
+  min-height: 114px;
   background-color: var(--blue-light);
   border-radius: 20px;
+  padding: 16px;
+  margin: 16px;
 }
 
 .date-label {
   font-weight: 600;
-  padding-left: 16px;
+  text-align: left;
   font: var(--font-form-semi-18);
 }
 
 .date-required {
-  color: red;
+  color: var(--error-color);
 }
 
 .date-input {
-  padding-left: 16px;
+  text-align: left;
+  margin-top: 9px;
 }
 
-input[type='date'] {
+.date-error {
+  display: flex;
+  gap: 7px;
+  align-items: start;
+  color: var(--error-color);
+  font: var(--font-body-12);
+  max-width: 290px;
+  text-align: left;
+  vertical-align: auto;
+  margin-top: 16px;
+}
+
+.input {
   width: 141px;
   height: 48px;
   border-radius: 20px;
@@ -34,6 +45,10 @@ input[type='date'] {
   letter-spacing: 0;
 }
 
+.input-error {
+  border: 2px solid var(--error-color);
+}
+
 input[type='date']::-webkit-calendar-picker-indicator {
   transform: scale(1.5);
   margin-right: 10px;
@@ -41,7 +56,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 @media (max-width: 834px) {
   .date-picker {
-    width: 280px;
-    height: 112px;
+    min-width: 280px;
+    min-height: 112px;
   }
 }

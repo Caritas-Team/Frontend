@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import './DatePicker.css';
+import reportSrc from '../../../../assets/report.svg';
 
 type Props = {
   value: string;
@@ -14,6 +15,7 @@ export const DatePicker: FC<Props> = ({
   onChange,
   label,
   required,
+  error,
 }: Props) => {
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
@@ -27,8 +29,19 @@ export const DatePicker: FC<Props> = ({
         {required && <span className="date-required">*</span>}
       </div>
       <div className="date-input">
-        <input type="date" value={value} onChange={handleDateChange} />
+        <input
+          className={`input ${error ? 'input-error' : ''}`}
+          type="date"
+          value={value}
+          onChange={handleDateChange}
+        />
       </div>
+      {error && (
+        <div className="date-error">
+          <img src={reportSrc} alt="Лого ошибки" />
+          {error}
+        </div>
+      )}
     </div>
   );
 };

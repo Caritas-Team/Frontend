@@ -24,6 +24,7 @@ export default function HomePage() {
         onChange={setFormingDate}
         label="Дата заполнения"
         required={true}
+        // error="Данные отсутствуют в системе, проверьте правильность ввода или сообщите об ошибке"
       />
     </section>
   );
