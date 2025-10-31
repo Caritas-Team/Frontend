@@ -204,5 +204,5 @@
   /* шрифт подзаголовка страницы с формой для мобильной версии */
   --font-subtitle-extra-12: 800 12px/1.25 var(--main-font-family);
   /*  */
-  --font-inst-popup: 500 16px/1, 2 var(--main-font-family);
+  --font-inst-popup: 500 16px/1.2 var(--main-font-family);
 }
