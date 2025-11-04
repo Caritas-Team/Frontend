@@ -3,11 +3,11 @@ import styles from './CardSection.module.css';
 
 export type TCardSection = {
   className?: string;
-  personName: string;
+  personName?: string;
   personId?: string;
-  dateOfBirth: string;
-  diagnosis: string;
-  whereLives: string;
+  dateOfBirth?: string;
+  diagnosis?: string;
+  whereLives?: string;
   socialFeatures?: string;
   photo?: string;
 };
@@ -80,23 +80,31 @@ export const CardSection: React.FC<TCardSection> = ({
     >
       <div className={styles.card__content}>
         <div className={styles.card__person}>
-          <h2 className={styles.card__name}>{personName}</h2>
+          <h2 className={styles.card__name}>
+            {personName ? personName : 'Имя не указано'}
+          </h2>
           {personId && <p className={styles.card__id}>{personId}</p>}
         </div>
         <div className={styles.card__info} role="list">
           <div className={styles.card__item} role="listitem">
             <p className={`${styles.text} ${styles.title}`}>Дата рождения</p>
-            <p
-              className={`${styles.text} ${styles.value}`}
-            >{`${formatDate(dateOfBirth)}, ${calculateAge(dateOfBirth)}`}</p>
+            <p className={`${styles.text} ${styles.value}`}>
+              {dateOfBirth
+                ? `${formatDate(dateOfBirth)}, ${calculateAge(dateOfBirth)}`
+                : 'Не указана'}
+            </p>
           </div>
           <div className={styles.card__item} role="listitem">
             <p className={`${styles.text} ${styles.title}`}>Диагноз</p>
-            <p className={`${styles.text} ${styles.value}`}>{diagnosis}</p>
+            <p className={`${styles.text} ${styles.value}`}>
+              {diagnosis || 'Не указан'}
+            </p>
           </div>
           <div className={styles.card__item} role="listitem">
             <p className={`${styles.text} ${styles.title}`}>Где проживает</p>
-            <p className={`${styles.text} ${styles.value}`}>{whereLives}</p>
+            <p className={`${styles.text} ${styles.value}`}>
+              {whereLives || 'Не указано'}
+            </p>
           </div>
           <div className={styles.card__item} role="listitem">
             <p className={`${styles.text} ${styles.title}`}>
