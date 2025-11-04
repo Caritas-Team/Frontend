@@ -127,9 +127,10 @@
   }
 
   .card__image {
-    width: min(70%, 100px);
+    width: clamp(58px, 70%, 100px);
     border-radius: 20px;
     grid-column: 2/3;
     grid-row: 1/2;
+    place-self: flex-start flex-end;
   }
 }
