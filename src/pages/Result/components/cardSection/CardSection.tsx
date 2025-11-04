@@ -50,13 +50,12 @@ const calculateAge = (dateString: string) => {
   return personAge;
 };
 
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  if (isNaN(date.getTime())) return;
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = date.getFullYear();
-  return `${day}.${month}.${year}`;
+const formatDateShort = (dateString: string): string => {
+  return new Date(dateString).toLocaleDateString('ru-RU', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
 };
 
 export const CardSection: React.FC<TCardSection> = ({
@@ -90,7 +89,7 @@ export const CardSection: React.FC<TCardSection> = ({
             <p className={`${styles.text} ${styles.title}`}>Дата рождения</p>
             <p className={`${styles.text} ${styles.value}`}>
               {dateOfBirth
-                ? `${formatDate(dateOfBirth)}, ${calculateAge(dateOfBirth)}`
+                ? `${formatDateShort(dateOfBirth)}, ${calculateAge(dateOfBirth)}`
                 : 'Не указана'}
             </p>
           </div>
