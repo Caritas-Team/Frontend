@@ -19,7 +19,7 @@
   grid-row: 1/2;
   text-align: start;
   width: 100%;
-  color: var(--main-text-color, #141414);
+  color: var(--text-main-color, #141414);
 }
 
 .card__name {
