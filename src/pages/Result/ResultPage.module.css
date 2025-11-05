@@ -1,0 +1,8 @@
+/* src\pages\Result\ResultPage.module.css */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: 36px 0px;
+}

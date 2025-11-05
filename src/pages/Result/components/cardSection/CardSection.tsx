@@ -1,3 +1,5 @@
+// src\pages\Result\components\cardSection\CardSection.tsx
+
 import React from 'react';
 import styles from './CardSection.module.css';
 import { calculateAge, formatDateShort } from '../../../../lib/utils';

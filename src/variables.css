@@ -126,6 +126,9 @@
   /* Mobile headline2 */
   --font-h2-mobile: 600 24px/1.2 var(--main-font-family);
 
+  /* Mobile headline3 */
+  --font-h3-mobile: 600 24px/1.2 var(--main-font-family);
+
   /* Headline3 */
   --font-h3: 500 28px/1 var(--main-font-family);
 

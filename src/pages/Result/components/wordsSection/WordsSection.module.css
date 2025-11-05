@@ -1,0 +1,137 @@
+/* src\pages\Result\components\wordsSection\WordsSection.module.css */
+
+.section {
+  width: 100%;
+  padding: 32px 36px;
+  background: var(--background-input-color, #e7f6ff);
+  border-radius: 20px;
+}
+
+.header {
+  margin: 0 0 20px 0;
+  font: var(--font-h2);
+  color: var(--text-main-color, #141414);
+  text-align: left;
+  width: 100%;
+}
+
+.extraGrid {
+  margin-top: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 16px;
+  width: 100%;
+}
+
+.extraWords {
+  background: var(--background-input-color, #e7f6ff);
+}
+
+.quickMessages {
+  background: var(--background-input-color, #e7f6ff);
+}
+
+.verbalWords {
+  background: var(--background-accent-color, #e7f6ff);
+}
+
+.communicationMethods {
+  background: var(--background-input-color, #f3edff);
+}
+
+.extraBlocks {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  border-radius: 20px;
+  padding: 32px 36px;
+}
+
+.extraTitle {
+  margin: 0 0 20px 0;
+  font: var(--font-h3);
+  color: var(--text-main-color);
+  text-align: left;
+}
+
+.extraChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.extraChip {
+  padding: 8px 14px;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--gray-l);
+  font: var(--font-body-20);
+  color: var(--text-main-color);
+  white-space: nowrap;
+}
+
+.extraInfo {
+  font: var(--font-h2);
+  margin: 16px 0 8px 0;
+  color: var(--text-main-color);
+  text-align: left;
+}
+
+.extraDeltaLine {
+  display: flex;
+  gap: 4px; /* расстояние между фразами */
+  align-items: baseline; /* чтобы текст выравнивался красиво */
+}
+
+.extraDelta {
+  font: var(--font-body-20);
+  color: var(--text-accent3-color);
+}
+
+.extraSub {
+  font: var(--font-body-14);
+  color: var(--text-disabled-color);
+}
+
+/* планшет */
+@media (834px <= width < 1200px) {
+  .section {
+    padding: 34px 36px;
+  }
+  .extraGrid {
+    gap: 24px 18px;
+  }
+}
+
+/* мобильный */
+@media (width < 834px) {
+  .section {
+    padding: 20px 2px;
+  }
+  .header {
+    font: var(--font-h2-mobile);
+  }
+  .subheader {
+    font: var(--font-h3-mobile);
+  }
+  .wordChip {
+    font: var(--font-words-mobile-12);
+  }
+
+  .extraGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .extraBlocks {
+    padding: 20px;
+  }
+  .extraTitle {
+    font: var(--font-h3-mobile);
+  }
+  .extraGrid {
+    grid-template-columns: 1fr;
+  }
+  .extraInfo {
+    font: var(--font-h1-mobile);
+  }
+}
