@@ -1,0 +1,342 @@
+.component-reset-button {
+  background-color: unset;
+  color: unset;
+  padding: unset;
+  border: unset;
+}
+
+.component-reset-input {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+.input__text-error {
+  display: flex;
+  align-items: center;
+  font: var(--font-body-12);
+  color: var(--error-color);
+}
+
+.main-form__container {
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 32px;
+  max-width: 1040px;
+  border-radius: 20px;
+  background-color: var(--blue-light);
+  color: var(--gray-4);
+  font-family: var(--main-font-family);
+}
+
+.form__stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats__counter {
+  display: flex;
+  align-items: center;
+}
+
+.form__stats__counter {
+  margin-left: 3px;
+}
+
+.stats-text {
+  font: var(--font-form-semi-18);
+  font-size: 20px;
+}
+
+.counter__discovered {
+  padding-right: 20px;
+}
+
+.stats__buttons {
+  display: flex;
+  gap: 24px;
+}
+.button-add {
+  background-color: var(--white);
+  color: var(--text-for-light-button);
+  font: var(--font-body-16-light);
+  width: 220px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--button-active-color);
+  border-radius: 40px;
+}
+
+.img__person_add {
+  margin-right: 6px;
+}
+
+.button-info {
+  margin-top: 3px;
+}
+
+.form-speaker-calculator {
+  margin-top: 20px;
+}
+
+.form-speaker-calculator__groups__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+  border: 2px solid var(--gray-2);
+  border-radius: 20px;
+  padding: 14px;
+}
+
+.group__container-activ {
+  border-color: var(--blue);
+}
+
+.form-speaker-calculator__group {
+  background-color: var(--white);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  font: var(--font-form-semi-18);
+  line-height: 120%;
+}
+.form-speaker-calculator__group__name {
+  grid-column: span 2;
+}
+
+.input__full-name {
+  background-color: var(--background-input-color);
+  border-radius: 20px;
+  width: 100%;
+}
+
+.field__file {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-input-color);
+  border-radius: 20px;
+  width: 100%;
+}
+
+.field-text {
+  width: 100%;
+  font: var(--font-field-light-18);
+  color: var(--gray-3);
+  height: 48px;
+}
+
+.input-file-info {
+  font: var(--font-field-light-18);
+  color: var(--gray-3);
+}
+
+.field-text__name {
+  padding-left: 8px;
+}
+
+.field-text__file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 8px;
+}
+
+.group__required-mark {
+  color: var(--error-color);
+  margin-left: 10px;
+}
+
+.group__required-mark--first {
+  margin-left: 4px;
+}
+
+.group__required__file {
+  padding-top: 1px;
+}
+
+.speaker-calculator__group__container {
+  position: relative;
+}
+
+.button-closs-form {
+  position: absolute;
+  right: -24px;
+}
+
+.form__container__submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  margin-top: 16px;
+  width: 319px;
+  height: 56px;
+  font: var(--font-button-semi-20);
+  background-color: var(--button-active-color);
+  border-radius: 20px;
+  color: var(--text-for-dark-button);
+}
+
+.submit-btn--disabled {
+  color: var(--text-disabled-color);
+  background-color: var(--button-disabled-color);
+}
+
+.button-icon {
+  width: 24px;
+  height: 24px;
+
+  mask-image: url('./bar_chart_4_bars.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  background-color: currentColor;
+
+  -webkit-mask-image: url('./bar_chart_4_bars.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+.form-speaker-calculator__groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Стили для ошибок */
+.input__full-name:invalid:not(:placeholder-shown) {
+  border: 2px solid var(--error-color);
+}
+
+.input__full-name:valid {
+  border: none;
+}
+
+.field__file-error {
+  border: 2px solid var(--error-color);
+}
+
+.input-error {
+  color: var(--error-color);
+}
+
+.field-text-error {
+  height: 44px;
+}
+
+.input__icon-error {
+  margin-right: 7px;
+}
+
+/*Что бы коректно работала нужно убрать pading тут  <section style={{ padding: '2rem' }}> в файле src/pages/Home/index.tsx*/
+
+/* Адаптив */
+@media screen and (min-width: 1200px) {
+  /* CSS-стили*/
+}
+
+@media screen and (max-width: 1199px) {
+  .main-form__container {
+    /* padding: 20px 30px; */
+    padding: 20px;
+    max-width: 766px;
+    min-height: 640px;
+  }
+
+  .tats__buttons {
+    padding-top: 1px;
+  }
+
+  .stats__counter {
+    padding-top: 2px;
+  }
+  .stats__buttons {
+    gap: 16px;
+  }
+
+  .form-speaker-calculator {
+    margin-top: 16px;
+  }
+}
+
+@media screen and (max-width: 833px) {
+  .main-form__container {
+    padding: 0;
+    max-width: 280px;
+    min-height: 546px;
+  }
+
+  .form__stats {
+    padding: 13px 14px 12px 14px;
+    flex-direction: column;
+  }
+
+  .stats__counter {
+    padding-bottom: 12px;
+    flex-direction: column;
+    align-items: self-start;
+    gap: 4px;
+  }
+
+  .counter__discovered {
+    padding: 0;
+  }
+
+  .stats-text {
+    font: var(--font-form-bold-18);
+    font-weight: 600;
+  }
+
+  .form__stats__counter {
+    margin: 0;
+  }
+
+  .button-add {
+    width: 202px;
+  }
+
+  .stats__buttons {
+    gap: 20px;
+  }
+
+  .form-speaker-calculator {
+    margin: 0;
+  }
+
+  .form-speaker-calculator__groups__container {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    /* margin-right: 20px; */
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .form-speaker-calculator__group {
+    padding: 12px;
+  }
+
+  .button-closs-form {
+    position: absolute;
+    right: 0;
+  }
+
+  .group__required__file {
+    padding: 0;
+  }
+
+  .field-text {
+    font: var(--font-body-16-light);
+  }
+}
