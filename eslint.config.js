@@ -17,6 +17,7 @@ export default defineConfig([
     files: ['**/*.{ts,tsx}'],
     plugins: { prettier },
     rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
       // включаем сам prettier как правило
       'prettier/prettier': [
         'error',

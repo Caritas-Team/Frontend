@@ -1,0 +1,107 @@
+.main {
+  /* height: calc(100% - 141px); */
+  /* margin-top: 280px; */
+  position: relative;
+  padding-top: 65px;
+}
+/* .header {
+  position: relative;
+  display: grid;
+  grid-template-columns:  repeat(2, fr1);
+  grid-template-rows: 2;
+} */
+
+/* .header {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "logo ."
+    "titles date";
+  gap: 8px 16px;
+  align-items: baseline; 
+}
+.header >  div:nth-of-type(1) { grid-area: titles; } 
+.header > div { grid-area: titles; }      
+.header .fill-date { grid-area: date; justify-self: end; align-self: center; } */
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'logo .'
+    'titles date';
+  align-items: start;
+}
+
+/* области грида */
+.logoBlock {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+}
+
+.titleBlock {
+  grid-area: titles;
+  align-self: end;
+  padding-bottom: 15px;
+}
+
+.dateBlock {
+  grid-area: date;
+  align-self: center;
+  justify-self: end;
+  transform: translateY(-14px);
+  -webkit-transform: translateY(-14px);
+  -moz-transform: translateY(-14px);
+  -ms-transform: translateY(-14px);
+  -o-transform: translateY(-14px);
+}
+
+/* немного стиля для текста */
+
+@media screen and (max-width: 1199px) {
+  .titleBlock {
+    height: 100%;
+    max-height: 109px;
+    padding-top: 36px;
+  }
+  .dateBlock {
+    height: 100%;
+    max-height: 109px;
+    transform: translateY(36px);
+    -webkit-transform: translateY(36px);
+    -moz-transform: translateY(36px);
+    -ms-transform: translateY(36px);
+    -o-transform: translateY(36px);
+  }
+  .main {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (max-width: 833px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .titleBlock {
+    padding-top: 0;
+    align-self: start;
+  }
+  .dateBlock {
+    margin-top: 20px;
+    height: 114px;
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+  }
+  .main {
+    padding-top: 13px;
+  }
+}

@@ -12,7 +12,7 @@ interface ModalUIProps {
 export const ModalUI: FC<ModalUIProps> = ({ isOpen, doClose, children }) => {
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') doClose();
+      if (e.key === 'Escape');
     };
 
     if (isOpen) {

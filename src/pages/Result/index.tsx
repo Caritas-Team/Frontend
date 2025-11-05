@@ -9,7 +9,7 @@ export default function ResultPage() {
       <h1>Результат</h1>
       <p>Здесь будет вывод данных.</p>
       <p style={{ marginTop: '1rem' }}>
-        <Link to={ROUTES.home}>На главную</Link>
+        <Link to={ROUTES.form}>На главную</Link>
       </p>
     </section>
   );
