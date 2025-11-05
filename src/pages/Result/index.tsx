@@ -3,7 +3,6 @@
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../lib/routes';
 import { CardSection } from './components/cardSection/CardSection';
-import { TitleSectionResult } from './components/titleSectionResult';
 
 export default function ResultPage() {
   return (
@@ -13,9 +12,6 @@ export default function ResultPage() {
       <p style={{ marginTop: '1rem' }}>
         <Link to={ROUTES.home}>На главную</Link>
       </p>
-      <div>
-        <TitleSectionResult reportDate="2025-10-01" />
-      </div>
       <CardSection
         personName="Иван Иванов"
         personId="12345"
