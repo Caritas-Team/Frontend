@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from './WordsSection.module.css';
+import VerbalIcon from '@/assets/letter-a.svg';
 
 type WordsSectionProps = {
   new_words: string[];
@@ -45,48 +46,49 @@ export const WordsSection: React.FC<WordsSectionProps> = ({
     <section>
       <h2 className={styles.header}>{HEADER_TEXT}</h2>
 
-      <section className={styles.extraGrid}>
-        <div className={`${styles.extraWords} ${styles.extraBlocks}`}>
-          <h3 className={styles.extraTitle}>{ABSENT_WORDS}</h3>
+      <section className={styles.grid}>
+        <div className={`${styles.extraWords} ${styles.block}`}>
+          <h3 className={styles.title}>{ABSENT_WORDS}</h3>
 
-          <div className={styles.extraChips}>
+          <div className={styles.chips}>
             {new_words.map(word => (
-              <span key={word} className={styles.extraChip}>
+              <span key={word} className={styles.chip}>
                 {word}
               </span>
             ))}
           </div>
         </div>
 
-        <div className={`${styles.communicationMethods} ${styles.extraBlocks}`}>
-          <h3 className={styles.extraTitle}>{COMMUNICATION_METHODS}</h3>
-          <div className={styles.extraChips}>
+        <div className={`${styles.communicationMethods} ${styles.block}`}>
+          <h3 className={styles.title}>{COMMUNICATION_METHODS}</h3>
+          <div className={styles.chips}>
             {methods.map(method => (
-              <span key={method} className={styles.extraChip}>
+              <span key={method} className={styles.chip}>
                 {method}
               </span>
             ))}
           </div>
         </div>
 
-        <div className={`${styles.verbalWords} ${styles.extraBlocks}`}>
-          <h3 className={styles.extraTitle}>{VERBAL_WORDS}</h3>
-          <div className={styles.extraInfo}>
-            {pluralizeWords(words1, false)}
-          </div>
-          <div className={styles.extraDeltaLine}>
-            <span className={styles.extraDelta}>
-              {pluralizeWords(words2, true)}
+        <div className={`${styles.verbalWords} ${styles.block}`}>
+          <h3 className={styles.title}>
+            <img src={VerbalIcon} alt="" className={styles.icon} />
+            {VERBAL_WORDS}
+          </h3>
+          <div className={styles.info}>`{pluralizeWords(words1, false)}`</div>
+          <div className={styles.deltaLine}>
+            <span className={styles.delta}>
+              `{pluralizeWords(words2, true)}`
             </span>
-            <span className={styles.extraSub}>к прошлому результату</span>
+            <span className={styles.sub}>к прошлому результату</span>
           </div>
         </div>
 
-        <div className={`${styles.quickMessages} ${styles.extraBlocks}`}>
-          <h3 className={styles.extraTitle}>{QUICK_MESSAGES}</h3>
-          <div className={styles.extraChips}>
+        <div className={`${styles.quickMessages} ${styles.block}`}>
+          <h3 className={styles.title}>{QUICK_MESSAGES}</h3>
+          <div className={styles.chips}>
             {messages.map(message => (
-              <span key={message} className={styles.extraChip}>
+              <span key={message} className={styles.chip}>
                 {message}
               </span>
             ))}

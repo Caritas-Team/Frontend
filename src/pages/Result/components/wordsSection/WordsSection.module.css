@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-.extraGrid {
+.grid {
   margin-top: 0px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -39,57 +39,64 @@
   background: var(--background-input-color, #f3edff);
 }
 
-.extraBlocks {
+.block {
   overflow-wrap: break-word;
   word-break: break-word;
   border-radius: 20px;
   padding: 32px 36px;
 }
 
-.extraTitle {
+.title {
   margin: 0 0 20px 0;
   font: var(--font-h3);
-  color: var(--text-main-color);
+  color: var(--text-main-color, #141414);
   text-align: left;
 }
 
-.extraChips {
+.chips {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 
-.extraChip {
+.chip {
   padding: 8px 14px;
-  background: var(--white);
+  background: var(--background-input-color, #e7f6ff);
   border-radius: 8px;
-  border: 1px solid var(--gray-l);
+  border: 2px solid var(--gray-3, #6a6a6a);
   font: var(--font-body-20);
-  color: var(--text-main-color);
+  color: var(--text-main-color, #141414);
   white-space: nowrap;
 }
 
-.extraInfo {
+.icon {
+  width: 27px;
+  height: 27px;
+  margin: 0 10px 6px 0;
+  vertical-align: middle;
+}
+
+.info {
   font: var(--font-h2);
   margin: 16px 0 8px 0;
-  color: var(--text-main-color);
+  color: var(--text-main-color, #141414);
   text-align: left;
 }
 
-.extraDeltaLine {
+.deltaLine {
   display: flex;
   gap: 4px; /* расстояние между фразами */
   align-items: baseline; /* чтобы текст выравнивался красиво */
 }
 
-.extraDelta {
+.delta {
   font: var(--font-body-20);
-  color: var(--text-accent3-color);
+  color: var(--text-accent3-color, #8550f6);
 }
 
-.extraSub {
+.sub {
   font: var(--font-body-14);
-  color: var(--text-disabled-color);
+  color: var(--text-disabled-color, #6a6a6a);
 }
 
 /* планшет */
@@ -97,7 +104,7 @@
   .section {
     padding: 34px 36px;
   }
-  .extraGrid {
+  .grid {
     gap: 24px 18px;
   }
 }
@@ -117,21 +124,18 @@
     font: var(--font-words-mobile-12);
   }
 
-  .extraGrid {
+  .grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .extraBlocks {
+  .block {
     padding: 20px;
   }
-  .extraTitle {
+  .title {
     font: var(--font-h3-mobile);
   }
-  .extraGrid {
-    grid-template-columns: 1fr;
-  }
-  .extraInfo {
+  .info {
     font: var(--font-h1-mobile);
   }
 }
