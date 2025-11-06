@@ -1,18 +1,3 @@
-.component-reset-button {
-  background-color: unset;
-  color: unset;
-  padding: unset;
-  border: unset;
-}
-
-.component-reset-input {
-  border: none;
-  outline: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0;
-}
-
 .input__text-error {
   display: flex;
   align-items: center;
@@ -101,15 +86,18 @@
   background-color: var(--white);
   border-radius: 20px;
   padding: 16px;
+
   display: flex;
   flex-direction: column;
   align-items: start;
+  align-self: start;
   gap: 10px;
   font: var(--font-form-semi-18);
   line-height: 120%;
 }
 .form-speaker-calculator__group__name {
   grid-column: span 2;
+  padding-bottom: 18px;
 }
 
 .input__full-name {
@@ -140,6 +128,7 @@
 }
 
 .field-text__name {
+  max-height: 46px;
   padding-left: 8px;
 }
 
@@ -169,7 +158,22 @@
 
 .button-closs-form {
   position: absolute;
-  right: -24px;
+  height: 28px;
+  width: 28px;
+  background-color: var(--blue-light);
+  border: 2px solid var(--gray-2);
+  border-radius: 50px;
+  right: -10px;
+  top: -10px;
+}
+
+.button-closs-form-activ {
+  border-color: var(--blue);
+}
+
+.submit-btn--disabled {
+  color: var(--text-disabled-color);
+  background-color: var(--button-disabled-color);
 }
 
 .form__container__submit-btn {
@@ -178,7 +182,7 @@
   align-items: center;
   gap: 10px;
   margin: 0 auto;
-  margin-top: 16px;
+  margin-top: 28px;
   width: 319px;
   height: 56px;
   font: var(--font-button-semi-20);
@@ -211,7 +215,7 @@
 .form-speaker-calculator__groups {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 28px;
 }
 
 /* Стили для ошибок */
@@ -239,6 +243,12 @@
   margin-right: 7px;
 }
 
+.input__text-error {
+  align-items: start;
+  text-align: left;
+  line-height: initial;
+}
+
 /*Что бы коректно работала нужно убрать pading тут  <section style={{ padding: '2rem' }}> в файле src/pages/Home/index.tsx*/
 
 /* Адаптив */
@@ -246,31 +256,40 @@
   /* CSS-стили*/
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1000px) {
   .main-form__container {
-    /* padding: 20px 30px; */
     padding: 20px;
     max-width: 766px;
     min-height: 640px;
   }
 
-  .tats__buttons {
-    padding-top: 1px;
+  .button-info {
+    margin-top: 6px;
   }
 
-  .stats__counter {
-    padding-top: 2px;
-  }
   .stats__buttons {
     gap: 16px;
   }
 
+  /* TODO исправить после правок в макете */
   .form-speaker-calculator {
+    /* margin-top: 22px; */
     margin-top: 16px;
+  }
+
+  .form__container__submit-btn {
+    /* margin-top: 22px; */
+    margin-top: 16px;
+  }
+
+  .form-speaker-calculator__groups {
+    /* gap: 22px; */
+    gap: 16px;
   }
 }
 
-@media screen and (max-width: 833px) {
+/* TODO исправить после правок в макете */
+@media screen and (max-width: 799px) {
   .main-form__container {
     padding: 0;
     max-width: 280px;
@@ -278,15 +297,18 @@
   }
 
   .form__stats {
-    padding: 13px 14px 12px 14px;
+    padding: 14px 14px 12px 14px;
     flex-direction: column;
   }
 
+  .button-info {
+    padding-bottom: 1px;
+  }
   .stats__counter {
     padding-bottom: 12px;
     flex-direction: column;
     align-items: self-start;
-    gap: 4px;
+    gap: 5px;
   }
 
   .counter__discovered {
@@ -302,6 +324,12 @@
     margin: 0;
   }
 
+  .form-speaker-calculator {
+    margin: 0;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
   .button-add {
     width: 202px;
   }
@@ -310,21 +338,18 @@
     gap: 20px;
   }
 
-  .form-speaker-calculator {
-    margin: 0;
-  }
-
   .form-speaker-calculator__groups__container {
     display: flex;
     flex-direction: column;
     padding: 6px;
-    /* margin-right: 20px; */
     margin: 0 auto;
     gap: 12px;
   }
 
   .form-speaker-calculator__group {
     padding: 12px;
+    align-self: normal;
+    text-align: left;
   }
 
   .button-closs-form {

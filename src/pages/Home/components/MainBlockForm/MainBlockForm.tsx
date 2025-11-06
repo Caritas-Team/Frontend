@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from 'uuid';
 const MAX_PERSONS = 10;
 
 export type PersonFormData = {
-  isMain: boolean; //чтобы выделить первую форму тк ее удалять нельзя
   id: string;
   name: string;
   nameValid: boolean;
@@ -19,7 +18,6 @@ export type PersonFormData = {
 };
 
 const createMainForm = (): PersonFormData => ({
-  isMain: true,
   id: uuidv4(),
   name: '',
   nameValid: false,
@@ -31,7 +29,7 @@ const createMainForm = (): PersonFormData => ({
 
 export const MainBlockForm = () => {
   const [persons, setPersons] = useState<PersonFormData[]>([createMainForm()]);
-  const [formKey, setFormKey] = useState(0); // Ключ для принудительного пересоздания
+  const [form, setForm] = useState<boolean>(false); // Ключ для принудительного пересоздания
 
   const counterDiscovered = persons.filter(person => person.nameValid).length;
 
@@ -48,7 +46,6 @@ export const MainBlockForm = () => {
       setPersons(prev => [
         ...prev,
         {
-          isMain: false,
           id: uuidv4(),
           name: '',
           nameValid: false,
@@ -64,7 +61,6 @@ export const MainBlockForm = () => {
   };
 
   const removePerson = (idToRemove: string) => {
-    if (idToRemove === 'main-form') return;
     setPersons(prev => prev.filter(person => person.id !== idToRemove));
   };
 
@@ -91,7 +87,7 @@ export const MainBlockForm = () => {
     // Создаем новый массив
     setPersons([createMainForm()]);
     // Меняем ключ для принудительного пересоздания
-    setFormKey(prev => prev + 1);
+    setForm(!form);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -141,19 +137,14 @@ export const MainBlockForm = () => {
         </div>
       </div>
 
-      <form
-        key={formKey}
-        className="form-speaker-calculator"
-        onSubmit={handleSubmit}
-      >
+      <form className="form-speaker-calculator" onSubmit={handleSubmit}>
         <div className="form-speaker-calculator__groups">
           {persons.map(person => (
             <PersonForm
               key={person.id}
               id={person.id}
-              isMainForm={person.isMain}
               onRemove={
-                !person.isMain ? () => removePerson(person.id) : undefined
+                persons.length != 1 ? () => removePerson(person.id) : undefined
               }
               onUpdate={updatePerson}
               formData={person}

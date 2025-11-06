@@ -6,7 +6,6 @@ import { InputFile } from '../InputFile/InputFile';
 
 type PersonFormProps = {
   id: string;
-  isMainForm?: boolean;
   onRemove?: () => void;
   onUpdate: (id: string, updates: Partial<PersonFormData>) => void;
   formData: PersonFormData;
@@ -14,12 +13,12 @@ type PersonFormProps = {
 
 export const PersonForm = ({
   id,
-  isMainForm,
   onRemove,
   onUpdate,
   formData,
 }: PersonFormProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const buttonCloseRef = useRef<HTMLButtonElement>(null);
 
   //для выделения полей формы синим когда заполнено все верно
   const activForm = useMemo(() => {
@@ -39,6 +38,7 @@ export const PersonForm = ({
 
     const method = activForm ? 'add' : 'remove';
     containerRef.current.classList[method]('group__container-activ');
+    buttonCloseRef.current?.classList[method]('button-closs-form-activ');
   }, [activForm]);
 
   const handleNameChange = (isValid: boolean, name?: string) => {
@@ -61,12 +61,14 @@ export const PersonForm = ({
 
   return (
     <div className="speaker-calculator__group__container">
-      {!isMainForm && (
+      {onRemove && (
         <button
-          className="button-closs-form component-reset-button"
+          ref={buttonCloseRef}
+          className="button-closs-form"
           onClick={onRemove}
+          type="button"
         >
-          <img src={clossButtom} alt="" />
+          <img src={clossButtom} alt="удалить форму" />
         </button>
       )}
       <div
