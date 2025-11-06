@@ -32,6 +32,7 @@
   .title {
     font: var(--font-h1-mobile);
     text-align: start;
+    align-self: flex-start;
   }
 
   .date {
