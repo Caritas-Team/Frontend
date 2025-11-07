@@ -1,7 +1,7 @@
 import help_Icon from '../../../../assets/help_Icon.svg';
 import person_add from '../../../../assets/person_add.svg';
 import { useCallback, useState } from 'react';
-import './MainBlockForm.css';
+import styles from './MainBlockForm.module.css';
 import { PersonForm } from './PersonForm/PersonForm';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -109,40 +109,44 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
   };
 
   return (
-    <div className="main-form__container">
-      <div className="form__stats">
-        <div className="stats__counter">
-          <h3 className="stats-text counter__discovered">
+    <div className={styles.mainFormContainer}>
+      <div className={styles.formStats}>
+        <div className={styles.statsCounter}>
+          <h3 className={styles.statsText}>
             Обследуемых:{' '}
-            <span className="form__stats__counter">{counterDiscovered}</span>
+            <span className={styles.formStatsCounter}>{counterDiscovered}</span>
           </h3>
-          <h3 className="stats-text counter__Files">
+          <h3 className={styles.statsText}>
             Загружено файлов:{' '}
-            <span className="form__stats__counter">{counterFiles}</span>
+            <span className={styles.formStatsCounter}>{counterFiles}</span>
           </h3>
         </div>
-        <div className="stats__buttons">
+        <div className={styles.statsButtons}>
           <button
-            className="button-add"
+            className={styles.buttonAdd}
             onClick={addPerson}
             disabled={persons.length >= MAX_PERSONS - 1}
           >
             <img
-              className="img__person_add"
+              className={styles.imgPersonAdd}
               src={person_add}
               alt="Добавить обследуемого"
               width={'24'}
             />
             Добавить к расчёту
           </button>
-          <button className="button-info" type="button" onClick={openPopup}>
+          <button
+            className={styles.buttonInfo}
+            type="button"
+            onClick={openPopup}
+          >
             <img src={help_Icon} alt="Кнопка подсказки" width={'24'} />
           </button>
         </div>
       </div>
 
-      <form className="form-speaker-calculator" onSubmit={handleSubmit}>
-        <div className="form-speaker-calculator__groups">
+      <form className={styles.formSpeakerCalculator} onSubmit={handleSubmit}>
+        <div className={styles.formSpeakerCalculatorGroups}>
           {persons.map(person => (
             <PersonForm
               key={person.id}
@@ -158,10 +162,10 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
 
         <button
           type="submit"
-          className={`component-reset-button form__container__submit-btn ${!canSubmit ? 'submit-btn--disabled' : ''}`}
+          className={`${styles.formContainerSubmitBtn} ${!canSubmit ? styles.submitBtnDisabled : ''}`}
           disabled={!canSubmit}
         >
-          <div className="button-icon" />
+          <div className={styles.buttonIcon} />
           Рассчитать динамику
         </button>
       </form>

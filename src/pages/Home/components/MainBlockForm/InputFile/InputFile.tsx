@@ -1,5 +1,6 @@
 import reportError from '../../../../../assets/report_error.svg';
 import { useState, useId } from 'react';
+import styles from '../MainBlockForm.module.css'; // Добавь этот импорт
 
 type InputFileProps = {
   label: string;
@@ -42,18 +43,19 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
   };
 
   return (
-    <div className="form-speaker-calculator__group">
-      <label className="group__required group__required__file">
+    <div className={styles.formSpeakerCalculatorGroup}>
+      <label className={`${styles.groupRequired} ${styles.groupRequiredFile}`}>
         {label}
         {!file || fileError !== '' ? (
-          <span className="group__required-mark">*</span>
+          <span className={styles.groupRequiredMark}>*</span>
         ) : null}
       </label>
 
-      <div className={`field__file ${fileError ? 'field__file-error' : ''}`}>
-        {' '}
+      <div
+        className={`${styles.fieldFile} ${fileError ? styles.fieldFileError : ''}`}
+      >
         <input
-          className="component-reset-input input__file"
+          className={styles.inputFile}
           id={uniqueId}
           type="file"
           hidden
@@ -63,19 +65,23 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
         />
         <label
           htmlFor={uniqueId}
-          className={`field-text field-text__file ${fileError ? 'field-text-error' : ''}`}
+          className={`${styles.fieldText} ${styles.fieldTextFile} ${fileError ? styles.fieldTextError : ''}`}
         >
           {file !== null ? (
-            <p className="input-file-info">{file.name}</p>
+            <p className={styles.inputFileInfo}>{file.name}</p>
           ) : (
-            <p className="input-file-info">Выберите файл</p>
+            <p className={styles.inputFileInfo}>Выберите файл</p>
           )}
         </label>
       </div>
       {fileError && (
-        <span className="input__text-error" id={uniqueId} aria-live="polite">
+        <span
+          className={styles.inputTextError}
+          id={uniqueId}
+          aria-live="polite"
+        >
           <img
-            className="input__icon-error"
+            className={styles.inputIconError}
             src={reportError}
             alt="значек ошибки"
             width={'24'}

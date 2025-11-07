@@ -1,11 +1,11 @@
-.input__text-error {
+.inputTextError {
   display: flex;
   align-items: center;
   font: var(--font-body-12);
   color: var(--error-color);
 }
 
-.main-form__container {
+.mainFormContainer {
   margin: 0 auto;
   padding: 32px;
   max-width: 1040px;
@@ -15,34 +15,35 @@
   font-family: var(--main-font-family);
 }
 
-.form__stats {
+.formStats {
   display: flex;
   justify-content: space-between;
 }
 
-.stats__counter {
+.statsCounter {
   display: flex;
   align-items: center;
 }
 
-.form__stats__counter {
+.formStatsCounter {
   margin-left: 3px;
 }
 
-.stats-text {
+.statsText {
   font: var(--font-form-semi-18);
   font-size: 20px;
 }
 
-.counter__discovered {
+.counterDiscovered {
   padding-right: 20px;
 }
 
-.stats__buttons {
+.statsButtons {
   display: flex;
   gap: 24px;
 }
-.button-add {
+
+.buttonAdd {
   background-color: var(--white);
   color: var(--text-for-light-button);
   font: var(--font-body-16-light);
@@ -55,19 +56,19 @@
   border-radius: 40px;
 }
 
-.img__person_add {
+.imgPersonAdd {
   margin-right: 6px;
 }
 
-.button-info {
+.buttonInfo {
   margin-top: 3px;
 }
 
-.form-speaker-calculator {
+.formSpeakerCalculator {
   margin-top: 20px;
 }
 
-.form-speaker-calculator__groups__container {
+.formSpeakerCalculatorGroupsContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto auto;
@@ -77,15 +78,14 @@
   padding: 14px;
 }
 
-.group__container-activ {
+.groupContainerActiv {
   border-color: var(--blue);
 }
 
-.form-speaker-calculator__group {
+.formSpeakerCalculatorGroup {
   background-color: var(--white);
   border-radius: 20px;
   padding: 16px;
-
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -94,18 +94,19 @@
   font: var(--font-form-semi-18);
   line-height: 120%;
 }
-.form-speaker-calculator__group__name {
+
+.formSpeakerCalculatorGroupName {
   grid-column: span 2;
   padding-bottom: 18px;
 }
 
-.input__full-name {
+.inputFullName {
   background-color: var(--background-input-color);
   border-radius: 20px;
   width: 100%;
 }
 
-.field__file {
+.fieldFile {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,48 +115,48 @@
   width: 100%;
 }
 
-.field-text {
+.fieldText {
   width: 100%;
   font: var(--font-field-light-18);
   color: var(--gray-3);
   height: 48px;
 }
 
-.input-file-info {
+.inputFileInfo {
   font: var(--font-field-light-18);
   color: var(--gray-3);
 }
 
-.field-text__name {
+.fieldTextName {
   max-height: 46px;
   padding-left: 8px;
 }
 
-.field-text__file {
+.fieldTextFile {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-right: 8px;
 }
 
-.group__required-mark {
+.groupRequiredMark {
   color: var(--error-color);
   margin-left: 10px;
 }
 
-.group__required-mark--first {
+.groupRequiredMarkFirst {
   margin-left: 4px;
 }
 
-.group__required__file {
+.groupRequiredFile {
   padding-top: 1px;
 }
 
-.speaker-calculator__group__container {
+.speakerCalculatorGroupContainer {
   position: relative;
 }
 
-.button-closs-form {
+.buttonClossForm {
   position: absolute;
   height: 28px;
   width: 28px;
@@ -166,16 +167,16 @@
   top: -10px;
 }
 
-.button-closs-form-activ {
+.buttonClossFormActiv {
   border-color: var(--blue);
 }
 
-.submit-btn--disabled {
+.submitBtnDisabled {
   color: var(--text-disabled-color);
   background-color: var(--button-disabled-color);
 }
 
-.form__container__submit-btn {
+.formContainerSubmitBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,65 +191,50 @@
   color: var(--text-for-dark-button);
 }
 
-.submit-btn--disabled {
-  color: var(--text-disabled-color);
-  background-color: var(--button-disabled-color);
-}
-
-.button-icon {
+.buttonIcon {
   width: 24px;
   height: 24px;
-
   mask-image: url('./bar_chart_4_bars.svg');
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
-
   background-color: currentColor;
-
   -webkit-mask-image: url('./bar_chart_4_bars.svg');
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
 }
-.form-speaker-calculator__groups {
+
+.formSpeakerCalculatorGroups {
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
 /* Стили для ошибок */
-.input__full-name:invalid:not(:placeholder-shown) {
+.inputFullName:invalid:not(:placeholder-shown) {
   border: 2px solid var(--error-color);
 }
 
-.input__full-name:valid {
+.inputFullName:valid {
   border: none;
 }
 
-.field__file-error {
+.fieldFileError {
   border: 2px solid var(--error-color);
 }
 
-.input-error {
+.inputError {
   color: var(--error-color);
 }
 
-.field-text-error {
+.fieldTextError {
   height: 44px;
 }
 
-.input__icon-error {
+.inputIconError {
   margin-right: 7px;
 }
-
-.input__text-error {
-  align-items: start;
-  text-align: left;
-  line-height: initial;
-}
-
-/*Что бы коректно работала нужно убрать pading тут  <section style={{ padding: '2rem' }}> в файле src/pages/Home/index.tsx*/
 
 /* Адаптив */
 @media screen and (min-width: 1200px) {
@@ -256,88 +242,84 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .main-form__container {
+  .mainFormContainer {
     padding: 20px;
     max-width: 766px;
     min-height: 640px;
   }
 
-  .button-info {
+  .buttonInfo {
     margin-top: 6px;
   }
 
-  .stats__buttons {
+  .statsButtons {
     gap: 16px;
   }
 
-  /* TODO исправить после правок в макете */
-  .form-speaker-calculator {
-    /* margin-top: 22px; */
+  .formSpeakerCalculator {
     margin-top: 16px;
   }
 
-  .form__container__submit-btn {
-    /* margin-top: 22px; */
+  .formContainerSubmitBtn {
     margin-top: 16px;
   }
 
-  .form-speaker-calculator__groups {
-    /* gap: 22px; */
+  .formSpeakerCalculatorGroups {
     gap: 16px;
   }
 }
 
-/* TODO исправить после правок в макете */
 @media screen and (max-width: 799px) {
-  .main-form__container {
+  .mainFormContainer {
     padding: 0;
     max-width: 280px;
     min-height: 546px;
   }
 
-  .form__stats {
+  .formStats {
     padding: 14px 14px 12px 14px;
     flex-direction: column;
   }
 
-  .button-info {
+  .buttonInfo {
     padding-bottom: 1px;
   }
-  .stats__counter {
+
+  .statsCounter {
     padding-bottom: 12px;
     flex-direction: column;
     align-items: self-start;
     gap: 5px;
   }
 
-  .counter__discovered {
+  .counterDiscovered {
     padding: 0;
   }
 
-  .stats-text {
+  .statsText {
     font: var(--font-form-bold-18);
     font-weight: 600;
   }
 
-  .form__stats__counter {
+  .formStatsCounter {
     margin: 0;
   }
 
-  .form-speaker-calculator {
+  .formSpeakerCalculator {
     margin: 0;
     padding-left: 14px;
     padding-right: 14px;
   }
 
-  .button-add {
+  .buttonAdd {
     width: 202px;
   }
 
-  .stats__buttons {
+  .statsButtons {
     gap: 20px;
   }
 
-  .form-speaker-calculator__groups__container {
+  .formSpeakerCalculatorGroupsContainer {
     display: flex;
     flex-direction: column;
     padding: 6px;
@@ -345,22 +327,22 @@
     gap: 12px;
   }
 
-  .form-speaker-calculator__group {
+  .formSpeakerCalculatorGroup {
     padding: 12px;
     align-self: normal;
     text-align: left;
   }
 
-  .button-closs-form {
+  .buttonClossForm {
     position: absolute;
     right: 0;
   }
 
-  .group__required__file {
+  .groupRequiredFile {
     padding: 0;
   }
 
-  .field-text {
+  .fieldText {
     font: var(--font-body-16-light);
   }
 }

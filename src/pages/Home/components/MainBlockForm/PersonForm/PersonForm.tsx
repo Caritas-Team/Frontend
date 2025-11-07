@@ -3,6 +3,7 @@ import clossButtom from '../../../../../assets/closeButton.svg';
 import { InputFullName } from '../InputFullName/InputFullName';
 import type { PersonFormData } from '../MainBlockForm';
 import { InputFile } from '../InputFile/InputFile';
+import styles from '../MainBlockForm.module.css'; // Добавь этот импорт
 
 type PersonFormProps = {
   id: string;
@@ -37,8 +38,8 @@ export const PersonForm = ({
     if (!containerRef.current) return;
 
     const method = activForm ? 'add' : 'remove';
-    containerRef.current.classList[method]('group__container-activ');
-    buttonCloseRef.current?.classList[method]('button-closs-form-activ');
+    containerRef.current.classList[method](styles.groupContainerActiv);
+    buttonCloseRef.current?.classList[method](styles.buttonClossFormActiv);
   }, [activForm]);
 
   const handleNameChange = (isValid: boolean, name?: string) => {
@@ -60,11 +61,11 @@ export const PersonForm = ({
   };
 
   return (
-    <div className="speaker-calculator__group__container">
+    <div className={styles.speakerCalculatorGroupContainer}>
       {onRemove && (
         <button
           ref={buttonCloseRef}
-          className="button-closs-form"
+          className={styles.buttonClossForm}
           onClick={onRemove}
           type="button"
         >
@@ -73,7 +74,7 @@ export const PersonForm = ({
       )}
       <div
         ref={containerRef}
-        className="form-speaker-calculator__groups__container"
+        className={styles.formSpeakerCalculatorGroupsContainer}
       >
         <InputFullName
           initialName={formData.name}
