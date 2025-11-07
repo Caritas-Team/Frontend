@@ -17,6 +17,10 @@ export type PersonFormData = {
   currentFile: File | null;
 };
 
+interface MainBlockFormProps {
+  openPopup: () => void;
+}
+
 const createMainForm = (): PersonFormData => ({
   id: uuidv4(),
   name: '',
@@ -27,7 +31,7 @@ const createMainForm = (): PersonFormData => ({
   currentFile: null,
 });
 
-export const MainBlockForm = () => {
+export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
   const [persons, setPersons] = useState<PersonFormData[]>([createMainForm()]);
   const [form, setForm] = useState<boolean>(false); // Ключ для принудительного пересоздания
 
@@ -119,7 +123,7 @@ export const MainBlockForm = () => {
         </div>
         <div className="stats__buttons">
           <button
-            className="component-reset-button button-add"
+            className="button-add"
             onClick={addPerson}
             disabled={persons.length >= MAX_PERSONS - 1}
           >
@@ -131,7 +135,7 @@ export const MainBlockForm = () => {
             />
             Добавить к расчёту
           </button>
-          <button className="component-reset-button button-info" type="button">
+          <button className="button-info" type="button" onClick={openPopup}>
             <img src={help_Icon} alt="Кнопка подсказки" width={'24'} />
           </button>
         </div>
