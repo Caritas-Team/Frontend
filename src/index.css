@@ -1,0 +1,9 @@
+body {
+  font-family: var(--main-font-family);
+}
+
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--text-supplementary-color, #37474f);
+}

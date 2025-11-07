@@ -6,10 +6,6 @@
   padding: 0;
 }
 
-body {
-  font-family: var(--main-font-family);
-}
-
 button,
 input,
 a {
@@ -26,12 +22,6 @@ input:focus,
 button:focus,
 a:focus {
   outline: none;
-}
-
-input:focus-visible,
-button:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--text-supplementary-color, #37474f);
 }
 
 ul,
