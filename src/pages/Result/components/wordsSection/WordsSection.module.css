@@ -2,8 +2,9 @@
 
 .section {
   width: 100%;
-  padding: 32px 36px;
-  background: var(--background-input-color, #e7f6ff);
+  padding: 32px 0;
+  background: var(--background-main-color, #ffffff);
+  background: #67f4b1;
   border-radius: 20px;
 }
 
@@ -102,7 +103,7 @@
 /* планшет */
 @media (834px <= width < 1200px) {
   .section {
-    padding: 34px 36px;
+    padding: 34px 0px;
   }
   .grid {
     gap: 24px 18px;

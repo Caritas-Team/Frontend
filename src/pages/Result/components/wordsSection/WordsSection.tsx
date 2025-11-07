@@ -43,7 +43,7 @@ export const WordsSection: React.FC<WordsSectionProps> = ({
   words2,
 }) => {
   return (
-    <section>
+    <section className={styles.section}>
       <h2 className={styles.header}>{HEADER_TEXT}</h2>
 
       <section className={styles.grid}>
@@ -75,11 +75,9 @@ export const WordsSection: React.FC<WordsSectionProps> = ({
             <img src={VerbalIcon} alt="" className={styles.icon} />
             {VERBAL_WORDS}
           </h3>
-          <div className={styles.info}>`{pluralizeWords(words1, false)}`</div>
+          <div className={styles.info}>{pluralizeWords(words1, false)}</div>
           <div className={styles.deltaLine}>
-            <span className={styles.delta}>
-              `{pluralizeWords(words2, true)}`
-            </span>
+            <span className={styles.delta}>{pluralizeWords(words2, true)}</span>
             <span className={styles.sub}>к прошлому результату</span>
           </div>
         </div>

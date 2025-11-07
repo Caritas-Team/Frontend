@@ -5,6 +5,7 @@ import { ROUTES } from '../../lib/routes';
 import { CardSection } from './components/cardSection/CardSection';
 import { WordsSection } from './components/wordsSection';
 import styles from './ResultPage.module.css';
+import { CheckSection } from './components/checkSection';
 
 export default function ResultPage() {
   return (
@@ -15,6 +16,28 @@ export default function ResultPage() {
       <p style={{ marginTop: '1rem' }}>
         <Link to={ROUTES.home}>На главную</Link>
       </p>
+
+      <CheckSection
+        date1="15 Апр. 2025"
+        formed1={20}
+        initiative1={35}
+        frequency1={50}
+        date2="1 Мая 2025"
+        formed2={90}
+        initiative2={45}
+        frequency2={55}
+        description="На голубом!"
+      />
+
+      {/* <div style={{position: 'relative', width: '230px', height: '230px',}}>
+        <Gauge
+          date="15 Апр. 2025"
+          formed={90}      // фиолетовая дуга
+          initiative={25}  // зелёная дуга
+          frequency={50}   // синяя дуга
+        />
+      </div> */}
+
       <CardSection
         personName="Иван Иванов"
         personId="12345"

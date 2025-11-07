@@ -1,0 +1,117 @@
+/* src\pages\Result\components\checkSection\CheckSection.module.css */
+
+.section {
+  width: 100%;
+  padding: 32px 0;
+  background: var(--background-main-color, #ffffff);
+  background: #67f4b1;
+  border-radius: 20px;
+}
+
+.header {
+  margin: 0 0 20px 0;
+  font: var(--font-h2);
+  color: var(--text-main-color, #141414);
+  text-align: left;
+  width: 100%;
+}
+
+.container {
+  width: 944px; /* ← твой макетный размер */
+  padding: 32px 0; /* вертикальные отступы */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 24px; /* расстояние между блоками */
+  background: var(--background-main-color, #ffffff);
+}
+
+.title {
+  margin: 0 0 20px 0;
+  font: var(--font-h3, 500 28px/1 var(--main-font-family));
+  color: var(--text-main-color, #141414);
+  text-align: left;
+}
+
+.gaugesBox {
+  border: 2px solid var(--violet, #8550f6);
+  border-radius: 16px;
+  padding: 24px 32px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 526px; /* ← размер из макета */
+  margin: 0 auto; /* центрируем */
+  gap: 20px;
+}
+
+.gauges {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 24px;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin-top: 8px;
+  gap: 0;
+}
+
+.legendItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendBottom {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dotFirst,
+.dotSecond,
+.dotThird {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.dotFirst {
+  background: var(--chart-circle-first-color, #8550f6);
+}
+
+.dotSecond {
+  background: var(--chart-circle-second-color, #67f4b1);
+}
+
+.dotThird {
+  background: var(--chart-circle-third-sector-color, #5b93f4);
+}
+
+.text {
+  font: var(--font-chart-reg-15, 400 15px/1 var(--main-font-family));
+  color: var(--text-supplementary-color, #37474f);
+}
+
+.descriptionLabel {
+  text-align: left;
+}
+
+.descriptionContent {
+  text-align: right;
+  background: var(--background-input-color, #e7f6ff);
+}
