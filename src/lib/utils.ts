@@ -29,12 +29,9 @@ export const formatDateShort = (dateString: string): string => {
 export const isValidDate = (value: string) => {
   const dateFormat = /^(\d{4})-(\d{2})-(\d{2})$/;
   const isDateFormat: boolean = dateFormat.test(value);
-  console.log(isDateFormat);
   if (!isDateFormat) return false;
   const [year, month, day] = value.split('-').map(Number);
-  console.log([year, month, day]);
   const date = new Date(year, month - 1, day);
-  console.log(date);
   return (
     date.getFullYear() === year &&
     date.getMonth() === month - 1 &&
