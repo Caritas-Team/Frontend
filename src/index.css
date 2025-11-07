@@ -1,38 +1,9 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
   font-family: var(--main-font-family);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-li {
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-input:focus,
-input:focus-visible {
-  outline: none;
-}
-
-ul,
-ol {
-  list-style: none;
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--text-supplementary-color, #37474f);
 }
