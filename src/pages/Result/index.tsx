@@ -21,7 +21,7 @@ export default function ResultPage() {
         frequency1={50}
         date2="1 Мая 2025"
         formed2={90}
-        initiative2={45}
+        initiative2={20}
         frequency2={55}
         description="На голубом!"
       />

@@ -15,7 +15,7 @@ export const Delta: React.FC<DeltaProps> = ({ text, up }) => {
   return (
     <div className={styles.delta}>
       <img src={up ? ArrowUp : ArrowDown} alt="" className={styles.arrow} />
-      <span className={up ? styles.green : styles.red}>{text}</span>
+      <span className={text}>{text}</span>
     </div>
   );
 };

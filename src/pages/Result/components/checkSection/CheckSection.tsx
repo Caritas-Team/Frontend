@@ -3,6 +3,7 @@
 import React from 'react';
 import styles from './CheckSection.module.css';
 import { Gauge } from '../gauge/Gauge';
+import { Delta } from '../delta';
 // import DoubleArrowUp from '@/assets/double-arrow-up.svg';
 // import DoubleArrowDown from '@/assets/double-arrow-down.svg';
 
@@ -65,14 +66,10 @@ export const CheckSection: React.FC<CheckSectionProps> = ({
                 <span className={styles.legendText}>Сформирован</span>
               </div>
 
-              <div className={styles.legendBottom}>
-                <img
-                  src="/icons/arrow-up-green.svg"
-                  alt=""
-                  className={styles.arrow}
-                />
-                <span className={styles.percent}>50%</span>
-              </div>
+              <Delta
+                text={`${formed2 - formed1}%`}
+                up={formed2 - formed1 >= 0}
+              />
             </div>
 
             <div className={styles.legendItem}>
@@ -81,14 +78,10 @@ export const CheckSection: React.FC<CheckSectionProps> = ({
                 <span className={styles.legendText}>Инициатива</span>
               </div>
 
-              <div className={styles.legendBottom}>
-                <img
-                  src="/icons/arrow-up-green.svg"
-                  alt=""
-                  className={styles.arrow}
-                />
-                <span className={styles.percent}>25%</span>
-              </div>
+              <Delta
+                text={`${initiative2 - initiative1}%`}
+                up={initiative2 - initiative1 >= 0}
+              />
             </div>
 
             <div className={styles.legendItem}>
@@ -97,35 +90,12 @@ export const CheckSection: React.FC<CheckSectionProps> = ({
                 <span className={styles.legendText}>Частота</span>
               </div>
 
-              <div className={styles.legendBottom}>
-                <img
-                  src="/icons/arrow-up-green.svg"
-                  alt=""
-                  className={styles.arrow}
-                />
-                <span className={styles.percent}>27%</span>
-              </div>
+              <Delta
+                text={`${frequency2 - frequency1}%`}
+                up={frequency2 - frequency1 >= 0}
+              />
             </div>
           </div>
-
-          {/* 
-        <div className={styles.legend}>
-          <div className={styles.row}>
-            <span className={styles.dotFirst}></span>
-            <span className={styles.text}>Сформированность</span>
-          </div>
-
-          <div className={styles.row}>
-            <span className={styles.dotSecond}></span>
-            <span className={styles.text}>Инициативность</span>
-          </div>
-
-          <div className={styles.row}>
-            <span className={styles.dotThird}></span>
-            <span className={styles.text}>Частота</span>
-          </div>
-        </div>
- */}
         </div>
 
         {/* Блок описания */}

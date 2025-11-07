@@ -9,12 +9,9 @@
   height: 14px;
 }
 
-.green {
-  color: var(--chart-circle-second-color, #67f4b1); /* зелёный */
-  font: var(--font-chart-semi-12, 600 12px/1 var(--main-font-family));
-}
-
-.red {
-  color: var(--error-color, #ea4335); /* красный */
-  font: var(--font-chart-semi-12, 600 12px/1 var(--main-font-family));
+.text {
+  font: var(
+    --font-chart-reg-15,
+    400 15px / calc(24 / 15) var(--main-font-family)
+  );
 }
