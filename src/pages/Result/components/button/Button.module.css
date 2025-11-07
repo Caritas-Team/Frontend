@@ -1,0 +1,50 @@
+.button {
+  height: 56px;
+  width: 156px;
+  font: var(--font-button-semi-20);
+  border-radius: 20px;
+  border: 2px solid var(--button-active-color, #5b93f4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.secondary {
+  background-color: var(--button-active-color, #5b93f4);
+  color: var(--text-for-dark-button, #ffffff);
+}
+
+.secondary:hover {
+  background-color: var(--button-hover-color, #7eadfe);
+}
+
+.tertiary {
+  background-color: var(--background-main-color, #ffffff);
+  color: var(--text-for-light-button, #5b93f4);
+}
+
+.tertiary:hover {
+  background-color: var(--button-tertiary-hover-color, #e7f6ff);
+}
+
+.secondary:active,
+.tertiary:active {
+  background-color: var(--button-pressed-color, #4976c3);
+  color: var(--text-for-dark-button, #ffffff);
+}
+
+/* Стили компонента для мобильной версии */
+@media (width < 834px) {
+  .button {
+    height: clamp(32px, calc(17px + 4.67vw), 56px);
+    width: clamp(77px, 95%, 156px);
+    font: var(--font-body-12);
+    font-size: clamp(12px, 7px + 1.57vw, 20px);
+  }
+
+  .tertiary {
+    min-width: 83px;
+  }
+}
