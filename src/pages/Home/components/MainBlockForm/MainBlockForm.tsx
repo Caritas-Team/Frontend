@@ -1,5 +1,5 @@
-import help_Icon from './help_Icon.svg';
-import person_add from './person_add.svg';
+import help_Icon from '../../../../assets/help_Icon.svg';
+import person_add from '../../../../assets/person_add.svg';
 import { useCallback, useState } from 'react';
 import './MainBlockForm.css';
 import { PersonForm } from './PersonForm/PersonForm';

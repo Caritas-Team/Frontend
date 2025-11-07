@@ -1,5 +1,5 @@
 import { useState, useId } from 'react';
-import reportError from '../report_error.svg';
+import reportError from '../../../../../assets/report_error.svg';
 
 type InputFullNameProps = {
   initialName?: string;

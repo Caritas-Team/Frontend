@@ -1,4 +1,4 @@
-import reportError from '../report_error.svg';
+import reportError from '../../../../../assets/report_error.svg';
 import { useState, useId } from 'react';
 
 type InputFileProps = {

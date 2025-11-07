@@ -1,5 +1,5 @@
 import { useEffect, useRef, useMemo } from 'react';
-import clossButtom from '../closeButton.svg';
+import clossButtom from '../../../../../assets/closeButton.svg';
 import { InputFullName } from '../InputFullName/InputFullName';
 import type { PersonFormData } from '../MainBlockForm';
 import { InputFile } from '../InputFile/InputFile';
