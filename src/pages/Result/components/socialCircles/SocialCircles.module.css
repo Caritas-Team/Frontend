@@ -1,0 +1,130 @@
+.title {
+  font: var(--font-h2);
+  text-align: start;
+  margin-bottom: 26px;
+}
+
+.card__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 20px;
+  padding: 32px 96px;
+  background-color: var(--blue-light);
+}
+
+.card__block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card__header {
+  min-height: 42px;
+  border-radius: 14px;
+  background-color: var(--white);
+  padding: 12px 0;
+  font: var(--font-tag-16-medium);
+  text-transform: uppercase;
+}
+
+.card__circle {
+  height: 221px;
+  width: 221px;
+  border-radius: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  font: var(--font-chart-extra-20);
+  padding: 38px;
+}
+
+.card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 80px;
+  height: 80px;
+}
+
+.circle-family {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.circle-friends {
+  background-color: var(--green);
+  color: var(--black);
+}
+
+.circle-specialists {
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+.circle-familiar {
+  background-color: var(--violet);
+  color: var(--white);
+}
+
+@media (834px <= width < 1200px) {
+  .card__block {
+    width: 128.5px;
+    gap: 20px;
+  }
+
+  .card__circle {
+    width: 128.5px;
+    height: 128.5px;
+    font: var(--font-chart-extra-20);
+    padding: 18px;
+  }
+
+  .card__image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card__header {
+    padding: 13px 0;
+  }
+}
+
+@media (width < 834px) {
+  .title {
+    font: var(--font-h1-mobile);
+  }
+
+  .card__block {
+    width: 100%;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card__content {
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px 16px;
+  }
+
+  .card__header {
+    width: 100%;
+    padding: 13px 0;
+  }
+
+  .card__circle {
+    width: 100px;
+    height: 100px;
+    font: var(--font-tag-16-bold);
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .card__image {
+    width: 32px;
+    height: 32px;
+  }
+}
