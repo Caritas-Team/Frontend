@@ -4,7 +4,7 @@ import { formatDateShort, isValidDate } from '../../../../lib/utils';
 
 type TTitleSectionResult = {
   className?: string;
-  reportDate?: string;
+  reportDate?: string; // ожидаемый формат 'гггг-мм-дд'
 };
 
 export const TitleSectionResult: React.FC<TTitleSectionResult> = ({
