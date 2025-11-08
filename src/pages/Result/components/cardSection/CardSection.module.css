@@ -1,0 +1,136 @@
+.card__section {
+  display: flex;
+  padding: 36px 96px;
+  width: 100%;
+  background-color: var(--background-card-color, #e7fff4);
+  border-radius: 20px;
+}
+
+.card__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  row-gap: 30px;
+  width: 100%;
+}
+
+.card__person {
+  display: grid;
+  grid-column: 1/3;
+  grid-row: 1/2;
+  text-align: start;
+  width: 100%;
+  color: var(--text-main-color, #141414);
+}
+
+.card__name {
+  font: var(--font-h2);
+}
+
+.card__id {
+  font: var(--font-h2);
+}
+
+.card__info {
+  display: grid;
+  grid-column: 1/3;
+  grid-row: 2/3;
+  row-gap: 19px;
+}
+
+.card__item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8px;
+  align-items: center;
+}
+
+.text {
+  font: var(--font-body-20);
+  color: var(--main-text-color);
+  text-align: start;
+}
+
+.title {
+  color: var(--text-disabled-color);
+}
+
+.card__image {
+  grid-column: 3/4;
+  grid-row: 1/3;
+  place-self: center flex-end;
+}
+
+/* стили для планшетной версии */
+@media (834px <= width < 1200px) {
+  .card__section {
+    padding-inline: 16px;
+  }
+
+  .card__content {
+    row-gap: 28px;
+  }
+
+  .card__name {
+    font: var(--font-h2);
+  }
+
+  .card__id {
+    display: none;
+  }
+
+  .card__item {
+    grid-template-columns: 4fr 3fr;
+  }
+
+  .value {
+    text-align: end;
+  }
+
+  .card__image {
+    border-radius: 20px;
+    width: 61%;
+  }
+}
+
+/* Стили компонента для мобильной версии */
+@media (width < 834px) {
+  .card__section {
+    padding: 16px;
+  }
+
+  .card__content {
+    grid-template-columns: 3fr 1fr;
+    row-gap: 28px;
+  }
+
+  .card__person {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  .card__name {
+    font: var(--font-h2-mobile);
+  }
+
+  .card__id {
+    display: none;
+  }
+
+  .card__info {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+
+  .card__item {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+
+  .card__image {
+    width: clamp(58px, 70%, 100px);
+    border-radius: 20px;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    place-self: flex-start flex-end;
+  }
+}
