@@ -1,0 +1,52 @@
+/* src\pages\Result\components\wordsListBlock\WordsListBlock.module.css */
+
+.block {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  border-radius: 20px;
+  padding: 32px 36px;
+}
+
+.title {
+  margin: 0 0 25px 0;
+  font: var(--font-h3);
+  color: var(--text-main-color, #141414);
+  text-align: left;
+}
+
+.wordChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wordChip {
+  padding: 9px 30px;
+  border-radius: 8px;
+  border: 2px solid var(--gray-3, #6a6a6a);
+  font: var(--font-tag-16-bold, 700 16px/1 var(--main-font-family));
+  color: var(--text-main-color, #141414);
+  white-space: nowrap;
+}
+
+/* планшет */
+@media (834px <= width < 1200px) {
+  .block {
+    padding: 19px 14px;
+  }
+}
+
+/* мобильный */
+@media (width < 834px) {
+  .title {
+    margin: 0 0 23px 0;
+    font: var(--font-h3-mobile);
+  }
+  .block {
+    padding: 20px;
+  }
+  .wordChip {
+    font: var(--font-words-mobile-12);
+    padding: 6px 25px;
+  }
+}

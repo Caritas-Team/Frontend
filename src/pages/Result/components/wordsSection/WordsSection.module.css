@@ -4,7 +4,6 @@
   width: 100%;
   padding: 32px 0;
   background: var(--background-main-color, #ffffff);
-  background: #67f4b1;
   border-radius: 20px;
 }
 
@@ -24,82 +23,6 @@
   width: 100%;
 }
 
-.extraWords {
-  background: var(--background-input-color, #e7f6ff);
-}
-
-.quickMessages {
-  background: var(--background-input-color, #e7f6ff);
-}
-
-.verbalWords {
-  background: var(--background-accent-color, #e7f6ff);
-}
-
-.communicationMethods {
-  background: var(--background-input-color, #f3edff);
-}
-
-.block {
-  overflow-wrap: break-word;
-  word-break: break-word;
-  border-radius: 20px;
-  padding: 32px 36px;
-}
-
-.title {
-  margin: 0 0 20px 0;
-  font: var(--font-h3);
-  color: var(--text-main-color, #141414);
-  text-align: left;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.chip {
-  padding: 8px 14px;
-  background: var(--background-input-color, #e7f6ff);
-  border-radius: 8px;
-  border: 2px solid var(--gray-3, #6a6a6a);
-  font: var(--font-body-20);
-  color: var(--text-main-color, #141414);
-  white-space: nowrap;
-}
-
-.icon {
-  width: 27px;
-  height: 27px;
-  margin: 0 10px 6px 0;
-  vertical-align: middle;
-}
-
-.info {
-  font: var(--font-h2);
-  margin: 16px 0 8px 0;
-  color: var(--text-main-color, #141414);
-  text-align: left;
-}
-
-.deltaLine {
-  display: flex;
-  gap: 4px; /* расстояние между фразами */
-  align-items: baseline; /* чтобы текст выравнивался красиво */
-}
-
-.delta {
-  font: var(--font-body-20);
-  color: var(--text-accent3-color, #8550f6);
-}
-
-.sub {
-  font: var(--font-body-14);
-  color: var(--text-disabled-color, #6a6a6a);
-}
-
 /* планшет */
 @media (834px <= width < 1200px) {
   .section {
@@ -116,27 +39,14 @@
     padding: 20px 2px;
   }
   .header {
-    font: var(--font-h2-mobile);
+    font: var(--font-h1-mobile, 700 28px/1.2 var(--main-font-family));
   }
-  .subheader {
-    font: var(--font-h3-mobile);
-  }
-  .wordChip {
-    font: var(--font-words-mobile-12);
-  }
-
   .grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-
-  .block {
-    padding: 20px;
-  }
   .title {
+    margin: 0 0 23px 0;
     font: var(--font-h3-mobile);
-  }
-  .info {
-    font: var(--font-h1-mobile);
   }
 }
