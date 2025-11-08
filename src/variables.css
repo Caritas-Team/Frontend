@@ -149,7 +149,7 @@
   --font-body-12: 400 12px/1 var(--main-font-family);
 
   /* Tag Bold 16 */
-  --font-tag-16-bold: 700 16px/1, 2 var(--main-font-family);
+  --font-tag-16-bold: 700 16px/1 var(--main-font-family);
 
   /* Tag Medium 16 */
   --font-tag-16-medium: 500 16px/1 var(--main-font-family);
@@ -209,4 +209,7 @@
   --font-subtitle-extra-12: 800 12px/1.25 var(--main-font-family);
   /*  */
   --font-inst-popup: 500 16px/1.2 var(--main-font-family);
+
+  /* */
+  --font-tag-16-caps: 700 16px/1.2 var(--main-font-family);
 }
