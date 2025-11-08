@@ -1,6 +1,6 @@
 import reportError from '../../../../../assets/report_error.svg';
 import { useState, useId } from 'react';
-import styles from '../MainBlockForm.module.css'; // Добавь этот импорт
+import styles from '../MainBlockForm.module.css';
 
 type InputFileProps = {
   label: string;

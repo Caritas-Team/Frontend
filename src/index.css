@@ -2,33 +2,25 @@
 *::after,
 *::before {
   box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: var(--main-font-family);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-li {
   margin: 0;
   padding: 0;
 }
 
+button,
+input,
 a {
+  color: inherit;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
   text-decoration: none;
+  border: none;
 }
 
 input:focus,
-input:focus-visible {
+button:focus,
+a:focus {
   outline: none;
 }
 

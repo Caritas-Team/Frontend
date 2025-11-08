@@ -1,7 +1,6 @@
 import { useState, useId } from 'react';
 import reportError from '../../../../../assets/report_error.svg';
-import styles from '../MainBlockForm.module.css'; // Добавь этот импорт
-
+import styles from '../MainBlockForm.module.css';
 type InputFullNameProps = {
   initialName?: string;
   onValidityChange: (isValid: boolean, name?: string) => void;
