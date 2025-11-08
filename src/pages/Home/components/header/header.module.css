@@ -59,8 +59,6 @@
     align-self: start;
   }
   .dateBlock {
-    /*margin-top: 20px;
-    */
     height: 114px;
     transform: translateY(6px);
     -webkit-transform: translateY(6px);

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import styles from './styles.module.css';
 
 interface PageLayoutProps {
   content: ReactNode;
@@ -7,7 +8,7 @@ interface PageLayoutProps {
 export const PageLayout = ({ content }: PageLayoutProps) => {
   return (
     <>
-      <div>{content}</div>
+      <div className={styles.content}>{content}</div>
     </>
   );
 };

@@ -1,7 +1,6 @@
 .wrapper {
   max-width: 1200px;
   min-height: 812px;
-  height: 100vh;
   margin: 25px 80px 48px;
   position: relative;
 }
@@ -9,13 +8,11 @@
 @media screen and (max-width: 1199px) {
   .wrapper {
     margin: 25px 34px 20px;
-    /* height: auto; */
   }
 }
 
 @media screen and (max-width: 833px) {
   .wrapper {
     margin: 44px 20px 21px;
-    /* background-color: aqua; */
   }
 }

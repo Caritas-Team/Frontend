@@ -22,7 +22,7 @@
 
 .main-form__container {
   margin: 0 auto;
-  margin-top: 60px;
+  /* margin-top: 52px; */
   padding: 32px;
   max-width: 1040px;
   border-radius: 20px;
@@ -87,7 +87,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto auto;
-  gap: 16px;
+  gap: 28px;
   border: 2px solid var(--gray-2);
   border-radius: 20px;
   padding: 14px;

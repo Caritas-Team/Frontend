@@ -29,7 +29,7 @@ const createMainForm = (): PersonFormData => ({
   currentFile: null,
 });
 
-export const MainBlockForm = () => {
+const MainBlockForm = () => {
   const [persons, setPersons] = useState<PersonFormData[]>([createMainForm()]);
   const [formKey, setFormKey] = useState(0); // Ключ для принудительного пересоздания
 
@@ -173,3 +173,5 @@ export const MainBlockForm = () => {
     </div>
   );
 };
+
+export default MainBlockForm;

@@ -25,7 +25,10 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": "src",
     "paths": {
-      "@ui/*": ["ui/*"]
+      "@ui/*": ["ui/*"],
+      "@widgets/*": ["widgets/*"],
+      "@page-layout/*": ["page-layout/*"],
+      "@main-wrapper/*": ["@main-wrapper/*"]
     }
   },
   "include": ["src"]

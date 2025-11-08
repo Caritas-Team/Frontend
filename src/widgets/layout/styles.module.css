@@ -1,30 +1,7 @@
 .main {
-  /* height: calc(100% - 141px); */
-  /* margin-top: 280px; */
   position: relative;
-  padding-top: 65px;
+  padding-top: 52px;
 }
-/* .header {
-  position: relative;
-  display: grid;
-  grid-template-columns:  repeat(2, fr1);
-  grid-template-rows: 2;
-} */
-
-/* .header {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    "logo ."
-    "titles date";
-  gap: 8px 16px;
-  align-items: baseline; 
-}
-.header >  div:nth-of-type(1) { grid-area: titles; } 
-.header > div { grid-area: titles; }      
-.header .fill-date { grid-area: date; justify-self: end; align-self: center; } */
 
 .header {
   display: grid;
@@ -36,7 +13,6 @@
   align-items: start;
 }
 
-/* области грида */
 .logoBlock {
   grid-area: logo;
   display: flex;
@@ -60,8 +36,6 @@
   -o-transform: translateY(-14px);
 }
 
-/* немного стиля для текста */
-
 @media screen and (max-width: 1199px) {
   .titleBlock {
     height: 100%;
@@ -78,7 +52,7 @@
     -o-transform: translateY(36px);
   }
   .main {
-    padding-top: 40px;
+    padding-top: 102px;
   }
 }
 
