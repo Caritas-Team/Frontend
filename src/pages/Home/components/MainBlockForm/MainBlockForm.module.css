@@ -23,6 +23,7 @@
 .statsCounter {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .formStatsCounter {
@@ -61,7 +62,8 @@
 }
 
 .buttonInfo {
-  margin-top: 3px;
+  display: flex;
+  align-content: center;
 }
 
 .formSpeakerCalculator {
@@ -97,7 +99,6 @@
 
 .formSpeakerCalculatorGroupName {
   grid-column: span 2;
-  padding-bottom: 18px;
 }
 
 .inputFullName {
@@ -128,7 +129,6 @@
 }
 
 .fieldTextName {
-  max-height: 46px;
   padding-left: 8px;
 }
 
@@ -182,7 +182,7 @@
   align-items: center;
   gap: 10px;
   margin: 0 auto;
-  margin-top: 28px;
+  margin-top: 16px;
   width: 319px;
   height: 56px;
   font: var(--font-button-semi-20);
@@ -194,12 +194,12 @@
 .buttonIcon {
   width: 24px;
   height: 24px;
-  mask-image: url('./bar_chart_4_bars.svg');
+  mask-image: url('../../../../assets/bar_chart_4_bars.svg');
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
   background-color: currentColor;
-  -webkit-mask-image: url('./bar_chart_4_bars.svg');
+  -webkit-mask-image: url('../../../../assets/bar_chart_4_bars.svg');
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
