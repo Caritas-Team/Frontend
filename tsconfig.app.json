@@ -25,7 +25,7 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": "src",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["*"],
       "@ui/*": ["ui/*"]
     }
   },

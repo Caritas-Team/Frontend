@@ -3,9 +3,7 @@
 import React from 'react';
 import styles from './CheckSection.module.css';
 import { Gauge } from '../gauge/Gauge';
-import { Delta } from '../delta';
-// import DoubleArrowUp from '@/assets/double-arrow-up.svg';
-// import DoubleArrowDown from '@/assets/double-arrow-down.svg';
+import { LegendItem } from '../legendItem/LegendItem';
 
 const HEADER_TEXT = 'Коммуникативная функция «контроль»';
 const TITLE_TEXT = 'Отказывается, отклоняет';
@@ -60,48 +58,35 @@ export const CheckSection: React.FC<CheckSectionProps> = ({
           </div>
 
           <div className={styles.legend}>
-            <div className={styles.legendItem}>
-              <div className={styles.legendTop}>
-                <span className={styles.dotFirst}></span>
-                <span className={styles.legendText}>Сформирован</span>
-              </div>
+            <LegendItem
+              label="Сформирован"
+              color="var(--chart-circle-first-color, #8550f6)"
+              digitsText={`${Math.abs(formed2 - formed1)}%`}
+              positive={formed2 - formed1 >= 0}
+            />
 
-              <Delta
-                text={`${formed2 - formed1}%`}
-                up={formed2 - formed1 >= 0}
-              />
-            </div>
+            <LegendItem
+              label="Инициатива"
+              color="var(--chart-circle-second-color, #67f4b1)"
+              digitsText={`${Math.abs(initiative2 - initiative1)}%`}
+              positive={initiative2 - initiative1 >= 0}
+            />
 
-            <div className={styles.legendItem}>
-              <div className={styles.legendTop}>
-                <span className={styles.dotSecond}></span>
-                <span className={styles.legendText}>Инициатива</span>
-              </div>
-
-              <Delta
-                text={`${initiative2 - initiative1}%`}
-                up={initiative2 - initiative1 >= 0}
-              />
-            </div>
-
-            <div className={styles.legendItem}>
-              <div className={styles.legendTop}>
-                <span className={styles.dotThird}></span>
-                <span className={styles.legendText}>Частота</span>
-              </div>
-
-              <Delta
-                text={`${frequency2 - frequency1}%`}
-                up={frequency2 - frequency1 >= 0}
-              />
-            </div>
+            <LegendItem
+              label="Частота"
+              color="var(--chart-circle-third-sector-color, #5b93f4)"
+              digitsText={`${Math.abs(frequency2 - frequency1)}%`}
+              positive={frequency2 - frequency1 >= 0}
+            />
           </div>
         </div>
 
         {/* Блок описания */}
         <div className={styles.descriptionBlock}>
           <div className={styles.descriptionLabel}>Описание</div>
-          <div className={styles.descriptionContent}>{description || '-'}</div>
+          <div className={styles.descriptionContent}>
+            {description || '***'}
+          </div>
         </div>
       </div>
     </section>
