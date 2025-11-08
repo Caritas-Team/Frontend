@@ -25,3 +25,16 @@ export const formatDateShort = (dateString: string): string => {
     year: 'numeric',
   });
 };
+
+export const isValidDate = (value: string) => {
+  const dateFormat = /^(\d{4})-(\d{2})-(\d{2})$/;
+  const isDateFormat: boolean = dateFormat.test(value);
+  if (!isDateFormat) return false;
+  const [year, month, day] = value.split('-').map(Number);
+  const date = new Date(year, month - 1, day);
+  return (
+    date.getFullYear() === year &&
+    date.getMonth() === month - 1 &&
+    date.getDate() === day
+  );
+};
