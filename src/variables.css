@@ -17,6 +17,10 @@
   --error: #ea4335;
   --blue-secondary-hover: #7eadfe;
   --blue-tertiary-pressed: #4976c3;
+  --secondary-green-light: #ecffe9;
+  --secondary-green: #54aa47;
+  --red-light: #fef4f3;
+  --red: #d84647;
 
   /* ЦВЕТА ТЕКСТА */
 
@@ -145,7 +149,7 @@
   --font-body-12: 400 12px/1 var(--main-font-family);
 
   /* Tag Bold 16 */
-  --font-tag-16-bold: 700 16px/1 var(--main-font-family);
+  --font-tag-16-bold: 700 16px/1, 2 var(--main-font-family);
 
   /* Tag Medium 16 */
   --font-tag-16-medium: 500 16px/1 var(--main-font-family);

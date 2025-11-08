@@ -4,6 +4,8 @@ import { Logo } from '@ui/logo';
 import { Button } from './components/button';
 // import { TitleSectionResult } from './components/titleSectionResult';
 import { CardSection } from './components/cardSection';
+import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
+import type { Statuses } from './components/ThreeCommunicativeFunction';
 
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
@@ -23,6 +25,31 @@ const mockPersonData: TCardSection = {
   dateOfBirth: '2012-10-21',
   diagnosis: 'Нарушение речи',
   whereLives: 'В семье',
+};
+
+const communicativeData: {
+  gettingDesired: Statuses;
+  socialInteraction: Statuses;
+  informationExchange: Statuses;
+} = {
+  gettingDesired: {
+    Выбирает: 'уже не используется',
+    'Просит ещё действие или предмет': 'уже не используется',
+    'Просит действие': 'уже не используется',
+    'Просит предмет (объект)': 'уже не используется',
+  },
+  socialInteraction: {
+    'Привлекает внимание': 'превзошел',
+    'Просит о помощи': 'превзошел',
+    'Здоровляется, прощается, использует вежливые формы обращения': 'превзошел',
+    'Выражает эмоции, чувства, состояние': 'превзошел',
+  },
+  informationExchange: {
+    'Задаёт вопросы': 'недоступно',
+    'Комментирует и выражает мнение': 'недоступно',
+    'Объясняет что-то или описывает': 'недоступно',
+    'Рассказывает (что было, что будет, что происходит сейчас)': 'недоступно',
+  },
 };
 
 export const ResultPage: React.FC = () => {
@@ -56,6 +83,11 @@ export const ResultPage: React.FC = () => {
         reportDate="2025-01-32"
       ></TitleSectionResult> */}
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
+      <ThreeCommunicativeFunction
+        gettingDesired={communicativeData.gettingDesired}
+        socialInteraction={communicativeData.socialInteraction}
+        informationExchange={communicativeData.informationExchange}
+      />
     </main>
   );
 };

@@ -1,0 +1,97 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font: var(--font-h2);
+  color: var(--text-main-color);
+  text-align: left;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action {
+  font: var(--font-body-20);
+  color: var(--text-disabled-color);
+}
+
+.status {
+  height: 48px;
+  padding: 12px 14.5px;
+  font: var(--font-tag-16-bold);
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.уже_не_используется {
+  background-color: var(--secondary-green-light);
+  color: var(--secondary-green);
+  border-radius: 12px;
+}
+
+.превзошел {
+  background-color: var(--secondary-green-light);
+  color: var(--secondary-green);
+  border-radius: 12px;
+}
+
+.недоступно {
+  background-color: var(--red-light);
+  color: var(--red);
+  border-radius: 12px;
+}
+
+.statusIcon {
+  width: 20px;
+  height: 20px;
+}
+
+/* cтили для мобильной версии */
+@media (width < 834px) {
+  .section {
+    gap: 17px;
+  }
+  .title {
+    font: var(--font-h1-mobile);
+  }
+  .content {
+    gap: 16px;
+  }
+  .action {
+    text-align: left;
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .status {
+    justify-content: left;
+    width: min-content;
+    white-space: nowrap;
+  }
+}
