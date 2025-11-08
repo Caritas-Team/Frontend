@@ -4,6 +4,7 @@ import { Logo } from '@ui/logo';
 import { Button } from './components/button';
 // import { TitleSectionResult } from './components/titleSectionResult';
 import { CardSection } from './components/cardSection';
+import { WordsSection } from './components/wordsSection';
 
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
@@ -55,6 +56,17 @@ export const ResultPage: React.FC = () => {
         className={styles.mt_title}
         reportDate="2025-01-32"
       ></TitleSectionResult> */}
+      <WordsSection
+        newWords={[
+          'сказка',
+          'животное',
+          'муравей',
+          'лягушка - глупое животное',
+        ]}
+        communicationMethods={['красотка', 'семья', 'муж', 'напиться']}
+        quickMessages={['капля', 'дождь', 'лужа', 'река']}
+        verbalWordCount={{ now: 48, delta: 21 }}
+      />
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
     </main>
   );
