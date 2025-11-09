@@ -31,27 +31,34 @@ const communicativeData = {
 */
 
 import styles from './ThreeCommunicativeFunction.module.css';
-import iconNoLongerUsed from './icons/mark_green_without.svg';
-import iconExceeded from './icons/mark_green_with_check.svg';
-import iconUnavailable from './icons/mark_red.svg';
+import iconNoLongerUsed from '../../../../assets/mark_green_without.svg';
+import iconExceeded from '../../../../assets/mark_green_with_check.svg';
+import iconUnavailable from '../../../../assets/mark_red.svg';
 
 type Status = 'уже не используется' | 'превзошел' | 'недоступно';
-
 type Statuses = {
   [key: string]: Status;
 };
-
 interface ThreeCommunicativeFunctionProps {
   gettingDesired: Statuses;
   socialInteraction: Statuses;
   informationExchange: Statuses;
 }
 
-// Объект с импортированными иконками
 const statusIcons: Record<Status, string> = {
   'уже не используется': iconNoLongerUsed,
   превзошел: iconExceeded,
   недоступно: iconUnavailable,
+};
+
+const validStatuses: Status[] = [
+  'уже не используется',
+  'превзошел',
+  'недоступно',
+];
+
+const isValidStatus = (status: string): status is Status => {
+  return validStatuses.includes(status as Status);
 };
 
 export const ThreeCommunicativeFunction: React.FC<
@@ -61,21 +68,26 @@ export const ThreeCommunicativeFunction: React.FC<
     <div className={styles.section}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.content}>
-        {Object.entries(statuses).map(([action, status]) => (
-          <div key={action} className={styles.item}>
-            <span className={styles.action}>{action}</span>
-            <span
-              className={`${styles.status} ${styles[status.replace(/\s+/g, '_')]}`}
-            >
-              <img
-                src={statusIcons[status]}
-                alt={status}
-                className={styles.statusIcon}
-              />
-              {status.toUpperCase()}
-            </span>
-          </div>
-        ))}
+        {Object.entries(statuses).map(([action, status]) => {
+          if (!isValidStatus(status)) {
+            return null;
+          }
+          return (
+            <div key={action} className={styles.item}>
+              <span className={styles.action}>{action}</span>
+              <span
+                className={`${styles.status} ${styles[status.replace(/\s+/g, '_')]}`}
+              >
+                <img
+                  src={statusIcons[status]}
+                  alt={status}
+                  className={styles.statusIcon}
+                />
+                {status.toUpperCase()}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

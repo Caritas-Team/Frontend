@@ -36,7 +36,7 @@
 
 .status {
   height: 48px;
-  padding: 12px 14.5px;
+  padding: 14.5px 12px;
   font: var(--font-tag-16-caps);
   text-transform: uppercase;
   display: flex;
@@ -71,6 +71,9 @@
 
 /* cтили для мобильной версии */
 @media (width < 834px) {
+  .container {
+    gap: 26px;
+  }
   .section {
     gap: 17px;
   }
