@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         path: ROUTES.form,
         element: (
           <Suspense>
-            <MainBlockForm />
+            <MainBlockForm openPopup={() => {}} />
           </Suspense>
         ),
       },

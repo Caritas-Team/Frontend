@@ -36,7 +36,10 @@ export function Layout() {
       />
       <ValidErrorPopup
         isOpen={isError}
-        doClose={() => hadleClosePopup(setIsError)}
+        doClose={() => {
+          hadleClosePopup(setIsError);
+          setErrorMessage(null);
+        }}
         errors={errorMessage ?? ''}
       />
     </MainWrapper>
