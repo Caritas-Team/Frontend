@@ -1,14 +1,13 @@
-import help_Icon from './help_Icon.svg';
-import person_add from './person_add.svg';
+import help_Icon from '../../../../assets/help_Icon.svg';
+import person_add from '../../../../assets/person_add.svg';
 import { useCallback, useState } from 'react';
-import './MainBlockForm.css';
+import styles from './MainBlockForm.module.css';
 import { PersonForm } from './PersonForm/PersonForm';
 import { v4 as uuidv4 } from 'uuid';
 
 const MAX_PERSONS = 10;
 
 export type PersonFormData = {
-  isMain: boolean; //чтобы выделить первую форму тк ее удалять нельзя
   id: string;
   name: string;
   nameValid: boolean;
@@ -18,8 +17,11 @@ export type PersonFormData = {
   currentFile: File | null;
 };
 
+interface MainBlockFormProps {
+  openPopup: () => void;
+}
+
 const createMainForm = (): PersonFormData => ({
-  isMain: true,
   id: uuidv4(),
   name: '',
   nameValid: false,
@@ -29,9 +31,9 @@ const createMainForm = (): PersonFormData => ({
   currentFile: null,
 });
 
-const MainBlockForm = () => {
+export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
   const [persons, setPersons] = useState<PersonFormData[]>([createMainForm()]);
-  const [formKey, setFormKey] = useState(0); // Ключ для принудительного пересоздания
+  const [form, setForm] = useState<boolean>(false); // Ключ для принудительного пересоздания
 
   const counterDiscovered = persons.filter(person => person.nameValid).length;
 
@@ -48,7 +50,6 @@ const MainBlockForm = () => {
       setPersons(prev => [
         ...prev,
         {
-          isMain: false,
           id: uuidv4(),
           name: '',
           nameValid: false,
@@ -64,7 +65,6 @@ const MainBlockForm = () => {
   };
 
   const removePerson = (idToRemove: string) => {
-    if (idToRemove === 'main-form') return;
     setPersons(prev => prev.filter(person => person.id !== idToRemove));
   };
 
@@ -91,7 +91,7 @@ const MainBlockForm = () => {
     // Создаем новый массив
     setPersons([createMainForm()]);
     // Меняем ключ для принудительного пересоздания
-    setFormKey(prev => prev + 1);
+    setForm(!form);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -109,51 +109,50 @@ const MainBlockForm = () => {
   };
 
   return (
-    <div className="main-form__container">
-      <div className="form__stats">
-        <div className="stats__counter">
-          <h3 className="stats-text counter__discovered">
+    <div className={styles.mainFormContainer}>
+      <div className={styles.formStats}>
+        <div className={styles.statsCounter}>
+          <h3 className={styles.statsText}>
             Обследуемых:{' '}
-            <span className="form__stats__counter">{counterDiscovered}</span>
+            <span className={styles.formStatsCounter}>{counterDiscovered}</span>
           </h3>
-          <h3 className="stats-text counter__Files">
+          <h3 className={styles.statsText}>
             Загружено файлов:{' '}
-            <span className="form__stats__counter">{counterFiles}</span>
+            <span className={styles.formStatsCounter}>{counterFiles}</span>
           </h3>
         </div>
-        <div className="stats__buttons">
+        <div className={styles.statsButtons}>
           <button
-            className="component-reset-button button-add"
+            className={styles.buttonAdd}
             onClick={addPerson}
             disabled={persons.length >= MAX_PERSONS - 1}
           >
             <img
-              className="img__person_add"
+              className={styles.imgPersonAdd}
               src={person_add}
               alt="Добавить обследуемого"
               width={'24'}
             />
             Добавить к расчёту
           </button>
-          <button className="component-reset-button button-info" type="button">
+          <button
+            className={styles.buttonInfo}
+            type="button"
+            onClick={openPopup}
+          >
             <img src={help_Icon} alt="Кнопка подсказки" width={'24'} />
           </button>
         </div>
       </div>
 
-      <form
-        key={formKey}
-        className="form-speaker-calculator"
-        onSubmit={handleSubmit}
-      >
-        <div className="form-speaker-calculator__groups">
+      <form className={styles.formSpeakerCalculator} onSubmit={handleSubmit}>
+        <div className={styles.formSpeakerCalculatorGroups}>
           {persons.map(person => (
             <PersonForm
               key={person.id}
               id={person.id}
-              isMainForm={person.isMain}
               onRemove={
-                !person.isMain ? () => removePerson(person.id) : undefined
+                persons.length != 1 ? () => removePerson(person.id) : undefined
               }
               onUpdate={updatePerson}
               formData={person}
@@ -163,10 +162,10 @@ const MainBlockForm = () => {
 
         <button
           type="submit"
-          className={`component-reset-button form__container__submit-btn ${!canSubmit ? 'submit-btn--disabled' : ''}`}
+          className={`${styles.formContainerSubmitBtn} ${!canSubmit ? styles.submitBtnDisabled : ''}`}
           disabled={!canSubmit}
         >
-          <div className="button-icon" />
+          <div className={styles.buttonIcon} />
           Рассчитать динамику
         </button>
       </form>

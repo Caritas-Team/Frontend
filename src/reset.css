@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input,
+a {
+  color: inherit;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  border: none;
+}
+
+input:focus,
+button:focus,
+a:focus {
+  outline: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}

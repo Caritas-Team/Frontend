@@ -1,12 +1,12 @@
 import { useEffect, useRef, useMemo } from 'react';
-import clossButtom from '../closeButton.svg';
+import clossButtom from '../../../../../assets/closeButton.svg';
 import { InputFullName } from '../InputFullName/InputFullName';
 import type { PersonFormData } from '../MainBlockForm';
 import { InputFile } from '../InputFile/InputFile';
+import styles from '../MainBlockForm.module.css'; // Добавь этот импорт
 
 type PersonFormProps = {
   id: string;
-  isMainForm?: boolean;
   onRemove?: () => void;
   onUpdate: (id: string, updates: Partial<PersonFormData>) => void;
   formData: PersonFormData;
@@ -14,12 +14,12 @@ type PersonFormProps = {
 
 export const PersonForm = ({
   id,
-  isMainForm,
   onRemove,
   onUpdate,
   formData,
 }: PersonFormProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const buttonCloseRef = useRef<HTMLButtonElement>(null);
 
   //для выделения полей формы синим когда заполнено все верно
   const activForm = useMemo(() => {
@@ -38,7 +38,8 @@ export const PersonForm = ({
     if (!containerRef.current) return;
 
     const method = activForm ? 'add' : 'remove';
-    containerRef.current.classList[method]('group__container-activ');
+    containerRef.current.classList[method](styles.groupContainerActiv);
+    buttonCloseRef.current?.classList[method](styles.buttonClossFormActiv);
   }, [activForm]);
 
   const handleNameChange = (isValid: boolean, name?: string) => {
@@ -60,18 +61,20 @@ export const PersonForm = ({
   };
 
   return (
-    <div className="speaker-calculator__group__container">
-      {!isMainForm && (
+    <div className={styles.speakerCalculatorGroupContainer}>
+      {onRemove && (
         <button
-          className="button-closs-form component-reset-button"
+          ref={buttonCloseRef}
+          className={styles.buttonClossForm}
           onClick={onRemove}
+          type="button"
         >
-          <img src={clossButtom} alt="" />
+          <img src={clossButtom} alt="удалить форму" />
         </button>
       )}
       <div
         ref={containerRef}
-        className="form-speaker-calculator__groups__container"
+        className={styles.formSpeakerCalculatorGroupsContainer}
       >
         <InputFullName
           initialName={formData.name}

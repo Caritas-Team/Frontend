@@ -1,6 +1,6 @@
 import { useState, useId } from 'react';
-import reportError from '../report_error.svg';
-
+import reportError from '../../../../../assets/report_error.svg';
+import styles from '../MainBlockForm.module.css';
 type InputFullNameProps = {
   initialName?: string;
   onValidityChange: (isValid: boolean, name?: string) => void;
@@ -43,17 +43,21 @@ export const InputFullName = ({
   };
 
   return (
-    <div className="form-speaker-calculator__group form-speaker-calculator__group__name">
-      <label className="group__required">
+    <div
+      className={`${styles.formSpeakerCalculatorGroup} ${styles.formSpeakerCalculatorGroupName}`}
+    >
+      <label className={styles.groupRequired}>
         Фамилия и имя
         {!initialName && (
-          <span className="group__required-mark group__required-mark--first">
+          <span
+            className={`${styles.groupRequiredMark} ${styles.groupRequiredMarkFirst}`}
+          >
             *
           </span>
         )}
       </label>
       <input
-        className="component-reset-input input__full-name field-text field-text__name"
+        className={`${styles.inputFullName} ${styles.fieldText} ${styles.fieldTextName}`}
         type="text"
         id={uniqueId}
         placeholder="Петров Иван"
@@ -63,9 +67,13 @@ export const InputFullName = ({
         required
       />
       {nameError && (
-        <span className="input__text-error" id={uniqueId} aria-live="polite">
+        <span
+          className={styles.inputTextError}
+          id={uniqueId}
+          aria-live="polite"
+        >
           <img
-            className="input__icon-error"
+            className={styles.inputIconError}
             src={reportError}
             alt="значек ошибки"
             width={'24'}
