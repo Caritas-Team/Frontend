@@ -57,14 +57,9 @@ export const ResultPage: React.FC = () => {
         reportDate="2025-01-32"
       ></TitleSectionResult> */}
       <WordsSection
-        newWords={[
-          'сказка',
-          'животное',
-          'муравей',
-          'лягушка - глупое животное',
-        ]}
-        communicationMethods={['красотка', 'семья', 'муж', 'напиться']}
-        quickMessages={['капля', 'дождь', 'лужа', 'река']}
+        newWords={['сказка', 'животное']}
+        communicationMethods={['семья', 'муж']}
+        quickMessages={['капля', 'дождь']}
         verbalWordCount={{ now: 48, delta: 21 }}
       />
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>

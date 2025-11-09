@@ -4,11 +4,14 @@
   overflow-wrap: break-word;
   word-break: break-word;
   border-radius: 20px;
-  padding: 32px 36px;
+  padding: 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 166px;
 }
 
 .title {
-  margin: 0 0 25px 0;
   font: var(--font-h3);
   color: var(--text-main-color, #141414);
   text-align: left;
