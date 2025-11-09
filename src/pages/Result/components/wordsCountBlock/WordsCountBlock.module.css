@@ -5,10 +5,12 @@
   word-break: break-word;
   border-radius: 20px;
   padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .title {
-  margin: 0 0 20px 0;
   font: var(--font-h3);
   color: var(--text-main-color, #141414);
   text-align: left;
@@ -23,7 +25,6 @@
 
 .info {
   font: var(--font-h2);
-  margin: 16px 0 8px 0;
   color: var(--text-main-color, #141414);
   text-align: left;
 }
@@ -31,7 +32,6 @@
 .deltaLine {
   display: flex;
   gap: 4px;
-  margin-top: 22px;
 }
 
 .delta {
