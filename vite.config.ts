@@ -8,6 +8,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@ui': path.resolve(__dirname, 'src/ui'),
+      '@widgets': path.resolve(__dirname, 'src/widgets'),
+      '@page-layout': path.resolve(__dirname, 'src/widgets/page-layout'),
+      '@main-wrapper/*': path.resolve(__dirname, 'src/widgets/main-wrapper'),
+      pages: path.resolve(__dirname, './src/pages'),
     },
   },
 });

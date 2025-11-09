@@ -1,0 +1,348 @@
+.inputTextError {
+  display: flex;
+  align-items: center;
+  font: var(--font-body-12);
+  color: var(--error-color);
+}
+
+.mainFormContainer {
+  margin: 0 auto;
+  padding: 32px;
+  max-width: 1040px;
+  border-radius: 20px;
+  background-color: var(--blue-light);
+  color: var(--gray-4);
+  font-family: var(--main-font-family);
+}
+
+.formStats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.statsCounter {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.formStatsCounter {
+  margin-left: 3px;
+}
+
+.statsText {
+  font: var(--font-form-semi-18);
+  font-size: 20px;
+}
+
+.counterDiscovered {
+  padding-right: 20px;
+}
+
+.statsButtons {
+  display: flex;
+  gap: 24px;
+}
+
+.buttonAdd {
+  background-color: var(--white);
+  color: var(--text-for-light-button);
+  font: var(--font-body-16-light);
+  width: 220px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--button-active-color);
+  border-radius: 40px;
+}
+
+.imgPersonAdd {
+  margin-right: 6px;
+}
+
+.buttonInfo {
+  display: flex;
+  align-content: center;
+}
+
+.formSpeakerCalculator {
+  margin-top: 20px;
+}
+
+.formSpeakerCalculatorGroupsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 28px;
+  border: 2px solid var(--gray-2);
+  border-radius: 20px;
+  padding: 14px;
+}
+
+.groupContainerActiv {
+  border-color: var(--blue);
+}
+
+.formSpeakerCalculatorGroup {
+  background-color: var(--white);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  align-self: start;
+  gap: 10px;
+  font: var(--font-form-semi-18);
+  line-height: 120%;
+}
+
+.formSpeakerCalculatorGroupName {
+  grid-column: span 2;
+}
+
+.inputFullName {
+  background-color: var(--background-input-color);
+  border-radius: 20px;
+  width: 100%;
+}
+
+.fieldFile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-input-color);
+  border-radius: 20px;
+  width: 100%;
+}
+
+.fieldText {
+  width: 100%;
+  font: var(--font-field-light-18);
+  color: var(--gray-3);
+  height: 48px;
+}
+
+.inputFileInfo {
+  font: var(--font-field-light-18);
+  color: var(--gray-3);
+}
+
+.fieldTextName {
+  padding-left: 8px;
+}
+
+.fieldTextFile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 8px;
+}
+
+.groupRequiredMark {
+  color: var(--error-color);
+  margin-left: 10px;
+}
+
+.groupRequiredMarkFirst {
+  margin-left: 4px;
+}
+
+.groupRequiredFile {
+  padding-top: 1px;
+}
+
+.speakerCalculatorGroupContainer {
+  position: relative;
+}
+
+.buttonClossForm {
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  background-color: var(--blue-light);
+  border: 2px solid var(--gray-2);
+  border-radius: 50px;
+  right: -10px;
+  top: -10px;
+}
+
+.buttonClossFormActiv {
+  border-color: var(--blue);
+}
+
+.submitBtnDisabled {
+  color: var(--text-disabled-color);
+  background-color: var(--button-disabled-color);
+}
+
+.formContainerSubmitBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  margin-top: 16px;
+  width: 319px;
+  height: 56px;
+  font: var(--font-button-semi-20);
+  background-color: var(--button-active-color);
+  border-radius: 20px;
+  color: var(--text-for-dark-button);
+}
+
+.buttonIcon {
+  width: 24px;
+  height: 24px;
+  mask-image: url('../../../../assets/bar_chart_4_bars.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  background-color: currentColor;
+  -webkit-mask-image: url('../../../../assets/bar_chart_4_bars.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.formSpeakerCalculatorGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Стили для ошибок */
+.inputFullName:invalid:not(:placeholder-shown) {
+  border: 2px solid var(--error-color);
+}
+
+.inputFullName:valid {
+  border: none;
+}
+
+.fieldFileError {
+  border: 2px solid var(--error-color);
+}
+
+.inputError {
+  color: var(--error-color);
+}
+
+.fieldTextError {
+  height: 44px;
+}
+
+.inputIconError {
+  margin-right: 7px;
+}
+
+/* Адаптив */
+@media screen and (min-width: 1200px) {
+  /* CSS-стили*/
+}
+
+@media screen and (max-width: 1000px) {
+  .mainFormContainer {
+    padding: 20px;
+    max-width: 766px;
+    min-height: 640px;
+  }
+
+  .buttonInfo {
+    margin-top: 6px;
+  }
+
+  .statsButtons {
+    gap: 16px;
+  }
+
+  .formSpeakerCalculator {
+    margin-top: 16px;
+  }
+
+  .formContainerSubmitBtn {
+    margin-top: 16px;
+  }
+
+  .formSpeakerCalculatorGroups {
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .mainFormContainer {
+    padding: 0;
+    max-width: 280px;
+    min-height: 546px;
+  }
+
+  .formStats {
+    padding: 14px 14px 12px 14px;
+    flex-direction: column;
+  }
+
+  .buttonInfo {
+    padding-bottom: 1px;
+  }
+
+  .statsCounter {
+    padding-bottom: 12px;
+    flex-direction: column;
+    align-items: self-start;
+    gap: 5px;
+  }
+
+  .counterDiscovered {
+    padding: 0;
+  }
+
+  .statsText {
+    font: var(--font-form-bold-18);
+    font-weight: 600;
+  }
+
+  .formStatsCounter {
+    margin: 0;
+  }
+
+  .formSpeakerCalculator {
+    margin: 0;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .buttonAdd {
+    width: 202px;
+  }
+
+  .statsButtons {
+    gap: 20px;
+  }
+
+  .formSpeakerCalculatorGroupsContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .formSpeakerCalculatorGroup {
+    padding: 12px;
+    align-self: normal;
+    text-align: left;
+  }
+
+  .buttonClossForm {
+    position: absolute;
+    right: 0;
+  }
+
+  .groupRequiredFile {
+    padding: 0;
+  }
+
+  .fieldText {
+    font: var(--font-body-16-light);
+  }
+}

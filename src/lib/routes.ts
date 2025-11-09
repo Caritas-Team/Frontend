@@ -1,6 +1,7 @@
 // src\lib\routes.ts
 
 export const ROUTES = {
-  home: '/',
+  root: '/',
+  form: '/form',
   result: '/result',
 } as const;
