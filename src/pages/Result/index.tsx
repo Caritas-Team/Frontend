@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './ResultPage.module.css';
-import { Logo } from '@ui/logo';
-import { Button } from './components/button';
-// import { TitleSectionResult } from './components/titleSectionResult';
 import { CardSection } from './components/cardSection';
+import { Header } from '../ResultGroup/components/header';
 
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
@@ -28,33 +26,13 @@ const mockPersonData: TCardSection = {
 export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
-      <header className={styles.header}>
-        <Logo></Logo>
-        <div className={styles.header__buttons}>
-          <Button
-            label="Сохранить"
-            secondary
-            onClick={() => {
-              console.log('Button Save has been pressed');
-            }}
-          ></Button>
-          <Button
-            label="Печать"
-            tertiary
-            onClick={() => window.print()}
-            icon={
-              <img
-                src="src/assets/icon-print.svg"
-                className={styles.button_icon}
-              />
-            }
-          ></Button>
-        </div>
-      </header>
+      <Header></Header>
+
       {/* <TitleSectionResult
         className={styles.mt_title}
         reportDate="2025-01-32"
       ></TitleSectionResult> */}
+
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
     </main>
   );
