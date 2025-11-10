@@ -1,3 +1,4 @@
+// src\pages\Home\components\InstructionPopup\InstructionPopup.tsx
 /*
 Использование компонента:
 const [isInstructionPopupOpen, setIsInstructionPopupOpen] = useState(false);

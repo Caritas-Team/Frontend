@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import './DatePicker.css';
-import reportSrc from '../../../../assets/report.svg';
+import reportSrc from '@/assets/report.svg';
 
 type Props = {
   value: string;

@@ -10,7 +10,7 @@
 .date-label {
   font-weight: 600;
   text-align: left;
-  font: var(--font-form-semi-18);
+  font: var(--font-form-semi-18, 600 18px/1.2 var(--main-font-family));
 }
 
 .date-required {
