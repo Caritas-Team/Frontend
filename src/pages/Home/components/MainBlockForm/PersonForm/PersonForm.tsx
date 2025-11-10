@@ -69,7 +69,11 @@ export const PersonForm = ({
           onClick={onRemove}
           type="button"
         >
-          <img src={clossButtom} alt="удалить форму" />
+          <img
+            className={styles.buttonClossFormIcon}
+            src={clossButtom}
+            alt="удалить форму"
+          />
         </button>
       )}
       <div

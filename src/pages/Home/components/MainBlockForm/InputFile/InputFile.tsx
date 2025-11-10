@@ -46,11 +46,19 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
     <div
       className={`${styles.formSpeakerCalculatorGroup} ${styles.formSpeakerCalculatorGroupFile}`}
     >
-      <label className={`${styles.groupRequired} ${styles.groupRequiredFile}`}>
-        {label}
+      <label className={`${styles.groupRequired} ${styles.groupFile}`}>
         {!file || fileError !== '' ? (
-          <span className={styles.groupRequiredMark}>*</span>
-        ) : null}
+          <div className={styles.inputTextWithMark}>
+            <p className={styles.groupFileLabelText}>{label}</p>
+            <span
+              className={`${styles.groupRequiredMark} ${styles.groupRequiredMarkFle}`}
+            >
+              *
+            </span>
+          </div>
+        ) : (
+          <p>{label}</p>
+        )}
       </label>
 
       <div
@@ -88,7 +96,7 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
             alt="значек ошибки"
             width={'24'}
           />
-          <p>{fileError}</p>
+          <p className={styles.spanTextError}>{fileError}</p>
         </span>
       )}
     </div>

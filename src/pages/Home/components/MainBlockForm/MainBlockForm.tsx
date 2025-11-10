@@ -1,5 +1,4 @@
 import help_Icon from '../../../../assets/help_Icon.svg';
-import person_add from '../../../../assets/person_add.svg';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import styles from './MainBlockForm.module.css';
 import { PersonForm } from './PersonForm/PersonForm';
@@ -47,7 +46,7 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
   }, 0);
 
   const addPerson = () => {
-    if (persons.length < MAX_PERSONS - 1) {
+    if (persons.length <= MAX_PERSONS) {
       setPersons(prev => [
         ...prev,
         {
@@ -126,16 +125,13 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
         </div>
         <div className={styles.statsButtons}>
           <button
-            className={styles.buttonAdd}
+            className={`${styles.buttonAdd} ${persons.length >= MAX_PERSONS ? styles.buttonAddDisabled : ''}`}
             onClick={addPerson}
-            disabled={persons.length >= MAX_PERSONS - 1}
+            disabled={persons.length >= MAX_PERSONS}
           >
-            <img
-              className={styles.imgPersonAdd}
-              src={person_add}
-              alt="Добавить обследуемого"
-              width={'24'}
-            />
+            <div
+              className={`${styles.buttonIcon} ${styles.buttonIconPersonAdd}`}
+            ></div>
             Добавить к расчёту
           </button>
           <button
@@ -169,7 +165,7 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
           className={`${styles.formContainerSubmitBtn} ${!canSubmit ? styles.submitBtnDisabled : ''}`}
           disabled={!canSubmit}
         >
-          <div className={styles.buttonIcon} />
+          <div className={`${styles.buttonIcon} ${styles.buttonIconSumbit}`} />
           Рассчитать динамику
         </button>
       </form>
