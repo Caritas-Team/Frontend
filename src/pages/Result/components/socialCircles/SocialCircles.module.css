@@ -17,7 +17,7 @@
 .card__block {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 19px;
 }
 
 .card__header {
@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 14px;
   font: var(--font-chart-extra-20);
   padding: 38px;
 }
@@ -44,10 +44,30 @@
 .card__image {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   align-self: center;
   width: 80px;
   height: 80px;
+}
+
+.image-family {
+  width: 80px;
+  height: 63.33px;
+}
+
+.image-friends {
+  width: 73.37px;
+  height: 66.67px;
+}
+
+.image-specialists {
+  width: 73.33px;
+  height: 60px;
+}
+
+.image-familiar {
+  width: 73.33px;
+  height: 53.33px;
 }
 
 .circle-family {
@@ -88,6 +108,26 @@
     height: 40px;
   }
 
+  .image-family {
+    width: 40px;
+    height: 31.67px;
+  }
+
+  .image-friends {
+    width: 36, 68px;
+    height: 33.33px;
+  }
+
+  .image-specialists {
+    width: 36.67px;
+    height: 30px;
+  }
+
+  .image-familiar {
+    width: 36.67px;
+    height: 26.67px;
+  }
+
   .card__header {
     padding: 13px 0;
   }
@@ -120,11 +160,31 @@
     height: 100px;
     font: var(--font-tag-16-bold);
     padding: 12px;
-    gap: 10px;
+    gap: 11px;
   }
 
   .card__image {
     width: 32px;
     height: 32px;
+  }
+
+  .image-family {
+    width: 32px;
+    height: 25.33px;
+  }
+
+  .image-friends {
+    width: 29.35px;
+    height: 26.67px;
+  }
+
+  .image-specialists {
+    width: 29.33px;
+    height: 24px;
+  }
+
+  .image-familiar {
+    width: 29.33px;
+    height: 21.33px;
   }
 }

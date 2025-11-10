@@ -59,7 +59,11 @@ export const SocialCircles: React.FC<TSocialCircles> = ({
               className={`${styles.card__circle} ${styles[`circle-${block.variant}`]}`}
             >
               <div className={styles.card__image}>
-                <img src={block.icon} alt={block.alt} />
+                <img
+                  className={styles[`image-${block.variant}`]}
+                  src={block.icon}
+                  alt={block.alt}
+                />
               </div>
               {block.value ? block.value : 'нет данных'}
             </div>
