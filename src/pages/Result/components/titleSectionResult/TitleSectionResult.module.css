@@ -1,0 +1,42 @@
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  color: var(--text-main-color, #141414);
+}
+
+.title {
+  font: var(--font-h1);
+}
+
+.date {
+  font: var(--font-body-20);
+}
+
+/* стили для планшетной версии */
+@media (834px <= width < 1200px) {
+  .title {
+    font: var(--font-h1-tablet);
+    font-size: 36px;
+  }
+}
+
+/* cтили для мобильной версии */
+@media (width < 834px) {
+  .section {
+    flex-direction: column;
+  }
+
+  .title {
+    font: var(--font-h1-mobile);
+    text-align: start;
+    align-self: flex-start;
+  }
+
+  .date {
+    text-align: end;
+    align-self: flex-end;
+  }
+}
