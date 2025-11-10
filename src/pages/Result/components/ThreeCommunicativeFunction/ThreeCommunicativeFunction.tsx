@@ -31,9 +31,6 @@ const communicativeData = {
 */
 
 import styles from './ThreeCommunicativeFunction.module.css';
-import iconNoLongerUsed from '../../../../assets/mark_green_without.svg';
-import iconExceeded from '../../../../assets/mark_green_with_check.svg';
-import iconUnavailable from '../../../../assets/mark_red.svg';
 
 type Status = 'уже не используется' | 'превзошел' | 'недоступно';
 type Statuses = {
@@ -45,12 +42,6 @@ interface ThreeCommunicativeFunctionProps {
   informationExchange: Statuses;
 }
 
-const statusIcons: Record<Status, string> = {
-  'уже не используется': iconNoLongerUsed,
-  превзошел: iconExceeded,
-  недоступно: iconUnavailable,
-};
-
 const validStatuses: Status[] = [
   'уже не используется',
   'превзошел',
@@ -59,6 +50,12 @@ const validStatuses: Status[] = [
 
 const isValidStatus = (status: string): status is Status => {
   return validStatuses.includes(status as Status);
+};
+
+const statusClassMap: Record<Status, string> = {
+  'уже не используется': styles.notUsed,
+  превзошел: styles.surpassed,
+  недоступно: styles.notAvailable,
 };
 
 export const ThreeCommunicativeFunction: React.FC<
@@ -75,14 +72,7 @@ export const ThreeCommunicativeFunction: React.FC<
           return (
             <div key={action} className={styles.item}>
               <span className={styles.action}>{action}</span>
-              <span
-                className={`${styles.status} ${styles[status.replace(/\s+/g, '_')]}`}
-              >
-                <img
-                  src={statusIcons[status]}
-                  alt={status}
-                  className={styles.statusIcon}
-                />
+              <span className={`${styles.status} ${statusClassMap[status]}`}>
                 {status.toUpperCase()}
               </span>
             </div>

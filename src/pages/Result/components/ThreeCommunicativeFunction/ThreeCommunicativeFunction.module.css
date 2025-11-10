@@ -32,36 +32,79 @@
 .action {
   font: var(--font-body-20);
   color: var(--text-disabled-color);
+  text-align: left;
 }
 
 .status {
   height: 48px;
-  padding: 14.5px 12px;
+  padding: 14.5px 44px 14.5px 12px;
   font: var(--font-tag-16-caps);
   text-transform: uppercase;
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 12px;
-  justify-content: center;
+}
+
+.notUsed {
+  position: relative;
+  background-color: var(--secondary-green-light);
+  color: var(--secondary-green);
+  border-radius: 12px;
+}
+
+.notUsed::after {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  right: 5%;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  background-color: var(--secondary-green);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.surpassed {
+  background-color: var(--secondary-green-light);
+  color: var(--secondary-green);
+  border-radius: 12px;
+  position: relative;
+}
+
+.surpassed::after {
+  position: absolute;
+  content: '✓';
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  top: 50%;
+  right: 7%;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  background-color: var(--secondary-green);
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-.уже_не_используется {
-  background-color: var(--secondary-green-light);
-  color: var(--secondary-green);
-  border-radius: 12px;
-}
-
-.превзошел {
-  background-color: var(--secondary-green-light);
-  color: var(--secondary-green);
-  border-radius: 12px;
-}
-
-.недоступно {
+.notAvailable {
   background-color: var(--red-light);
   color: var(--red);
   border-radius: 12px;
+  position: relative;
+}
+
+.notAvailable::after {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  right: 7%;
+  margin-left: 8px;
+  background-color: var(--red);
+  border-radius: 50%;
+  z-index: 2;
 }
 
 .statusIcon {

@@ -1,6 +1,0 @@
-<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Зеленый кружок -->
-  <circle cx="10" cy="10" r="9" fill="#54AA47" stroke="#54AA47" stroke-width="1"/>
-  <!-- Белая галочка -->
-  <path d="M7.95801 14.9998L3.20801 10.2498L4.39551 9.06234L7.95801 12.6248L15.6038 4.979L16.7913 6.1665L7.95801 14.9998Z" fill="white"/>
-</svg>
