@@ -43,7 +43,9 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
   };
 
   return (
-    <div className={styles.formSpeakerCalculatorGroup}>
+    <div
+      className={`${styles.formSpeakerCalculatorGroup} ${styles.formSpeakerCalculatorGroupFile}`}
+    >
       <label className={`${styles.groupRequired} ${styles.groupRequiredFile}`}>
         {label}
         {!file || fileError !== '' ? (

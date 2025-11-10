@@ -101,6 +101,9 @@
   grid-column: span 2;
 }
 
+.formSpeakerCalculatorGroupFile {
+  max-width: 464px;
+}
 .inputFullName {
   background-color: var(--background-input-color);
   border-radius: 20px;
@@ -126,6 +129,10 @@
 .inputFileInfo {
   font: var(--font-field-light-18);
   color: var(--gray-3);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .fieldTextName {
@@ -266,6 +273,10 @@
 
   .formSpeakerCalculatorGroups {
     gap: 22px;
+  }
+
+  .formSpeakerCalculatorGroupFile {
+    max-width: 339px;
   }
 }
 
