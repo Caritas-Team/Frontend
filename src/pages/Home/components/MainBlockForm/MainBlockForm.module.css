@@ -167,13 +167,12 @@
   top: -10px;
 }
 
-.buttonClossFormActiv {
-  border-color: var(--blue);
+.buttonClossForm:active {
+  background-color: var(--gray-l);
 }
 
-.submitBtnDisabled {
-  color: var(--text-disabled-color);
-  background-color: var(--button-disabled-color);
+.buttonClossFormActiv {
+  border-color: var(--blue);
 }
 
 .formContainerSubmitBtn {
@@ -189,6 +188,11 @@
   background-color: var(--button-active-color);
   border-radius: 20px;
   color: var(--text-for-dark-button);
+}
+
+.submitBtnDisabled {
+  color: var(--text-disabled-color);
+  background-color: var(--button-disabled-color);
 }
 
 .buttonIcon {
@@ -248,10 +252,6 @@
     min-height: 640px;
   }
 
-  .buttonInfo {
-    margin-top: 6px;
-  }
-
   .statsButtons {
     gap: 16px;
   }
@@ -265,7 +265,7 @@
   }
 
   .formSpeakerCalculatorGroups {
-    gap: 16px;
+    gap: 22px;
   }
 }
 

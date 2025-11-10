@@ -65,7 +65,7 @@ export const PersonForm = ({
       {onRemove && (
         <button
           ref={buttonCloseRef}
-          className={styles.buttonClossForm}
+          className={`${styles.buttonClossForm} ${activForm ? styles.buttonClossFormActiv : ''}`}
           onClick={onRemove}
           type="button"
         >

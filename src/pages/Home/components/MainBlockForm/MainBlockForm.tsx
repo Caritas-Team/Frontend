@@ -1,6 +1,6 @@
 import help_Icon from '../../../../assets/help_Icon.svg';
 import person_add from '../../../../assets/person_add.svg';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import styles from './MainBlockForm.module.css';
 import { PersonForm } from './PersonForm/PersonForm';
 import { v4 as uuidv4 } from 'uuid';
@@ -33,6 +33,7 @@ const createMainForm = (): PersonFormData => ({
 
 export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
   const [persons, setPersons] = useState<PersonFormData[]>([createMainForm()]);
+  const buttonSumbit = useRef<HTMLButtonElement>(null);
   const [form, setForm] = useState<boolean>(false); // Ключ для принудительного пересоздания
 
   const counterDiscovered = persons.filter(person => person.nameValid).length;
@@ -80,10 +81,12 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
   );
 
   // Самбит формы
-  const canSubmit = persons.every(
-    person =>
-      person.nameValid && person.previousFileValid && person.currentFileValid
-  );
+  const canSubmit = useMemo(() => {
+    return persons.every(
+      person =>
+        person.nameValid && person.previousFileValid && person.currentFileValid
+    );
+  }, [persons]); //Активность кнопки
 
   const resetForm = () => {
     //Список объектов для отправкм
@@ -162,6 +165,7 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
 
         <button
           type="submit"
+          ref={buttonSumbit}
           className={`${styles.formContainerSubmitBtn} ${!canSubmit ? styles.submitBtnDisabled : ''}`}
           disabled={!canSubmit}
         >

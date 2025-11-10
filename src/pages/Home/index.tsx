@@ -10,7 +10,7 @@ export default function HomePage() {
   const [formingDate, setFormingDate] = useState<string>('');
 
   return (
-    <section style={{ padding: '2rem' }}>
+    <section>
       <h1>Главная (форма)</h1>
       <form onSubmit={e => e.preventDefault()}>
         <input type="text" placeholder="Введите данные" />
