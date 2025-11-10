@@ -78,7 +78,7 @@ export const ResultPage: React.FC = () => {
         formed2={90}
         initiative2={20}
         frequency2={55}
-        description="Прилетит, вдруг, волшебник в голубом вертолете и бесплатно покажет кино! "
+        description="Прилетит, вдруг, волшебник"
       />
 
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>

@@ -19,7 +19,7 @@
   padding: 25px 0;
   margin: 0 96px;
   display: flex;
-  gap: 32px;
+  gap: 27px;
   flex-direction: column;
   background: var(--background-main-color, #ffffff);
 }
@@ -28,6 +28,7 @@
   font: var(--font-h3, 500 28px/1 var(--main-font-family));
   color: var(--text-main-color, #141414);
   text-align: left;
+  min-height: 38px;
 }
 
 .gaugesBox {
@@ -87,6 +88,7 @@
 @media (width < 1200px) {
   .container {
     margin: 0 auto;
+    gap: 24px;
   }
   .gaugesBox {
     gap: 16px;
@@ -131,7 +133,7 @@
 
 @media (width < 600px) {
   .container {
-    gap: 23px;
+    gap: 0;
     padding: 0;
   }
 
@@ -140,13 +142,13 @@
   }
 
   .gaugesBox {
-    gap: 20px;
+    gap: 19px;
   }
 
   .gauges {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 19px;
   }
 
   .legend {
@@ -154,6 +156,6 @@
   }
 
   .title {
-    padding-bottom: 2px;
+    padding-bottom: 24px;
   }
 }

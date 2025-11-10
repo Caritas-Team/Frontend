@@ -61,21 +61,21 @@ export const CheckSection: React.FC<CheckSectionProps> = ({
             <LegendItem
               label="Сформирован"
               color="var(--chart-circle-first-color, #8550f6)"
-              digitsText={`${Math.abs(formed2 - formed1)}%`}
+              digitsText={`${Math.abs(Math.round(formed2 - formed1))}%`}
               positive={formed2 - formed1 >= 0}
             />
 
             <LegendItem
               label="Инициатива"
               color="var(--chart-circle-second-color, #67f4b1)"
-              digitsText={`${Math.abs(initiative2 - initiative1)}%`}
+              digitsText={`${Math.abs(Math.round(initiative2 - initiative1))}%`}
               positive={initiative2 - initiative1 >= 0}
             />
 
             <LegendItem
               label="Частота"
               color="var(--chart-circle-third-sector-color, #5b93f4)"
-              digitsText={`${Math.abs(frequency2 - frequency1)}%`}
+              digitsText={`${Math.abs(Math.round(frequency2 - frequency1))}%`}
               positive={frequency2 - frequency1 >= 0}
             />
           </div>
