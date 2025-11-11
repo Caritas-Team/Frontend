@@ -147,7 +147,7 @@
   .card__content {
     flex-direction: column;
     gap: 20px;
-    padding: 32px 16px;
+    padding: 32px 16px 54px 16px;
   }
 
   .card__header {
