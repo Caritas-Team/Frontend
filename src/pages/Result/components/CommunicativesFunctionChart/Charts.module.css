@@ -1,7 +1,8 @@
 .container {
   width: 100%;
   height: 100%;
-  margin-left: 15px;
+  margin-left: 25px;
+  padding-right: 72px;
 }
 .recharts-responsive-container {
   width: 100%;
@@ -11,16 +12,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin-top: 10px;
-  font: var(--font-chart-semi-10);
-  color: var(--text-supplementary-color);
+  gap: 25px;
+  margin-top: 8px;
+}
+
+.recharts-legend-wrapper {
+  left: 20px;
+  bottom: 80px;
 }
 
 .legendItem {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
 }
 
 .legendMarker {
@@ -39,9 +43,8 @@
 }
 
 .legendText {
-  font-size: 12px;
-  color: var(--text-supplementary-color);
-  font: var(--font-chart-semi-10);
+  font: var(--font-body-14);
+  color: var(--gray-4);
 }
 
 .labelText {
@@ -62,4 +65,22 @@
 .recharts-cartesian-axis-tick {
   font: var(--font-chart-semi-12);
   color: var(--text-main-color);
+}
+
+@media screen and (max-width: 833px) {
+  .container {
+    margin-left: 0;
+    padding-right: 0px;
+    height: 313px;
+  }
+  .legendText {
+    font: var(--font-chart-semi-10);
+  }
+  .legendContainer {
+    margin-top: 0px;
+  }
+  .recharts-legend-wrapper {
+    left: 0px;
+    bottom: 20px;
+  }
 }

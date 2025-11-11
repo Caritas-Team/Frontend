@@ -29,8 +29,6 @@ export const Charts: React.FC<ChartsProps> = ({
   prevDate,
   currentDate,
 }: ChartsProps): JSX.Element => {
-  const chartHeight = data.length * 74 + 100;
-
   const roundedMax = 100;
   const ticks = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
@@ -102,11 +100,11 @@ export const Charts: React.FC<ChartsProps> = ({
 
   return (
     <div className={styles.container}>
-      <ResponsiveContainer width="100%" height={chartHeight}>
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={data}
           layout="vertical"
-          margin={{ top: 20, right: 40, left: 20, bottom: 60 }}
+          margin={{ top: 0, right: 20, left: 0, bottom: 15 }}
           barSize={16}
           barGap={4}
         >
@@ -164,7 +162,16 @@ export const Charts: React.FC<ChartsProps> = ({
             />
           </Bar>
 
-          <Legend content={renderLegend} verticalAlign="bottom" />
+          <Legend
+            content={renderLegend}
+            verticalAlign="bottom"
+            height={19}
+            wrapperStyle={{
+              position: 'absolute',
+              width: '100%',
+              bottom: 20,
+            }}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>

@@ -56,8 +56,8 @@
 import styles from './CommunicativesFunctionChart.module.css';
 import React from 'react';
 import type { JSX } from 'react';
-import arrowUp from './icons/keyboard_double_arrow_up.svg';
-import arrowDown from './icons/keyboard_double_arrow_down.svg';
+import arrowUp from '../../../../assets/keyboard_double_arrow_up.svg';
+import arrowDown from '../../../../assets/keyboard_double_arrow_down.svg';
 import { Charts } from './Charts';
 import type { ChartDataItem } from './Charts';
 
@@ -116,83 +116,111 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Коммуникативные функции</h2>
-
       <div className={styles.chartWrapper}>
         <div className={styles.titleConteiner}>
           <div className={styles.chartTitle}>
             <ul className={styles.title_chart__list}>
-              <li className={styles.chart__item}>Обмен информацией</li>
-              <li className={styles.chart__item}>Социльное взаимодействие</li>
               <li className={styles.chart__item}>
-                Получение желаемого результата
-              </li>
-              <li className={styles.chart__item}>Контроль</li>
-            </ul>
-          </div>
-          <div className={styles.chartProcent}>
-            <ul className={styles.chart__list}>
-              <li className={styles.chart__item}>
-                <img
-                  src={
-                    dataCurrentData.ExchangeOfInformation.value >
-                    dataPrevData.ExchangeOfInformation.value
-                      ? arrowUp
-                      : arrowDown
-                  }
-                  alt="arrow"
-                />
-                {calculateChange(
-                  dataCurrentData.ExchangeOfInformation.value,
-                  dataPrevData.ExchangeOfInformation.value
-                )}
-                %
-              </li>
-              <li className={styles.chart__item}>
-                <img
-                  src={
-                    dataCurrentData.SocialInteraction.value >
-                    dataPrevData.SocialInteraction.value
-                      ? arrowUp
-                      : arrowDown
-                  }
-                  alt="arrow"
-                />
-                {calculateChange(
-                  dataCurrentData.SocialInteraction.value,
-                  dataPrevData.SocialInteraction.value
-                )}
-                %
+                <span className={styles.chart__itemTitle}>
+                  Обмен информацией
+                </span>
+                <div className={styles.procentInfo}>
+                  <div className={styles.imgConteiner}>
+                    <img
+                      className={styles.chart__itemArrow}
+                      src={
+                        dataCurrentData.ExchangeOfInformation.value >
+                        dataPrevData.ExchangeOfInformation.value
+                          ? arrowUp
+                          : arrowDown
+                      }
+                      alt="arrow"
+                    />
+                  </div>
+                  <span>
+                    {calculateChange(
+                      dataCurrentData.ExchangeOfInformation.value,
+                      dataPrevData.ExchangeOfInformation.value
+                    )}
+                    %
+                  </span>
+                </div>
               </li>
               <li className={styles.chart__item}>
-                <img
-                  src={
-                    dataCurrentData.GetWhatYouWant.value >
-                    dataPrevData.GetWhatYouWant.value
-                      ? arrowUp
-                      : arrowDown
-                  }
-                  alt="arrow"
-                />
-                {calculateChange(
-                  dataCurrentData.GetWhatYouWant.value,
-                  dataPrevData.GetWhatYouWant.value
-                )}
-                %
+                <span className={styles.chart__itemTitle}>
+                  Социaльное взаимодействие
+                </span>
+                <div className={styles.procentInfo}>
+                  <div className={styles.imgConteiner}>
+                    <img
+                      className={styles.chart__itemArrow}
+                      src={
+                        dataCurrentData.SocialInteraction.value >
+                        dataPrevData.SocialInteraction.value
+                          ? arrowUp
+                          : arrowDown
+                      }
+                      alt="arrow"
+                    />
+                  </div>
+                  <span>
+                    {calculateChange(
+                      dataCurrentData.SocialInteraction.value,
+                      dataPrevData.SocialInteraction.value
+                    )}
+                    %
+                  </span>
+                </div>
               </li>
               <li className={styles.chart__item}>
-                <img
-                  src={
-                    dataCurrentData.Control.value > dataPrevData.Control.value
-                      ? arrowUp
-                      : arrowDown
-                  }
-                  alt="arrow"
-                />
-                {calculateChange(
-                  dataCurrentData.Control.value,
-                  dataPrevData.Control.value
-                )}
-                %
+                <span className={styles.chart__itemTitle}>
+                  Получение желаемого результата
+                </span>
+                <div className={styles.procentInfo}>
+                  <div className={styles.imgConteiner}>
+                    <img
+                      className={styles.chart__itemArrow}
+                      src={
+                        dataCurrentData.GetWhatYouWant.value >
+                        dataPrevData.GetWhatYouWant.value
+                          ? arrowUp
+                          : arrowDown
+                      }
+                      alt="arrow"
+                    />
+                  </div>
+                  <span>
+                    {calculateChange(
+                      dataCurrentData.GetWhatYouWant.value,
+                      dataPrevData.GetWhatYouWant.value
+                    )}
+                    %
+                  </span>
+                </div>
+              </li>
+              <li className={styles.chart__item}>
+                <span className={styles.chart__itemTitle}>Контроль</span>
+                <div className={styles.procentInfo}>
+                  <div className={styles.imgConteiner}>
+                    <img
+                      className={styles.chart__itemArrow}
+                      src={
+                        dataCurrentData.Control.value >
+                        dataPrevData.Control.value
+                          ? arrowUp
+                          : arrowDown
+                      }
+                      alt="arrow"
+                    />
+                  </div>
+                  <span>
+                    {calculateChange(
+                      dataCurrentData.Control.value,
+                      dataPrevData.Control.value
+                    )}
+                    %
+                  </span>
+                </div>
               </li>
             </ul>
           </div>

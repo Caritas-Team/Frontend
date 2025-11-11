@@ -3,7 +3,7 @@
   height: min-content;
   display: flex;
   flex-direction: column;
-  margin-left: 32px;
+  gap: 24px;
 }
 .title {
   color: var(--text-main-color);
@@ -12,19 +12,20 @@
 }
 .chartWrapper {
   width: 100%;
-  height: min-content;
+  height: 333px;
   display: flex;
   align-items: left;
+  gap: 12px;
 }
 .titleConteiner {
-  width: min-content;
+  width: 289px;
   height: min-content;
   display: flex;
   align-items: left;
 }
 .chartTitle {
-  margin-top: 30px;
-  color: var(---text-supplementary-color);
+  width: 100%;
+  color: var(--text-supplementary-color);
   font: var(--font-body-20);
 }
 .title_chart__list {
@@ -32,31 +33,39 @@
   flex-direction: column;
   align-items: left;
   gap: 30px;
-  padding-top: 21px;
-  width: 217px;
-}
-.chart__list {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  gap: 35px;
-  padding-top: 22px;
-  margin-left: 12px;
-  margin-right: 12px;
+  padding-top: 15px;
 }
 .chart__item {
+  height: 36px;
   display: flex;
+  align-items: center;
   flex-direction: row;
+  justify-content: space-between;
   text-align: left;
+}
+.chart__itemTitle {
+  font: var(--font-body-20);
+  max-width: 217px;
+}
+.procentInfo {
+  box-sizing: border-box;
+  width: 64px;
   font: var(--font-chart-reg-15);
-  gap: 3px;
-}
-.chartProcent {
-  margin-top: 30px;
-  width: 70px;
   display: flex;
-  gap: 8px;
+  justify-content: flex-start;
 }
+.imgConteiner {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chart__itemArrow {
+  width: 12px;
+  height: 13.4px;
+}
+
 .chartLine {
   width: clamp(29.3125rem, 4.3893rem + 47.8142vw, 40.25rem);
 }
@@ -66,10 +75,12 @@
     width: 100%;
   }
   .chartWrapper {
-    flex-direction: column;
+    height: min-content;
     flex-direction: column-reverse;
+    gap: 0px;
   }
   .chartLine {
+    height: 313px;
     width: 100%;
   }
   .title {
@@ -78,5 +89,19 @@
   .titleConteiner {
     width: 100%;
     justify-content: space-between;
+  }
+  .chart__itemTitle {
+    font: var(--font-body-12);
+  }
+  .procentInfo {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .title_chart__list {
+    gap: 4px;
+    padding-top: 0px;
+  }
+  .chart__item {
+    height: 24px;
   }
 }
