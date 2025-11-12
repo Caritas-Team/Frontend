@@ -7,7 +7,7 @@ type InputFileProps = {
   onValidityChange: (isValid: boolean, file?: File | null) => void;
 };
 
-const MAX_SIZE_FILE = 2 * 1024 * 1024; //TODO согласовать с бэком
+const MAX_SIZE_FILE = 9 * 1024 * 1024;
 
 export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
   const uniqueId = useId();
@@ -18,17 +18,23 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
     if (!selectedFile) {
       setFileError('Загрузите файл');
       onValidityChange(false);
+      return;
     }
 
-    if (selectedFile) {
-      if (selectedFile.size > MAX_SIZE_FILE) {
-        setFileError('Файл слишком большой. Максимальный размер: 2MB');
-        onValidityChange(false);
-      } else {
-        setFileError('');
-        onValidityChange(true, selectedFile);
-      }
+    if (selectedFile.type !== 'application/pdf') {
+      setFileError('Можно загружать только PDF файлы!');
+      onValidityChange(false);
+      return;
     }
+
+    if (selectedFile.size > MAX_SIZE_FILE) {
+      setFileError('Файл слишком большой. Максимальный размер: 9MB');
+      onValidityChange(false);
+      return;
+    }
+
+    setFileError('');
+    onValidityChange(true, selectedFile);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

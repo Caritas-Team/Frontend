@@ -1,7 +1,7 @@
 import help_Icon from '../../../../assets/help_Icon.svg';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import styles from './MainBlockForm.module.css';
-import { PersonForm } from './PersonForm/PersonForm';
+import { PersonForm } from './PersonForm/index';
 import { v4 as uuidv4 } from 'uuid';
 
 const MAX_PERSONS = 10;

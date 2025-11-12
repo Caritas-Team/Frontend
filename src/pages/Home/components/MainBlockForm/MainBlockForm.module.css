@@ -232,7 +232,7 @@
 /* Стили для ошибок */
 .inputTextError {
   display: flex;
-  align-items: start;
+  align-items: center;
   font: var(--font-body-12);
   color: var(--error-color);
 }

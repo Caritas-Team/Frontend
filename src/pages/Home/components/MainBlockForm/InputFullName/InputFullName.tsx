@@ -1,6 +1,7 @@
 import { useState, useId } from 'react';
 import reportError from '../../../../../assets/report_error.svg';
 import styles from '../MainBlockForm.module.css';
+
 type InputFullNameProps = {
   initialName?: string;
   onValidityChange: (isValid: boolean, name?: string) => void;
@@ -12,8 +13,8 @@ export const InputFullName = ({
 }: InputFullNameProps) => {
   const uniqueId = useId();
 
-  const [nameError, setNameError] = useState(initialName);
-  const [fullName, setFullName] = useState('');
+  const [nameError, setNameError] = useState<string>(initialName);
+  const [fullName, setFullName] = useState<string>('');
 
   const validateFullName = (value: string) => {
     if (!value.trim()) {

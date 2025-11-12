@@ -1,9 +1,11 @@
-import { useEffect, useRef, useMemo } from 'react';
-import clossButtom from '../../../../../assets/closeButton.svg';
-import { InputFullName } from '../InputFullName/InputFullName';
+import { InputFile } from '../InputFile/index';
+import { InputFullName } from '../InputFullName/index';
 import type { PersonFormData } from '../MainBlockForm';
-import { InputFile } from '../InputFile/InputFile';
-import styles from '../MainBlockForm.module.css'; // Добавь этот импорт
+
+import { useEffect, useRef, useMemo } from 'react';
+
+import clossButtom from '../../../../../assets/closeButton.svg';
+import styles from '../MainBlockForm.module.css';
 
 type PersonFormProps = {
   id: string;
