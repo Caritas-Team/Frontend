@@ -88,7 +88,7 @@ export const TwoPieCharts: React.FC<TTwoPieCharts> = ({ initiative }) => {
             cx="50%"
             cy="50%"
             labelLine={false}
-            label={<CustomLabel />}
+            label={CustomLabel}
             outerRadius={58}
             isAnimationActive={false}
           />
@@ -103,7 +103,7 @@ export const TwoPieCharts: React.FC<TTwoPieCharts> = ({ initiative }) => {
             cx="50%"
             cy="50%"
             labelLine={false}
-            label={<CustomLabel />}
+            label={CustomLabel}
             outerRadius={58}
             isAnimationActive={false}
           />
