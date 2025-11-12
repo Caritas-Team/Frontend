@@ -4,9 +4,6 @@ import { CardSection } from './components/cardSection';
 import { Header } from '../ResultGroup/components/header';
 import { CheckSection } from './components/checkSection';
 
-// import { Link } from 'react-router-dom';
-// import { ROUTES } from '../../lib/routes';
-
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
@@ -29,23 +26,9 @@ const mockPersonData: TCardSection = {
 
 export const ResultPage: React.FC = () => {
   return (
-    // <section style={{ padding: '2rem' }}>
-    //   <h1>Результат</h1>
-    //   <p>Здесь будет вывод данных.</p>
-    //   <p style={{ marginTop: '1rem' }}>
-    //     <Link to={ROUTES.home}>На главную</Link>
-    //   </p>
-
-    // </section>
-
     <main className={styles.main}>
       <Header></Header>
-
-      {/* <TitleSectionResult
-        className={styles.mt_title}
-        reportDate="2025-01-32"
-      ></TitleSectionResult> */}
-
+      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
       <CheckSection
         date1="15 Апр. 2025"
         formed1={20}
@@ -57,8 +40,6 @@ export const ResultPage: React.FC = () => {
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
       />
-
-      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
     </main>
   );
 };
