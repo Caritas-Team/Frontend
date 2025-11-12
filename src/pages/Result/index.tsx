@@ -57,7 +57,7 @@ export const ResultPage: React.FC = () => {
         reportDate="2025-01-32"
       ></TitleSectionResult> */}
       <WordsSection
-        newWords={['сказка', 'животное']}
+        newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
         communicationMethods={['семья', 'муж']}
         quickMessages={['капля', 'дождь']}
         verbalWordCount={{ now: 48, delta: 21 }}
