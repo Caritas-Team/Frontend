@@ -11,7 +11,7 @@
 }
 
 .title {
-  font: var(--font-h3);
+  font: var(--font-h3, 500 28px/1 var(--main-font-family));
   color: var(--text-main-color, #141414);
   text-align: left;
 }

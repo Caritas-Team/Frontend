@@ -36,10 +36,10 @@ export const WordsCountBlock: React.FC<WordsCountBlockProps> = ({
 }) => {
   return (
     <div className={styles.block} style={{ backgroundColor: bgColor }}>
-      <h3 className={styles.title}>
+      <div className={styles.title}>
         <img src={VerbalIcon} alt="" className={styles.icon} />
         {title}
-      </h3>
+      </div>
       <div className={styles.info}>{pluralizeWords(wordCountNow, false)}</div>
       <div className={styles.deltaLine}>
         <span className={styles.delta}>
