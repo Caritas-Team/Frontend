@@ -4,6 +4,8 @@ import { Logo } from '@ui/logo';
 import { Button } from './components/button';
 // import { TitleSectionResult } from './components/titleSectionResult';
 import { CardSection } from './components/cardSection';
+import { LangCommunicAssessment } from './components/langCommunicAssessment';
+import type { TChartData } from './components/langCommunicAssessment/types';
 
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
@@ -23,6 +25,55 @@ const mockPersonData: TCardSection = {
   dateOfBirth: '2012-10-21',
   diagnosis: 'Нарушение речи',
   whereLives: 'В семье',
+};
+
+const chartInfo: TChartData = {
+  data: [
+    {
+      name: 'Доинтенциальная коммуникация',
+      prevValue: '90',
+      currentValue: '70',
+    },
+    {
+      name: 'Протоязык',
+      prevValue: '60',
+      currentValue: '50',
+    },
+    {
+      name: 'Голофраза',
+      prevValue: '5',
+      currentValue: '90',
+    },
+    {
+      name: 'Фраза',
+      prevValue: '40',
+      currentValue: '50',
+    },
+  ],
+  initiative: [
+    {
+      name: 'Доинтенциальная коммуникация',
+      prevValue: '55',
+      currentValue: '75',
+    },
+    {
+      name: 'Протоязык',
+      prevValue: '60',
+      currentValue: '50',
+    },
+    {
+      name: 'Голофраза',
+      prevValue: '80',
+      currentValue: '90',
+    },
+    {
+      name: 'Фраза',
+      prevValue: '40',
+      currentValue: '50',
+    },
+  ],
+  prevDate: '2025-04-15',
+  currentDate: '2025-05-01',
 };
 
 export const ResultPage: React.FC = () => {
@@ -56,6 +107,7 @@ export const ResultPage: React.FC = () => {
         reportDate="2025-01-32"
       ></TitleSectionResult> */}
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
+      <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
     </main>
   );
 };
