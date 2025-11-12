@@ -1,0 +1,161 @@
+/* src\pages\Result\components\checkSection\CheckSection.module.css */
+
+.section {
+  width: 100%;
+  padding: 32px 0;
+  background: var(--background-main-color, #ffffff);
+  border-radius: 20px;
+  color: var(--text-main-color, #141414);
+}
+
+.header {
+  font: var(--font-h2);
+  color: var(--text-main-color, #141414);
+  text-align: left;
+  width: 100%;
+}
+
+.container {
+  padding: 25px 0;
+  margin: 0 96px;
+  display: flex;
+  gap: 27px;
+  flex-direction: column;
+  background: var(--background-main-color, #ffffff);
+}
+
+.title {
+  font: var(--font-h3, 500 28px/1 var(--main-font-family));
+  color: var(--text-main-color, #141414);
+  text-align: left;
+  min-height: 38px;
+}
+
+.gaugesBox {
+  border-radius: 16px;
+
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px auto 0 auto;
+}
+
+.centerTitle {
+  font: var(--font-body-20, 400 20px/1.2 var(--main-font-family));
+}
+
+.gauges {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  gap: 15px;
+}
+
+.descriptionBlock {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  font: var(--font-body-20, 400 20px/1.2 var(--main-font-family));
+}
+
+.descriptionLabel {
+  flex: 0 0 20%;
+  text-align: left;
+  color: var(--text-disabled-color, #6a6a6a);
+}
+
+.descriptionContent {
+  flex: 0 0 80%;
+  background: var(--background-input-color, #e7f6ff);
+  align-items: center; /* по центру по вертикали */
+  border-radius: 20px;
+  display: flex;
+  padding: 12px 16px;
+  min-height: 48px;
+  text-align: left;
+}
+
+/* стили для планшетной и мобильной версий */
+@media (width < 1200px) {
+  .container {
+    margin: 0 auto;
+    gap: 24px;
+  }
+  .gaugesBox {
+    gap: 16px;
+  }
+  .descriptionBlock {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .descriptionLabel {
+    height: 32px;
+    flex: none;
+  }
+  .descriptionContent {
+    width: 100%;
+    flex: none;
+  }
+
+  .legend {
+    gap: 36px;
+  }
+}
+
+/* Стили компонента для мобильной версии */
+@media (width < 834px) {
+  .title {
+    font: var(--font-h2-mobile, 600 24px/1.2 var(--main-font-family));
+  }
+  .legend {
+    margin-top: 12px;
+  }
+  .descriptionBlock {
+    margin-top: 8px;
+  }
+
+  .descriptionContent {
+    flex: 0 0 80%;
+    padding: 12px 16px;
+    min-height: 48px;
+    text-align: left;
+  }
+}
+
+@media (width < 600px) {
+  .container {
+    gap: 0;
+    padding: 0;
+  }
+
+  .header {
+    font: var(--font-h1-mobile, 700 28px/1.2 var(--main-font-family));
+  }
+
+  .gaugesBox {
+    gap: 19px;
+  }
+
+  .gauges {
+    flex-direction: column;
+    align-items: center;
+    gap: 19px;
+  }
+
+  .legend {
+    margin-top: 0;
+  }
+
+  .title {
+    padding-bottom: 24px;
+  }
+}

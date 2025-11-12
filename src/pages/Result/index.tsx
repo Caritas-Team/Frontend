@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ResultPage.module.css';
 import { CardSection } from './components/cardSection';
 import { Header } from '../ResultGroup/components/header';
+import { CheckSection } from './components/checkSection';
 
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
@@ -27,13 +28,18 @@ export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <Header></Header>
-
-      {/* <TitleSectionResult
-        className={styles.mt_title}
-        reportDate="2025-01-32"
-      ></TitleSectionResult> */}
-
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
+      <CheckSection
+        date1="15 Апр. 2025"
+        formed1={20}
+        initiative1={35}
+        frequency1={50}
+        date2="1 Мая 2025"
+        formed2={90}
+        initiative2={20}
+        frequency2={55}
+        description="Прилетит, вдруг, волшебник"
+      />
     </main>
   );
 };
