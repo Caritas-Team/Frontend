@@ -28,8 +28,8 @@ const mockPersonData: TCardSection = {
 };
 
 // Даты
-const prevDate = '15.04.2025';
-const currentDate = '01.05.2025';
+const prevDate = '2025-04-15';
+const currentDate = '2025-05-01';
 // Данные для предыдущего периода (01.05.2025)
 const dataPrevData: CommunicationType = {
   ExchangeOfInformation: {

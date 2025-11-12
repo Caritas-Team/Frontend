@@ -80,10 +80,43 @@ interface CommunicatiovesFunctionProps {
   dataCurrentData: CommunicationType;
 }
 
+const formatToDDMMYYYY = (dateString: string): string => {
+  // Проверяем формат YYYY-MM-DD
+  const dateFormat = /^(\d{4})-(\d{2})-(\d{2})$/;
+  if (!dateFormat.test(dateString)) {
+    throw new Error('Date must be in YYYY-MM-DD format');
+  }
+
+  const [year, month, day] = dateString.split('-');
+  return `${day}.${month}.${year}`;
+};
+
 const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
   props: CommunicatiovesFunctionProps
-): JSX.Element => {
+): JSX.Element | null => {
   const { prevDate, currentDate, dataCurrentData, dataPrevData } = props;
+
+  if (!prevDate || !currentDate || !dataCurrentData || !dataPrevData) {
+    return null;
+  }
+
+  if (
+    !dataCurrentData.ExchangeOfInformation ||
+    !dataCurrentData.SocialInteraction ||
+    !dataCurrentData.GetWhatYouWant ||
+    !dataCurrentData.Control
+  ) {
+    return null;
+  }
+
+  if (
+    !dataPrevData.ExchangeOfInformation ||
+    !dataPrevData.SocialInteraction ||
+    !dataPrevData.GetWhatYouWant ||
+    !dataPrevData.Control
+  ) {
+    return null;
+  }
 
   const chartData: ChartDataItem[] = [
     {
@@ -124,103 +157,115 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
                 <span className={styles.chart__itemTitle}>
                   Обмен информацией
                 </span>
-                <div className={styles.procentInfo}>
-                  <div className={styles.imgConteiner}>
-                    <img
-                      className={styles.chart__itemArrow}
-                      src={
-                        dataCurrentData.ExchangeOfInformation.value >
+                {(dataCurrentData.ExchangeOfInformation.value !== 0 ||
+                  dataPrevData.ExchangeOfInformation.value !== 0) && (
+                  <div className={styles.procentInfo}>
+                    <div className={styles.imgConteiner}>
+                      <img
+                        className={styles.chart__itemArrow}
+                        src={
+                          dataCurrentData.ExchangeOfInformation.value >
+                          dataPrevData.ExchangeOfInformation.value
+                            ? arrowUp
+                            : arrowDown
+                        }
+                        alt="arrow"
+                      />
+                    </div>
+                    <span>
+                      {calculateChange(
+                        dataCurrentData.ExchangeOfInformation.value,
                         dataPrevData.ExchangeOfInformation.value
-                          ? arrowUp
-                          : arrowDown
-                      }
-                      alt="arrow"
-                    />
+                      )}
+                      %
+                    </span>
                   </div>
-                  <span>
-                    {calculateChange(
-                      dataCurrentData.ExchangeOfInformation.value,
-                      dataPrevData.ExchangeOfInformation.value
-                    )}
-                    %
-                  </span>
-                </div>
+                )}
               </li>
               <li className={styles.chart__item}>
                 <span className={styles.chart__itemTitle}>
                   Социaльное взаимодействие
                 </span>
-                <div className={styles.procentInfo}>
-                  <div className={styles.imgConteiner}>
-                    <img
-                      className={styles.chart__itemArrow}
-                      src={
-                        dataCurrentData.SocialInteraction.value >
+                {(dataCurrentData.SocialInteraction.value !== 0 ||
+                  dataPrevData.SocialInteraction.value !== 0) && (
+                  <div className={styles.procentInfo}>
+                    <div className={styles.imgConteiner}>
+                      <img
+                        className={styles.chart__itemArrow}
+                        src={
+                          dataCurrentData.SocialInteraction.value >
+                          dataPrevData.SocialInteraction.value
+                            ? arrowUp
+                            : arrowDown
+                        }
+                        alt="arrow"
+                      />
+                    </div>
+                    <span>
+                      {calculateChange(
+                        dataCurrentData.SocialInteraction.value,
                         dataPrevData.SocialInteraction.value
-                          ? arrowUp
-                          : arrowDown
-                      }
-                      alt="arrow"
-                    />
+                      )}
+                      %
+                    </span>
                   </div>
-                  <span>
-                    {calculateChange(
-                      dataCurrentData.SocialInteraction.value,
-                      dataPrevData.SocialInteraction.value
-                    )}
-                    %
-                  </span>
-                </div>
+                )}
               </li>
               <li className={styles.chart__item}>
                 <span className={styles.chart__itemTitle}>
                   Получение желаемого результата
                 </span>
-                <div className={styles.procentInfo}>
-                  <div className={styles.imgConteiner}>
-                    <img
-                      className={styles.chart__itemArrow}
-                      src={
-                        dataCurrentData.GetWhatYouWant.value >
+                {(dataCurrentData.GetWhatYouWant.value !== 0 ||
+                  dataPrevData.GetWhatYouWant.value !== 0) && (
+                  <div className={styles.procentInfo}>
+                    <div className={styles.imgConteiner}>
+                      <img
+                        className={styles.chart__itemArrow}
+                        src={
+                          dataCurrentData.GetWhatYouWant.value >
+                          dataPrevData.GetWhatYouWant.value
+                            ? arrowUp
+                            : arrowDown
+                        }
+                        alt="arrow"
+                      />
+                    </div>
+                    <span>
+                      {calculateChange(
+                        dataCurrentData.GetWhatYouWant.value,
                         dataPrevData.GetWhatYouWant.value
-                          ? arrowUp
-                          : arrowDown
-                      }
-                      alt="arrow"
-                    />
+                      )}
+                      %
+                    </span>
                   </div>
-                  <span>
-                    {calculateChange(
-                      dataCurrentData.GetWhatYouWant.value,
-                      dataPrevData.GetWhatYouWant.value
-                    )}
-                    %
-                  </span>
-                </div>
+                )}
               </li>
               <li className={styles.chart__item}>
                 <span className={styles.chart__itemTitle}>Контроль</span>
-                <div className={styles.procentInfo}>
-                  <div className={styles.imgConteiner}>
-                    <img
-                      className={styles.chart__itemArrow}
-                      src={
-                        dataCurrentData.Control.value >
+                {(dataCurrentData.Control.value !== 0 ||
+                  dataPrevData.Control.value !== 0) && (
+                  <div className={styles.procentInfo}>
+                    <div className={styles.imgConteiner}>
+                      <img
+                        className={styles.chart__itemArrow}
+                        src={
+                          dataCurrentData.Control.value >
+                          dataPrevData.Control.value
+                            ? arrowUp
+                            : arrowDown
+                        }
+                        alt="arrow"
+                      />
+                    </div>
+                    <span>
+                      {calculateChange(
+                        dataCurrentData.Control.value,
                         dataPrevData.Control.value
-                          ? arrowUp
-                          : arrowDown
-                      }
-                      alt="arrow"
-                    />
+                      )}
+                      %
+                    </span>
                   </div>
-                  <span>
-                    {calculateChange(
-                      dataCurrentData.Control.value,
-                      dataPrevData.Control.value
-                    )}
-                    %
-                  </span>
-                </div>
+                )}
               </li>
             </ul>
           </div>
@@ -228,8 +273,8 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
         <div className={styles.chartLine}>
           <Charts
             data={chartData}
-            prevDate={prevDate}
-            currentDate={currentDate}
+            prevDate={formatToDDMMYYYY(prevDate)}
+            currentDate={formatToDDMMYYYY(currentDate)}
           />
         </div>
       </div>
