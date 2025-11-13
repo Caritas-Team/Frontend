@@ -2,8 +2,8 @@
 
 import { Suspense } from 'react';
 import './App.css';
-import ErrorBoundary from './ui/ErrorBoundary';
-import FallbackErrorView from './ui/FallbackErrorView';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { FallbackErrorView } from '@/components/FallbackErrorView';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
 

@@ -13,6 +13,7 @@
   --gray-2: #bfbfbf;
   --gray-3: #6a6a6a;
   --gray-4: #37474f;
+  --gray-5: #555c66;
   --error: #ea4335;
   --blue-secondary-hover: #7eadfe;
   --blue-tertiary-pressed: #4976c3;
@@ -21,6 +22,9 @@
 
   /* цвет основного текста */
   --text-main-color: var(--black, #141414);
+
+  /* цвет подзаголовка на странице с формой */
+  --text-subtitle-color: var(--gray-5, #555c66);
 
   /* текст подписей на графиках и комментариях к результатам */
   --text-supplementary-color: var(--gray-4, #37474f);
@@ -193,6 +197,12 @@
 
   /* StatusBar 12 */
   --font-status-bar-12: 510 12px / calc(14 / 12) var(--main-font-family);
+
+  /* шрифт подзаголовка страницы с формой для планшетной версии */
+  --font-subtitle-extra-13: 800 13px/1.25 var(--main-font-family);
+
+  /* шрифт подзаголовка страницы с формой для мобильной версии */
+  --font-subtitle-extra-12: 800 12px/1.25 var(--main-font-family);
   /*  */
-  --font-inst-popup: 500 16px/1, 2 var(--main-font-family);
+  --font-inst-popup: 500 16px/1.2 var(--main-font-family);
 }

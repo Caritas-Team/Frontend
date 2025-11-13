@@ -1,16 +1,18 @@
-// src\ui\ErrorBoundary.tsx
+// src\components\ErrorBoundary.tsx
 // общий компонент границы ошибок
 
-import { Component, type ReactNode } from 'react';
-import FallbackErrorView from './FallbackErrorView';
+import { FallbackErrorView } from '@/components/FallbackErrorView';
+import React from 'react';
 
-type Props = { children: ReactNode };
-type State = { hasError: boolean; error?: Error };
+type ErrorBoundaryState = { hasError: boolean; error?: Error };
 
-export default class ErrorBoundary extends Component<Props, State> {
-  state: State = { hasError: false };
+export class ErrorBoundary extends React.Component<
+  React.PropsWithChildren<object>,
+  ErrorBoundaryState
+> {
+  state: ErrorBoundaryState = { hasError: false };
 
-  static getDerivedStateFromError(error: Error): State {
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error };
   }
 
