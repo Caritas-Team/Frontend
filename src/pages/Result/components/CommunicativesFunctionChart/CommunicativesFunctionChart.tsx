@@ -177,7 +177,7 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
               </li>
               <li className={styles.chart__item}>
                 <span className={styles.chart__itemTitle}>
-                  Социaльное взаимодействие
+                  Социальное взаимодействие
                 </span>
                 {(dataCurrentData.SocialInteraction.value !== 0 ||
                   dataPrevData.SocialInteraction.value !== 0) && (
