@@ -60,6 +60,7 @@ import arrowUp from '../../../../assets/keyboard_double_arrow_up.svg';
 import arrowDown from '../../../../assets/keyboard_double_arrow_down.svg';
 import { Charts } from './Charts';
 import type { ChartDataItem } from './Charts';
+import { formatDateShort } from '../../../../lib/utils';
 
 type BarData = {
   name: string;
@@ -79,17 +80,6 @@ interface CommunicatiovesFunctionProps {
   dataPrevData: CommunicationType;
   dataCurrentData: CommunicationType;
 }
-
-const formatToDDMMYYYY = (dateString: string): string => {
-  // Проверяем формат YYYY-MM-DD
-  const dateFormat = /^(\d{4})-(\d{2})-(\d{2})$/;
-  if (!dateFormat.test(dateString)) {
-    throw new Error('Date must be in YYYY-MM-DD format');
-  }
-
-  const [year, month, day] = dateString.split('-');
-  return `${day}.${month}.${year}`;
-};
 
 const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
   props: CommunicatiovesFunctionProps
@@ -161,16 +151,19 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
                   dataPrevData.ExchangeOfInformation.value !== 0) && (
                   <div className={styles.procentInfo}>
                     <div className={styles.imgConteiner}>
-                      <img
-                        className={styles.chart__itemArrow}
-                        src={
-                          dataCurrentData.ExchangeOfInformation.value >
-                          dataPrevData.ExchangeOfInformation.value
-                            ? arrowUp
-                            : arrowDown
-                        }
-                        alt="arrow"
-                      />
+                      {dataCurrentData.ExchangeOfInformation.value !==
+                        dataPrevData.ExchangeOfInformation.value && (
+                        <img
+                          className={styles.chart__itemArrow}
+                          src={
+                            dataCurrentData.ExchangeOfInformation.value >
+                            dataPrevData.ExchangeOfInformation.value
+                              ? arrowUp
+                              : arrowDown
+                          }
+                          alt="arrow"
+                        />
+                      )}
                     </div>
                     <span>
                       {calculateChange(
@@ -190,16 +183,19 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
                   dataPrevData.SocialInteraction.value !== 0) && (
                   <div className={styles.procentInfo}>
                     <div className={styles.imgConteiner}>
-                      <img
-                        className={styles.chart__itemArrow}
-                        src={
-                          dataCurrentData.SocialInteraction.value >
-                          dataPrevData.SocialInteraction.value
-                            ? arrowUp
-                            : arrowDown
-                        }
-                        alt="arrow"
-                      />
+                      {dataCurrentData.SocialInteraction.value !==
+                        dataPrevData.SocialInteraction.value && (
+                        <img
+                          className={styles.chart__itemArrow}
+                          src={
+                            dataCurrentData.SocialInteraction.value >
+                            dataPrevData.SocialInteraction.value
+                              ? arrowUp
+                              : arrowDown
+                          }
+                          alt="arrow"
+                        />
+                      )}
                     </div>
                     <span>
                       {calculateChange(
@@ -219,16 +215,19 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
                   dataPrevData.GetWhatYouWant.value !== 0) && (
                   <div className={styles.procentInfo}>
                     <div className={styles.imgConteiner}>
-                      <img
-                        className={styles.chart__itemArrow}
-                        src={
-                          dataCurrentData.GetWhatYouWant.value >
-                          dataPrevData.GetWhatYouWant.value
-                            ? arrowUp
-                            : arrowDown
-                        }
-                        alt="arrow"
-                      />
+                      {dataCurrentData.GetWhatYouWant.value !==
+                        dataPrevData.GetWhatYouWant.value && (
+                        <img
+                          className={styles.chart__itemArrow}
+                          src={
+                            dataCurrentData.GetWhatYouWant.value >
+                            dataPrevData.GetWhatYouWant.value
+                              ? arrowUp
+                              : arrowDown
+                          }
+                          alt="arrow"
+                        />
+                      )}
                     </div>
                     <span>
                       {calculateChange(
@@ -246,16 +245,19 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
                   dataPrevData.Control.value !== 0) && (
                   <div className={styles.procentInfo}>
                     <div className={styles.imgConteiner}>
-                      <img
-                        className={styles.chart__itemArrow}
-                        src={
-                          dataCurrentData.Control.value >
-                          dataPrevData.Control.value
-                            ? arrowUp
-                            : arrowDown
-                        }
-                        alt="arrow"
-                      />
+                      {dataCurrentData.Control.value !==
+                        dataPrevData.Control.value && (
+                        <img
+                          className={styles.chart__itemArrow}
+                          src={
+                            dataCurrentData.Control.value >
+                            dataPrevData.Control.value
+                              ? arrowUp
+                              : arrowDown
+                          }
+                          alt="arrow"
+                        />
+                      )}
                     </div>
                     <span>
                       {calculateChange(
@@ -273,8 +275,8 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
         <div className={styles.chartLine}>
           <Charts
             data={chartData}
-            prevDate={formatToDDMMYYYY(prevDate)}
-            currentDate={formatToDDMMYYYY(currentDate)}
+            prevDate={formatDateShort(prevDate)}
+            currentDate={formatDateShort(currentDate)}
           />
         </div>
       </div>
