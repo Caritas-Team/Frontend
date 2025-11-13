@@ -1,0 +1,37 @@
+/* src\pages\Result\components\legendItem\LegendItem.module.css */
+
+.legendItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.oneRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px; /* или сколько тебе нужно */
+}
+
+.labelText {
+  font: var(--font-button-semi-20, 600 20px/1.2 var(--main-font-family));
+  color: var(--text-supplementary-color, #37474f);
+}
+
+/* Стили компонента для мобильной версии */
+@media (width < 834px) {
+  .labelText {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    font: var(--font-chart-semi-12, 600 12px/1 var(--main-font-family));
+  }
+}
