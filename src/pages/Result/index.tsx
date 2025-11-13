@@ -3,6 +3,8 @@ import styles from './ResultPage.module.css';
 import { CardSection } from './components/cardSection';
 import { Header } from '../ResultGroup/components/header';
 import { CheckSection } from './components/checkSection';
+import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
+import type { Statuses } from './components/ThreeCommunicativeFunction';
 
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
@@ -24,6 +26,31 @@ const mockPersonData: TCardSection = {
   whereLives: 'В семье',
 };
 
+const communicativeData: {
+  gettingDesired: Statuses;
+  socialInteraction: Statuses;
+  informationExchange: Statuses;
+} = {
+  gettingDesired: {
+    Выбирает: 'уже не используется',
+    'Просит ещё действие или предмет': 'уже не используется',
+    'Просит действие': 'уже не используется',
+    'Просит предмет (объект)': 'уже не используется',
+  },
+  socialInteraction: {
+    'Привлекает внимание': 'превзошел',
+    'Просит о помощи': 'превзошел',
+    'Здоровляется, прощается, использует вежливые формы обращения': 'превзошел',
+    'Выражает эмоции, чувства, состояние': 'превзошел',
+  },
+  informationExchange: {
+    'Задаёт вопросы': 'недоступно',
+    'Комментирует и выражает мнение': 'недоступно',
+    'Объясняет что-то или описывает': 'недоступно',
+    'Рассказывает (что было, что будет, что происходит сейчас)': 'недоступно',
+  },
+};
+
 export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
@@ -39,6 +66,12 @@ export const ResultPage: React.FC = () => {
         initiative2={20}
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
+      />
+
+      <ThreeCommunicativeFunction
+        gettingDesired={communicativeData.gettingDesired}
+        socialInteraction={communicativeData.socialInteraction}
+        informationExchange={communicativeData.informationExchange}
       />
     </main>
   );
