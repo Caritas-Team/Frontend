@@ -1,0 +1,32 @@
+/* src\pages\ResultGroup\components\header\Header.module.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__buttons {
+  display: flex;
+  padding-block: 12px;
+  gap: 24px;
+}
+
+.button_icon {
+  margin-right: 10px;
+}
+
+/* стили для планшетной версии */
+@media (834px <= width < 1200px) {
+}
+
+/* Стили компонента для мобильной версии */
+@media (width < 834px) {
+  .header__buttons {
+    gap: 8px;
+  }
+
+  .button_icon {
+    height: 16px;
+    width: 16px;
+  }
+}
