@@ -28,16 +28,16 @@ export const Chart: React.FC<TBarChartData> = ({
     !isValidDate(prevDate) ||
     !isValidDate(currentDate)
   )
-    return;
+    return null;
 
   // проверка входящих данных: если хотя бы одно из значений не является числом в диапазоне от 0 до 100 включительно,
-  // то вся пара (и предыдущее значени, и текущее) не отображаются на графике
+  // то вся пара (и предыдущее значени, и текущее) не отображаются на графике;
   const chartData: TChartDataCalculated[] = data.map(item => {
     const difference = Number(item.currentValue) - Number(item.prevValue);
     if (
       Number(item.currentValue) >= 0 &&
       Number(item.currentValue) <= 100 &&
-      Number(item.currentValue) >= 0 &&
+      Number(item.prevValue) >= 0 &&
       Number(item.prevValue) <= 100
     ) {
       return { ...item, dynamics: difference };
@@ -107,7 +107,7 @@ export const Chart: React.FC<TBarChartData> = ({
     payload = { value: 0 },
   }) => {
     const tickValue = payload.value as number;
-    if (!tickValue) return;
+    if (!tickValue) return null;
 
     return (
       <g transform={`translate(${x}, ${y})`}>
@@ -120,7 +120,7 @@ export const Chart: React.FC<TBarChartData> = ({
           fontSize={15}
           fill="var(--text-supplementary-color, #37474f)"
         >
-          {String(Math.abs(tickValue) + '%')}
+          {String(Math.abs(tickValue)) + '%'}
         </text>
         <image
           href={tickValue > 0 ? iconArrowUp : iconArrowDown}

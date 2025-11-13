@@ -11,7 +11,7 @@ type TPieChartData = {
 };
 
 export const TwoPieCharts: React.FC<TTwoPieCharts> = ({ initiative }) => {
-  if (!initiative) return;
+  if (!initiative) return null;
 
   // проверка входящих данных: если хотя бы одно из значений не является числом в диапазоне от 0 до 100 включительно,
   // то вся пара (и предыдущее значени, и текущее) не отображаются на графике
@@ -34,7 +34,7 @@ export const TwoPieCharts: React.FC<TTwoPieCharts> = ({ initiative }) => {
     }
   });
 
-  if (!pieChartData) return;
+  if (!pieChartData) return null;
 
   const CustomLabel = ({
     cx,
