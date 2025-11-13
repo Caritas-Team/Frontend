@@ -2,7 +2,11 @@ import React from 'react';
 import styles from './LangCommunicAssessment.module.css';
 import { Chart } from './Chart/Chart';
 import { TwoPieCharts } from './Chart/PieChart';
-import { formatDateShort, isValidDate } from '../../../../lib/utils';
+import {
+  formatDateShort,
+  isValidDate,
+  makeShortName,
+} from '../../../../lib/utils';
 import iconArrowUp from '../../../../assets/double-arrow-up.svg';
 import iconArrowDown from '../../../../assets/double-arrow-down.svg';
 import type { TChartDataItem, TChartData } from './types';
@@ -14,7 +18,7 @@ const LegendSkillItem: React.FC<TChartDataItem> = ({
   prevValue,
   currentValue,
 }) => {
-  if (!name || !prevValue || !currentValue) return;
+  if (!name || !prevValue || !currentValue) return null;
   const difference: number = Number(currentValue) - Number(prevValue);
   return (
     <li className={styles.legend_skill}>
@@ -29,7 +33,7 @@ const LegendSkillItem: React.FC<TChartDataItem> = ({
             src={difference > 0 ? iconArrowUp : iconArrowDown}
           />
           <div className={styles.legend_difference}>
-            {String(Math.abs(difference) + '%')}
+            {String(Math.abs(difference)) + '%'}
           </div>
         </div>
       </div>
@@ -52,7 +56,7 @@ export const LangCommunicAssessment: React.FC<TLangCommunicAssessment> = ({
     !isValidDate(prevDate) ||
     !isValidDate(currentDate)
   )
-    return;
+    return null;
 
   return (
     <section
@@ -74,7 +78,9 @@ export const LangCommunicAssessment: React.FC<TLangCommunicAssessment> = ({
             ></Chart>
             <div className={styles.bar_ticks}>
               {data.map((item: TChartDataItem) => (
-                <span className={styles.bar_tick}>{item.name}</span>
+                <span className={styles.bar_tick} key={item.name}>
+                  {makeShortName(item.name, 10, 8)}
+                </span>
               ))}
             </div>
           </div>
@@ -102,7 +108,7 @@ export const LangCommunicAssessment: React.FC<TLangCommunicAssessment> = ({
           </ul>
           <ul className={styles.legend_skills}>
             {initiative.map((item: TChartDataItem) => (
-              <LegendSkillItem {...item}></LegendSkillItem>
+              <LegendSkillItem key={item.name} {...item}></LegendSkillItem>
             ))}
           </ul>
         </div>
