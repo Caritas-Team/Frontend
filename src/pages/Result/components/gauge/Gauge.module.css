@@ -1,0 +1,37 @@
+/* src\pages\Result\components\gauge\Gauge.module.css */
+
+.wrapper {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  color: var(--text-main-color, #141414);
+}
+
+/* ↓↓↓ Дата по центру круга ↓↓↓ */
+.date {
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: var(--font-chart-extra-20, 800 20px/1 var(--main-font-family));
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ↓↓↓ Левые и правые подписи ↓↓↓ */
+.zero,
+.hundred {
+  position: absolute;
+  top: 84%;
+  font: var(--font-chart-reg-16, 400 16px/1 var(--main-font-family));
+  pointer-events: none;
+  user-select: none;
+}
+
+.zero {
+  left: 21%;
+}
+
+.hundred {
+  right: 20%;
+}
