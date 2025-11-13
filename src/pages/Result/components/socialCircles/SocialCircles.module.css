@@ -140,6 +140,7 @@
 
   .card__block {
     width: 100%;
+    max-width: 248px;
     align-items: center;
     gap: 8px;
   }

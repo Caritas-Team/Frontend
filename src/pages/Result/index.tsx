@@ -37,7 +37,6 @@ export const ResultPage: React.FC = () => {
     <main className={styles.main}>
       <Header></Header>
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
-      <SocialCircles {...mockSocialCirclesData} />
       <CheckSection
         date1="15 Апр. 2025"
         formed1={20}
@@ -49,6 +48,7 @@ export const ResultPage: React.FC = () => {
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
       />
+      <SocialCircles {...mockSocialCirclesData} />
     </main>
   );
 };
