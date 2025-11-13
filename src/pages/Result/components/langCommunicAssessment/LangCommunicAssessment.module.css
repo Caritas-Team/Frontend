@@ -52,9 +52,10 @@
 .bar_ticks {
   display: none;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
+  padding-inline: 18px;
 }
 
 .bar_tick {
@@ -235,8 +236,8 @@
 
   .bar_wrapper {
     gap: 0;
-    min-height: 300px;
-    height: 300px;
+    min-height: 282px;
+    height: 282px;
     padding-left: 0;
   }
 
@@ -259,7 +260,7 @@
 
   .legend_period {
     gap: 18px;
-    padding: 2px 7px 0 0;
+    padding: 20px 7px 0 0;
   }
 
   .legend_skills {
@@ -280,20 +281,18 @@
 
   .legend_name {
     text-align: start;
-    align-items: flex-start;
   }
 
   .legend_info {
     flex-direction: row;
     justify-content: flex-end;
-    align-items: flex-start;
     gap: 0;
     padding-top: 0;
   }
 
   .legend_symbol {
     background-color: transparent;
-    height: 20px;
+    height: min-content;
     width: 20px;
   }
 
@@ -312,5 +311,12 @@
   .legend_difference {
     font: var(--font-body-20);
     color: var(--text-supplementary-color, #37474f);
+  }
+}
+
+/* Стили компонента для совсем мленького экрана */
+@media (width < 340px) {
+  .bar_ticks {
+    padding-inline: 0;
   }
 }
