@@ -74,6 +74,7 @@ const chartInfo: TChartData = {
   ],
   prevDate: '2025-04-15',
   currentDate: '2025-05-01',
+};
 // Даты
 const prevDate = '2025-04-15';
 const currentDate = '2025-05-01';
