@@ -1,1 +1,0 @@
-export { LangCommunicAssessment } from './LangCommunicAssessment';

@@ -104,9 +104,6 @@
   /* цвет четвертой категории данных в круговых диаграммах */
   --chart-circle-fourth-sector-color: var(--yellow, #f8d24e);
 
-  /* цвет осей и линий на графиках */
-  --chart-axis-line-color: var(--gray-2, #bfbfbf);
-
   /* ШРИФТ */
   --main-font-family:
     'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto,
