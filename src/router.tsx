@@ -3,8 +3,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import { ROUTES } from './lib/routes';
 import { lazy } from 'react';
 import NotFoundPage from './pages/NotFound';
+import { Layout } from './pages/Home/components/layout/layout';
 
-const HomePage = lazy(() => import('./pages/Home'));
+/* const HomePage = lazy(() => import('./pages/Home')); */
 
 // Если сделать lazy, будет выскакивать FallbackErrorView
 // const NotFoundPage = lazy(() => import('./pages/NotFound'));
@@ -15,7 +16,7 @@ const ResultGroupPage = lazy(() => import('./pages/ResultGroup'));
 export const router = createBrowserRouter([
   {
     path: ROUTES.home,
-    element: <HomePage />,
+    element: <Layout />,
   },
   {
     path: ROUTES.result,
