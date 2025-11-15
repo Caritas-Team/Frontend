@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../../lib/routes';
 import { DatePicker } from './components/date-picker';
 import { useState } from 'react';
+import { MainBlockForm } from './components/MainBlockForm/MainBlockForm';
 import { Header } from '../ResultGroup/components/header';
 
 export default function HomePage() {
@@ -33,6 +34,7 @@ export default function HomePage() {
         required={true}
         // error="Данные отсутствуют в системе, проверьте правильность ввода или сообщите об ошибке"
       />
+      <MainBlockForm openPopup={() => {}} />
     </section>
   );
 }

@@ -1,0 +1,110 @@
+import reportError from '../../../../../assets/report_error.svg';
+import { useState, useId } from 'react';
+import styles from '../MainBlockForm.module.css';
+
+type InputFileProps = {
+  label: string;
+  onValidityChange: (isValid: boolean, file?: File | null) => void;
+};
+
+const MAX_SIZE_FILE = 9 * 1024 * 1024;
+
+export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
+  const uniqueId = useId();
+  const [file, setFile] = useState<File | null>(null);
+  const [fileError, setFileError] = useState('');
+
+  const validateInput = (selectedFile: File | null) => {
+    if (!selectedFile) {
+      setFileError('Загрузите файл');
+      onValidityChange(false);
+      return;
+    }
+
+    if (selectedFile.type !== 'application/pdf') {
+      setFileError('Можно загружать только PDF файлы!');
+      onValidityChange(false);
+      return;
+    }
+
+    if (selectedFile.size > MAX_SIZE_FILE) {
+      setFileError('Файл слишком большой. Максимальный размер: 9MB');
+      onValidityChange(false);
+      return;
+    }
+
+    setFileError('');
+    onValidityChange(true, selectedFile);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const selectedFile = e.target.files[0];
+      setFile(selectedFile);
+      validateInput(selectedFile);
+    } else {
+      setFile(null);
+      setFileError('Загрузите файл');
+    }
+  };
+
+  return (
+    <div
+      className={`${styles.formSpeakerCalculatorGroup} ${styles.formSpeakerCalculatorGroupFile}`}
+    >
+      <label className={`${styles.groupRequired} ${styles.groupFile}`}>
+        {!file || fileError !== '' ? (
+          <div className={styles.inputTextWithMark}>
+            <p className={styles.groupFileLabelText}>{label}</p>
+            <span
+              className={`${styles.groupRequiredMark} ${styles.groupRequiredMarkFle}`}
+            >
+              *
+            </span>
+          </div>
+        ) : (
+          <p>{label}</p>
+        )}
+      </label>
+
+      <div
+        className={`${styles.fieldFile} ${fileError ? styles.fieldFileError : ''}`}
+      >
+        <input
+          className={styles.inputFile}
+          id={uniqueId}
+          type="file"
+          hidden
+          accept=".pdf"
+          required
+          onChange={handleFileChange}
+        />
+        <label
+          htmlFor={uniqueId}
+          className={`${styles.fieldText} ${styles.fieldTextFile} ${fileError ? styles.fieldTextError : ''}`}
+        >
+          {file !== null ? (
+            <p className={styles.inputFileInfo}>{file.name}</p>
+          ) : (
+            <p className={styles.inputFileInfo}>Выберите файл</p>
+          )}
+        </label>
+      </div>
+      {fileError && (
+        <span
+          className={styles.inputTextError}
+          id={uniqueId}
+          aria-live="polite"
+        >
+          <img
+            className={styles.inputIconError}
+            src={reportError}
+            alt="значек ошибки"
+            width={'24'}
+          />
+          <p className={styles.spanTextError}>{fileError}</p>
+        </span>
+      )}
+    </div>
+  );
+};
