@@ -55,7 +55,8 @@
   justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding-inline: 18px;
+  padding-right: 18px;
+  padding-left: 26px;
 }
 
 .bar_tick {
@@ -236,9 +237,9 @@
 
   .bar_wrapper {
     gap: 0;
-    min-height: 282px;
-    height: 282px;
-    padding-left: 0;
+    min-height: 275px;
+    height: 275px;
+    padding-left: 4px;
   }
 
   .bar_ticks {
@@ -260,7 +261,7 @@
 
   .legend_period {
     gap: 18px;
-    padding: 20px 7px 0 0;
+    padding: 28px 7px 0 0;
   }
 
   .legend_skills {
@@ -315,7 +316,7 @@
 }
 
 /* Стили компонента для совсем мленького экрана */
-@media (width < 340px) {
+@media (width < 360px) {
   .bar_ticks {
     padding-inline: 0;
   }
