@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ResultPage.module.css';
 import { CardSection } from './components/cardSection';
+import { WordsSection } from './components/wordsSection';
 import { Header } from '../ResultGroup/components/header';
 import { CheckSection } from './components/checkSection';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
@@ -72,6 +73,12 @@ export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <Header></Header>
+      <WordsSection
+        newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
+        communicationMethods={['семья', 'муж']}
+        quickMessages={['капля', 'дождь']}
+        verbalWordCount={{ now: 48, delta: 21 }}
+      />
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
       <CommunicativesFunctionChart
         prevDate={prevDate}
