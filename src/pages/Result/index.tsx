@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ResultPage.module.css';
 import { CardSection } from './components/cardSection';
+import { SocialCircles } from './components/socialCircles';
 import { LangCommunicAssessment } from './components/langCommunicAssessment';
 import type { TChartData } from './components/langCommunicAssessment/types';
 import { WordsSection } from './components/wordsSection';
@@ -26,6 +27,13 @@ const mockPersonData: TCardSection = {
   dateOfBirth: '2012-10-21',
   diagnosis: 'Нарушение речи',
   whereLives: 'В семье',
+};
+
+const mockSocialCirclesData = {
+  family: '+2 чел',
+  friends: '+2 чел',
+  specialists: '+2 чел',
+  familiar: '+2 чел',
 };
 
 const chartInfo: TChartData = {
@@ -123,13 +131,13 @@ export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <Header></Header>
+      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
       <WordsSection
         newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
         communicationMethods={['семья', 'муж']}
         quickMessages={['капля', 'дождь']}
         verbalWordCount={{ now: 48, delta: 21 }}
       />
-      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
       <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
@@ -148,6 +156,7 @@ export const ResultPage: React.FC = () => {
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
       />
+      <SocialCircles {...mockSocialCirclesData} />
     </main>
   );
 };
