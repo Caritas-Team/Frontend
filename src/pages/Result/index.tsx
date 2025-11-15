@@ -5,7 +5,8 @@ import { LangCommunicAssessment } from './components/langCommunicAssessment';
 import type { TChartData } from './components/langCommunicAssessment/types';
 import { Header } from '../ResultGroup/components/header';
 import { CheckSection } from './components/checkSection';
-
+import type { CommunicationType } from './components/CommunicativesFunctionChart';
+import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
@@ -73,6 +74,47 @@ const chartInfo: TChartData = {
   ],
   prevDate: '2025-04-15',
   currentDate: '2025-05-01',
+// Даты
+const prevDate = '2025-04-15';
+const currentDate = '2025-05-01';
+// Данные для предыдущего периода (01.05.2025)
+const dataPrevData: CommunicationType = {
+  ExchangeOfInformation: {
+    name: 'Обмен информацией',
+    value: 40,
+  },
+  SocialInteraction: {
+    name: 'Социальное взаимодействие',
+    value: 48,
+  },
+  GetWhatYouWant: {
+    name: 'Получение желаемого результата',
+    value: 39,
+  },
+  Control: {
+    name: 'Контроль',
+    value: 41,
+  },
+};
+
+// Данные для текущего периода (01.05.2025)
+const dataCurrentData: CommunicationType = {
+  ExchangeOfInformation: {
+    name: 'Обмен информацией',
+    value: 99,
+  },
+  SocialInteraction: {
+    name: 'Социальное взаимодействие',
+    value: 41,
+  },
+  GetWhatYouWant: {
+    name: 'Получение желаемого результата',
+    value: 75,
+  },
+  Control: {
+    name: 'Контроль',
+    value: 59,
+  },
 };
 
 export const ResultPage: React.FC = () => {
@@ -81,6 +123,12 @@ export const ResultPage: React.FC = () => {
       <Header></Header>
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
       <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
+      <CommunicativesFunctionChart
+        prevDate={prevDate}
+        currentDate={currentDate}
+        dataPrevData={dataPrevData}
+        dataCurrentData={dataCurrentData}
+      />
       <CheckSection
         date1="15 Апр. 2025"
         formed1={20}
