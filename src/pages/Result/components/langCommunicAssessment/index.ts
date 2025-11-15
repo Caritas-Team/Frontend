@@ -1,0 +1,1 @@
+export { LangCommunicAssessment } from './LangCommunicAssessment';
