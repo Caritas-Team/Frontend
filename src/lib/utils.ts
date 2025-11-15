@@ -38,20 +38,3 @@ export const isValidDate = (value: string) => {
     date.getDate() === day
   );
 };
-
-export const makeShortName = (
-  name: string,
-  maxWordLength: number,
-  requiredWordLength: number
-): string => {
-  const array = name.split(' ');
-  const newArray = array.map(word => {
-    if (word.length > maxWordLength) {
-      const shortWord = word.slice(0, requiredWordLength).concat('.');
-      return shortWord;
-    } else {
-      return word;
-    }
-  });
-  return newArray.join(' ');
-};

@@ -3,8 +3,8 @@
 import React from 'react';
 import styles from './Delta.module.css';
 
-import ArrowUp from '@/assets/double-arrow-up.svg';
-import ArrowDown from '@/assets/double-arrow-down.svg';
+import ArrowUp from '@/assets/keyboard_double_arrow_up.svg';
+import ArrowDown from '@/assets/keyboard_double_arrow_down.svg';
 
 type DeltaProps = {
   text: string; // Например "50%" или "-25%"

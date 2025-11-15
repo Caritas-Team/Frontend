@@ -1,1 +1,0 @@
-export { SocialCircles } from './SocialCircles';
