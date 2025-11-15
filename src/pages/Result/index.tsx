@@ -34,6 +34,8 @@ const mockSocialCirclesData = {
   friends: '+2 чел',
   specialists: '+2 чел',
   familiar: '+2 чел',
+};
+
 const chartInfo: TChartData = {
   data: [
     {
@@ -129,13 +131,13 @@ export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <Header></Header>
+      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
       <WordsSection
         newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
         communicationMethods={['семья', 'муж']}
         quickMessages={['капля', 'дождь']}
         verbalWordCount={{ now: 48, delta: 21 }}
       />
-      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
       <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
