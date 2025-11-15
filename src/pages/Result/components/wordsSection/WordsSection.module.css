@@ -1,0 +1,52 @@
+/* src\pages\Result\components\wordsSection\WordsSection.module.css */
+
+.section {
+  width: 100%;
+  padding: 32px 0;
+  background: var(--background-main-color, #ffffff);
+  border-radius: 20px;
+}
+
+.header {
+  margin: 0 0 20px 0;
+  font: var(--font-h2);
+  color: var(--text-main-color, #141414);
+  text-align: left;
+  width: 100%;
+}
+
+.grid {
+  margin-top: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 16px;
+  width: 100%;
+}
+
+/* планшет */
+@media (834px <= width < 1200px) {
+  .section {
+    padding: 34px 0px;
+  }
+  .grid {
+    gap: 24px 18px;
+  }
+}
+
+/* мобильный */
+@media (width < 834px) {
+  .section {
+    padding: 20px 2px;
+  }
+  .header {
+    font: var(--font-h1-mobile, 700 28px/1.2 var(--main-font-family));
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .title {
+    margin: 0 0 23px 0;
+    font: var(--font-h3-mobile);
+  }
+}
