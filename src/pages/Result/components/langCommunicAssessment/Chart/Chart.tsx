@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Charts.module.css';
 import {
   BarChart,
@@ -21,6 +21,29 @@ export const Chart: React.FC<TBarChartData> = ({
   prevDate,
   currentDate,
 }) => {
+  //изменение расстояния между столбиками в зависимости от ширины экрана
+  //(вынесла в начало компонента до всех условных вызовов)
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  let barGap = 20;
+  let xAxisPadding = { left: -43, right: -7 };
+  if (screenWidth >= 834 && screenWidth < 1200) {
+    xAxisPadding = { left: 22, right: -10 };
+  } else if (screenWidth < 834) {
+    xAxisPadding = { left: 13, right: 1 };
+    barGap = 4;
+  }
+
   if (
     !data ||
     !prevDate ||
@@ -142,7 +165,7 @@ export const Chart: React.FC<TBarChartData> = ({
           layout="horizontal"
           margin={{ right: 5, left: -2, top: 8, bottom: 3 }}
           barSize={16}
-          barGap={20}
+          barGap={barGap}
         >
           <XAxis
             type="category"
@@ -150,7 +173,7 @@ export const Chart: React.FC<TBarChartData> = ({
             tick={<CustomTick />}
             axisLine={true}
             tickLine={true}
-            padding={{ left: 0, right: 0 }}
+            padding={xAxisPadding}
           />
           <YAxis
             orientation="left"
