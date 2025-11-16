@@ -53,9 +53,9 @@ const isValidStatus = (status: string): status is Status => {
 };
 
 const statusClassMap: Record<Status, string> = {
-  'уже не используется': styles.notUsed,
-  превзошел: styles.surpassed,
-  недоступно: styles.notAvailable,
+  ['уже не используется']: styles.notUsed,
+  ['превзошел']: styles.surpassed,
+  ['недоступно']: styles.notAvailable,
 };
 
 export const ThreeCommunicativeFunction: React.FC<
