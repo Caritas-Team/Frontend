@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './ResultPage.module.css';
 import { CardSection } from './components/cardSection';
+import { LangCommunicAssessment } from './components/langCommunicAssessment';
+import type { TChartData } from './components/langCommunicAssessment/types';
 import { Header } from '../ResultGroup/components/header';
 import { CheckSection } from './components/checkSection';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
@@ -25,6 +27,54 @@ const mockPersonData: TCardSection = {
   whereLives: 'В семье',
 };
 
+const chartInfo: TChartData = {
+  data: [
+    {
+      name: 'Доинтенциальная коммуникация',
+      prevValue: '90',
+      currentValue: '70',
+    },
+    {
+      name: 'Протоязык',
+      prevValue: '60',
+      currentValue: '50',
+    },
+    {
+      name: 'Голофраза',
+      prevValue: '5',
+      currentValue: '90',
+    },
+    {
+      name: 'Фраза',
+      prevValue: '40',
+      currentValue: '50',
+    },
+  ],
+  initiative: [
+    {
+      name: 'Доинтенциальная коммуникация',
+      prevValue: '55',
+      currentValue: '75',
+    },
+    {
+      name: 'Протоязык',
+      prevValue: '60',
+      currentValue: '50',
+    },
+    {
+      name: 'Голофраза',
+      prevValue: '80',
+      currentValue: '90',
+    },
+    {
+      name: 'Фраза',
+      prevValue: '40',
+      currentValue: '50',
+    },
+  ],
+  prevDate: '2025-04-15',
+  currentDate: '2025-05-01',
+};
 // Даты
 const prevDate = '2025-04-15';
 const currentDate = '2025-05-01';
@@ -73,6 +123,7 @@ export const ResultPage: React.FC = () => {
     <main className={styles.main}>
       <Header></Header>
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
+      <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
         currentDate={currentDate}
