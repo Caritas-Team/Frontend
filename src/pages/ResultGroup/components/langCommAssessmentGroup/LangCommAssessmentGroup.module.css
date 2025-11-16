@@ -1,0 +1,276 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+.title {
+  font: var(--font-h2);
+  color: var(--text-main-color, #141414);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: var(--background-input-color, #e7f6ff);
+  border-radius: 20px;
+  padding: 14px 35px 14px 71px;
+  width: 100%;
+  gap: 22px;
+}
+
+.subtitle {
+  font: var(--font-h3);
+  color: var(--text-main-color, #141414);
+}
+
+.chart_wrapper {
+  width: 100%;
+  height: 444px;
+  display: flex;
+  padding-left: 9px;
+  padding-bottom: 28px;
+}
+
+.chart_container {
+  width: 100%;
+}
+
+.line_chart {
+  width: 100%;
+  padding: 0;
+  position: relative;
+}
+
+.chart_axis line,
+.chart_grid line {
+  stroke: var(--chart-axis-line-color, #bfbfbf);
+}
+
+.chart_line circle {
+  r: 12px;
+  stroke-dasharray: none;
+}
+
+.chart_line path {
+  stroke-width: 4px;
+}
+
+.prev path {
+  stroke: var(--chart-previous-period-data-color, #8550f6);
+  stroke-dasharray: 8 8;
+}
+
+.prev circle {
+  fill: var(--chart-previous-period-data-color, #8550f6);
+  stroke: var(--chart-previous-period-data-color, #8550f6);
+}
+
+.current path,
+.current circle {
+  stroke: var(--chart-current-data-color, #67f4b1);
+}
+
+.current circle {
+  fill: var(--chart-current-data-color, #67f4b1);
+}
+
+.legend_wrapper {
+  display: flex;
+  justify-self: center;
+  gap: 16px;
+  position: absolute;
+  bottom: -104px;
+  padding-left: 20px;
+}
+
+.legend_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend_mark {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+}
+
+.prev {
+  background-color: var(--chart-previous-period-data-color, #8550f6);
+}
+
+.current {
+  background-color: var(--chart-current-data-color, #67f4b1);
+}
+
+.legend_text {
+  font: var(--font-body-14);
+  color: var(--text-supplementary-color, #37474f);
+  padding-top: 3px;
+}
+
+.ticks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 2.5vw;
+  justify-content: center;
+  align-content: flex-start;
+  position: absolute;
+  width: 100%;
+  padding-right: 142px;
+  padding-left: 201px;
+  bottom: 60px;
+}
+
+.chart_tick {
+  max-width: calc(100vw / 6);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 9px;
+  height: min-content;
+}
+
+.tick_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.tick_icon {
+  width: 12px;
+  height: 13.4px;
+}
+
+.tick_value {
+  font: var(--font-chart-reg-15);
+  color: var(--text-supplementary-color, #37474f);
+  stroke: none;
+}
+
+.tick_name {
+  display: block;
+  font: var(--font-body-20);
+  color: var(--text-supplementary-color, #37474f);
+}
+
+.tick_nameShort {
+  display: none;
+}
+
+/* стили для планшетной версии */
+@media (834px <= width < 1200px) {
+  .container {
+    gap: 35px;
+    align-items: flex-start;
+  }
+
+  .title {
+    text-align: start;
+  }
+
+  .content {
+    padding-left: 58px;
+    padding-right: 36px;
+  }
+
+  .subtitle {
+    padding-left: 15px;
+  }
+
+  .chart_line circle {
+    r: 10px;
+  }
+
+  .ticks {
+    display: flex;
+    justify-content: space-between;
+    padding-right: calc(17px + (100vw - 834px) / 4);
+    padding-left: calc(39px + (100vw - 834px) / 2.44);
+  }
+
+  .tick_nameShort {
+    display: none;
+  }
+
+  .legend_wrapper {
+    padding-left: 34px;
+  }
+}
+
+/* Стили компонента для мобильной версии */
+@media (width < 834px) {
+  .container {
+    gap: 1px;
+  }
+
+  .title {
+    font: var(--font-h1-mobile);
+    text-align: start;
+  }
+
+  .content {
+    padding-inline: 0;
+    padding-block: 16px;
+    gap: 17px;
+  }
+
+  .subtitle {
+    font: var(--font-h2-mobile);
+    padding-left: 8px;
+    text-align: start;
+  }
+
+  .chart_wrapper {
+    padding-left: 6px;
+    padding-right: 16px;
+    padding-bottom: 0;
+    height: 417px;
+  }
+
+  .chart_line circle {
+    r: 7px;
+  }
+
+  .ticks {
+    display: flex;
+    justify-content: space-between;
+    padding-right: calc(6px + (100vw - 320px) / 30);
+    padding-left: calc(6px + (100vw - 320px) / 13.2);
+    bottom: 57px;
+  }
+
+  .tick_name {
+    font: var(--font-body-12);
+  }
+
+  .tick_nameShort {
+    display: none;
+  }
+
+  .legend_wrapper {
+    padding-left: 6px;
+    bottom: -88px;
+  }
+}
+
+/* Стили компонента для маленького экрана (для отображения сокращенных подписей оси X */
+@media (width < 550px) {
+  .tick_name {
+    display: none;
+  }
+
+  .tick_nameShort {
+    display: flex;
+    font: var(--font-body-12);
+    color: var(--text-supplementary-color, #37474f);
+  }
+}
