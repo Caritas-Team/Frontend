@@ -15,14 +15,25 @@ import { formatDateShort, makeShortName, isValidDate } from '@/lib/utils';
 
 type TChartDataItem = {
   name: string;
-  prevValue: string; // ожидается строка в формате "гггг-мм-дд"
-  currentValue: string; // ожидается строка в формате "гггг-мм-дд"
+  prevValue: string;
+  currentValue: string;
 };
-
-type TLineChartDataItem = TChartDataItem & { dynamics: number };
 
 type TChartData = {
   data: TChartDataItem[];
+  prevDate: string; // ожидается строка в формате "гггг-мм-дд"
+  currentDate: string; // ожидается строка в формате "гггг-мм-дд"
+};
+
+type TLineChartDataItem = {
+  name: string;
+  prevValue: number;
+  currentValue: number;
+  dynamics: number;
+};
+
+type TLineChartData = {
+  data: TLineChartDataItem[];
   prevDate: string;
   currentDate: string;
 };
@@ -30,7 +41,7 @@ type TChartData = {
 type TLangCommAssessmentGroup = TChartData & { className?: string };
 
 // компонент диаграммы
-const LineChartLang: React.FC<TChartData> = ({
+const LineChartLang: React.FC<TLineChartData> = ({
   data,
   prevDate,
   currentDate,
@@ -176,20 +187,25 @@ const LineChartLang: React.FC<TChartData> = ({
 
 //компонент подписей к диаграмме
 const Tick: React.FC<TLineChartDataItem> = ({ name, dynamics }) => {
+  console.log(dynamics);
   return (
     <div className={styles.chart_tick} key={name}>
       <div className={styles.tick_wrapper}>
         <img
           className={styles.tick_icon}
-          src={dynamics > 0 ? iconArrowUp : iconArrowDown}
+          src={dynamics > 0 ? iconArrowUp : dynamics < 0 ? iconArrowDown : ''}
           alt={
             dynamics > 0
               ? 'маркер положительной динамики'
-              : 'маркер отрицательной динамики'
+              : dynamics < 0
+                ? 'маркер отрицательной динамики'
+                : ''
           }
         />
         <span className={styles.tick_value}>
-          {String(Math.abs(dynamics)) + '%'}
+          {dynamics >= -100 && dynamics <= 100
+            ? String(Math.abs(dynamics)) + '%'
+            : '-'}
         </span>
       </div>
       <span className={styles.tick_name}>{name}</span>
@@ -219,16 +235,23 @@ export const LangCommAssessmentGroup: React.FC<TLangCommAssessmentGroup> = ({
   // проверка входящих данных: если хотя бы одно из значений не является числом в диапазоне от 0 до 100 включительно,
   // то вся пара (и предыдущее значение, и текущее) не отображаются на графике;
   const chartData: TLineChartDataItem[] = data.map(item => {
-    const difference = Number(item.currentValue) - Number(item.prevValue);
+    const numPrevValue = Number(item.prevValue);
+    const numCurrentValue = Number(item.currentValue);
+    const difference = numCurrentValue - numPrevValue;
     if (
-      Number(item.currentValue) >= 0 &&
-      Number(item.currentValue) <= 100 &&
-      Number(item.prevValue) >= 0 &&
-      Number(item.prevValue) <= 100
+      numPrevValue >= 0 &&
+      numPrevValue <= 100 &&
+      numCurrentValue >= 0 &&
+      numCurrentValue <= 100
     ) {
-      return { ...item, dynamics: difference };
+      return {
+        ...item,
+        prevValue: numPrevValue,
+        currentValue: numCurrentValue,
+        dynamics: difference,
+      };
     } else {
-      return { ...item, prevValue: '', currentValue: '', dynamics: 0 };
+      return { ...item, prevValue: NaN, currentValue: NaN, dynamics: NaN };
     }
   });
 
