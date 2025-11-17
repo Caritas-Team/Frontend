@@ -3,3 +3,9 @@
 .main {
   padding-inline: 32px;
 }
+
+@media (width < 834px) {
+  .main {
+    padding-inline: 20px;
+  }
+}

@@ -1,0 +1,180 @@
+.section {
+  display: flex;
+  justify-content: center;
+  padding: 36px 96px;
+  width: 100%;
+  background-color: var(--background-card-color, #e7fff4);
+  border-radius: 20px;
+}
+
+.content {
+  width: 944px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data {
+  width: 474px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.textInput {
+  width: 282px;
+  display: flex;
+  justify-content: start;
+  position: relative;
+}
+
+.textInput input {
+  width: 100%;
+  height: 48px;
+  border-radius: 20px;
+  border: none;
+  padding: 12px;
+  font: var(--font-field-light-18);
+  background-color: var(--background-input-color, #e7f6ff);
+}
+
+.textInput::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 12px;
+  left: 246px;
+  background-image: url('./assets/edit.svg');
+  background-repeat: no-repeat;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 12px;
+  font: var(--font-body-20);
+}
+
+.cellName {
+  text-align: left;
+  justify-self: start;
+  color: var(--black);
+}
+
+.cellAge {
+  text-align: right;
+  justify-self: end;
+  color: var(--gray-3);
+}
+
+.photo {
+  width: 272px;
+  height: 229px;
+  position: relative;
+}
+
+.photoPreview {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.imageButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 162px;
+  left: 202px;
+  width: 58px;
+  height: 58px;
+  padding: 2px 1px;
+  border-radius: 42.5px;
+  background-color: var(--background-card-color, #e7fff4);
+}
+
+.imageButton:hover:focus {
+  border: 2px solid var(--black);
+}
+
+.fileInput {
+  display: none;
+}
+
+@media (834px <= width < 1200px) {
+  .content {
+    width: 726px;
+    align-items: start;
+    gap: 18px;
+  }
+
+  .data {
+    width: 452px;
+  }
+
+  .photo {
+    width: 256px;
+    height: 217px;
+  }
+
+  .imageButton {
+    top: 147px;
+    left: 186px;
+  }
+}
+
+@media (width < 834px) {
+  .section {
+    padding: 16px;
+  }
+
+  .content {
+    flex-direction: column-reverse;
+    gap: 18px;
+  }
+
+  .data {
+    max-width: 248px;
+  }
+
+  .photo {
+    width: 248px;
+    height: 217px;
+  }
+
+  .textInput {
+    width: 248px;
+  }
+
+  .textInput::after {
+    display: none;
+  }
+
+  .imageButton {
+    top: 146px;
+    left: 180px;
+  }
+
+  .table {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .cellAge {
+    text-align: left;
+    justify-self: start;
+  }
+
+  .cellAge:nth-child(2n) {
+    margin-bottom: 10px;
+  }
+
+  .cellAge:last-child {
+    margin-bottom: 0;
+  }
+}
