@@ -138,6 +138,7 @@ export const ResultPage: React.FC = () => {
         quickMessages={['капля', 'дождь']}
         verbalWordCount={{ now: 48, delta: 21 }}
       />
+      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
       <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
