@@ -9,8 +9,8 @@ import {
   Line,
 } from 'recharts';
 import styles from './LangCommAssessmentGroup.module.css';
-import iconArrowUp from '../../../../assets/double-arrow-up.svg';
-import iconArrowDown from '../../../../assets/double-arrow-down.svg';
+import iconArrowUp from '../../../../assets/keyboard_double_arrow_up.svg';
+import iconArrowDown from '../../../../assets/keyboard_double_arrow_down.svg';
 import { formatDateShort, makeShortName, isValidDate } from '@/lib/utils';
 
 type TChartDataItem = {
