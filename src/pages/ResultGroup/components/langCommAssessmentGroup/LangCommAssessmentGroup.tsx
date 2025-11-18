@@ -205,7 +205,7 @@ const LineChartLang: React.FC<TLineChartData> = ({
 //компонент подписей к диаграмме
 const Tick: React.FC<TLineChartDataItem> = ({ name, dynamics }) => {
   return (
-    <div className={styles.chart_tick} key={name}>
+    <div className={styles.chart_tick}>
       <div className={styles.tick_wrapper}>
         {dynamics <= 100 && dynamics >= -100 ? (
           <>
@@ -294,7 +294,7 @@ export const LangCommAssessmentGroup: React.FC<TLangCommAssessmentGroup> = ({
       </div>
       <div className={styles.ticks}>
         {chartData.map(item => {
-          return <Tick {...item}></Tick>;
+          return <Tick key={item.name} {...item}></Tick>;
         })}
       </div>
     </section>
