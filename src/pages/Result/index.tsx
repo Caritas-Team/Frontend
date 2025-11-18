@@ -9,6 +9,7 @@ import type { CommunicationType } from './components/CommunicativesFunctionChart
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
 import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
 import type { Statuses } from './components/ThreeCommunicativeFunction';
+import { SocialCircles } from './components/socialCircles';
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
@@ -28,6 +29,14 @@ const mockPersonData: TCardSection = {
   diagnosis: 'Нарушение речи',
   whereLives: 'В семье',
 };
+
+const mockSocialCirclesData = {
+  family: '+2 чел',
+  friends: '+2 чел',
+  specialists: '+2 чел',
+  familiar: '+2 чел',
+};
+
 const chartInfo: TChartData = {
   data: [
     {
@@ -172,6 +181,7 @@ export const ResultPage: React.FC = () => {
         socialInteraction={communicativeData.socialInteraction}
         informationExchange={communicativeData.informationExchange}
       />
+      <SocialCircles {...mockSocialCirclesData} />
     </main>
   );
 };
