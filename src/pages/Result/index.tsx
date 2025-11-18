@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './ResultPage.module.css';
+import { Header } from '../ResultGroup/components/header';
+import { TitleSectionResult } from '../Result/components/titleSectionResult';
 import { CardSection } from './components/cardSection';
 import { LangCommunicAssessment } from './components/langCommunicAssessment';
-import type { TChartData } from './components/langCommunicAssessment/types';
-import { Header } from '../ResultGroup/components/header';
-import { CheckSection } from './components/checkSection';
-import type { CommunicationType } from './components/CommunicativesFunctionChart';
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
+import { CheckSection } from './components/checkSection';
+
+import type { TChartData } from './components/langCommunicAssessment/types';
+import type { CommunicationType } from './components/CommunicativesFunctionChart';
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
@@ -122,25 +124,37 @@ export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <Header></Header>
-      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
-      <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
+      <TitleSectionResult className={styles.title_section}></TitleSectionResult>
+      <CardSection
+        className={styles.card_section}
+        {...mockPersonData}
+      ></CardSection>
+      <LangCommunicAssessment
+        className={styles.language_section}
+        {...chartInfo}
+      ></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
         currentDate={currentDate}
         dataPrevData={dataPrevData}
         dataCurrentData={dataCurrentData}
       />
-      <CheckSection
-        date1="15 Апр. 2025"
-        formed1={20}
-        initiative1={35}
-        frequency1={50}
-        date2="1 Мая 2025"
-        formed2={90}
-        initiative2={20}
-        frequency2={55}
-        description="Прилетит, вдруг, волшебник"
-      />
+      <div className={styles.check_section}>
+        <CheckSection
+          date1="15 Апр. 2025"
+          formed1={20}
+          initiative1={35}
+          frequency1={50}
+          date2="1 Мая 2025"
+          formed2={90}
+          initiative2={20}
+          frequency2={55}
+          description="Прилетит, вдруг, волшебник"
+        />
+      </div>
+      <div className={styles.three_functions}></div>
+      <div className={styles.words_block}></div>
+      <div className={styles.social_circles}></div>
     </main>
   );
 };
