@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import debounce from 'lodash.debounce';
 import {
   LineChart,
   ResponsiveContainer,
@@ -51,14 +52,15 @@ const LineChartLang: React.FC<TLineChartData> = ({
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = debounce(() => {
       setScreenWidth(window.innerWidth);
-    };
+    }, 250);
 
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      handleResize.cancel();
     };
   }, []);
 
