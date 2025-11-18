@@ -152,9 +152,19 @@ const LineChartLang: React.FC<TLineChartData> = ({
           padding={xAxisPadding}
         />
         <YAxis
+          yAxisId="right"
+          orientation="right"
+          className={styles.chart_axis}
+          domain={[0, maxValue]}
+          tick={false}
+          axisLine={true}
+          width="auto"
+        />
+        <YAxis
           orientation="left"
           interval={0}
           type="number"
+          dataKey="prevValue"
           className={styles.chart_axis}
           domain={[0, maxValue]}
           ticks={ticks}

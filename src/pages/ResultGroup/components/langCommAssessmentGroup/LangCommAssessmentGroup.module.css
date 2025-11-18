@@ -16,7 +16,7 @@
   align-items: flex-start;
   background-color: var(--background-input-color, #e7f6ff);
   border-radius: 20px;
-  padding: 14px 35px 14px 71px;
+  padding: 14px 27px 14px 71px;
   width: 100%;
   gap: 22px;
 }
@@ -83,7 +83,7 @@
   gap: 16px;
   position: absolute;
   bottom: -104px;
-  padding-left: 20px;
+  padding-left: 13px;
 }
 
 .legend_item {
@@ -122,7 +122,7 @@
   align-content: flex-start;
   position: absolute;
   width: 100%;
-  padding-right: 142px;
+  padding-right: 145px;
   padding-left: 201px;
   bottom: 60px;
 }
@@ -179,7 +179,7 @@
 
   .content {
     padding-left: 58px;
-    padding-right: 36px;
+    padding-right: 26px;
   }
 
   .subtitle {
@@ -193,8 +193,8 @@
   .ticks {
     display: flex;
     justify-content: space-between;
-    padding-right: calc(17px + (100vw - 834px) / 4);
-    padding-left: calc(39px + (100vw - 834px) / 2.44);
+    padding-right: calc(15px + (100vw - 834px) / 4);
+    padding-left: calc(48px + (100vw - 834px) / 2.44);
   }
 
   .tick_nameShort {
@@ -202,7 +202,7 @@
   }
 
   .legend_wrapper {
-    padding-left: 34px;
+    padding-left: 25px;
   }
 }
 
@@ -231,7 +231,7 @@
 
   .chart_wrapper {
     padding-left: 6px;
-    padding-right: 16px;
+    padding-right: 8px;
     padding-bottom: 0;
     height: 417px;
   }
@@ -243,7 +243,7 @@
   .ticks {
     display: flex;
     justify-content: space-between;
-    padding-right: calc(6px + (100vw - 320px) / 30);
+    padding-right: calc(12px + (100vw - 320px) / 30);
     padding-left: calc(6px + (100vw - 320px) / 13.2);
     bottom: 57px;
   }
@@ -257,7 +257,7 @@
   }
 
   .legend_wrapper {
-    padding-left: 6px;
+    padding-left: 0;
     bottom: -88px;
   }
 }
