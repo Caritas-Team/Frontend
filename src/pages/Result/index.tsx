@@ -5,6 +5,7 @@ import { Header } from '../ResultGroup/components/header';
 import { CheckSection } from './components/checkSection';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
+import { SocialCircles } from './components/socialCircles';
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
@@ -23,6 +24,13 @@ const mockPersonData: TCardSection = {
   dateOfBirth: '2012-10-21',
   diagnosis: 'Нарушение речи',
   whereLives: 'В семье',
+};
+
+const mockSocialCirclesData = {
+  family: '+2 чел',
+  friends: '+2 чел',
+  specialists: '+2 чел',
+  familiar: '+2 чел',
 };
 
 // Даты
@@ -90,6 +98,7 @@ export const ResultPage: React.FC = () => {
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
       />
+      <SocialCircles {...mockSocialCirclesData} />
     </main>
   );
 };
