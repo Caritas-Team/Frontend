@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './GroupDescription.module.css';
 import photoImgSrc from './assets/photo.svg';
 
@@ -24,6 +24,16 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
   onChangeGroupName,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const currentUrlRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (currentUrlRef.current) {
+        URL.revokeObjectURL(currentUrlRef.current);
+        currentUrlRef.current = null;
+      }
+    };
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -39,7 +49,13 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
       return;
     }
 
+    if (currentUrlRef.current) {
+      URL.revokeObjectURL(currentUrlRef.current);
+      currentUrlRef.current = null;
+    }
+
     const objectUrl = URL.createObjectURL(file);
+    currentUrlRef.current = objectUrl;
     onChangePhotoUrl(objectUrl);
   };
 
