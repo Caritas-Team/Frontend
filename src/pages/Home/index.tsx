@@ -5,9 +5,11 @@ import { ROUTES } from '../../lib/routes';
 import { DatePicker } from './components/date-picker';
 import { useState } from 'react';
 import { Header } from '../ResultGroup/components/header';
+import { Loader } from './components/loader/';
 
 export default function HomePage() {
   const [formingDate, setFormingDate] = useState<string>('');
+  const [openLoader, setOpenLoader] = useState<boolean>(false);
 
   return (
     <section style={{ padding: '2rem' }}>
@@ -33,6 +35,14 @@ export default function HomePage() {
         required={true}
         // error="Данные отсутствуют в системе, проверьте правильность ввода или сообщите об ошибке"
       />
+      <br />
+      <br />
+      <button type="button" onClick={() => setOpenLoader(true)}>
+        Показать лоадер
+      </button>
+      {openLoader && (
+        <Loader openLoader={openLoader} doClose={() => setOpenLoader(false)} />
+      )}
     </section>
   );
 }
