@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import debounce from 'lodash.debounce';
 import {
   LineChart,
@@ -64,12 +64,17 @@ const LineChartLang: React.FC<TLineChartData> = ({
     };
   }, []);
 
-  let xAxisPadding = { left: 177, right: 183 };
-  if (screenWidth >= 834 && screenWidth < 1200) {
-    xAxisPadding = { left: 98, right: 115 };
-  } else if (screenWidth < 834) {
-    xAxisPadding = { left: 25, right: 20 };
-  }
+  const xAxisPadding = useMemo(() => {
+    if (screenWidth >= 1200) {
+      return { left: 177, right: 183 };
+    } else {
+      if (screenWidth >= 834) {
+        return { left: 98, right: 115 };
+      } else {
+        return { left: 25, right: 20 };
+      }
+    }
+  }, [screenWidth]);
 
   // так как данные измеряются в процентах
   const maxValue: number = 100;
