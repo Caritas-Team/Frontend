@@ -204,26 +204,29 @@ const LineChartLang: React.FC<TLineChartData> = ({
 
 //компонент подписей к диаграмме
 const Tick: React.FC<TLineChartDataItem> = ({ name, dynamics }) => {
-  console.log(dynamics);
   return (
     <div className={styles.chart_tick} key={name}>
       <div className={styles.tick_wrapper}>
-        <img
-          className={styles.tick_icon}
-          src={dynamics > 0 ? iconArrowUp : dynamics < 0 ? iconArrowDown : ''}
-          alt={
-            dynamics > 0
-              ? 'маркер положительной динамики'
-              : dynamics < 0
-                ? 'маркер отрицательной динамики'
-                : ''
-          }
-        />
-        <span className={styles.tick_value}>
-          {dynamics >= -100 && dynamics <= 100
-            ? String(Math.abs(dynamics)) + '%'
-            : '-'}
-        </span>
+        {dynamics <= 100 && dynamics >= -100 ? (
+          <>
+            {dynamics !== 0 && (
+              <img
+                className={styles.tick_icon}
+                src={dynamics > 0 ? iconArrowUp : iconArrowDown}
+                alt={
+                  dynamics > 0
+                    ? 'маркер положительной динамики'
+                    : 'маркер отрицательной динамики'
+                }
+              />
+            )}
+            <span className={styles.tick_value}>
+              {String(Math.abs(dynamics)) + '%'}
+            </span>
+          </>
+        ) : (
+          <span className={styles.tick_value}>-</span>
+        )}
       </div>
       <span className={styles.tick_name}>{name}</span>
       <span className={styles.tick_nameShort}>
