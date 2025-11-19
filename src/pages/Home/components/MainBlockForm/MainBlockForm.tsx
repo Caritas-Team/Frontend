@@ -49,7 +49,6 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
     if (persons.length <= MAX_PERSONS) {
       setCounterDiscovered(counterDiscovered + 1);
       setPersons(prev => [
-        ...prev,
         {
           id: uuidv4(),
           name: '',
@@ -59,6 +58,7 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
           currentFileValid: false,
           currentFile: null,
         },
+        ...prev,
       ]);
     } else {
       console.log(`Достигнут лимит в ${MAX_PERSONS} человек`);
@@ -81,14 +81,14 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
     []
   );
 
-  // Самбит формы
-  const canSubmit = useMemo(() => {
+  const isFormValid = useMemo(() => {
     return persons.every(
       person =>
         person.nameValid && person.previousFileValid && person.currentFileValid
     );
-  }, [persons]); //Активность кнопки
+  }, [persons]);
 
+  // Самбит формы
   const resetForm = () => {
     //Список объектов для отправкм
     console.log(persons);
@@ -103,7 +103,7 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
 
     e.preventDefault();
 
-    if (canSubmit) {
+    if (isFormValid) {
       alert(
         `Отправлено данных: ${persons.length} обследуемых, ${counterFiles} файлов`
       );
@@ -127,9 +127,9 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
         </div>
         <div className={styles.statsButtons}>
           <button
-            className={`${styles.buttonAdd} ${persons.length >= MAX_PERSONS ? styles.buttonAddDisabled : ''}`}
+            className={`${styles.buttonAdd} ${persons.length >= MAX_PERSONS || !isFormValid ? styles.buttonAddDisabled : ''}`}
             onClick={addPerson}
-            disabled={persons.length >= MAX_PERSONS}
+            disabled={persons.length >= MAX_PERSONS || !isFormValid}
           >
             <div
               className={`${styles.buttonIcon} ${styles.buttonIconPersonAdd}`}
@@ -164,8 +164,8 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
         <button
           type="submit"
           ref={buttonSumbit}
-          className={`${styles.formContainerSubmitBtn} ${!canSubmit ? styles.submitBtnDisabled : ''}`}
-          disabled={!canSubmit}
+          className={`${styles.formContainerSubmitBtn} ${!isFormValid ? styles.submitBtnDisabled : ''}`}
+          disabled={!isFormValid}
         >
           <div className={`${styles.buttonIcon} ${styles.buttonIconSumbit}`} />
           Рассчитать динамику
