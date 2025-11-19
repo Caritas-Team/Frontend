@@ -67,11 +67,12 @@ export const InputFullName = ({
         onChange={handleFullNameChange}
         pattern="^[А-ЯЁ][а-яё]+\s[А-ЯЁ][а-яё]+$"
         required
+        aria-describedby={`${uniqueId}-error`}
       />
       {nameError && (
         <span
           className={styles.inputTextError}
-          id={uniqueId}
+          id={`${uniqueId}-error`}
           aria-live="polite"
         >
           <img
