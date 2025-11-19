@@ -32,10 +32,10 @@ const createMainForm = (): PersonFormData => ({
 
 export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
   const [persons, setPersons] = useState<PersonFormData[]>([createMainForm()]);
+  const [counterDiscovered, setCounterDiscovered] = useState<number>(1);
+
   const buttonSumbit = useRef<HTMLButtonElement>(null);
   const [form, setForm] = useState<boolean>(false); // Ключ для принудительного пересоздания
-
-  const counterDiscovered = persons.filter(person => person.nameValid).length;
 
   const counterFiles = persons.reduce((total, person) => {
     return (
@@ -47,6 +47,7 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
 
   const addPerson = () => {
     if (persons.length <= MAX_PERSONS) {
+      setCounterDiscovered(counterDiscovered + 1);
       setPersons(prev => [
         ...prev,
         {
@@ -65,6 +66,7 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
   };
 
   const removePerson = (idToRemove: string) => {
+    setCounterDiscovered(counterDiscovered - 1);
     setPersons(prev => prev.filter(person => person.id !== idToRemove));
   };
 
@@ -151,7 +153,7 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
               key={person.id}
               id={person.id}
               onRemove={
-                persons.length != 1 ? () => removePerson(person.id) : undefined
+                persons.length !== 1 ? () => removePerson(person.id) : undefined
               }
               onUpdate={updatePerson}
               formData={person}
