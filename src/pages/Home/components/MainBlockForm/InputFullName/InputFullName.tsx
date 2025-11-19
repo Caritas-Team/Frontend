@@ -2,6 +2,8 @@ import { useState, useId } from 'react';
 import reportError from '../../../../../assets/report_error.svg';
 import styles from '../MainBlockForm.module.css';
 
+const FULL_NAME_REGEX = /^[А-ЯЁ][а-яё-]+\s+[А-ЯЁ][а-яё-]+$/;
+
 type InputFullNameProps = {
   initialName?: string;
   onValidityChange: (isValid: boolean, name?: string) => void;
@@ -27,8 +29,7 @@ export const InputFullName = ({
       return 'Уберите лишние пробелы в начале или в конце';
     }
 
-    const nameRegex = /^[А-ЯЁ][а-яё-]+\s+[А-ЯЁ][а-яё-]+$/;
-    if (!nameRegex.test(value.trim())) {
+    if (!FULL_NAME_REGEX.test(value.trim())) {
       onValidityChange(false);
       return 'Введите фамилию и имя через пробел (только кириллица, первые буквы заглавные)';
     }
