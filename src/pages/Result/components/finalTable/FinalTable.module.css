@@ -1,0 +1,124 @@
+.finalTable {
+  position: relative;
+  width: 100%;
+  background-color: var(--blue-light);
+  border-radius: 20px;
+  padding: 20px 46px 57px 16px;
+  margin: 0 1px;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  /*если border-collapse: collapse; то радиус не работает */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th,
+.table td {
+  /* 0.5px тк внутриние бордер ячее соедянятся = 1px*/
+  border: 0.5px solid black;
+  padding: 9px 11px 10px 11px;
+}
+
+/* 1px для внешних сторон ячее */
+tbody tr:first-child td:first-child {
+  border-left: 1px solid black;
+}
+
+tbody tr td:nth-child(2n + 1) {
+  border-left: 1px solid black;
+}
+
+tbody tr td:nth-child(2n) {
+  border-right: 1px solid black;
+}
+
+/* радиусы углов таблици */
+thead tr:first-child td:first-child {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-top-left-radius: 4px;
+}
+thead tr:first-child td:last-child {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-top-right-radius: 4px;
+}
+tbody tr:last-child td:first-child {
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 4px;
+}
+tbody tr:last-child td:last-child {
+  border-bottom: 1px solid black;
+  border-bottom-right-radius: 4px;
+}
+
+.caption {
+  font: var(--font-h3);
+  color: var(--gray-4);
+  text-align: start;
+  margin-bottom: 62px;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+.headerCell {
+  font: var(--font-button-semi-20);
+}
+.headerCellParameters {
+  text-align: start;
+}
+
+.boxDelta {
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.parameterCell {
+  text-align: start;
+  font: var(--font-body-12);
+}
+.valueCell {
+  font: var(--font-chart-reg-15);
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+@media (834px <= width < 1200px) {
+  .finalTable {
+    margin: 0px;
+    padding: 20px 16px 18px 16px;
+  }
+  .caption {
+    padding-left: 16px;
+    margin-bottom: 26px;
+  }
+}
+
+@media (width < 400px) {
+  .finalTable {
+    margin: 0px;
+    padding: 17px 16px 18px 16px;
+  }
+  .caption {
+    font: var(--font-h1-mobile);
+    padding-left: 16px;
+    margin-bottom: 24px;
+  }
+
+  .header td {
+    padding: 8px 11px 11px 11px;
+  }
+
+  .body td {
+    padding: 8px 11px 9px 11px;
+    line-height: 1.4;
+  }
+
+  .body tr {
+    height: 44px;
+  }
+}

@@ -7,6 +7,9 @@ import { Header } from '../ResultGroup/components/header';
 import { CheckSection } from './components/checkSection';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
+import { FinalTable } from './components/finalTable';
+import type { FinalTableProps } from './components/finalTable/FinalTable';
+
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
@@ -118,6 +121,14 @@ const dataCurrentData: CommunicationType = {
   },
 };
 
+const finalTableData: FinalTableProps = {
+  languageDevelopmentLevels: '25%',
+  communicationInitiative: '34%',
+  communicativeFunctionsProgress: '15%',
+  vocabularyLevel: '30',
+  spokenWordsCount: '4',
+};
+
 export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
@@ -140,6 +151,15 @@ export const ResultPage: React.FC = () => {
         initiative2={20}
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
+      />
+      <FinalTable
+        languageDevelopmentLevels={finalTableData.languageDevelopmentLevels}
+        communicationInitiative={finalTableData.communicationInitiative}
+        communicativeFunctionsProgress={
+          finalTableData.communicativeFunctionsProgress
+        }
+        vocabularyLevel={finalTableData.vocabularyLevel}
+        spokenWordsCount={finalTableData.spokenWordsCount}
       />
     </main>
   );
