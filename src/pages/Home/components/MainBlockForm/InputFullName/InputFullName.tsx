@@ -18,7 +18,7 @@ export const InputFullName = ({
   const [nameError, setNameError] = useState<string>(initialName);
   const [fullName, setFullName] = useState<string>('');
 
-  const validateFullName = (value: string) => {
+  const validateFullName = (value: string): string | undefined => {
     if (!value.trim()) {
       onValidityChange(false);
       return 'Фамилия и имя обязательны для заполнения';
@@ -34,6 +34,7 @@ export const InputFullName = ({
       return 'Введите фамилию и имя через пробел (только кириллица, первые буквы заглавные)';
     }
     onValidityChange(true, value);
+    return undefined;
   };
 
   const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
