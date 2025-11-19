@@ -1,0 +1,17 @@
+.delta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.arrow {
+  width: 14px;
+  height: 14px;
+}
+
+.text {
+  font: var(
+    --font-chart-reg-15,
+    400 15px / calc(24 / 15) var(--main-font-family)
+  );
+}
