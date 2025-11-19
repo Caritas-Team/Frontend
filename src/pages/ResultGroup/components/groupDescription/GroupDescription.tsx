@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './GroupDescription.module.css';
 import photoImgSrc from './assets/photo.svg';
+import reportImgSrc from '../../../../assets/report.svg';
+import { MAX_FILE_SIZE } from './constants';
 
 export type TGroupItem = {
   name: string;
@@ -26,6 +28,8 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const currentUrlRef = useRef<string | null>(null);
 
+  const [uploadError, setUploadError] = useState<string | null>(null);
+
   useEffect(() => {
     return () => {
       if (currentUrlRef.current) {
@@ -39,13 +43,14 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
     const file = e.target.files?.[0];
     if (!file) return;
 
+    setUploadError(null);
     if (!file.type.startsWith('image/')) {
-      alert('Только изображения!');
+      setUploadError('Только изображения!');
       return;
     }
 
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Файл слишком большой (макс. 5 МБ)');
+    if (file.size > MAX_FILE_SIZE) {
+      setUploadError('Файл слишком большой (макс. 5 МБ)');
       return;
     }
 
@@ -54,9 +59,16 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
       currentUrlRef.current = null;
     }
 
-    const objectUrl = URL.createObjectURL(file);
-    currentUrlRef.current = objectUrl;
-    onChangePhotoUrl(objectUrl);
+    try {
+      const objectUrl = URL.createObjectURL(file);
+      currentUrlRef.current = objectUrl;
+      onChangePhotoUrl(objectUrl);
+    } catch (error) {
+      void error;
+      setUploadError(
+        'Не удалось обработать изображение. Попробуйте другой файл'
+      );
+    }
   };
 
   const triggerFileInput = () => {
@@ -92,26 +104,34 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
           </div>
         </div>
         <div className={styles.photo}>
-          <img
-            className={styles.photoPreview}
-            src={photoUrl}
-            alt="Фото группы"
-          />
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className={styles.fileInput}
-            id="fileInput"
-          />
-          <button
-            className={styles.imageButton}
-            onClick={triggerFileInput}
-            aria-label="Загрузить фото группы"
-          >
-            <img src={photoImgSrc} alt="Иконка фотоаппрата" />
-          </button>
+          <div className={styles.photoContainer}>
+            <img
+              className={styles.photoPreview}
+              src={photoUrl}
+              alt="Фото группы"
+            />
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className={styles.fileInput}
+              id="fileInput"
+            />
+            <button
+              className={styles.imageButton}
+              onClick={triggerFileInput}
+              aria-label="Загрузить фото группы"
+            >
+              <img src={photoImgSrc} alt="Иконка фотоаппарата" />
+            </button>
+          </div>
+          {uploadError && (
+            <div className={styles.errorMessage}>
+              <img src={reportImgSrc} alt="Лого ошибки" />
+              {uploadError}
+            </div>
+          )}
         </div>
       </div>
     </section>

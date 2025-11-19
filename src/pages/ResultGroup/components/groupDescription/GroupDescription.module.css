@@ -44,7 +44,8 @@
   height: 24px;
   position: absolute;
   top: 12px;
-  left: 246px;
+  right: 12px;
+  left: auto;
   background-image: url('./assets/edit.svg');
   background-repeat: no-repeat;
 }
@@ -69,9 +70,15 @@
 }
 
 .photo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.photoContainer {
+  position: relative;
   width: 272px;
   height: 229px;
-  position: relative;
 }
 
 .photoPreview {
@@ -97,8 +104,19 @@
   background-color: var(--background-card-color, #e7fff4);
 }
 
-.imageButton:hover:focus {
+.imageButton:hover,
+:focus {
   border: 2px solid var(--black);
+}
+
+.errorMessage {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  color: var(--error-color);
+  font: var(--font-body-12);
+  text-align: left;
+  vertical-align: auto;
 }
 
 .fileInput {
@@ -116,7 +134,7 @@
     width: 452px;
   }
 
-  .photo {
+  .photoContainer {
     width: 256px;
     height: 217px;
   }
@@ -141,7 +159,7 @@
     max-width: 248px;
   }
 
-  .photo {
+  .photoContainer {
     width: 248px;
     height: 217px;
   }
