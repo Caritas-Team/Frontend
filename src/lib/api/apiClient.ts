@@ -7,7 +7,6 @@ export const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use(config => {
-  config.headers['X-User-Agent'] = window.navigator.userAgent;
   config.headers['X-Timestamp'] = new Date().toISOString();
   config.headers['X-Request-UUID'] = uuidv4();
 

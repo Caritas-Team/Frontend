@@ -1,11 +1,11 @@
 import { apiClient } from './apiClient';
 import { API_ENDPOINTS } from './endpoints';
 
-interface Person {
-  fullName: 'string';
+export interface Person {
+  fullName: string;
   previousValues: File;
   currentValues: File;
-  date: 'string';
+  date: string;
 }
 
 export const uploadFiles = (people: Person[]) => {
