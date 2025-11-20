@@ -1,4 +1,4 @@
-import styles from './loader.module.css';
+import styles from './loader_2.module.css';
 import { useEffect } from 'react';
 
 export type LoaderProps = {
@@ -6,7 +6,7 @@ export type LoaderProps = {
   doClose: () => void;
 };
 
-const Loader = (props: LoaderProps) => {
+const Loader_2 = (props: LoaderProps) => {
   const { openLoader, doClose } = props;
 
   useEffect(() => {
@@ -31,4 +31,4 @@ const Loader = (props: LoaderProps) => {
   );
 };
 
-export default Loader;
+export default Loader_2;

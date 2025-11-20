@@ -5,7 +5,10 @@ import { ROUTES } from '../../lib/routes';
 import { DatePicker } from './components/date-picker';
 import { useState } from 'react';
 import { Header } from '../ResultGroup/components/header';
-import { Loader } from './components/loader/';
+/*import { Loader } from './components/loader/';*/
+/*import { Loader_2 } from './components/loader/';*/
+/*import { Loader_3 } from './components/loader/';*/
+import { CustomLoader } from './components/loader/';
 
 export default function HomePage() {
   const [formingDate, setFormingDate] = useState<string>('');
@@ -41,7 +44,13 @@ export default function HomePage() {
         Показать лоадер
       </button>
       {openLoader && (
-        <Loader openLoader={openLoader} doClose={() => setOpenLoader(false)} />
+        /*<Loader openLoader={openLoader} doClose={() => setOpenLoader(false)} /> */
+        /*<Loader_2 openLoader={openLoader} doClose={() => setOpenLoader(false)} /> */
+        /*<Loader_3 openLoader={openLoader} doClose={() => setOpenLoader(false)} /> */
+        <CustomLoader
+          openLoader={openLoader}
+          doClose={() => setOpenLoader(false)}
+        />
       )}
     </section>
   );

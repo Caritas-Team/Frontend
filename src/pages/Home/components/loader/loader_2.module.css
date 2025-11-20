@@ -1,0 +1,95 @@
+.container {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  z-index: 9999;
+}
+
+.text {
+  font: var(--font-h1);
+  color: var(--text-main-color, #141414);
+  margin-left: 10px;
+}
+
+.loader {
+  height: 40px;
+  aspect-ratio: 1.5;
+  --c: no-repeat linear-gradient(var(--text-for-light-button) 0 0);
+  background: var(--c), var(--c), var(--c), var(--c);
+  background-size: 33.4% 50%;
+  animation: l6 2s infinite linear;
+}
+
+@keyframes l6 {
+  0% {
+    background-position:
+      0 0,
+      50% 0,
+      0 100%,
+      50% 100%;
+  }
+  12.5% {
+    background-position:
+      0 0,
+      100% 0,
+      0 100%,
+      50% 100%;
+  }
+  25% {
+    background-position:
+      0 0,
+      100% 0,
+      0 100%,
+      50% 0;
+  }
+  37.5% {
+    background-position:
+      0 0,
+      100% 0,
+      50% 100%,
+      50% 0;
+  }
+  50% {
+    background-position:
+      0 100%,
+      100% 0,
+      50% 100%,
+      50% 0;
+  }
+  62.5% {
+    background-position:
+      0 100%,
+      100% 0,
+      50% 100%,
+      0 0;
+  }
+  75% {
+    background-position:
+      0 100%,
+      100% 100%,
+      50% 100%,
+      0 0;
+  }
+  87.5% {
+    background-position:
+      0 100%,
+      100% 100%,
+      50% 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      0 100%,
+      50% 100%,
+      50% 0,
+      0 0;
+  }
+}
