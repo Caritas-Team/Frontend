@@ -1,5 +1,4 @@
 .container {
-  background-color: white;
   position: absolute;
   top: 0;
   left: 0;
@@ -11,11 +10,12 @@
   align-items: center;
   gap: 5px;
   z-index: 9999;
+  background-color: transparent;
 }
 
 .text {
   font: var(--font-h1);
-  color: var(--text-main-color, #141414);
+  color: var(--text-for-light-button);
   margin-left: 10px;
 }
 
@@ -24,10 +24,8 @@
   display: inline-block;
   opacity: 0;
   animation: dotsSequence 1.5s steps(3, end) infinite;
-  /* Устанавливаем анимацию */
 }
 
-/* Анимация для последовательного появления точек */
 @keyframes dotsSequence {
   0% {
     opacity: 0;
@@ -46,39 +44,38 @@
   }
 }
 
-/* основной стили для loader */
 .loader {
   display: grid;
   grid-template-columns: repeat(3, 20px);
   grid-template-rows: repeat(3, 20px);
-  gap: 4px;
+  gap: 10px;
   width: max-content;
   height: max-content;
   margin-bottom: 10px;
 }
 
-/* стили для маленьких кубиков */
 .cube {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
   background-color: #3498db; /* цвет */
   animation: pulse 1.4s infinite ease-in-out;
 }
 
-/* анимация мигания */
 @keyframes pulse {
   0%,
   100% {
     opacity: 1;
     transform: scale(1);
+    background-color: #3498db;
   }
   50% {
     opacity: 0.5;
     transform: scale(0.8);
+    background-color: #2ecc71;
   }
 }
 
-/* Можем добавить разные задержки для маленьких кубиков, чтобы создать эффект волн */
 .cube:nth-child(1) {
   animation-delay: 0s;
 }
@@ -105,4 +102,13 @@
 }
 .cube:nth-child(9) {
   animation-delay: 0.8s;
+}
+
+@media screen and (max-width: 833px) {
+  .container {
+    flex-direction: column;
+  }
+  .text {
+    font: var(--font-h1-mobile);
+  }
 }
