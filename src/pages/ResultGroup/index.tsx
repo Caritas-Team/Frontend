@@ -5,6 +5,7 @@ import styles from './ResultGroupPage.module.css';
 import { Header } from './components/header';
 import { LangCommAssessmentGroup } from './components/langCommAssessmentGroup';
 import { CheckSection } from '../Result/components/checkSection';
+import { GroupWordsSection } from './components/groupWordsSection';
 
 type TChartDataItem = {
   name: string;
@@ -59,6 +60,11 @@ export const ResultGroupPage: React.FC = () => {
         initiative2={20}
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
+      <GroupWordsSection
+        newWordsCount={{ now: 48, delta: 21 }}
+        verbalWordsCount={{ now: 49, delta: -21 }}
+        noBaseWordsCount={{ now: 50, delta: 10 }}
+        communicationMethods={['семья', 'муж', 'дочь']}
       />
       <LangCommAssessmentGroup {...mockLineChartData}></LangCommAssessmentGroup>
     </main>
