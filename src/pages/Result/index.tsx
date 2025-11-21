@@ -9,6 +9,7 @@ import type { CommunicationType } from './components/CommunicativesFunctionChart
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
 import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
 import type { Statuses } from './components/ThreeCommunicativeFunction';
+import { WordsSection } from './components/wordsSection';
 import { SocialCircles } from './components/socialCircles';
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
@@ -158,6 +159,12 @@ export const ResultPage: React.FC = () => {
     <main className={styles.main}>
       <Header></Header>
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
+      <WordsSection
+        newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
+        communicationMethods={['семья', 'муж']}
+        quickMessages={['капля', 'дождь']}
+        verbalWordCount={{ now: 48, delta: 21 }}
+      />
       <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
