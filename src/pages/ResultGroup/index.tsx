@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './ResultGroupPage.module.css';
 import { Header } from './components/header';
 import { LangCommAssessmentGroup } from './components/langCommAssessmentGroup';
+import { GroupWordsSection } from './components/groupWordsSection';
 
 type TChartDataItem = {
   name: string;
@@ -48,6 +49,12 @@ export const ResultGroupPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <Header></Header>
+      <GroupWordsSection
+        newWordsCount={{ now: 48, delta: 21 }}
+        verbalWordsCount={{ now: 49, delta: -21 }}
+        noBaseWordsCount={{ now: 50, delta: 10 }}
+        communicationMethods={['семья', 'муж', 'дочь']}
+      />
       <LangCommAssessmentGroup {...mockLineChartData}></LangCommAssessmentGroup>
     </main>
   );
