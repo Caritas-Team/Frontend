@@ -33,7 +33,7 @@ export const CheckSection: React.FC<CheckSectionProps> = ({
   description,
 }) => {
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${styles.noBreak}`}>
       <h2 className={styles.header}>{HEADER_TEXT}</h2>
 
       <div className={styles.container}>
