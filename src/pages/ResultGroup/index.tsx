@@ -60,6 +60,7 @@ export const ResultGroupPage: React.FC = () => {
         initiative2={20}
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
+      />
       <GroupWordsSection
         newWordsCount={{ now: 48, delta: 21 }}
         verbalWordsCount={{ now: 49, delta: -21 }}
