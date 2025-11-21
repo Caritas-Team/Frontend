@@ -19,8 +19,8 @@ export const WordsListBlock: React.FC<WordsListBlockProps> = ({
       <h3 className={styles.title}>{title}</h3>
 
       <div className={styles.wordChips}>
-        {words.map(word => (
-          <span key={word} className={styles.wordChip}>
+        {words.map((word, index) => (
+          <span key={`${word}-${index}`} className={styles.wordChip}>
             {word}
           </span>
         ))}
