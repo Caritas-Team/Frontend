@@ -2,7 +2,7 @@ import { InputFile } from '../InputFile/index';
 import { InputFullName } from '../InputFullName/index';
 import type { PersonFormData } from '../MainBlockForm';
 
-import { useEffect, useRef, useMemo } from 'react';
+import { useMemo } from 'react'; // Убрали useEffect, useRef
 
 import clossButtom from '../../../../../assets/closeButton.svg';
 import styles from '../MainBlockForm.module.css';
@@ -20,10 +20,7 @@ export const PersonForm = ({
   onUpdate,
   formData,
 }: PersonFormProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const buttonCloseRef = useRef<HTMLButtonElement>(null);
-
-  //для выделения полей формы синим когда заполнено все верно
+  // Определяем активна ли форма
   const activForm = useMemo(() => {
     return (
       formData.nameValid &&
@@ -35,14 +32,6 @@ export const PersonForm = ({
     formData.previousFileValid,
     formData.currentFileValid,
   ]);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const method = activForm ? 'add' : 'remove';
-    containerRef.current.classList[method](styles.groupContainerActiv);
-    buttonCloseRef.current?.classList[method](styles.buttonClossFormActiv);
-  }, [activForm]);
 
   const handleNameChange = (isValid: boolean, name?: string) => {
     onUpdate(id, { name, nameValid: isValid });
@@ -62,15 +51,13 @@ export const PersonForm = ({
     onUpdate(id, { currentFileValid: isValid, currentFile });
   };
 
+  const containerClassName = `${styles.formSpeakerCalculatorGroupsContainer} ${activForm ? styles.groupContainerActiv : ''}`;
+  const buttonClassName = `${styles.buttonClossForm} ${activForm ? styles.buttonClossFormActiv : ''}`;
+
   return (
     <div className={styles.speakerCalculatorGroupContainer}>
       {onRemove && (
-        <button
-          ref={buttonCloseRef}
-          className={`${styles.buttonClossForm} ${activForm ? styles.buttonClossFormActiv : ''}`}
-          onClick={onRemove}
-          type="button"
-        >
+        <button className={buttonClassName} onClick={onRemove} type="button">
           <img
             className={styles.buttonClossFormIcon}
             src={clossButtom}
@@ -78,10 +65,7 @@ export const PersonForm = ({
           />
         </button>
       )}
-      <div
-        ref={containerRef}
-        className={styles.formSpeakerCalculatorGroupsContainer}
-      >
+      <div className={containerClassName}>
         <InputFullName
           initialName={formData.name}
           onValidityChange={handleNameChange}
