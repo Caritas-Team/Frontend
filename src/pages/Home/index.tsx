@@ -6,11 +6,23 @@ import { ROUTES } from '../../lib/routes';
 import { DatePicker } from './components/date-picker';
 import { useState } from 'react';
 import { Header } from '../ResultGroup/components/header';
-import { Loader_3 } from './components/loader/';
+import { Loader } from './components/loader/';
+import { useEffect } from 'react';
 
 export default function HomePage() {
   const [formingDate, setFormingDate] = useState<string>('');
+
+  //Добавлено для отображение loader по нажатию кнопки, после проверки удалю
   const [openLoader, setOpenLoader] = useState<boolean>(false);
+  useEffect(() => {
+    if (openLoader) {
+      const timer = setTimeout(() => {
+        console.log('20 seconds passed, closing loader');
+        setOpenLoader(false);
+      }, 20000);
+      return () => clearTimeout(timer);
+    }
+  }, [openLoader, setOpenLoader]);
 
   return (
     <section style={{ padding: '2rem' }}>
@@ -46,15 +58,10 @@ export default function HomePage() {
         <br />
         <br />
         <button type="button" onClick={() => setOpenLoader(true)}>
-          Показать лоадер
+          Показать загрузчик
         </button>
       </div>
-      {openLoader && (
-        <Loader_3
-          openLoader={openLoader}
-          doClose={() => setOpenLoader(false)}
-        />
-      )}
+      {openLoader && <Loader />}
     </section>
   );
 }
