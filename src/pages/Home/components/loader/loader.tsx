@@ -1,3 +1,8 @@
+/* как использовать компонент:
+const [openLoader, setOpenLoader] = useState<boolean>(false);
+...
+{openLoader && <Loader />}
+*/
 import styles from './loader.module.css';
 
 const Loader = () => {
