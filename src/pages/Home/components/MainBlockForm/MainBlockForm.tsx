@@ -94,6 +94,7 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
     console.log(persons);
     // Создаем новый массив
     setPersons([createMainForm()]);
+    setCounterDiscovered(1);
     // Меняем ключ для принудительного пересоздания
     setForm(!form);
   };
