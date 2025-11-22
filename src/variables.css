@@ -17,6 +17,10 @@
   --error: #ea4335;
   --blue-secondary-hover: #7eadfe;
   --blue-tertiary-pressed: #4976c3;
+  --secondary-green-light: #ecffe9;
+  --secondary-green: #54aa47;
+  --red-light: #fef4f3;
+  --red: #d84647;
 
   /* ЦВЕТА ТЕКСТА */
 
@@ -103,6 +107,9 @@
 
   /* цвет четвертой категории данных в круговых диаграммах */
   --chart-circle-fourth-sector-color: var(--yellow, #f8d24e);
+
+  /* цвет осей и линий на графиках */
+  --chart-axis-line-color: var(--gray-2, #bfbfbf);
 
   /* ШРИФТ */
   --main-font-family:
@@ -205,4 +212,7 @@
   --font-subtitle-extra-12: 800 12px/1.25 var(--main-font-family);
   /*  */
   --font-inst-popup: 500 16px/1.2 var(--main-font-family);
+
+  /* */
+  --font-tag-16-caps: 700 16px/1.2 var(--main-font-family);
 }
