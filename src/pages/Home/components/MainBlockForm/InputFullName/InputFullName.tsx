@@ -2,7 +2,8 @@ import { useState, useId } from 'react';
 import reportError from '../../../../../assets/report_error.svg';
 import styles from '../MainBlockForm.module.css';
 
-const FULL_NAME_REGEX = /^[А-ЯЁ][а-яё-]+\s+[А-ЯЁ][а-яё-]+$/;
+const NAME_REGEX = /^[А-ЯЁа-яё\s-']+$/;
+const MAX_NAME_LENGTH = 100;
 
 type InputFullNameProps = {
   initialName?: string;
@@ -14,26 +15,48 @@ export const InputFullName = ({
   onValidityChange,
 }: InputFullNameProps) => {
   const uniqueId = useId();
+  const [nameError, setNameError] = useState<string>('');
+  const [fullName, setFullName] = useState<string>(initialName);
 
-  const [nameError, setNameError] = useState<string>(initialName);
-  const [fullName, setFullName] = useState<string>('');
+  // Функция для очистки пробелов
+  const cleanSpaces = (text: string): string => {
+    return text
+      .trim()
+      .split(/\s+/)
+      .filter(word => word.length > 0)
+      .join(' ');
+  };
 
   const validateFullName = (value: string): string | undefined => {
-    if (!value.trim()) {
+    const cleanedValue = cleanSpaces(value);
+    if (!cleanedValue) {
       onValidityChange(false);
       return 'Фамилия и имя обязательны для заполнения';
     }
 
-    if (value !== value.trim()) {
+    if (value.length > MAX_NAME_LENGTH) {
       onValidityChange(false);
-      return 'Уберите лишние пробелы в начале или в конце';
+      return `Превышена максимальная длина ${MAX_NAME_LENGTH} символов`;
     }
 
-    if (!FULL_NAME_REGEX.test(value.trim())) {
+    if (!NAME_REGEX.test(cleanedValue)) {
       onValidityChange(false);
-      return 'Введите фамилию и имя через пробел (только кириллица, первые буквы заглавные)';
+      return 'Можно использовать только кириллицу, пробелы, дефисы и апострофы';
     }
-    onValidityChange(true, value);
+
+    const words = cleanedValue.split(' ').filter(word => word.length > 0);
+    if (words.length < 2) {
+      onValidityChange(false);
+      return 'Введите и фамилию, и имя';
+    }
+
+    const validWords = words.filter(word => word.length >= 2);
+    if (validWords.length < 2) {
+      onValidityChange(false);
+      return 'Введите и фамилию, и имя';
+    }
+
+    onValidityChange(true, cleanedValue);
     return undefined;
   };
 
@@ -42,6 +65,15 @@ export const InputFullName = ({
     setFullName(value);
 
     const error = validateFullName(value);
+    setNameError(error || '');
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    // При потере фокуса очищаем пробелы и обновляем поле
+    const cleanedValue = cleanSpaces(e.target.value);
+    setFullName(cleanedValue);
+
+    const error = validateFullName(cleanedValue);
     setNameError(error || '');
   };
 
@@ -66,7 +98,8 @@ export const InputFullName = ({
         placeholder="Петров Иван"
         value={fullName}
         onChange={handleFullNameChange}
-        pattern="^[А-ЯЁ][а-яё]+\s[А-ЯЁ][а-яё]+$"
+        onBlur={handleBlur}
+        maxLength={MAX_NAME_LENGTH}
         required
         aria-describedby={`${uniqueId}-error`}
       />
@@ -79,7 +112,7 @@ export const InputFullName = ({
           <img
             className={styles.inputIconError}
             src={reportError}
-            alt="значек ошибки"
+            alt="значок ошибки"
             width={'24'}
           />
           <p>{nameError}</p>
