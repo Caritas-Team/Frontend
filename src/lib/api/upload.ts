@@ -17,9 +17,5 @@ export const uploadFiles = (people: Person[]) => {
     formData.append(`people[${index}][date]`, person.date);
   });
 
-  return apiClient.post(API_ENDPOINTS.upload, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  });
+  return apiClient.post(API_ENDPOINTS.upload, formData);
 };
