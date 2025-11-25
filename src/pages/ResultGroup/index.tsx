@@ -115,6 +115,13 @@ export const ResultGroupPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <Header></Header>
+      <GroupDescription
+        data={mockGroupData}
+        groupName={groupName}
+        onChangeGroupName={setGroupName}
+        photoUrl={photoUrl}
+        onChangePhotoUrl={setPhotoUrl}
+      />
       <LineChartGroup
         className={styles.language_section}
         title={'Языковая и коммуникативная оценка'}
@@ -131,14 +138,9 @@ export const ResultGroupPage: React.FC = () => {
         title={'Коммуникативные функции'}
         {...mockLineChartData_communFunctions}
       ></LineChartGroup>
-      <GroupDescription
-        data={mockGroupData}
-        groupName={groupName}
-        onChangeGroupName={setGroupName}
-        photoUrl={photoUrl}
-        onChangePhotoUrl={setPhotoUrl}
-      />
-      <LangCommAssessmentGroup {...mockLineChartData}></LangCommAssessmentGroup>
+      <LangCommAssessmentGroup
+        {...mockLineChartData_langSkills}
+      ></LangCommAssessmentGroup>
     </main>
   );
 };
