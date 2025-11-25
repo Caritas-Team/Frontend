@@ -20,7 +20,7 @@
 }
 
 .three_functions {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .words_block {
@@ -28,6 +28,10 @@
 }
 
 .social_circles {
+  margin-top: 41px;
+}
+
+.final_table {
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -36,6 +40,7 @@
 @media (834px <= width < 1200px) {
   .main {
     padding-inline: 34px;
+    padding-top: 15px;
   }
 
   .title_section {
@@ -52,21 +57,22 @@
   }
 
   .check_section {
-    margin-top: 8px;
+    margin-top: 6px;
   }
 
   .three_functions {
-    margin-top: 0;
-    height: 1010px;
-    background-color: aquamarine;
-    border-radius: 20px;
-  }
-
-  .words_block {
     margin-top: 10px;
   }
 
+  .words_block {
+    margin-top: 3px;
+  }
+
   .social_circles {
+    margin-top: 37px;
+  }
+
+  .final_table {
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -76,37 +82,39 @@
 @media (width < 834px) {
   .main {
     padding-inline: 20px;
+    padding-top: 32px;
   }
 
   .title_section {
-    margin-top: 16px;
+    margin-top: 6px;
   }
 
   .card_section {
-    margin-top: 35px;
+    margin-top: 9px;
   }
 
   .language_section {
-    margin-top: 40px;
-    margin-bottom: 28px;
+    margin-top: 36px;
+    margin-bottom: 37px;
   }
 
   .check_section {
-    margin-top: 8px;
+    margin-top: 20px;
   }
 
   .three_functions {
-    margin-top: 0;
-    height: 1010px;
-    background-color: aquamarine;
-    border-radius: 20px;
+    margin-top: 40px;
   }
 
   .words_block {
-    margin-top: 10px;
+    margin-top: 18px;
   }
 
   .social_circles {
+    margin-top: 54px;
+  }
+
+  .final_table {
     margin-top: 10px;
     margin-bottom: 10px;
   }

@@ -6,25 +6,15 @@ import { CardSection } from './components/cardSection';
 import { LangCommunicAssessment } from './components/langCommunicAssessment';
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
 import { CheckSection } from './components/checkSection';
-
-import type { TChartData } from './components/langCommunicAssessment/types';
-import type { CommunicationType } from './components/CommunicativesFunctionChart';
 import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
-import type { Statuses } from './components/ThreeCommunicativeFunction';
 import { WordsSection } from './components/wordsSection';
 import { SocialCircles } from './components/socialCircles';
-/* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
-type TCardSection = {
-  className?: string;
-  personName?: string;
-  personId?: string;
-  dateOfBirth?: string;
-  diagnosis?: string;
-  whereLives?: string;
-  socialFeatures?: string;
-  photo?: string;
-};
+import type { TCardSection } from './components/cardSection/CardSection';
+import type { TChartData } from './components/langCommunicAssessment/types';
+import type { CommunicationType } from './components/CommunicativesFunctionChart';
+import type { Statuses } from './components/ThreeCommunicativeFunction';
 
+// моковые данные для секции с информацией об обследуемом
 const mockPersonData: TCardSection = {
   personName: 'Иванов Иван Иванович',
   personId: 'ID II-1210C',
@@ -33,18 +23,12 @@ const mockPersonData: TCardSection = {
   whereLives: 'В семье',
 };
 
-const mockSocialCirclesData = {
-  family: '+2 чел',
-  friends: '+2 чел',
-  specialists: '+2 чел',
-  familiar: '+2 чел',
-};
-
+// моковые данные для секции Языковая и коммуникативная оценка
 const chartInfo: TChartData = {
   data: [
     {
       name: 'Доинтенциальная коммуникация',
-      prevValue: '90',
+      prevValue: '55',
       currentValue: '70',
     },
     {
@@ -54,7 +38,7 @@ const chartInfo: TChartData = {
     },
     {
       name: 'Голофраза',
-      prevValue: '5',
+      prevValue: '80',
       currentValue: '90',
     },
     {
@@ -88,10 +72,10 @@ const chartInfo: TChartData = {
   prevDate: '2025-04-15',
   currentDate: '2025-05-01',
 };
-// Даты
+
+// моковые данные для секции Коммуникативные функции
 const prevDate = '2025-04-15';
 const currentDate = '2025-05-01';
-// Данные для предыдущего периода (01.05.2025)
 const dataPrevData: CommunicationType = {
   ExchangeOfInformation: {
     name: 'Обмен информацией',
@@ -111,7 +95,6 @@ const dataPrevData: CommunicationType = {
   },
 };
 
-// Данные для текущего периода (01.05.2025)
 const dataCurrentData: CommunicationType = {
   ExchangeOfInformation: {
     name: 'Обмен информацией',
@@ -131,6 +114,7 @@ const dataCurrentData: CommunicationType = {
   },
 };
 
+// моковые данные для секции из трех коммуникативных функций
 const communicativeData: {
   gettingDesired: Statuses;
   socialInteraction: Statuses;
@@ -156,6 +140,14 @@ const communicativeData: {
   },
 };
 
+/* моковые данные для секции Круги общения */
+const mockSocialCirclesData = {
+  family: '+2 чел',
+  friends: '+2 чел',
+  specialists: '+2 чел',
+  familiar: '+2 чел',
+};
+
 export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
@@ -169,14 +161,6 @@ export const ResultPage: React.FC = () => {
         className={styles.language_section}
         {...chartInfo}
       ></LangCommunicAssessment>
-      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
-      <WordsSection
-        newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
-        communicationMethods={['семья', 'муж']}
-        quickMessages={['капля', 'дождь']}
-        verbalWordCount={{ now: 48, delta: 21 }}
-      />
-      <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
         currentDate={currentDate}
@@ -193,29 +177,27 @@ export const ResultPage: React.FC = () => {
           formed2={90}
           initiative2={20}
           frequency2={55}
-          description="Прилетит, вдруг, волшебник"
+          description="-"
         />
       </div>
-      <div className={styles.three_functions}></div>
-      <div className={styles.words_block}></div>
-      <div className={styles.social_circles}></div>
-      <CheckSection
-        date1="15 Апр. 2025"
-        formed1={20}
-        initiative1={35}
-        frequency1={50}
-        date2="1 Мая 2025"
-        formed2={90}
-        initiative2={20}
-        frequency2={55}
-        description="Прилетит, вдруг, волшебник"
-      />
-      <ThreeCommunicativeFunction
-        gettingDesired={communicativeData.gettingDesired}
-        socialInteraction={communicativeData.socialInteraction}
-        informationExchange={communicativeData.informationExchange}
-      />
-      <SocialCircles {...mockSocialCirclesData} />
+      <div className={styles.three_functions}>
+        <ThreeCommunicativeFunction
+          gettingDesired={communicativeData.gettingDesired}
+          socialInteraction={communicativeData.socialInteraction}
+          informationExchange={communicativeData.informationExchange}
+        />
+      </div>
+      <div className={styles.words_block}>
+        <WordsSection
+          newWords={['сказка', 'животное']}
+          communicationMethods={['семья', 'муж']}
+          quickMessages={['капля', 'дождь']}
+          verbalWordCount={{ now: 48, delta: 21 }}
+        />
+      </div>
+      <div className={styles.social_circles}>
+        <SocialCircles {...mockSocialCirclesData} />
+      </div>
     </main>
   );
 };
