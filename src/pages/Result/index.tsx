@@ -138,6 +138,8 @@ const finalTableData: FinalTableProps = {
   communicativeFunctionsProgress: '15%',
   vocabularyLevel: '30',
   spokenWordsCount: '4',
+};
+
 const communicativeData: {
   gettingDesired: Statuses;
   socialInteraction: Statuses;
