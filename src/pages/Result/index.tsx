@@ -9,6 +9,10 @@ import { CheckSection } from './components/checkSection';
 
 import type { TChartData } from './components/langCommunicAssessment/types';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
+import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
+import type { Statuses } from './components/ThreeCommunicativeFunction';
+import { WordsSection } from './components/wordsSection';
+import { SocialCircles } from './components/socialCircles';
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
@@ -27,6 +31,13 @@ const mockPersonData: TCardSection = {
   dateOfBirth: '2012-10-21',
   diagnosis: 'Нарушение речи',
   whereLives: 'В семье',
+};
+
+const mockSocialCirclesData = {
+  family: '+2 чел',
+  friends: '+2 чел',
+  specialists: '+2 чел',
+  familiar: '+2 чел',
 };
 
 const chartInfo: TChartData = {
@@ -120,6 +131,31 @@ const dataCurrentData: CommunicationType = {
   },
 };
 
+const communicativeData: {
+  gettingDesired: Statuses;
+  socialInteraction: Statuses;
+  informationExchange: Statuses;
+} = {
+  gettingDesired: {
+    Выбирает: 'уже не используется',
+    'Просит ещё действие или предмет': 'уже не используется',
+    'Просит действие': 'уже не используется',
+    'Просит предмет (объект)': 'уже не используется',
+  },
+  socialInteraction: {
+    'Привлекает внимание': 'превзошел',
+    'Просит о помощи': 'превзошел',
+    'Здоровается, прощается, использует вежливые формы обращения': 'превзошел',
+    'Выражает эмоции, чувства, состояние': 'превзошел',
+  },
+  informationExchange: {
+    'Задаёт вопросы': 'недоступно',
+    'Комментирует и выражает мнение': 'недоступно',
+    'Объясняет что-то или описывает': 'недоступно',
+    'Рассказывает (что было, что будет, что происходит сейчас)': 'недоступно',
+  },
+};
+
 export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
@@ -133,6 +169,14 @@ export const ResultPage: React.FC = () => {
         className={styles.language_section}
         {...chartInfo}
       ></LangCommunicAssessment>
+      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
+      <WordsSection
+        newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
+        communicationMethods={['семья', 'муж']}
+        quickMessages={['капля', 'дождь']}
+        verbalWordCount={{ now: 48, delta: 21 }}
+      />
+      <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
         currentDate={currentDate}
@@ -155,6 +199,23 @@ export const ResultPage: React.FC = () => {
       <div className={styles.three_functions}></div>
       <div className={styles.words_block}></div>
       <div className={styles.social_circles}></div>
+      <CheckSection
+        date1="15 Апр. 2025"
+        formed1={20}
+        initiative1={35}
+        frequency1={50}
+        date2="1 Мая 2025"
+        formed2={90}
+        initiative2={20}
+        frequency2={55}
+        description="Прилетит, вдруг, волшебник"
+      />
+      <ThreeCommunicativeFunction
+        gettingDesired={communicativeData.gettingDesired}
+        socialInteraction={communicativeData.socialInteraction}
+        informationExchange={communicativeData.informationExchange}
+      />
+      <SocialCircles {...mockSocialCirclesData} />
     </main>
   );
 };
