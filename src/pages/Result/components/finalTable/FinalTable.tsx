@@ -16,6 +16,7 @@ export const FinalTable: React.FC<FinalTableProps> = ({
   vocabularyLevel,
   spokenWordsCount,
 }) => {
+  //TODO: const showWarning = () => {} для отображения придупреждения когда нужно;
   return (
     <section className={styles.finalTable}>
       <h3 className={styles.caption}>Итоговая таблица</h3>
@@ -53,6 +54,7 @@ export const FinalTable: React.FC<FinalTableProps> = ({
             </td>
             <td className={styles.valueCell}>
               <div className={styles.boxDelta}>
+                <span className={styles.wrapperWarning}></span>
                 <Delta text={communicativeFunctionsProgress} up={false} />
               </div>
             </td>

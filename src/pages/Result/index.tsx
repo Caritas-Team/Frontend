@@ -194,6 +194,12 @@ export const ResultPage: React.FC = () => {
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
       />
+      <ThreeCommunicativeFunction
+        gettingDesired={communicativeData.gettingDesired}
+        socialInteraction={communicativeData.socialInteraction}
+        informationExchange={communicativeData.informationExchange}
+      />
+      <SocialCircles {...mockSocialCirclesData} />
       <FinalTable
         languageDevelopmentLevels={finalTableData.languageDevelopmentLevels}
         communicationInitiative={finalTableData.communicationInitiative}
@@ -203,12 +209,6 @@ export const ResultPage: React.FC = () => {
         vocabularyLevel={finalTableData.vocabularyLevel}
         spokenWordsCount={finalTableData.spokenWordsCount}
       />
-      <ThreeCommunicativeFunction
-        gettingDesired={communicativeData.gettingDesired}
-        socialInteraction={communicativeData.socialInteraction}
-        informationExchange={communicativeData.informationExchange}
-      />
-      <SocialCircles {...mockSocialCirclesData} />
     </main>
   );
 };
