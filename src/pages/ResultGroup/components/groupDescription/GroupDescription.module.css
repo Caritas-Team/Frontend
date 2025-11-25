@@ -22,6 +22,7 @@
 }
 
 .textInput {
+  position: relative;
   width: 282px;
   display: flex;
   justify-content: start;
@@ -33,21 +34,24 @@
   height: 48px;
   border-radius: 20px;
   border: none;
-  padding: 12px;
+  padding: 12px 38px 12px 12px;
   font: var(--font-field-light-18);
   background-color: var(--background-input-color, #e7f6ff);
 }
 
-.textInput::after {
-  content: '';
-  width: 24px;
-  height: 24px;
+.inputButton {
   position: absolute;
   top: 12px;
   right: 12px;
   left: auto;
-  background-image: url('./assets/edit.svg');
-  background-repeat: no-repeat;
+  background: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.inputButton:focus {
+  border: none;
 }
 
 .table {
@@ -168,7 +172,11 @@
     width: 248px;
   }
 
-  .textInput::after {
+  .textInput input {
+    padding: 12px;
+  }
+
+  .inputButton {
     display: none;
   }
 

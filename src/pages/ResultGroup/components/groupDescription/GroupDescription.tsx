@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './GroupDescription.module.css';
 import photoImgSrc from './assets/photo.svg';
+import editImgSrc from './assets/edit.svg';
+import clearImgSrc from './assets/clear.svg';
 import reportImgSrc from '../../../../assets/report.svg';
 import { MAX_FILE_SIZE } from './constants';
 
@@ -26,9 +28,15 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
   onChangeGroupName,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const groupInputRef = useRef<HTMLInputElement>(null);
   const currentUrlRef = useRef<string | null>(null);
 
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [isGroupNameFilled, setIsGroupNameFilled] = useState(!!groupName);
+
+  useEffect(() => {
+    setIsGroupNameFilled(!!groupName);
+  }, [groupName]);
 
   useEffect(() => {
     return () => {
@@ -79,17 +87,43 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
     onChangeGroupName(e.target.value);
   };
 
+  const handleClearGroupName = () => {
+    onChangeGroupName('');
+    setIsGroupNameFilled(false);
+    groupInputRef.current?.focus();
+  };
+
   return (
     <section className={styles.section}>
       <div className={styles.content}>
         <div className={styles.data}>
           <div className={styles.textInput}>
             <input
+              ref={groupInputRef}
               type="text"
+              maxLength={150}
               value={groupName}
               placeholder="Введите название группы"
               onChange={handleChangeGroupName}
             />
+            {isGroupNameFilled ? (
+              <button
+                type="button"
+                className={styles.inputButton}
+                onClick={handleClearGroupName}
+                aria-label="Очистить название группы"
+              >
+                <img src={clearImgSrc} alt="Значок крестик" />
+              </button>
+            ) : (
+              <button
+                type="button"
+                className={styles.inputButton}
+                aria-label="Ввести название группы"
+              >
+                <img src={editImgSrc} alt="Значок ручки" />
+              </button>
+            )}
           </div>
 
           <div className={styles.table}>
