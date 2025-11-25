@@ -1,7 +1,7 @@
 .title {
   font: var(--font-h2);
   text-align: start;
-  margin: 26px 0;
+  margin: 26px 0 21px;
 }
 
 .card__content {
@@ -91,6 +91,10 @@
 }
 
 @media (834px <= width < 1200px) {
+  .title {
+    margin-bottom: 35px;
+  }
+
   .card__block {
     width: 128.5px;
     gap: 20px;
