@@ -78,6 +78,7 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
           accept=".pdf"
           required
           onChange={handleFileChange}
+          aria-describedby={`${uniqueId}-error`}
         />
         <label
           htmlFor={uniqueId}
@@ -93,7 +94,7 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
       {fileError && (
         <span
           className={styles.inputTextError}
-          id={uniqueId}
+          id={`${uniqueId}-error`}
           aria-live="polite"
         >
           <img

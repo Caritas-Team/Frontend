@@ -117,14 +117,17 @@
 .fieldText {
   width: 100%;
   font: var(--font-field-light-18);
-  color: var(--gray-3);
+  color: var(--black);
   height: 48px;
+}
+
+.inputFullName::placeholder {
+  color: var(--black);
+  opacity: 1;
 }
 
 .inputFileInfo {
   font: var(--font-field-light-18);
-  color: var(--gray-3);
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -133,6 +136,7 @@
 .inputTextWithMark {
   display: flex;
 }
+
 .fieldTextName {
   padding-left: 8px;
 }
