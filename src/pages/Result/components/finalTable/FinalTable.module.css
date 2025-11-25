@@ -10,8 +10,6 @@
 .table {
   width: 100%;
   table-layout: fixed;
-  /*если border-collapse: collapse; то радиус не работает */
-  border-collapse: separate;
   border-spacing: 0;
 }
 
