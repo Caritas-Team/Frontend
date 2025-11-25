@@ -1,8 +1,25 @@
 /* как использовать компонент:
+import { Loader } from './components/loader/';
+import styles from './home.module.css';
+
 const [openLoader, setOpenLoader] = useState<boolean>(false);
 ...
-{openLoader && <Loader />}
+return (
+    <section style={{ padding: '2rem' }}>
+      <div
+        className={
+          openLoader
+            ? `${styles.pageContent} ${styles.pageContentWithLoader}`
+            : styles.pageContent
+        }
+      >
+        ... секция с компонентами на странице
+      </div>
+      {openLoader && <Loader />}
+    </section>
+  );
 */
+
 import styles from './loader.module.css';
 
 const Loader = () => {
