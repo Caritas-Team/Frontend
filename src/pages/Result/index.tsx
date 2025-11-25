@@ -10,6 +10,10 @@ import { CommunicativesFunctionChart } from './components/CommunicativesFunction
 import { FinalTable } from './components/finalTable';
 import type { FinalTableProps } from './components/finalTable/FinalTable';
 
+import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
+import type { Statuses } from './components/ThreeCommunicativeFunction';
+import { WordsSection } from './components/wordsSection';
+import { SocialCircles } from './components/socialCircles';
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
@@ -28,6 +32,13 @@ const mockPersonData: TCardSection = {
   dateOfBirth: '2012-10-21',
   diagnosis: 'Нарушение речи',
   whereLives: 'В семье',
+};
+
+const mockSocialCirclesData = {
+  family: '+2 чел',
+  friends: '+2 чел',
+  specialists: '+2 чел',
+  familiar: '+2 чел',
 };
 
 const chartInfo: TChartData = {
@@ -127,6 +138,29 @@ const finalTableData: FinalTableProps = {
   communicativeFunctionsProgress: '15%',
   vocabularyLevel: '30',
   spokenWordsCount: '4',
+const communicativeData: {
+  gettingDesired: Statuses;
+  socialInteraction: Statuses;
+  informationExchange: Statuses;
+} = {
+  gettingDesired: {
+    Выбирает: 'уже не используется',
+    'Просит ещё действие или предмет': 'уже не используется',
+    'Просит действие': 'уже не используется',
+    'Просит предмет (объект)': 'уже не используется',
+  },
+  socialInteraction: {
+    'Привлекает внимание': 'превзошел',
+    'Просит о помощи': 'превзошел',
+    'Здоровается, прощается, использует вежливые формы обращения': 'превзошел',
+    'Выражает эмоции, чувства, состояние': 'превзошел',
+  },
+  informationExchange: {
+    'Задаёт вопросы': 'недоступно',
+    'Комментирует и выражает мнение': 'недоступно',
+    'Объясняет что-то или описывает': 'недоступно',
+    'Рассказывает (что было, что будет, что происходит сейчас)': 'недоступно',
+  },
 };
 
 export const ResultPage: React.FC = () => {
@@ -134,6 +168,12 @@ export const ResultPage: React.FC = () => {
     <main className={styles.main}>
       <Header></Header>
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
+      <WordsSection
+        newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
+        communicationMethods={['семья', 'муж']}
+        quickMessages={['капля', 'дождь']}
+        verbalWordCount={{ now: 48, delta: 21 }}
+      />
       <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
@@ -161,6 +201,12 @@ export const ResultPage: React.FC = () => {
         vocabularyLevel={finalTableData.vocabularyLevel}
         spokenWordsCount={finalTableData.spokenWordsCount}
       />
+      <ThreeCommunicativeFunction
+        gettingDesired={communicativeData.gettingDesired}
+        socialInteraction={communicativeData.socialInteraction}
+        informationExchange={communicativeData.informationExchange}
+      />
+      <SocialCircles {...mockSocialCirclesData} />
     </main>
   );
 };
