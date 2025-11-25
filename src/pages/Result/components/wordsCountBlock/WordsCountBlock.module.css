@@ -4,7 +4,7 @@
   overflow-wrap: break-word;
   word-break: break-word;
   border-radius: 20px;
-  padding: 16px 16px;
+  padding: 19px 16px 16px;
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -51,13 +51,14 @@
 /* мобильный */
 @media (width < 834px) {
   .title {
-    font: var(--font-h3-mobile);
+    font: var(--font-h2-mobile);
   }
   .info {
     font: var(--font-h1-mobile);
   }
   .block {
-    padding: 20px;
+    padding: 16px 0 16px 16px;
+    gap: 21px;
   }
   .lastResultText {
     font: var(--font-body-14, 400 14px/1 var(--main-font-family));
