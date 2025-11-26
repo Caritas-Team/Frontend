@@ -26,7 +26,6 @@
   width: 282px;
   display: flex;
   justify-content: start;
-  position: relative;
 }
 
 .textInput input {
