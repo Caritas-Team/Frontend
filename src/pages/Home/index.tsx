@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../../lib/routes';
 import { DatePicker } from './components/date-picker';
 import { useState } from 'react';
-import { Header } from '../ResultGroup/components/header';
+import { Header } from '@ui/header';
 
 export default function HomePage() {
   const [formingDate, setFormingDate] = useState<string>('');

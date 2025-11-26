@@ -2,8 +2,8 @@
 
 import React from 'react';
 import styles from './WordsSection.module.css';
-import { WordsListBlock } from '../wordsListBlock/WordsListBlock';
-import { WordsCountBlock } from '../wordsCountBlock/WordsCountBlock';
+import { WordsListBlock } from '@ui/wordsListBlock';
+import { WordsCountBlock } from '@ui/wordsCountBlock';
 
 type WordsSectionProps = {
   newWords: string[];

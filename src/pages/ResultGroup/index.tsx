@@ -2,8 +2,10 @@
 
 import React from 'react';
 import styles from './ResultGroupPage.module.css';
-import { Header } from './components/header';
+import { Header } from '@ui/header';
 import { LineChartGroup } from './components/lineChart';
+import { CheckSection } from '@ui/checkSection';
+import { GroupWordsSection } from './components/groupWordsSection';
 
 type TChartDataItem = {
   name: string;
@@ -118,6 +120,24 @@ export const ResultGroupPage: React.FC = () => {
         title={'Коммуникативные функции'}
         {...mockLineChartData_communFunctions}
       ></LineChartGroup>
+
+      <CheckSection
+        date1="15 Апр. 2025"
+        formed1={20}
+        initiative1={35}
+        frequency1={50}
+        date2="1 Мая 2025"
+        formed2={90}
+        initiative2={20}
+        frequency2={55}
+        description="Прилетит, вдруг, волшебник"
+      />
+      <GroupWordsSection
+        newWordsCount={{ now: 48, delta: 21 }}
+        verbalWordsCount={{ now: 49, delta: -21 }}
+        noBaseWordsCount={{ now: 50, delta: 10 }}
+        communicationMethods={['семья', 'муж', 'дочь']}
+      />
     </main>
   );
 };

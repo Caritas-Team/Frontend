@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './Header.module.css';
 import { Logo } from '@ui/logo';
-import { Button } from '../../../Result/components/button';
+import { Button } from '@ui/button';
 import PrintIcon from '@/assets/icon-print.svg';
 import { Link } from 'react-router-dom';
 

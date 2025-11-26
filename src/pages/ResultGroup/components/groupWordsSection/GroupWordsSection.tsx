@@ -2,8 +2,8 @@
 
 import React from 'react';
 import styles from './GroupWordsSection.module.css';
-import { WordsListBlock } from '@/pages/Result/components/wordsListBlock';
-import { WordsCountBlock } from '@/pages/Result/components/wordsCountBlock';
+import { WordsListBlock } from '@ui/wordsListBlock';
+import { WordsCountBlock } from '@ui/wordsCountBlock';
 
 type GroupWordsSectionProps = {
   newWordsCount: {

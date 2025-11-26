@@ -2,8 +2,8 @@
 
 import React from 'react';
 import styles from './CheckSection.module.css';
-import { Gauge } from '../gauge/Gauge';
-import { LegendItem } from '../legendItem/LegendItem';
+import { Gauge } from '../../pages/Result/components/gauge/Gauge';
+import { LegendItem } from '../../pages/Result/components/legendItem/LegendItem';
 
 const HEADER_TEXT = 'Коммуникативная функция «контроль»';
 const TITLE_TEXT = 'Отказывается, отклоняет';
