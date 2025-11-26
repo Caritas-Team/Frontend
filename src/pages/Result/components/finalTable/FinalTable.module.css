@@ -1,58 +1,11 @@
 .finalTable {
   width: 100%;
   background-color: var(--blue-light);
-  border-radius: 20px;
   padding: 20px 46px 57px 16px;
+  border-radius: 20px;
   margin: 0 1px;
   /* отступ от секции "Круги общения" */
   margin-top: 40px;
-}
-
-.table {
-  width: 100%;
-  table-layout: fixed;
-  border-spacing: 0;
-}
-
-.table th,
-.table td {
-  /* 0.5px тк внутриние бордер ячее соедянятся = 1px*/
-  border: 0.5px solid black;
-  padding: 9px 11px 10px 11px;
-}
-
-/* 1px для внешних сторон ячее */
-tbody tr:first-child td:first-child {
-  border-left: 1px solid black;
-}
-
-tbody tr td:nth-child(2n + 1) {
-  border-left: 1px solid black;
-}
-
-tbody tr td:nth-child(2n) {
-  padding: 7px 11px 8px 11px;
-  border-right: 1px solid black;
-}
-
-/* радиусы углов таблици */
-thead tr:first-child td:first-child {
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-top-left-radius: 4px;
-}
-thead tr:first-child td:last-child {
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-top-right-radius: 4px;
-}
-tbody tr:last-child td:first-child {
-  border-bottom: 1px solid black;
-  border-bottom-left-radius: 4px;
-}
-tbody tr:last-child td:last-child {
-  border-bottom: 1px solid black;
-  border-bottom-right-radius: 4px;
 }
 
 .caption {
@@ -64,21 +17,57 @@ tbody tr:last-child td:last-child {
   line-height: 100%;
 }
 
-.headerCell {
-  font: var(--font-button-semi-20);
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(auto, 44px);
+  border: 1px solid var(--black);
+  border-radius: 4px;
 }
-.headerCellParameters {
+
+/* Таблица */
+/* Header */
+.gridHeader {
+  padding: 10px 12px;
+  font: var(--font-button-semi-20);
+  border-bottom: 1px solid var(--black);
+}
+
+.gridHeaderParameters {
   text-align: start;
 }
 
-.boxDelta {
+.gridHeaderValue {
+  border-left: 1px solid var(--black);
+}
+
+/* Строки */
+.gridParameter {
+  padding: 10px 12px;
+  text-align: start;
+  font: var(--font-body-12);
+  border-bottom: 1px solid var(--black);
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  max-width: 68px;
-  width: auto;
-  padding: 2px 10px;
+}
+
+.gridValue {
+  padding: 10px 12px;
+  font: var(--font-chart-reg-15);
+  border-bottom: 1px solid var(--black);
+  border-left: 1px solid var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gridContainer > *:nth-last-child(2),
+.gridContainer > *:nth-last-child(1) {
+  border-bottom: none;
+}
+
+.boxDelta {
+  padding: 2px 8px;
   position: relative;
 }
 
@@ -94,19 +83,11 @@ tbody tr:last-child td:last-child {
   height: 100;
 }
 
-.parameterCell {
-  text-align: start;
-  font: var(--font-body-12);
-}
-.valueCell {
-  font: var(--font-chart-reg-15);
-  line-height: 24px;
-  letter-spacing: 0px;
-}
-
 @media (834px <= width < 1200px) {
   .finalTable {
     margin: 0px;
+    /* отступ от секции "Круги общения" */
+    margin-top: 40px;
     padding: 20px 16px 18px 16px;
   }
   .caption {
@@ -117,7 +98,6 @@ tbody tr:last-child td:last-child {
 
 @media (width < 400px) {
   .finalTable {
-    margin: 0px;
     padding: 17px 16px 18px 16px;
   }
   .caption {
@@ -126,16 +106,11 @@ tbody tr:last-child td:last-child {
     margin-bottom: 24px;
   }
 
-  .header td {
-    padding: 8px 11px 11px 11px;
+  .gridContainer {
+    grid-template-rows: 44px 52px 44px 68px 44px 44px;
   }
 
-  .body td {
-    padding: 8px 11px 9px 11px;
+  .gridParameter {
     line-height: 1.4;
-  }
-
-  .body tr {
-    height: 44px;
   }
 }
