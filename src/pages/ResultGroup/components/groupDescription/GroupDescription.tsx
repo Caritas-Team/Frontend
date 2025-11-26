@@ -93,6 +93,10 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
     groupInputRef.current?.focus();
   };
 
+  const handleFocusInput = () => {
+    groupInputRef.current?.focus();
+  };
+
   return (
     <section className={styles.section}>
       <div className={styles.content}>
@@ -120,6 +124,7 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
                 type="button"
                 className={styles.inputButton}
                 aria-label="Ввести название группы"
+                onClick={handleFocusInput}
               >
                 <img src={editImgSrc} alt="Значок ручки" />
               </button>
