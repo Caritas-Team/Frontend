@@ -114,16 +114,16 @@
   width: 100%;
 }
 
-.inputFullName::placeholder {
-  color: var(--gray-3);
-  opacity: 1;
-}
-
 .fieldText {
   width: 100%;
   font: var(--font-field-light-18);
   color: var(--black);
   height: 48px;
+}
+
+.inputFullName::placeholder {
+  color: var(--gray-3);
+  opacity: 1;
 }
 
 .inputFileInfo {
