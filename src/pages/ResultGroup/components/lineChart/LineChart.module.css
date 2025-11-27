@@ -1,4 +1,5 @@
 .container {
+  max-width: 1136px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -118,6 +119,7 @@
   align-content: flex-start;
   position: absolute;
   width: 100%;
+  max-width: 1136px;
   top: 318px;
 }
 
@@ -275,5 +277,32 @@
     display: flex;
     font: var(--font-body-12);
     color: var(--text-supplementary-color, #37474f);
+  }
+}
+
+@media print {
+  .container {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    break-before: auto;
+    break-after: auto;
+  }
+
+  .chart_container :global(.recharts-surface) {
+    width: 1000px !important;
+  }
+
+  .ticks {
+    width: 600px;
+    left: 220px;
+  }
+
+  .legend_wrapper {
+    left: 425px;
+  }
+
+  .legend_mark {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
