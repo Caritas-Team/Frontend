@@ -64,18 +64,14 @@
   stroke-dasharray: 8 8;
 }
 
-.prev circle {
-  fill: var(--chart-previous-period-data-color, #8550f6);
-  stroke: var(--chart-previous-period-data-color, #8550f6);
-}
-
-.current path,
-.current circle {
+.current path {
   stroke: var(--chart-current-data-color, #67f4b1);
 }
 
-.current circle {
-  fill: var(--chart-current-data-color, #67f4b1);
+.legend_layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .legend_wrapper {
