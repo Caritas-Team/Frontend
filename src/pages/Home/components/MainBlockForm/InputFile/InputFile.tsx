@@ -85,7 +85,9 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
           className={`${styles.fieldText} ${styles.fieldTextFile} ${fileError ? styles.fieldTextError : ''}`}
         >
           {file !== null ? (
-            <p className={styles.inputFileInfo}>{file.name}</p>
+            <p className={`${styles.inputFileInfo} ${styles.inputFileName}`}>
+              {file.name}
+            </p>
           ) : (
             <p className={styles.inputFileInfo}>Выберите файл</p>
           )}
