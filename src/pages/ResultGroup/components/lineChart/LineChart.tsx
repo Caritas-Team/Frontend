@@ -190,6 +190,10 @@ const LineChartLang: React.FC<TLineChartData> = ({
           type="linear"
           dataKey="prevValue"
           name={formatDateShort(prevDate)}
+          dot={{
+            fill: 'var(--chart-previous-period-data-color, #8550f6)',
+            stroke: 'var(--chart-previous-period-data-color, #8550f6)',
+          }}
           activeDot={false}
           isAnimationActive={false}
         />
@@ -198,6 +202,10 @@ const LineChartLang: React.FC<TLineChartData> = ({
           type="linear"
           dataKey="currentValue"
           name={formatDateShort(currentDate)}
+          dot={{
+            fill: 'var(--chart-current-data-color, #67f4b1)',
+            stroke: 'var(--chart-current-data-color, #67f4b1)',
+          }}
           activeDot={false}
           isAnimationActive={false}
         />
