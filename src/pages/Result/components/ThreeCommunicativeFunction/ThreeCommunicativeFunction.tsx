@@ -37,6 +37,7 @@ type Statuses = {
   [key: string]: Status;
 };
 interface ThreeCommunicativeFunctionProps {
+  className?: string;
   gettingDesired: Statuses;
   socialInteraction: Statuses;
   informationExchange: Statuses;
@@ -60,7 +61,7 @@ const statusClassMap: Record<Status, string> = {
 
 export const ThreeCommunicativeFunction: React.FC<
   ThreeCommunicativeFunctionProps
-> = ({ gettingDesired, socialInteraction, informationExchange }) => {
+> = ({ className, gettingDesired, socialInteraction, informationExchange }) => {
   const renderStatusGroup = (title: string, statuses: Statuses) => (
     <div className={styles.section}>
       <h2 className={styles.title}>{title}</h2>
@@ -83,7 +84,11 @@ export const ThreeCommunicativeFunction: React.FC<
   );
 
   return (
-    <section className={styles.container}>
+    <section
+      className={
+        className ? `${styles.container} ${className}` : styles.container
+      }
+    >
       {renderStatusGroup(
         'Коммуникативная функция «получение желаемого»',
         gettingDesired
