@@ -10,6 +10,7 @@ const TITLE_TEXT = 'Отказывается, отклоняет';
 const PROTO_TEXT = 'Протоязык';
 
 type CheckSectionProps = {
+  className?: string;
   date1: string; // дата для Gauge
   formed1: number; // фиолетовая дуга %
   initiative1: number; // зелёная дуга %
@@ -22,6 +23,7 @@ type CheckSectionProps = {
 };
 
 export const CheckSection: React.FC<CheckSectionProps> = ({
+  className,
   date1,
   formed1,
   initiative1,
@@ -33,7 +35,9 @@ export const CheckSection: React.FC<CheckSectionProps> = ({
   description,
 }) => {
   return (
-    <section className={styles.section}>
+    <section
+      className={className ? `${styles.section} ${className}` : styles.section}
+    >
       <h2 className={styles.header}>{HEADER_TEXT}</h2>
 
       <div className={styles.container}>
