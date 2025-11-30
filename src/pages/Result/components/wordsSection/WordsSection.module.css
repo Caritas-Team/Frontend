@@ -51,3 +51,22 @@
     font: var(--font-h3-mobile);
   }
 }
+
+@media print {
+  .grid {
+    margin-top: 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+    width: 100%;
+  }
+
+  .noBreak {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+}

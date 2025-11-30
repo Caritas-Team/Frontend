@@ -39,7 +39,11 @@ export const WordsSection: React.FC<WordsSectionProps> = ({
 }) => {
   return (
     <section
-      className={className ? `${styles.section} ${className}` : styles.section}
+      className={
+        className
+          ? `${styles.section} ${styles.noBreak} ${className}`
+          : `${styles.section} ${styles.noBreak}`
+      }
     >
       <h2 className={styles.header}>{HEADER_TEXT}</h2>
 

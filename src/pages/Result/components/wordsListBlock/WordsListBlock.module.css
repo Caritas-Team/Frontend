@@ -56,3 +56,9 @@
     padding: 6px 25px;
   }
 }
+
+@media print {
+  .block {
+    border: 1px solid black !important;
+  }
+}

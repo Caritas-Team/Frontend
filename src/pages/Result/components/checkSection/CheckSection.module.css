@@ -165,3 +165,14 @@
     padding-bottom: 24px;
   }
 }
+
+@media print {
+  .noBreak {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+}

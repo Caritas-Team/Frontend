@@ -42,7 +42,7 @@ export const GroupWordsSection: React.FC<GroupWordsSectionProps> = ({
   communicationMethods,
 }) => {
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${styles.noBreak}`}>
       <h2 className={styles.header}>{HEADER_TEXT}</h2>
       <section className={styles.grid}>
         <WordsCountBlock

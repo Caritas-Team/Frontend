@@ -64,3 +64,9 @@
     font: var(--font-body-14, 400 14px/1 var(--main-font-family));
   }
 }
+
+@media print {
+  .block {
+    border: 1px solid black !important;
+  }
+}
