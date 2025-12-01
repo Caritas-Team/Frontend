@@ -1,6 +1,8 @@
 export const calculateAge = (dateString: string) => {
+  if (!isValidDate(dateString)) return '';
   const today = new Date();
   const date = new Date(dateString);
+  if (today <= date) return 'дата рождения превышает текущую';
   const age = today.getFullYear() - date.getFullYear();
   let yearsText = 'лет';
   let count = age % 100;
