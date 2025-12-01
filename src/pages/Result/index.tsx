@@ -190,7 +190,10 @@ export const ResultPage: React.FC = () => {
         quickMessages={['капля', 'дождь']}
         verbalWordCount={{ now: 48, delta: 21 }}
       />
-      <SocialCircles {...mockSocialCirclesData} />
+      <SocialCircles
+        className={styles.social_circles}
+        {...mockSocialCirclesData}
+      />
     </main>
   );
 };
