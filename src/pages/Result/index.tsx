@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ResultPage.module.css';
-import { Header } from '../ResultGroup/components/header';
+import { Header } from '@ui/header';
 import { TitleSectionResult } from '../Result/components/titleSectionResult';
 import { CardSection } from './components/cardSection';
 import { LangCommunicAssessment } from './components/langCommunicAssessment';
@@ -151,53 +151,46 @@ const mockSocialCirclesData = {
 export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
-      <Header></Header>
-      <TitleSectionResult className={styles.title_section}></TitleSectionResult>
-      <CardSection
-        className={styles.card_section}
-        {...mockPersonData}
-      ></CardSection>
+      <Header />
+      <TitleSectionResult className={styles.title_section} />
+      <CardSection className={styles.card_section} {...mockPersonData} />
       <LangCommunicAssessment
         className={styles.language_section}
         {...chartInfo}
-      ></LangCommunicAssessment>
+      />
       <CommunicativesFunctionChart
+        className={styles.communicatives_functuion}
         prevDate={prevDate}
         currentDate={currentDate}
         dataPrevData={dataPrevData}
         dataCurrentData={dataCurrentData}
       />
-      <div className={styles.check_section}>
-        <CheckSection
-          date1="15 Апр. 2025"
-          formed1={20}
-          initiative1={35}
-          frequency1={50}
-          date2="1 Мая 2025"
-          formed2={90}
-          initiative2={20}
-          frequency2={55}
-          description="-"
-        />
-      </div>
-      <div className={styles.three_functions}>
-        <ThreeCommunicativeFunction
-          gettingDesired={communicativeData.gettingDesired}
-          socialInteraction={communicativeData.socialInteraction}
-          informationExchange={communicativeData.informationExchange}
-        />
-      </div>
-      <div className={styles.words_block}>
-        <WordsSection
-          newWords={['сказка', 'животное']}
-          communicationMethods={['семья', 'муж']}
-          quickMessages={['капля', 'дождь']}
-          verbalWordCount={{ now: 48, delta: 21 }}
-        />
-      </div>
-      <div className={styles.social_circles}>
-        <SocialCircles {...mockSocialCirclesData} />
-      </div>
+      <CheckSection
+        className={styles.check_section}
+        date1="15 Апр. 2025"
+        formed1={20}
+        initiative1={35}
+        frequency1={50}
+        date2="1 Мая 2025"
+        formed2={90}
+        initiative2={20}
+        frequency2={55}
+        description="-"
+      />
+      <ThreeCommunicativeFunction
+        className={styles.three_functions}
+        gettingDesired={communicativeData.gettingDesired}
+        socialInteraction={communicativeData.socialInteraction}
+        informationExchange={communicativeData.informationExchange}
+      />
+      <WordsSection
+        className={styles.words_section}
+        newWords={['сказка', 'животное']}
+        communicationMethods={['семья', 'муж']}
+        quickMessages={['капля', 'дождь']}
+        verbalWordCount={{ now: 48, delta: 21 }}
+      />
+      <SocialCircles {...mockSocialCirclesData} />
     </main>
   );
 };
