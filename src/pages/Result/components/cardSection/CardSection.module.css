@@ -96,7 +96,7 @@
 /* Стили компонента для мобильной версии */
 @media (width < 834px) {
   .card__section {
-    padding: 16px;
+    padding: 16px 16px 10px;
   }
 
   .card__content {
