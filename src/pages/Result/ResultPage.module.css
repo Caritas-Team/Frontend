@@ -7,33 +7,34 @@
 }
 
 .card_section {
-  margin-top: 35px;
+  margin-top: 36px;
 }
 
 .language_section {
   margin-top: 40px;
-  margin-bottom: 28px;
+}
+
+.communicatives_functuion {
+  margin-top: 28px;
 }
 
 .check_section {
-  margin-top: 8px;
+  padding-bottom: 0;
 }
 
-.three_functions {
-  margin-top: 15px;
+.check_section > div {
+  padding-bottom: 0;
 }
 
-.words_block {
-  margin-top: 10px;
-}
-
+.check_section,
+.three_functions,
+.words_section,
 .social_circles {
-  margin-top: 41px;
+  margin-top: 40px;
 }
 
 .final_table {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 96px;
 }
 
 /* стили для планшетной версии */
@@ -47,34 +48,30 @@
     margin-top: 6px;
   }
 
-  .card_section {
-    margin-top: 33px;
+  .check_section > div {
+    padding-bottom: 0;
   }
 
-  .language_section {
-    margin-top: 37px;
-    margin-bottom: 36px;
+  .words_section {
+    padding: 0;
+  }
+
+  .card_section {
+    margin-top: 34px;
   }
 
   .check_section {
-    margin-top: 6px;
+    margin-top: 28px;
   }
 
-  .three_functions {
-    margin-top: 10px;
-  }
-
-  .words_block {
-    margin-top: 3px;
-  }
-
-  .social_circles {
-    margin-top: 37px;
-  }
-
+  .language_section,
+  .communicatives_functuion,
+  .check_section,
+  .three_functions,
+  .words_section,
+  .social_circles,
   .final_table {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 36px;
   }
 }
 
@@ -90,32 +87,89 @@
   }
 
   .card_section {
-    margin-top: 9px;
+    margin-top: 10px;
   }
 
-  .language_section {
-    margin-top: 36px;
-    margin-bottom: 37px;
-  }
-
-  .check_section {
-    margin-top: 20px;
-  }
-
-  .three_functions {
+  .language_section,
+  .communicatives_functuion,
+  .check_section,
+  .words_section,
+  .final_table {
     margin-top: 40px;
   }
 
-  .words_block {
-    margin-top: 18px;
+  .check_section > div {
+    padding-bottom: 0;
+  }
+
+  .words_section {
+    padding-bottom: 0;
   }
 
   .social_circles {
-    margin-top: 54px;
+    margin-top: 66px;
+  }
+}
+
+@media print {
+  .main > header > div {
+    display: none;
   }
 
-  .final_table {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  .main > header > a > div {
+    height: 67px;
+    width: 191px;
+    margin-bottom: 40px;
+  }
+
+  .title_section,
+  .card_section,
+  .language_section,
+  .communicatives_functuion,
+  .check_section,
+  .three_functions > div,
+  .words_section,
+  .social_circles {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    break-before: auto;
+    break-after: auto;
+    margin-top: 40px;
+  }
+
+  .three_functions > div > div > div {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .title_section h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .card_section h2,
+  .language_section h2,
+  .communicatives_functuion h2,
+  .check_section h2,
+  .three_functions h2,
+  .words_section h2,
+  .social_circles h2 {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .social_circles > div {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    flex-direction: row;
+    width: 1040px;
+    background-color: transparent;
+    border: 2px solid #9a9a9a;
+    padding: 36px 96px;
   }
 }
