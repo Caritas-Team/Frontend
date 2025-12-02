@@ -1,4 +1,5 @@
-import { Delta } from '../delta/Delta';
+// src\pages\Result\components\finalTable\FinalTable.tsx
+import { Delta } from '@ui/delta';
 import styles from './FinalTable.module.css';
 
 export type FinalTableProps = {
