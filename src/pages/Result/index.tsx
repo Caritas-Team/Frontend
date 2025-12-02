@@ -3,8 +3,8 @@ import styles from './ResultPage.module.css';
 import { CardSection } from './components/cardSection';
 import { LangCommunicAssessment } from './components/langCommunicAssessment';
 import type { TChartData } from './components/langCommunicAssessment/types';
-import { Header } from '../ResultGroup/components/header';
-import { CheckSection } from './components/checkSection';
+import { Header } from '@ui/header';
+import { CheckSection } from '@ui/checkSection';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
 import { FinalTable } from './components/finalTable';
@@ -14,6 +14,7 @@ import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunct
 import type { Statuses } from './components/ThreeCommunicativeFunction';
 import { WordsSection } from './components/wordsSection';
 import { SocialCircles } from './components/socialCircles';
+
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
