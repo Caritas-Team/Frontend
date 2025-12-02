@@ -1,20 +1,31 @@
 import React from 'react';
 import styles from './ResultPage.module.css';
-import { Header } from '@ui/header';
-import { TitleSectionResult } from '../Result/components/titleSectionResult';
 import { CardSection } from './components/cardSection';
 import { LangCommunicAssessment } from './components/langCommunicAssessment';
-import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
+import type { TChartData } from './components/langCommunicAssessment/types';
+import { Header } from '../ResultGroup/components/header';
 import { CheckSection } from './components/checkSection';
+import type { CommunicationType } from './components/CommunicativesFunctionChart';
+import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
+import { FinalTable } from './components/finalTable';
+import type { FinalTableProps } from './components/finalTable/FinalTable';
+
 import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
+import type { Statuses } from './components/ThreeCommunicativeFunction';
 import { WordsSection } from './components/wordsSection';
 import { SocialCircles } from './components/socialCircles';
-import type { TCardSection } from './components/cardSection/CardSection';
-import type { TChartData } from './components/langCommunicAssessment/types';
-import type { CommunicationType } from './components/CommunicativesFunctionChart';
-import type { Statuses } from './components/ThreeCommunicativeFunction';
+/* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
+type TCardSection = {
+  className?: string;
+  personName?: string;
+  personId?: string;
+  dateOfBirth?: string;
+  diagnosis?: string;
+  whereLives?: string;
+  socialFeatures?: string;
+  photo?: string;
+};
 
-// моковые данные для секции с информацией об обследуемом
 const mockPersonData: TCardSection = {
   personName: 'Иванов Иван Иванович',
   personId: 'ID II-1210C',
@@ -23,12 +34,18 @@ const mockPersonData: TCardSection = {
   whereLives: 'В семье',
 };
 
-// моковые данные для секции Языковая и коммуникативная оценка
+const mockSocialCirclesData = {
+  family: '+2 чел',
+  friends: '+2 чел',
+  specialists: '+2 чел',
+  familiar: '+2 чел',
+};
+
 const chartInfo: TChartData = {
   data: [
     {
       name: 'Доинтенциальная коммуникация',
-      prevValue: '55',
+      prevValue: '90',
       currentValue: '70',
     },
     {
@@ -38,7 +55,7 @@ const chartInfo: TChartData = {
     },
     {
       name: 'Голофраза',
-      prevValue: '80',
+      prevValue: '5',
       currentValue: '90',
     },
     {
@@ -72,10 +89,10 @@ const chartInfo: TChartData = {
   prevDate: '2025-04-15',
   currentDate: '2025-05-01',
 };
-
-// моковые данные для секции Коммуникативные функции
+// Даты
 const prevDate = '2025-04-15';
 const currentDate = '2025-05-01';
+// Данные для предыдущего периода (01.05.2025)
 const dataPrevData: CommunicationType = {
   ExchangeOfInformation: {
     name: 'Обмен информацией',
@@ -95,6 +112,7 @@ const dataPrevData: CommunicationType = {
   },
 };
 
+// Данные для текущего периода (01.05.2025)
 const dataCurrentData: CommunicationType = {
   ExchangeOfInformation: {
     name: 'Обмен информацией',
@@ -114,7 +132,14 @@ const dataCurrentData: CommunicationType = {
   },
 };
 
-// моковые данные для секции из трех коммуникативных функций
+const finalTableData: FinalTableProps = {
+  languageDevelopmentLevels: '25%',
+  communicationInitiative: '34%',
+  communicativeFunctionsProgress: '15%',
+  vocabularyLevel: '30',
+  spokenWordsCount: '4',
+};
+
 const communicativeData: {
   gettingDesired: Statuses;
   socialInteraction: Statuses;
@@ -140,33 +165,25 @@ const communicativeData: {
   },
 };
 
-/* моковые данные для секции Круги общения */
-const mockSocialCirclesData = {
-  family: '+2 чел',
-  friends: '+2 чел',
-  specialists: '+2 чел',
-  familiar: '+2 чел',
-};
-
 export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
-      <Header />
-      <TitleSectionResult className={styles.title_section} />
-      <CardSection className={styles.card_section} {...mockPersonData} />
-      <LangCommunicAssessment
-        className={styles.language_section}
-        {...chartInfo}
+      <Header></Header>
+      <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
+      <WordsSection
+        newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
+        communicationMethods={['семья', 'муж']}
+        quickMessages={['капля', 'дождь']}
+        verbalWordCount={{ now: 48, delta: 21 }}
       />
+      <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
-        className={styles.communicatives_functuion}
         prevDate={prevDate}
         currentDate={currentDate}
         dataPrevData={dataPrevData}
         dataCurrentData={dataCurrentData}
       />
       <CheckSection
-        className={styles.check_section}
         date1="15 Апр. 2025"
         formed1={20}
         initiative1={35}
@@ -175,22 +192,23 @@ export const ResultPage: React.FC = () => {
         formed2={90}
         initiative2={20}
         frequency2={55}
-        description="-"
+        description="Прилетит, вдруг, волшебник"
       />
       <ThreeCommunicativeFunction
-        className={styles.three_functions}
         gettingDesired={communicativeData.gettingDesired}
         socialInteraction={communicativeData.socialInteraction}
         informationExchange={communicativeData.informationExchange}
       />
-      <WordsSection
-        className={styles.words_section}
-        newWords={['сказка', 'животное']}
-        communicationMethods={['семья', 'муж']}
-        quickMessages={['капля', 'дождь']}
-        verbalWordCount={{ now: 48, delta: 21 }}
-      />
       <SocialCircles {...mockSocialCirclesData} />
+      <FinalTable
+        languageDevelopmentLevels={finalTableData.languageDevelopmentLevels}
+        communicationInitiative={finalTableData.communicationInitiative}
+        communicativeFunctionsProgress={
+          finalTableData.communicativeFunctionsProgress
+        }
+        vocabularyLevel={finalTableData.vocabularyLevel}
+        spokenWordsCount={finalTableData.spokenWordsCount}
+      />
     </main>
   );
 };
