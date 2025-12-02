@@ -75,6 +75,7 @@ type CommunicationType = {
 };
 
 interface CommunicatiovesFunctionProps {
+  className?: string;
   prevDate: string;
   currentDate: string;
   dataPrevData: CommunicationType;
@@ -84,7 +85,8 @@ interface CommunicatiovesFunctionProps {
 const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
   props: CommunicatiovesFunctionProps
 ): JSX.Element | null => {
-  const { prevDate, currentDate, dataCurrentData, dataPrevData } = props;
+  const { className, prevDate, currentDate, dataCurrentData, dataPrevData } =
+    props;
 
   if (!prevDate || !currentDate || !dataCurrentData || !dataPrevData) {
     return null;
@@ -137,7 +139,11 @@ const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={
+        className ? `${styles.container} ${className}` : styles.container
+      }
+    >
       <h2 className={styles.title}>Коммуникативные функции</h2>
       <div className={styles.chartWrapper}>
         <div className={styles.titleConteiner}>
