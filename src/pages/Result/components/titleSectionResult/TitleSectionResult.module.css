@@ -40,3 +40,16 @@
     align-self: flex-end;
   }
 }
+
+@media print {
+  .section {
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .date {
+    /* display: flex; */
+    align-self: center;
+  }
+}
