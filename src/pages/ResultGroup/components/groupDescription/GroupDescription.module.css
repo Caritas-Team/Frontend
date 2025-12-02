@@ -1,0 +1,205 @@
+.section {
+  display: flex;
+  justify-content: center;
+  padding: 36px 96px;
+  width: 100%;
+  background-color: var(--background-card-color, #e7fff4);
+  border-radius: 20px;
+}
+
+.content {
+  width: 944px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data {
+  width: 474px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.textInput {
+  position: relative;
+  width: 282px;
+  display: flex;
+  justify-content: start;
+}
+
+.textInput input {
+  width: 100%;
+  height: 48px;
+  border-radius: 20px;
+  border: none;
+  padding: 12px 38px 12px 12px;
+  font: var(--font-field-light-18);
+  background-color: var(--background-input-color, #e7f6ff);
+}
+
+.inputButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  left: auto;
+  background: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.inputButton:focus {
+  border: none;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 12px;
+  font: var(--font-body-20);
+}
+
+.cellName {
+  text-align: left;
+  justify-self: start;
+  color: var(--black);
+}
+
+.cellAge {
+  text-align: right;
+  justify-self: end;
+  color: var(--gray-3);
+}
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.photoContainer {
+  position: relative;
+  width: 272px;
+  height: 229px;
+}
+
+.photoPreview {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.imageButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 162px;
+  left: 202px;
+  width: 58px;
+  height: 58px;
+  padding: 2px 1px;
+  border-radius: 42.5px;
+  background-color: var(--background-card-color, #e7fff4);
+}
+
+.imageButton:hover,
+:focus {
+  border: 2px solid var(--black);
+}
+
+.errorMessage {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  color: var(--error-color);
+  font: var(--font-body-12);
+  text-align: left;
+  vertical-align: auto;
+}
+
+.fileInput {
+  display: none;
+}
+
+@media (834px <= width < 1200px) {
+  .content {
+    width: 726px;
+    align-items: start;
+    gap: 18px;
+  }
+
+  .data {
+    width: 452px;
+  }
+
+  .photoContainer {
+    width: 256px;
+    height: 217px;
+  }
+
+  .imageButton {
+    top: 147px;
+    left: 186px;
+  }
+}
+
+@media (width < 834px) {
+  .section {
+    padding: 16px;
+  }
+
+  .content {
+    flex-direction: column-reverse;
+    gap: 18px;
+  }
+
+  .data {
+    max-width: 248px;
+  }
+
+  .photoContainer {
+    width: 248px;
+    height: 217px;
+  }
+
+  .textInput {
+    width: 248px;
+  }
+
+  .textInput input {
+    padding: 12px;
+  }
+
+  .inputButton {
+    display: none;
+  }
+
+  .imageButton {
+    top: 146px;
+    left: 180px;
+  }
+
+  .table {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .cellAge {
+    text-align: left;
+    justify-self: start;
+  }
+
+  .cellAge:nth-child(2n) {
+    margin-bottom: 10px;
+  }
+
+  .cellAge:last-child {
+    margin-bottom: 0;
+  }
+}
