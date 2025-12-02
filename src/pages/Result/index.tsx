@@ -7,6 +7,9 @@ import { Header } from '@ui/header';
 import { CheckSection } from '@ui/checkSection';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
+import { FinalTable } from './components/finalTable';
+import type { FinalTableProps } from './components/finalTable/FinalTable';
+
 import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
 import type { Statuses } from './components/ThreeCommunicativeFunction';
 import { WordsSection } from './components/wordsSection';
@@ -130,6 +133,14 @@ const dataCurrentData: CommunicationType = {
   },
 };
 
+const finalTableData: FinalTableProps = {
+  languageDevelopmentLevels: '25%',
+  communicationInitiative: '34%',
+  communicativeFunctionsProgress: '15%',
+  vocabularyLevel: '30',
+  spokenWordsCount: '4',
+};
+
 const communicativeData: {
   gettingDesired: Statuses;
   socialInteraction: Statuses;
@@ -190,6 +201,15 @@ export const ResultPage: React.FC = () => {
         informationExchange={communicativeData.informationExchange}
       />
       <SocialCircles {...mockSocialCirclesData} />
+      <FinalTable
+        languageDevelopmentLevels={finalTableData.languageDevelopmentLevels}
+        communicationInitiative={finalTableData.communicationInitiative}
+        communicativeFunctionsProgress={
+          finalTableData.communicativeFunctionsProgress
+        }
+        vocabularyLevel={finalTableData.vocabularyLevel}
+        spokenWordsCount={finalTableData.spokenWordsCount}
+      />
     </main>
   );
 };

@@ -23,3 +23,24 @@
 .barCurrent {
   fill: var(--chart-current-data-color, #67f4b1);
 }
+
+@media print {
+  .container {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    break-before: auto;
+    break-after: auto;
+    max-width: 764px;
+    width: 764px;
+    height: 333px;
+    min-height: 333px;
+  }
+
+  .container :global(.recharts-surface) {
+    width: 764px !important;
+    min-width: 764px !important;
+    max-width: 764px !important;
+    height: 333px !important;
+    min-height: 333px !important;
+  }
+}

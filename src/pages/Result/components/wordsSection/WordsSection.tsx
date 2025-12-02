@@ -6,6 +6,7 @@ import { WordsListBlock } from '@ui/wordsListBlock';
 import { WordsCountBlock } from '@ui/wordsCountBlock';
 
 type WordsSectionProps = {
+  className?: string;
   newWords: string[];
   communicationMethods: string[];
   quickMessages: string[];
@@ -30,13 +31,20 @@ const QUICK_MESSAGES = 'Быстрые сообщения';
 const colorQuickMessages = 'var(--background-input-color, #e7f6ff)';
 
 export const WordsSection: React.FC<WordsSectionProps> = ({
+  className,
   newWords,
   communicationMethods,
   quickMessages,
   verbalWordCount,
 }) => {
   return (
-    <section className={`${styles.section} ${styles.noBreak}`}>
+    <section
+      className={
+        className
+          ? `${styles.section} ${styles.noBreak} ${className}`
+          : `${styles.section} ${styles.noBreak}`
+      }
+    >
       <h2 className={styles.header}>{HEADER_TEXT}</h2>
 
       <section className={styles.grid}>

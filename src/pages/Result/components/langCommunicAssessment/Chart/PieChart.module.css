@@ -25,3 +25,22 @@
     gap: 0;
   }
 }
+
+@media print {
+  .container {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    break-before: auto;
+    break-after: auto;
+    width: 276px !important;
+    height: 256px !important;
+    min-height: 256px;
+    display: flex;
+    flex-direction: column;
+    gap: 23px !important;
+  }
+
+  .container :global(.recharts-wrapper) {
+    width: 276px !important;
+  }
+}
