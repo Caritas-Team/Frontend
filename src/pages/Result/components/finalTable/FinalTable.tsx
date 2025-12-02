@@ -2,6 +2,7 @@ import { Delta } from '../delta/Delta';
 import styles from './FinalTable.module.css';
 
 export type FinalTableProps = {
+  className?: string;
   languageDevelopmentLevels: string;
   communicationInitiative: string;
   communicativeFunctionsProgress: string;
@@ -10,6 +11,7 @@ export type FinalTableProps = {
 };
 
 export const FinalTable: React.FC<FinalTableProps> = ({
+  className,
   languageDevelopmentLevels,
   communicationInitiative,
   communicativeFunctionsProgress,
@@ -18,7 +20,11 @@ export const FinalTable: React.FC<FinalTableProps> = ({
 }) => {
   //TODO: const showWarning = () => {} для отображения придупреждения когда нужно;
   return (
-    <section className={styles.finalTable}>
+    <section
+      className={
+        className ? `${styles.finalTable} ${className}` : styles.finalTable
+      }
+    >
       <h3 className={styles.caption}>Итоговая таблица</h3>
       <div className={styles.gridContainer}>
         {/* Заголовок */}
