@@ -1,5 +1,7 @@
 .main {
   padding-inline: 32px;
+  max-width: 1136px;
+  margin: 0 auto;
 }
 
 .title_section {
@@ -18,8 +20,9 @@
   margin-top: 28px;
 }
 
-.check_section {
-  padding-bottom: 0;
+.check_section,
+.words_section {
+  padding-block: 0 !important;
 }
 
 .check_section > div {
@@ -34,7 +37,7 @@
 }
 
 .final_table {
-  margin-top: 96px;
+  margin-top: 96px !important;
 }
 
 /* стили для планшетной версии */
@@ -69,16 +72,19 @@
   .check_section,
   .three_functions,
   .words_section,
-  .social_circles,
-  .final_table {
+  .social_circles {
     margin-top: 36px;
+  }
+
+  .final_table {
+    margin-top: 36px !important;
   }
 }
 
 /* Стили компонента для мобильной версии */
 @media (width < 834px) {
   .main {
-    padding-inline: 20px;
+    padding-inline: 20px !important;
     padding-top: 32px;
   }
 
@@ -93,8 +99,7 @@
   .language_section,
   .communicatives_functuion,
   .check_section,
-  .words_section,
-  .final_table {
+  .words_section {
     margin-top: 40px;
   }
 
@@ -109,9 +114,18 @@
   .social_circles {
     margin-top: 66px;
   }
+
+  .final_table {
+    margin-top: 40px !important;
+  }
 }
 
+/* стили для печати */
 @media print {
+  /* .main {
+    width: 940px;
+  } */
+
   .main > header > div {
     display: none;
   }
@@ -129,7 +143,8 @@
   .check_section,
   .three_functions > div,
   .words_section,
-  .social_circles {
+  .social_circles,
+  .final_table {
     page-break-inside: avoid;
     break-inside: avoid;
     break-before: auto;
@@ -167,16 +182,19 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     flex-direction: row;
-    width: 1040px;
+    width: 1020px;
     background-color: transparent;
     border: 2px solid #9a9a9a;
     padding: 36px 96px;
   }
 }
 
-/* нужно для того чтобы итоговая таблица расстянулась по всей ширине экрана по макету */
+/* нужно для того чтобы итоговая таблица растянулась по всей ширине экрана по макету */
+/* но если так сделать, то растянутся все таблицы, поэтому пока убрала */
+
+/*
 @media (width < 400px) {
   .main {
     padding: 0;
   }
-}
+}*/
