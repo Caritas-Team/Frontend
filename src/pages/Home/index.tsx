@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../../lib/routes';
 import { DatePicker } from './components/date-picker';
 import { useState } from 'react';
-import { Header } from '../ResultGroup/components/header';
+import { Header } from '@ui/header';
+import { MainBlockForm } from './components/MainBlockForm/MainBlockForm';
 
 export default function HomePage() {
   const [formingDate, setFormingDate] = useState<string>('');
@@ -33,6 +34,7 @@ export default function HomePage() {
         required={true}
         // error="Данные отсутствуют в системе, проверьте правильность ввода или сообщите об ошибке"
       />
+      <MainBlockForm openPopup={() => {}} />
     </section>
   );
 }

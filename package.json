@@ -12,6 +12,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@types/uuid": "^11.0.0",
     "axios": "^1.13.2",
     "-": "^0.0.1",
     "lodash.debounce": "^4.0.8",
