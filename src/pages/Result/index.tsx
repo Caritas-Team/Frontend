@@ -1,10 +1,20 @@
 import React from 'react';
 import styles from './ResultPage.module.css';
 import { CardSection } from './components/cardSection';
-import { Header } from '../ResultGroup/components/header';
-import { CheckSection } from './components/checkSection';
+import { LangCommunicAssessment } from './components/langCommunicAssessment';
+import type { TChartData } from './components/langCommunicAssessment/types';
+import { Header } from '@ui/header';
+import { CheckSection } from '@ui/checkSection';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
+import { FinalTable } from './components/finalTable';
+import type { FinalTableProps } from './components/finalTable/FinalTable';
+
+import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
+import type { Statuses } from './components/ThreeCommunicativeFunction';
+import { WordsSection } from './components/wordsSection';
+import { SocialCircles } from './components/socialCircles';
+
 /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
 type TCardSection = {
   className?: string;
@@ -25,6 +35,61 @@ const mockPersonData: TCardSection = {
   whereLives: 'В семье',
 };
 
+const mockSocialCirclesData = {
+  family: '+2 чел',
+  friends: '+2 чел',
+  specialists: '+2 чел',
+  familiar: '+2 чел',
+};
+
+const chartInfo: TChartData = {
+  data: [
+    {
+      name: 'Доинтенциальная коммуникация',
+      prevValue: '90',
+      currentValue: '70',
+    },
+    {
+      name: 'Протоязык',
+      prevValue: '60',
+      currentValue: '50',
+    },
+    {
+      name: 'Голофраза',
+      prevValue: '5',
+      currentValue: '90',
+    },
+    {
+      name: 'Фраза',
+      prevValue: '40',
+      currentValue: '50',
+    },
+  ],
+  initiative: [
+    {
+      name: 'Доинтенциальная коммуникация',
+      prevValue: '55',
+      currentValue: '75',
+    },
+    {
+      name: 'Протоязык',
+      prevValue: '60',
+      currentValue: '50',
+    },
+    {
+      name: 'Голофраза',
+      prevValue: '80',
+      currentValue: '90',
+    },
+    {
+      name: 'Фраза',
+      prevValue: '40',
+      currentValue: '50',
+    },
+  ],
+  prevDate: '2025-04-15',
+  currentDate: '2025-05-01',
+};
 // Даты
 const prevDate = '2025-04-15';
 const currentDate = '2025-05-01';
@@ -68,11 +133,51 @@ const dataCurrentData: CommunicationType = {
   },
 };
 
+const finalTableData: FinalTableProps = {
+  languageDevelopmentLevels: '25%',
+  communicationInitiative: '34%',
+  communicativeFunctionsProgress: '15%',
+  vocabularyLevel: '30',
+  spokenWordsCount: '4',
+};
+
+const communicativeData: {
+  gettingDesired: Statuses;
+  socialInteraction: Statuses;
+  informationExchange: Statuses;
+} = {
+  gettingDesired: {
+    Выбирает: 'уже не используется',
+    'Просит ещё действие или предмет': 'уже не используется',
+    'Просит действие': 'уже не используется',
+    'Просит предмет (объект)': 'уже не используется',
+  },
+  socialInteraction: {
+    'Привлекает внимание': 'превзошел',
+    'Просит о помощи': 'превзошел',
+    'Здоровается, прощается, использует вежливые формы обращения': 'превзошел',
+    'Выражает эмоции, чувства, состояние': 'превзошел',
+  },
+  informationExchange: {
+    'Задаёт вопросы': 'недоступно',
+    'Комментирует и выражает мнение': 'недоступно',
+    'Объясняет что-то или описывает': 'недоступно',
+    'Рассказывает (что было, что будет, что происходит сейчас)': 'недоступно',
+  },
+};
+
 export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <Header></Header>
       <CardSection className={styles.mt_card} {...mockPersonData}></CardSection>
+      <WordsSection
+        newWords={['сказка', 'животное', 'ещё животное', `ёжик`]}
+        communicationMethods={['семья', 'муж']}
+        quickMessages={['капля', 'дождь']}
+        verbalWordCount={{ now: 48, delta: 21 }}
+      />
+      <LangCommunicAssessment {...chartInfo}></LangCommunicAssessment>
       <CommunicativesFunctionChart
         prevDate={prevDate}
         currentDate={currentDate}
@@ -89,6 +194,21 @@ export const ResultPage: React.FC = () => {
         initiative2={20}
         frequency2={55}
         description="Прилетит, вдруг, волшебник"
+      />
+      <ThreeCommunicativeFunction
+        gettingDesired={communicativeData.gettingDesired}
+        socialInteraction={communicativeData.socialInteraction}
+        informationExchange={communicativeData.informationExchange}
+      />
+      <SocialCircles {...mockSocialCirclesData} />
+      <FinalTable
+        languageDevelopmentLevels={finalTableData.languageDevelopmentLevels}
+        communicationInitiative={finalTableData.communicationInitiative}
+        communicativeFunctionsProgress={
+          finalTableData.communicativeFunctionsProgress
+        }
+        vocabularyLevel={finalTableData.vocabularyLevel}
+        spokenWordsCount={finalTableData.spokenWordsCount}
       />
     </main>
   );
