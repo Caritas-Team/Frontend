@@ -212,6 +212,7 @@ export const ResultPage: React.FC = () => {
         {...mockSocialCirclesData}
       />
       <FinalTable
+        className={styles.final_table}
         languageDevelopmentLevels={finalTableData.languageDevelopmentLevels}
         communicationInitiative={finalTableData.communicationInitiative}
         communicativeFunctionsProgress={
