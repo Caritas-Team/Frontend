@@ -1,13 +1,13 @@
 import styles from './styles.module.css';
-import { MainWrapper } from '../main-wrapper';
+import { MainWrapper } from '../Home/components/main-wrapper';
 import { Logo } from '@/ui/logo';
-import { TitleSection } from '../titleSection';
-import { DatePicker } from '../date-picker';
+import { TitleSection } from '../Home/components/titleSection';
+import { DatePicker } from '../Home/components/date-picker';
 import { useEffect, useState } from 'react';
-import { InstructionPopup } from '../InstructionPopup';
-import { MainBlockForm } from '../MainBlockForm';
+import { InstructionPopup } from '../Home/components/InstructionPopup';
+import { MainBlockForm } from '../Home/components/MainBlockForm';
 
-export function Layout() {
+function HomePage() {
   const [selectDate, setSelectDate] = useState('');
   const [isOpenPopup, setIsOpenPopup] = useState(false);
 
@@ -52,3 +52,5 @@ export function Layout() {
     </MainWrapper>
   );
 }
+
+export default HomePage;

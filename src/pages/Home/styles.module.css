@@ -1,6 +1,6 @@
 .main {
   position: relative;
-  padding-top: 52px;
+  padding-top: 56px;
 }
 
 .header {
@@ -29,11 +29,11 @@
   grid-area: date;
   align-self: center;
   justify-self: end;
-  transform: translateY(0px);
-  -webkit-transform: translateY(0px);
-  -moz-transform: translateY(0px);
-  -ms-transform: translateY(0px);
-  -o-transform: translateY(0px);
+  transform: translateY(-4px);
+  -webkit-transform: translateY(-4px);
+  -moz-transform: translateY(-4px);
+  -ms-transform: translateY(-4px);
+  -o-transform: translateY(-4px);
 }
 
 @media screen and (max-width: 1199px) {
@@ -63,7 +63,7 @@
   }
 
   .titleBlock {
-    padding-top: 18px;
+    padding-top: 20px;
     align-self: start;
   }
   .dateBlock {
