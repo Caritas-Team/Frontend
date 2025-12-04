@@ -6,7 +6,7 @@
 .header {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 122px;
   grid-template-areas:
     'logo .'
     'titles date';
@@ -29,30 +29,30 @@
   grid-area: date;
   align-self: center;
   justify-self: end;
-  transform: translateY(-14px);
-  -webkit-transform: translateY(-14px);
-  -moz-transform: translateY(-14px);
-  -ms-transform: translateY(-14px);
-  -o-transform: translateY(-14px);
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
 }
 
 @media screen and (max-width: 1199px) {
   .titleBlock {
     height: 100%;
-    max-height: 109px;
-    padding-top: 36px;
+    max-height: 98px;
+    padding-top: 26px;
   }
   .dateBlock {
     height: 100%;
     max-height: 109px;
-    transform: translateY(36px);
-    -webkit-transform: translateY(36px);
-    -moz-transform: translateY(36px);
-    -ms-transform: translateY(36px);
-    -o-transform: translateY(36px);
+    transform: translateY(63px);
+    -webkit-transform: translateY(63px);
+    -moz-transform: translateY(63px);
+    -ms-transform: translateY(63px);
+    -o-transform: translateY(63px);
   }
   .main {
-    padding-top: 102px;
+    padding-top: 104px;
   }
 }
 
@@ -63,11 +63,11 @@
   }
 
   .titleBlock {
-    padding-top: 0;
+    padding-top: 18px;
     align-self: start;
   }
   .dateBlock {
-    margin-top: 20px;
+    margin-top: 10px;
     height: 114px;
     transform: translateY(0px);
     -webkit-transform: translateY(0px);
@@ -76,6 +76,6 @@
     -o-transform: translateY(0px);
   }
   .main {
-    padding-top: 13px;
+    padding-top: 14px;
   }
 }
