@@ -1,1 +1,0 @@
-export { LangCommAssessmentGroup } from './LangCommAssessmentGroup';
