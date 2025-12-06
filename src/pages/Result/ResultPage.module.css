@@ -112,16 +112,6 @@
 }
 
 @media print {
-  .main > header > div {
-    display: none;
-  }
-
-  .main > header > a > div {
-    height: 67px;
-    width: 191px;
-    margin-bottom: 40px;
-  }
-
   .title_section,
   .card_section,
   .language_section,

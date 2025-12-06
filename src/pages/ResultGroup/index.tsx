@@ -9,7 +9,7 @@ import { GroupWordsSection } from './components/groupWordsSection';
 import { GroupDescription } from './components/groupDescription';
 import type { TGroupItem } from './components/groupDescription/GroupDescription';
 import defaultGroupImageSrc from './components/groupDescription/assets/group.png';
-import { LangCommAssessmentGroup } from './components/langCommAssessmentGroup';
+// import { LangCommAssessmentGroup } from './components/langCommAssessmentGroup';
 
 type TChartDataItem = {
   name: string;
@@ -157,9 +157,6 @@ export const ResultGroupPage: React.FC = () => {
         noBaseWordsCount={{ now: 50, delta: 10 }}
         communicationMethods={['семья', 'муж', 'дочь']}
       />
-      <LangCommAssessmentGroup
-        {...mockLineChartData_langSkills}
-      ></LangCommAssessmentGroup>
     </main>
   );
 };

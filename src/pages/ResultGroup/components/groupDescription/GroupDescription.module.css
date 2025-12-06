@@ -203,3 +203,16 @@
     margin-bottom: 0;
   }
 }
+
+@media print {
+  .section {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: transparent;
+    border: 2px solid #9a9a9a;
+  }
+
+  .content {
+    flex-direction: row !important;
+  }
+}
