@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './TitleSectionResult.module.css';
-import { formatDateShort, isValidDate } from '../../../../lib/utils';
+import { formatDateShort, isValidDate } from '../../lib/utils';
 
 type TTitleSectionResult = {
   className?: string;

@@ -215,4 +215,8 @@
   .content {
     flex-direction: row !important;
   }
+
+  .imageButton {
+    display: none;
+  }
 }
