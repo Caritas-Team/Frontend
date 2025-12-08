@@ -1,22 +1,10 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, beforeEach, afterEach, vi } from 'vitest';
 import {
   calculateAge,
   formatDateShort,
   isValidDate,
   makeShortName,
 } from './utils';
-
-const createDateForTest = (yearsNumber = 0): string => {
-  const today = new Date();
-  const year = today.getFullYear() - yearsNumber;
-  const month =
-    today.getMonth() > 8
-      ? today.getMonth() + 1
-      : '0'.concat(String(today.getMonth() + 1));
-  const day =
-    today.getDate() > 9 ? today.getDate() : '0'.concat(String(today.getDate()));
-  return `${year}-${month}-${day}`;
-};
 
 describe('тестирование функции проверки валидности даты', () => {
   test('проверка корректной даты', () => {
@@ -32,6 +20,26 @@ describe('тестирование функции проверки валидн�
   test('проверка корректной даты - конец года', () => {
     const result = isValidDate('2025-12-31');
     expect(result).toBe(true);
+  });
+
+  test('проверка корректной даты - 29 февраля високосного года', () => {
+    const result = isValidDate('2024-02-29');
+    expect(result).toBe(true);
+  });
+
+  test('проверка корректной даты - 29 февраля високосного года', () => {
+    const result = isValidDate('2000-02-29');
+    expect(result).toBe(true);
+  });
+
+  test('проверка некорректной даты - 29 февраля невисокосного года', () => {
+    const result = isValidDate('2025-02-29');
+    expect(result).toBe(false);
+  });
+
+  test('проверка некорректной даты - 29 февраля невисокосного года', () => {
+    const result = isValidDate('2100-02-29');
+    expect(result).toBe(false);
   });
 
   test('проверка некорректной (несуществующей) даты - 15-ый месяц', () => {
@@ -61,23 +69,47 @@ describe('тестирование функции проверки валидн�
 });
 
 describe('тестирование функции вычисления возраста', () => {
-  test('вычисление корректного возраста с окончанием "лет"', () => {
-    const result = calculateAge(createDateForTest(10));
+  // заморозка текущей даты на 05 декабря 2025 года
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2025-12-05T12:00:00Z'));
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  test('вычисление корректного возраста (день рождения - 15 декабря - еще не наступил в этом году)', () => {
+    const result = calculateAge('2015-12-15');
+    expect(result).toBe('9 лет');
+  });
+
+  test('вычисление корректного возраста (день рождения - 01 декабря - уже наступил в этом году)', () => {
+    const result = calculateAge('2015-12-01');
     expect(result).toBe('10 лет');
   });
 
-  test('вычисление корректного возраста с окончанием "год"', () => {
-    const result = calculateAge(createDateForTest(21));
+  test('вычисление корректного возраста с окончанием "год" (день рождения уже наступил в этом году)', () => {
+    const result = calculateAge('2004-10-08');
     expect(result).toBe('21 год');
   });
 
-  test('вычисление корректного возраста с окончанием "года"', () => {
-    const result = calculateAge(createDateForTest(4));
+  test('вычисление корректного возраста с окончанием "год" (день рождения - 21 декабря - еще не наступил в этом году)', () => {
+    const result = calculateAge('1993-12-21');
+    expect(result).toBe('31 год');
+  });
+
+  test('вычисление корректного возраста с окончанием "года" (день рождения уже наступил в этом году)', () => {
+    const result = calculateAge('2021-06-24');
     expect(result).toBe('4 года');
   });
 
+  test('вычисление корректного возраста с окончанием "года" (день рождения еще наступил в этом году)', () => {
+    const result = calculateAge('2021-12-11');
+    expect(result).toBe('3 года');
+  });
+
   test('дата рождения позже сегодняшней', () => {
-    const result = calculateAge(createDateForTest(-1));
+    const result = calculateAge('2025-12-06');
     expect(result).toBe('дата рождения превышает текущую');
   });
 
@@ -105,12 +137,12 @@ describe('тестирование функции форматирования �
 
   test('форматирование некорректной даты', () => {
     const result = formatDateShort('2020-01-32');
-    expect(result).toBe('Invalid Date');
+    expect(result).toBe('');
   });
 
   test('форматирование некорректной даты', () => {
     const result = formatDateShort('20200132');
-    expect(result).toBe('Invalid Date');
+    expect(result).toBe('');
   });
 });
 
