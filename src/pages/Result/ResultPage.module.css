@@ -1,6 +1,6 @@
 .main {
   padding-inline: 32px;
-  max-width: 1136px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -38,6 +38,7 @@
 
 .final_table {
   margin-top: 96px !important;
+  margin-bottom: 95px;
 }
 
 /* стили для планшетной версии */
@@ -78,6 +79,7 @@
 
   .final_table {
     margin-top: 36px !important;
+    margin-bottom: 36px;
   }
 }
 
@@ -117,6 +119,7 @@
 
   .final_table {
     margin-top: 40px !important;
+    margin-bottom: 48px;
   }
 }
 
