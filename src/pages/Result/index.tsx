@@ -168,49 +168,51 @@ const communicativeData: {
 export const ResultPage: React.FC = () => {
   return (
     <main className={styles.main}>
-      <Header />
-      <TitleSectionResult className={styles.title_section} />
-      <CardSection className={styles.card_section} {...mockPersonData} />
-      <LangCommunicAssessment
-        className={styles.language_section}
-        {...chartInfo}
-      />
-      <CommunicativesFunctionChart
-        className={styles.communicatives_functuion}
-        prevDate={prevDate}
-        currentDate={currentDate}
-        dataPrevData={dataPrevData}
-        dataCurrentData={dataCurrentData}
-      />
-      <CheckSection
-        className={styles.check_section}
-        date1="15 Апр. 2025"
-        formed1={20}
-        initiative1={35}
-        frequency1={50}
-        date2="1 Мая 2025"
-        formed2={90}
-        initiative2={20}
-        frequency2={55}
-        description="-"
-      />
-      <ThreeCommunicativeFunction
-        className={styles.three_functions}
-        gettingDesired={communicativeData.gettingDesired}
-        socialInteraction={communicativeData.socialInteraction}
-        informationExchange={communicativeData.informationExchange}
-      />
-      <WordsSection
-        className={styles.words_section}
-        newWords={['сказка', 'животное']}
-        communicationMethods={['семья', 'муж']}
-        quickMessages={['капля', 'дождь']}
-        verbalWordCount={{ now: 48, delta: 21 }}
-      />
-      <SocialCircles
-        className={styles.social_circles}
-        {...mockSocialCirclesData}
-      />
+      <div className={styles.with_padding}>
+        <Header />
+        <TitleSectionResult className={styles.title_section} />
+        <CardSection className={styles.card_section} {...mockPersonData} />
+        <LangCommunicAssessment
+          className={styles.language_section}
+          {...chartInfo}
+        />
+        <CommunicativesFunctionChart
+          className={styles.communicatives_functuion}
+          prevDate={prevDate}
+          currentDate={currentDate}
+          dataPrevData={dataPrevData}
+          dataCurrentData={dataCurrentData}
+        />
+        <CheckSection
+          className={styles.check_section}
+          date1="15 Апр. 2025"
+          formed1={20}
+          initiative1={35}
+          frequency1={50}
+          date2="1 Мая 2025"
+          formed2={90}
+          initiative2={20}
+          frequency2={55}
+          description="-"
+        />
+        <ThreeCommunicativeFunction
+          className={styles.three_functions}
+          gettingDesired={communicativeData.gettingDesired}
+          socialInteraction={communicativeData.socialInteraction}
+          informationExchange={communicativeData.informationExchange}
+        />
+        <WordsSection
+          className={styles.words_section}
+          newWords={['сказка', 'животное']}
+          communicationMethods={['семья', 'муж']}
+          quickMessages={['капля', 'дождь']}
+          verbalWordCount={{ now: 48, delta: 21 }}
+        />
+        <SocialCircles
+          className={styles.social_circles}
+          {...mockSocialCirclesData}
+        />
+      </div>
       <FinalTable
         className={styles.final_table}
         languageDevelopmentLevels={finalTableData.languageDevelopmentLevels}

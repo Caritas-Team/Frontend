@@ -84,7 +84,7 @@
 /* Стили компонента для мобильной версии */
 @media (width < 834px) {
   .main {
-    padding-inline: 20px !important;
+    padding-inline: 20px;
     padding-top: 32px;
   }
 
@@ -120,12 +120,24 @@
   }
 }
 
+@media (width < 400px) {
+  /* нужно для того чтобы итоговая таблица растянулась по всей ширине экрана по макету */
+  .main {
+    padding-inline: 0;
+  }
+
+  .with_padding {
+    padding-inline: 20px;
+  }
+
+  .check_section > div > div > div {
+    gap: 0;
+    justify-content: space-between;
+  }
+}
+
 /* стили для печати */
 @media print {
-  /* .main {
-    width: 940px;
-  } */
-
   .main > header > div {
     display: none;
   }
@@ -188,13 +200,3 @@
     padding: 36px 96px;
   }
 }
-
-/* нужно для того чтобы итоговая таблица растянулась по всей ширине экрана по макету */
-/* но если так сделать, то растянутся все таблицы, поэтому пока убрала */
-
-/*
-@media (width < 400px) {
-  .main {
-    padding: 0;
-  }
-}*/
