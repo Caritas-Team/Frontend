@@ -38,7 +38,7 @@
 
 .final_table {
   margin-top: 96px !important;
-  margin-bottom: 95px;
+  margin-bottom: 95px !important;
 }
 
 /* стили для планшетной версии */
@@ -79,7 +79,7 @@
 
   .final_table {
     margin-top: 36px !important;
-    margin-bottom: 36px;
+    margin-bottom: 36px !important;
   }
 }
 
@@ -119,7 +119,7 @@
 
   .final_table {
     margin-top: 40px !important;
-    margin-bottom: 48px;
+    margin-bottom: 48px !important;
   }
 }
 
