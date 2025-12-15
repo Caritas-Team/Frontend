@@ -201,7 +201,7 @@ export const Logo = () => (
           gradientTransform="translate(36.3621 38.9026) rotate(-180) scale(65.4111 44.5702)"
         >
           <stop stopColor="#4FE8F8" />
-          <stop offset="0.705397" stop-color="#5E84F3" />
+          <stop offset="0.705397" stopColor="#5E84F3" />
         </radialGradient>
         <radialGradient
           id="paint1_radial_219_16430"
