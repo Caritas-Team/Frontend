@@ -1,9 +1,15 @@
 export const calculateAge = (dateString: string) => {
+  if (!isValidDate(dateString)) return '';
   const today = new Date();
   const date = new Date(dateString);
-  const age = today.getFullYear() - date.getFullYear();
+  if (today <= date) return 'дата рождения превышает текущую';
+  let ageYears = today.getFullYear() - date.getFullYear();
+  let ageMonths = today.getMonth() - date.getMonth();
+  const ageDays = today.getDate() - date.getDate();
+  if (ageDays < 0) ageMonths -= 1;
+  if (ageMonths < 0) ageYears -= 1;
   let yearsText = 'лет';
-  let count = age % 100;
+  let count = ageYears % 100;
   if (count >= 5 && count <= 20) {
     yearsText = 'лет';
   } else {
@@ -14,16 +20,14 @@ export const calculateAge = (dateString: string) => {
       yearsText = 'года';
     }
   }
-  const personAge: string = String(age) + ' ' + yearsText;
+  const personAge: string = String(ageYears) + ' ' + yearsText;
   return personAge;
 };
 
 export const formatDateShort = (dateString: string): string => {
-  return new Date(dateString).toLocaleDateString('ru-RU', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
+  if (!isValidDate(dateString)) return '';
+  const [year, month, day] = dateString.split('-');
+  return `${day}.${month}.${year}`;
 };
 
 export const isValidDate = (value: string) => {
