@@ -1,6 +1,10 @@
 import React from 'react';
 import styles from './CardSection.module.css';
-import { calculateAge, formatDateShort } from '../../../../lib/utils';
+import {
+  calculateAge,
+  formatDateShort,
+  isValidDate,
+} from '../../../../lib/utils';
 
 export type TCardSection = {
   className?: string;
@@ -12,24 +16,6 @@ export type TCardSection = {
   socialFeatures?: string;
   photo?: string;
 };
-
-// /* моковые данные для случая, если особенностей социальной ситуации нет, но есть id обследуемого - как в макете */
-// const mockPersonData: TCardSection = {
-//   personName: 'Иванов Иван Иванович',
-//   personId: 'ID II-1210C',
-//   dateOfBirth: '2012-10-21',
-//   diagnosis: 'Нарушение речи',
-//   whereLives: 'В семье',
-// };
-
-// /*  моковые данные для случая с особенностями социальной ситуации, но без id */
-// const mockPersonData1: TCardSection = {
-//   personName: 'Иван Петров',
-//   dateOfBirth: '2020-07-08',
-//   diagnosis: 'РАС',
-//   whereLives: 'В семье',
-//   socialFeatures: 'полная семья, есть старшая сестра',
-// };
 
 export const CardSection: React.FC<TCardSection> = ({
   className,
@@ -61,7 +47,7 @@ export const CardSection: React.FC<TCardSection> = ({
           <div className={styles.card__item} role="listitem">
             <p className={`${styles.text} ${styles.title}`}>Дата рождения</p>
             <p className={`${styles.text} ${styles.value}`}>
-              {dateOfBirth
+              {dateOfBirth && isValidDate(dateOfBirth)
                 ? `${formatDateShort(dateOfBirth)}, ${calculateAge(dateOfBirth)}`
                 : 'Не указана'}
             </p>
