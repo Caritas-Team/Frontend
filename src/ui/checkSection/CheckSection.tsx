@@ -11,6 +11,7 @@ const PROTO_TEXT = 'Протоязык';
 
 type CheckSectionProps = {
   className?: string;
+  headerAlignCenter?: boolean; // подключается для десктопа на групповой странице
   date1: string; // дата для Gauge
   formed1: number; // фиолетовая дуга %
   initiative1: number; // зелёная дуга %
@@ -24,6 +25,7 @@ type CheckSectionProps = {
 
 export const CheckSection: React.FC<CheckSectionProps> = ({
   className,
+  headerAlignCenter = false,
   date1,
   formed1,
   initiative1,
@@ -36,16 +38,21 @@ export const CheckSection: React.FC<CheckSectionProps> = ({
 }) => {
   return (
     <section
-      className={
-        className
-          ? `${styles.section} ${styles.noBreak} ${className}`
-          : `${styles.section} ${styles.noBreak}`
-      }
+      className={`${styles.section} ${styles.noBreak} ${className ?? ''}`}
     >
-      <h2 className={styles.header}>{HEADER_TEXT}</h2>
+      <h2
+        className={
+          headerAlignCenter
+            ? `${styles.header} ${styles.headerCentered}`
+            : styles.header
+        }
+      >
+        {HEADER_TEXT}
+      </h2>
 
       <div className={styles.container}>
         <h3 className={styles.title}>{TITLE_TEXT}</h3>
+
         <div className={styles.gaugesBox}>
           <h3 className={styles.centerTitle}>{PROTO_TEXT}</h3>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './TitleSectionResult.module.css';
-import { formatDateShort, isValidDate } from '../../../../lib/utils';
+import { formatDateShort, isValidDate } from '../../lib/utils';
 
 type TTitleSectionResult = {
   className?: string;
@@ -11,7 +11,7 @@ export const TitleSectionResult: React.FC<TTitleSectionResult> = ({
   className,
   reportDate,
 }) => {
-  /* если дата не передана с бэкэнда или передана в неверном формате, то указывается текущая дата */
+  // если дата не передана с бэкенда или передана в неправильном формате, то указывается текущая дата
   const formattedReportDate: string =
     reportDate && isValidDate(reportDate)
       ? formatDateShort(reportDate)
