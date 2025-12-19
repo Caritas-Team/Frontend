@@ -1,3 +1,5 @@
+// src\ui\logo\index.tsx
+
 import styles from './styles.module.css';
 
 export const Logo = () => (

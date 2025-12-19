@@ -15,6 +15,11 @@
   width: 100%;
 }
 
+/* класс подключается через пропс */
+.headerCentered {
+  text-align: center;
+}
+
 .container {
   padding: 25px 0;
   margin: 0 96px;
@@ -86,6 +91,10 @@
 
 /* стили для планшетной и мобильной версий */
 @media (width < 1200px) {
+  .header {
+    text-align: left;
+  }
+
   .container {
     margin: 0 auto;
     margin-top: 13px;
@@ -114,6 +123,10 @@
 
 /* Стили компонента для мобильной версии */
 @media (width < 834px) {
+  .header {
+    font: var(--font-h1-mobile, 700 28px/1.2 var(--main-font-family));
+  }
+
   .title {
     font: var(--font-h2-mobile, 600 24px/1.2 var(--main-font-family));
   }
@@ -141,10 +154,6 @@
 
   .descriptionBlock {
     margin-top: 30px;
-  }
-
-  .header {
-    font: var(--font-h1-mobile, 700 28px/1.2 var(--main-font-family));
   }
 
   .gaugesBox {
