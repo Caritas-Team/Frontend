@@ -11,17 +11,13 @@ export const TitleSectionResult: React.FC<TTitleSectionResult> = ({
   className,
   reportDate,
 }) => {
+  // если дата не передана с бэкенда или передана в неправильном формате, то указывается текущая дата
   const formattedReportDate: string =
     reportDate && isValidDate(reportDate)
       ? formatDateShort(reportDate)
       : formatDateShort(
           `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
         );
-  // /* если дата не передана с бэкэнда или передана в неверном формате, то указывается текущая дата */
-  // const formattedReportDate: string =
-  //   reportDate && isValidDate(reportDate)
-  //     ? formatDateShort(reportDate)
-  //     : formatDateShort(String(new Date()));
   return (
     <section
       className={className ? `${className} ${styles.section}` : styles.section}
