@@ -118,6 +118,7 @@ export const ResultGroupPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <Header />
+      {/* Строка заголовка страницы */}
       <TitleSectionResult />
       <GroupDescription
         className={styles.groupDescriptionSection}

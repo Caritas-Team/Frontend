@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './ResultPage.module.css';
 import { Header } from '@ui/header';
-import { TitleSectionResult } from './components/titleSectionResult';
 import { CardSection } from './components/cardSection';
 import { LangCommunicAssessment } from './components/langCommunicAssessment';
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
@@ -14,6 +13,7 @@ import type { TChartData } from './components/langCommunicAssessment/types';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
 import type { Statuses } from './components/ThreeCommunicativeFunction';
 import type { FinalTableProps } from './components/finalTable/FinalTable';
+import { TitleSectionResult } from '@ui/titleSectionResult';
 
 type TCardSection = {
   className?: string;
