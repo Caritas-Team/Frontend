@@ -15,7 +15,9 @@ export const TitleSectionResult: React.FC<TTitleSectionResult> = ({
   const formattedReportDate: string =
     reportDate && isValidDate(reportDate)
       ? formatDateShort(reportDate)
-      : formatDateShort(String(new Date()));
+      : formatDateShort(
+          `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
+        );
   return (
     <section
       className={className ? `${className} ${styles.section}` : styles.section}
