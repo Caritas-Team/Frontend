@@ -9,6 +9,7 @@ import { GroupWordsSection } from './components/groupWordsSection';
 import { GroupDescription } from './components/groupDescription';
 import type { TGroupItem } from './components/groupDescription/GroupDescription';
 import defaultGroupImageSrc from './components/groupDescription/assets/group.png';
+
 import { TitleSectionResult } from '@ui/titleSectionResult';
 
 type TChartDataItem = {
