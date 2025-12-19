@@ -4,7 +4,7 @@ export const Logo = () => (
   <div className={styles.logo}>
     <svg viewBox="0 0 191 79" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g id="logo-164-20.svg fill">
-        <g id="logo-164-20.svg" clip-path="url(#clip0_219_16430)">
+        <g id="logo-164-20.svg" clipPath="url(#clip0_219_16430)">
           <path
             id="Vector"
             d="M0.940918 38.9026C0.940918 53.2394 12.5706 64.8617 26.9164 64.8617C30.2488 64.8617 33.3515 64.0431 36.2789 62.9006C26.6034 59.1243 19.8322 49.9092 19.8322 38.9026C19.8322 27.8961 26.6034 18.6322 36.2789 14.856C33.3515 13.7135 30.2488 12.9436 26.9164 12.9436C12.5706 12.9436 0.940918 24.5658 0.940918 38.9026Z"
@@ -14,13 +14,13 @@ export const Logo = () => (
             id="Vector_2"
             d="M0.940918 38.9026C0.940918 53.2394 12.5706 64.8617 26.9164 64.8617C30.2488 64.8617 33.3515 64.0431 36.2789 62.9006C26.6034 59.1243 19.8322 49.9092 19.8322 38.9026C19.8322 27.8961 26.6034 18.6322 36.2789 14.856C33.3515 13.7135 30.2488 12.9436 26.9164 12.9436C12.5706 12.9436 0.940918 24.5658 0.940918 38.9026Z"
             fill="url(#paint1_radial_219_16430)"
-            fill-opacity="0.2"
+            fillOpacity="0.2"
           />
           <path
             id="Vector_3"
             d="M0.940918 38.9026C0.940918 53.2394 12.5706 64.8617 26.9164 64.8617C30.2488 64.8617 33.3515 64.0431 36.2789 62.9006C26.6034 59.1243 19.8322 49.9092 19.8322 38.9026C19.8322 27.8961 26.6034 18.6322 36.2789 14.856C33.3515 13.7135 30.2488 12.9436 26.9164 12.9436C12.5706 12.9436 0.940918 24.5658 0.940918 38.9026Z"
             stroke="white"
-            stroke-width="2.00239"
+            strokeWidth="2.00239"
           />
           <path
             id="Vector_4"
@@ -31,20 +31,20 @@ export const Logo = () => (
             id="Vector_5"
             d="M15.267 61.8551C18.7486 63.581 22.577 64.8617 26.7315 64.8617C28.9661 64.8617 31.1348 64.5808 33.2038 64.0526C37.7646 62.8884 41.8408 60.5225 45.0712 57.3144C46.4937 55.9017 47.1072 53.7532 46.1144 52.0098C44.5663 49.2912 41.6403 47.4707 38.1923 47.4289C34.7775 47.3874 32.5044 48.7698 30.4392 51.4518C25.7061 57.5989 22.1069 60.255 15.267 61.8551Z"
             fill="url(#paint3_linear_219_16430)"
-            fill-opacity="0.2"
+            fillOpacity="0.2"
           />
           <path
             id="Vector_6"
             d="M15.267 61.8551C18.7486 63.581 22.577 64.8617 26.7315 64.8617C28.9661 64.8617 31.1348 64.5808 33.2038 64.0526C37.7646 62.8884 41.8408 60.5225 45.0712 57.3144C46.4937 55.9017 47.1072 53.7532 46.1144 52.0098C44.5663 49.2912 41.6403 47.4707 38.1923 47.4289C34.7775 47.3874 32.5044 48.7698 30.4392 51.4518C25.7061 57.5989 22.1069 60.255 15.267 61.8551Z"
             stroke="white"
-            stroke-width="2.00239"
+            strokeWidth="2.00239"
           />
           <path
             id="Vector_7"
             d="M15.267 15.9054C18.7486 14.1796 22.577 12.9436 26.7315 12.9436C28.9661 12.9436 31.1348 13.2245 33.2038 13.7526C37.7646 14.9169 41.8408 17.2828 45.0712 20.4909C46.4937 21.9036 47.1072 24.0521 46.1144 25.7955C44.5663 28.5141 41.6403 30.3346 38.1923 30.3764C34.7775 30.4179 32.5044 29.0355 30.4392 26.3535C25.7061 20.2064 22.1069 17.5055 15.267 15.9054Z"
             fill="url(#paint4_linear_219_16430)"
             stroke="white"
-            stroke-width="2.00239"
+            strokeWidth="2.00239"
           />
           <path
             id="Vector_8"
@@ -55,13 +55,13 @@ export const Logo = () => (
             id="Vector_9"
             d="M59.1053 12.9436H59.1053C54.3053 12.9436 50.4141 16.8463 50.4141 21.6605V56.1448C50.4141 60.959 54.3053 64.8617 59.1053 64.8617H59.1053C63.9054 64.8617 67.7966 60.959 67.7966 56.1448V21.6605C67.7966 16.8463 63.9054 12.9436 59.1053 12.9436Z"
             fill="url(#paint6_linear_219_16430)"
-            fill-opacity="0.2"
+            fillOpacity="0.2"
           />
           <path
             id="Vector_10"
             d="M59.1053 12.9436H59.1053C54.3053 12.9436 50.4141 16.8463 50.4141 21.6605V56.1448C50.4141 60.959 54.3053 64.8617 59.1053 64.8617H59.1053C63.9054 64.8617 67.7966 60.959 67.7966 56.1448V21.6605C67.7966 16.8463 63.9054 12.9436 59.1053 12.9436Z"
             stroke="white"
-            stroke-width="2.00239"
+            strokeWidth="2.00239"
           />
           <path
             id="Vector_11"
@@ -72,13 +72,13 @@ export const Logo = () => (
             id="Vector_12"
             d="M59.3916 64.8618C64.2256 64.8618 68.1444 60.9116 68.1444 56.0387V32.0081C68.1444 27.5102 71.7616 23.8638 76.2238 23.8638C80.6859 23.8638 84.3032 27.5102 84.3032 32.0081V55.6993C84.3032 60.7596 88.3726 64.8618 93.3925 64.8618H59.3916Z"
             fill="url(#paint8_linear_219_16430)"
-            fill-opacity="0.2"
+            fillOpacity="0.2"
           />
           <path
             id="Vector_13"
             d="M68.1444 56.0387C68.1444 60.9116 64.2256 64.8618 59.3916 64.8618H93.3925C88.3726 64.8618 84.3032 60.7596 84.3032 55.6993M68.1444 56.7175V32.0081C68.1444 27.5102 71.7616 23.8638 76.2238 23.8638C80.6859 23.8638 84.3032 27.5102 84.3032 32.0081V56.7175"
             stroke="white"
-            stroke-width="2.00239"
+            strokeWidth="2.00239"
           />
           <path
             id="Vector_14"
@@ -89,13 +89,13 @@ export const Logo = () => (
             id="Vector_15"
             d="M93.4217 12.9436H93.3644C88.4219 12.9436 84.4153 16.9621 84.4153 21.9191V55.8862C84.4153 60.8432 88.4219 64.8617 93.3644 64.8617H93.4217C98.3641 64.8617 102.371 60.8432 102.371 55.8862V21.9191C102.371 16.9621 98.3641 12.9436 93.4217 12.9436Z"
             fill="url(#paint10_linear_219_16430)"
-            fill-opacity="0.2"
+            fillOpacity="0.2"
           />
           <path
             id="Vector_16"
             d="M93.4217 12.9436H93.3644C88.4219 12.9436 84.4153 16.9621 84.4153 21.9191V55.8862C84.4153 60.8432 88.4219 64.8617 93.3644 64.8617H93.4217C98.3641 64.8617 102.371 60.8432 102.371 55.8862V21.9191C102.371 16.9621 98.3641 12.9436 93.4217 12.9436Z"
             stroke="white"
-            stroke-width="2.00239"
+            strokeWidth="2.00239"
           />
           <path
             id="Vector_17"
@@ -106,19 +106,19 @@ export const Logo = () => (
             id="Vector_18"
             d="M107.337 21.9191C107.337 16.9621 111.372 12.9436 116.314 12.9436C121.257 12.9436 125.292 16.9621 125.292 21.9191V55.8862C125.292 60.8432 121.257 64.8617 116.314 64.8617C111.372 64.8617 107.337 60.8432 107.337 55.8862V21.9191Z"
             fill="url(#paint12_linear_219_16430)"
-            fill-opacity="0.2"
+            fillOpacity="0.2"
           />
           <path
             id="Vector_19"
             d="M107.337 21.9191C107.337 16.9621 111.372 12.9436 116.314 12.9436C121.257 12.9436 125.292 16.9621 125.292 21.9191V55.8862C125.292 60.8432 121.257 64.8617 116.314 64.8617C111.372 64.8617 107.337 60.8432 107.337 55.8862V21.9191Z"
             stroke="white"
-            stroke-width="2.00239"
+            strokeWidth="2.00239"
           />
           <path
             id="Vector_20"
             d="M125.292 26.1591V21.9113C125.292 16.9586 121.273 12.9436 116.314 12.9436C111.357 12.9436 107.337 16.9586 107.337 21.9113V26.1591V51.6462V55.894C107.337 60.8467 111.357 64.8617 116.314 64.8617C121.273 64.8617 125.292 60.8467 125.292 55.894V51.6462V26.1591Z"
             stroke="white"
-            stroke-width="2.00239"
+            strokeWidth="2.00239"
           />
           <path
             id="Vector_21"
@@ -129,7 +129,7 @@ export const Logo = () => (
             id="Vector_22"
             d="M107.528 26.3646C107.528 31.1899 111.428 35.1017 116.24 35.1017C118.752 35.1017 121.017 34.2511 122.606 32.7511L139.645 15.6615C143.004 12.2932 148.449 12.2932 151.808 15.6615C155.166 19.0297 155.166 24.4908 151.808 27.8591L140.65 39.0486L151.709 50.1379C155.067 53.5062 155.067 58.9673 151.709 62.3356C148.35 65.7038 142.904 65.7038 139.546 62.3356L125.016 47.6098C121.867 44.2827 120.104 42.4945 116.24 42.4945C111.428 42.4945 107.528 46.4063 107.528 51.2316V26.3646Z"
             fill="url(#paint14_linear_219_16430)"
-            fill-opacity="0.2"
+            fillOpacity="0.2"
           />
           <path
             id="Vector_23"
@@ -178,9 +178,9 @@ export const Logo = () => (
           width="4.86836"
           height="4.87593"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -200,8 +200,8 @@ export const Logo = () => (
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(36.3621 38.9026) rotate(-180) scale(65.4111 44.5702)"
         >
-          <stop stop-color="#4FE8F8" />
-          <stop offset="0.705397" stop-color="#5E84F3" />
+          <stop stopColor="#4FE8F8" />
+          <stop offset="0.705397" stopColor="#5E84F3" />
         </radialGradient>
         <radialGradient
           id="paint1_radial_219_16430"
@@ -211,7 +211,7 @@ export const Logo = () => (
           gradientTransform="matrix(26.6839 -19.5873 18.9667 25.9912 1.88548 38.9026)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.565" stop-opacity="0" />
+          <stop offset="0.565" stopOpacity="0" />
           <stop offset="1" />
         </radialGradient>
         <linearGradient
@@ -222,8 +222,8 @@ export const Logo = () => (
           y2="64.8617"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4FE8F8" />
-          <stop offset="1" stop-color="#567BE7" />
+          <stop stopColor="#4FE8F8" />
+          <stop offset="1" stopColor="#567BE7" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_219_16430"
@@ -233,7 +233,7 @@ export const Logo = () => (
           y2="64.8617"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.261416" stop-opacity="0" />
+          <stop offset="0.261416" stopOpacity="0" />
           <stop offset="1" />
         </linearGradient>
         <linearGradient
@@ -244,8 +244,8 @@ export const Logo = () => (
           y2="7.05382"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#5E84F3" />
-          <stop offset="1" stop-color="#4FE8F8" />
+          <stop stopColor="#5E84F3" />
+          <stop offset="1" stopColor="#4FE8F8" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_219_16430"
@@ -255,8 +255,8 @@ export const Logo = () => (
           y2="64.8617"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4FE8F8" />
-          <stop offset="1" stop-color="#5E84F3" />
+          <stop stopColor="#4FE8F8" />
+          <stop offset="1" stopColor="#5E84F3" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_219_16430"
@@ -266,7 +266,7 @@ export const Logo = () => (
           y2="64.8617"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.776287" stop-opacity="0" />
+          <stop offset="0.776287" stopOpacity="0" />
           <stop offset="1" />
         </linearGradient>
         <linearGradient
@@ -277,8 +277,8 @@ export const Logo = () => (
           y2="64.8622"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4FE8F8" />
-          <stop offset="1" stop-color="#5E84F3" />
+          <stop stopColor="#4FE8F8" />
+          <stop offset="1" stopColor="#5E84F3" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_219_16430"
@@ -288,7 +288,7 @@ export const Logo = () => (
           y2="64.8624"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.776287" stop-opacity="0" />
+          <stop offset="0.776287" stopOpacity="0" />
           <stop offset="1" />
         </linearGradient>
         <linearGradient
@@ -299,8 +299,8 @@ export const Logo = () => (
           y2="64.8617"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4FE8F8" />
-          <stop offset="1" stop-color="#5E84F3" />
+          <stop stopColor="#4FE8F8" />
+          <stop offset="1" stopColor="#5E84F3" />
         </linearGradient>
         <linearGradient
           id="paint10_linear_219_16430"
@@ -310,7 +310,7 @@ export const Logo = () => (
           y2="64.8618"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.776287" stop-opacity="0" />
+          <stop offset="0.776287" stopOpacity="0" />
           <stop offset="1" />
         </linearGradient>
         <linearGradient
@@ -321,8 +321,8 @@ export const Logo = () => (
           y2="63.0157"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4FE8F8" />
-          <stop offset="1" stop-color="#5E84F3" />
+          <stop stopColor="#4FE8F8" />
+          <stop offset="1" stopColor="#5E84F3" />
         </linearGradient>
         <linearGradient
           id="paint12_linear_219_16430"
@@ -332,7 +332,7 @@ export const Logo = () => (
           y2="63.0157"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.776287" stop-opacity="0" />
+          <stop offset="0.776287" stopOpacity="0" />
           <stop offset="1" />
         </linearGradient>
         <linearGradient
@@ -343,8 +343,8 @@ export const Logo = () => (
           y2="58.9932"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4FE8F8" />
-          <stop offset="1" stop-color="#5E84F3" />
+          <stop stopColor="#4FE8F8" />
+          <stop offset="1" stopColor="#5E84F3" />
         </linearGradient>
         <linearGradient
           id="paint14_linear_219_16430"
@@ -355,7 +355,7 @@ export const Logo = () => (
           gradientUnits="userSpaceOnUse"
         >
           <stop />
-          <stop offset="0.264892" stop-opacity="0" />
+          <stop offset="0.264892" stopOpacity="0" />
         </linearGradient>
         <radialGradient
           id="paint15_radial_219_16430"
@@ -365,8 +365,8 @@ export const Logo = () => (
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(116.315 52.9315) rotate(90) scale(4.93753 9.31586)"
         >
-          <stop offset="0.418439" stop-color="white" />
-          <stop offset="0.425" stop-color="#66F3B0" />
+          <stop offset="0.418439" stopColor="white" />
+          <stop offset="0.425" stopColor="#66F3B0" />
         </radialGradient>
         <linearGradient
           id="paint16_linear_219_16430"
@@ -376,8 +376,8 @@ export const Logo = () => (
           y2="60.4554"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.109014" stop-color="#66F3B0" stop-opacity="0" />
-          <stop offset="0.48984" stop-color="#66F3B0" />
+          <stop offset="0.109014" stopColor="#66F3B0" stopOpacity="0" />
+          <stop offset="0.48984" stopColor="#66F3B0" />
         </linearGradient>
         <radialGradient
           id="paint17_radial_219_16430"
@@ -387,8 +387,8 @@ export const Logo = () => (
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(116.315 55.0476) rotate(90) scale(7.9941 7.97059)"
         >
-          <stop offset="0.397091" stop-color="#66F3B0" stop-opacity="0" />
-          <stop offset="0.576303" stop-color="#2FBA78" stop-opacity="0.34" />
+          <stop offset="0.397091" stopColor="#66F3B0" stopOpacity="0" />
+          <stop offset="0.576303" stopColor="#2FBA78" stopOpacity="0.34" />
         </radialGradient>
         <clipPath id="clip0_219_16430">
           <rect
