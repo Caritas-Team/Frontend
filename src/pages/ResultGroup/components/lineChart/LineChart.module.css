@@ -1,4 +1,5 @@
 .container {
+  /* max-width: 1136px; */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -50,7 +51,7 @@
   stroke: var(--chart-axis-line-color, #bfbfbf);
 }
 
-.chart_line circle {
+.line_chart circle {
   r: 12px;
   stroke-dasharray: none;
 }
@@ -64,18 +65,14 @@
   stroke-dasharray: 8 8;
 }
 
-.prev circle {
-  fill: var(--chart-previous-period-data-color, #8550f6);
-  stroke: var(--chart-previous-period-data-color, #8550f6);
-}
-
-.current path,
-.current circle {
+.current path {
   stroke: var(--chart-current-data-color, #67f4b1);
 }
 
-.current circle {
-  fill: var(--chart-current-data-color, #67f4b1);
+.legend_layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .legend_wrapper {
@@ -122,6 +119,7 @@
   align-content: flex-start;
   position: absolute;
   width: 100%;
+  /* max-width: 1136px; */
   top: 318px;
 }
 
@@ -187,7 +185,7 @@
     padding-left: 15px;
   }
 
-  .chart_line circle {
+  .line_chart circle {
     r: 10px;
   }
 
@@ -243,7 +241,7 @@
     height: 417px;
   }
 
-  .chart_line circle {
+  .line_chart circle {
     r: 7px;
   }
 
@@ -279,5 +277,32 @@
     display: flex;
     font: var(--font-body-12);
     color: var(--text-supplementary-color, #37474f);
+  }
+}
+
+@media print {
+  .container {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    break-before: auto;
+    break-after: auto;
+  }
+
+  .chart_container :global(.recharts-surface) {
+    width: 1000px !important;
+  }
+
+  .ticks {
+    width: 600px;
+    left: 220px;
+  }
+
+  .legend_wrapper {
+    left: 425px;
+  }
+
+  .legend_mark {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

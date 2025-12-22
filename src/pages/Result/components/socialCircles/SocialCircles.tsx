@@ -5,6 +5,7 @@ import familySrc from './icons/diversity_1.svg';
 import familiarSrc from './icons/diversity_3.svg';
 
 export type TSocialCircles = {
+  className?: string;
   family?: string;
   friends?: string;
   specialists?: string;
@@ -12,6 +13,7 @@ export type TSocialCircles = {
 };
 
 export const SocialCircles: React.FC<TSocialCircles> = ({
+  className,
   family,
   friends,
   specialists,
@@ -49,7 +51,13 @@ export const SocialCircles: React.FC<TSocialCircles> = ({
   ];
 
   return (
-    <section className={styles.card__section}>
+    <section
+      className={
+        className
+          ? `${styles.card__section} ${className}`
+          : styles.card__section
+      }
+    >
       <h2 className={styles.title}>Круги общения</h2>
       <div className={styles.card__content}>
         {data.map((block, index) => (

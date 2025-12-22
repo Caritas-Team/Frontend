@@ -42,7 +42,7 @@ export const InstructionPopup: FC<InstructionPopupProps> = ({
         <ul className={styles.popup__content}>
           <li className={styles.popup__text}>
             Для расчёта требуется файл с предыдущей диагностикой и с текущим
-            результатом в формате pdf
+            результатом в формате json
           </li>
           <li className={styles.popup__text}>
             Для расчёта группы нажмите «Добавить к расчёту» и появится

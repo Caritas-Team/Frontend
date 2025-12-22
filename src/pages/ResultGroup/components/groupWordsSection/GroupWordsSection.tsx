@@ -6,6 +6,7 @@ import { WordsListBlock } from '@ui/wordsListBlock';
 import { WordsCountBlock } from '@ui/wordsCountBlock';
 
 type GroupWordsSectionProps = {
+  className?: string;
   newWordsCount: {
     now: number;
     delta: number;
@@ -36,13 +37,16 @@ const COMMUNICATION_METHODS = 'Способы общения';
 const colorCommunicationMethods = 'var(--background-input-color, #e7f6ff)';
 
 export const GroupWordsSection: React.FC<GroupWordsSectionProps> = ({
+  className,
   newWordsCount,
   verbalWordsCount,
   noBaseWordsCount,
   communicationMethods,
 }) => {
   return (
-    <section className={`${styles.section} ${styles.noBreak}`}>
+    <section
+      className={`${styles.section} ${styles.noBreak} ${className ?? ''}`}
+    >
       <h2 className={styles.header}>{HEADER_TEXT}</h2>
       <section className={styles.grid}>
         <WordsCountBlock

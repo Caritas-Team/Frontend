@@ -9,7 +9,8 @@ import { GroupWordsSection } from './components/groupWordsSection';
 import { GroupDescription } from './components/groupDescription';
 import type { TGroupItem } from './components/groupDescription/GroupDescription';
 import defaultGroupImageSrc from './components/groupDescription/assets/group.png';
-import { LangCommAssessmentGroup } from './components/langCommAssessmentGroup';
+
+import { TitleSectionResult } from '@ui/titleSectionResult';
 
 type TChartDataItem = {
   name: string;
@@ -116,8 +117,11 @@ export const ResultGroupPage: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <Header></Header>
+      <Header />
+      {/* Строка заголовка страницы */}
+      <TitleSectionResult />
       <GroupDescription
+        className={styles.groupDescriptionSection}
         data={mockGroupData}
         groupName={groupName}
         onChangeGroupName={setGroupName}
@@ -129,18 +133,19 @@ export const ResultGroupPage: React.FC = () => {
         title={'Языковая и коммуникативная оценка'}
         subtitle={'Уровень применения языковых навыков'}
         {...mockLineChartData_langSkills}
-      ></LineChartGroup>
+      />
       <LineChartGroup
         className={styles.initiative_section}
         title={'Инициатива'}
         {...mockLineChartData_initiative}
-      ></LineChartGroup>
+      />
       <LineChartGroup
         className={styles.communicative_section}
         title={'Коммуникативные функции'}
         {...mockLineChartData_communFunctions}
-      ></LineChartGroup>
+      />
       <CheckSection
+        headerAlignCenter={true}
         date1="15 Апр. 2025"
         formed1={20}
         initiative1={35}
@@ -157,9 +162,6 @@ export const ResultGroupPage: React.FC = () => {
         noBaseWordsCount={{ now: 50, delta: 10 }}
         communicationMethods={['семья', 'муж', 'дочь']}
       />
-      <LangCommAssessmentGroup
-        {...mockLineChartData_langSkills}
-      ></LangCommAssessmentGroup>
     </main>
   );
 };

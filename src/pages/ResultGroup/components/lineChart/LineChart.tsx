@@ -109,26 +109,28 @@ const LineChartLang: React.FC<TLineChartData> = ({
   const CustomLegend: React.FC<TCustomLegend> = ({ payload }) => {
     if (payload?.length === 0 || !payload) return null;
     return (
-      <ul className={styles.legend_wrapper}>
-        {Array.from(payload)
-          .reverse()
-          .map(item => {
-            return (
-              <li className={styles.legend_item} key={item.value}>
-                <div
-                  className={
-                    item.dataKey === 'prevValue'
-                      ? `${styles.legend_mark} ${styles.prev}`
-                      : item.dataKey === 'currentValue'
-                        ? `${styles.legend_mark} ${styles.current}`
-                        : styles.legend_mark
-                  }
-                ></div>
-                <span className={styles.legend_text}>{item.value}</span>
-              </li>
-            );
-          })}
-      </ul>
+      <div className={styles.legend_layout}>
+        <ul className={styles.legend_wrapper}>
+          {Array.from(payload)
+            .reverse()
+            .map(item => {
+              return (
+                <li className={styles.legend_item} key={item.value}>
+                  <div
+                    className={
+                      item.dataKey === 'prevValue'
+                        ? `${styles.legend_mark} ${styles.prev}`
+                        : item.dataKey === 'currentValue'
+                          ? `${styles.legend_mark} ${styles.current}`
+                          : styles.legend_mark
+                    }
+                  ></div>
+                  <span className={styles.legend_text}>{item.value}</span>
+                </li>
+              );
+            })}
+        </ul>
+      </div>
     );
   };
 
@@ -190,6 +192,10 @@ const LineChartLang: React.FC<TLineChartData> = ({
           type="linear"
           dataKey="prevValue"
           name={formatDateShort(prevDate)}
+          dot={{
+            fill: 'var(--chart-previous-period-data-color, #8550f6)',
+            stroke: 'var(--chart-previous-period-data-color, #8550f6)',
+          }}
           activeDot={false}
           isAnimationActive={false}
         />
@@ -198,6 +204,10 @@ const LineChartLang: React.FC<TLineChartData> = ({
           type="linear"
           dataKey="currentValue"
           name={formatDateShort(currentDate)}
+          dot={{
+            fill: 'var(--chart-current-data-color, #67f4b1)',
+            stroke: 'var(--chart-current-data-color, #67f4b1)',
+          }}
           activeDot={false}
           isAnimationActive={false}
         />

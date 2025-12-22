@@ -21,8 +21,8 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
       return;
     }
 
-    if (selectedFile.type !== 'application/pdf') {
-      setFileError('Можно загружать только PDF файлы!');
+    if (selectedFile.type !== 'application/json') {
+      setFileError('Можно загружать только json файлы!');
       onValidityChange(false);
       return;
     }
@@ -75,7 +75,7 @@ export const InputFile = ({ label, onValidityChange }: InputFileProps) => {
           id={uniqueId}
           type="file"
           hidden
-          accept=".pdf"
+          accept=".json"
           required
           onChange={handleFileChange}
           aria-describedby={`${uniqueId}-error`}

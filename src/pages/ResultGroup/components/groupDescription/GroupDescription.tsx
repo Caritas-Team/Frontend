@@ -13,6 +13,7 @@ export type TGroupItem = {
 };
 
 export type TGroupDescription = {
+  className?: string;
   data: TGroupItem[];
   photoUrl: string;
   onChangePhotoUrl: (url: string) => void;
@@ -21,6 +22,7 @@ export type TGroupDescription = {
 };
 
 export const GroupDescription: React.FC<TGroupDescription> = ({
+  className,
   data,
   photoUrl,
   onChangePhotoUrl,
@@ -98,7 +100,7 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
   };
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${className ?? ''}`}>
       <div className={styles.content}>
         <div className={styles.data}>
           <div className={styles.textInput}>
