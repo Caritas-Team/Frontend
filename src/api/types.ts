@@ -16,10 +16,7 @@ export type GetAssessmentResponse =
 // Для POST /assessments/upload
 export interface UploadAssessmentParams {
   files?: File[];
-  meta?: {
-    organization?: string;
-    specialist?: string;
-  };
+  meta?: Record<string, unknown>;
 }
 
 // Для GET /assessments/{request_id}
