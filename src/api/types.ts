@@ -43,7 +43,6 @@ export interface UploadResponse extends BaseResponse {
 }
 
 export interface ProcessingStatus extends BaseResponse {
-  status: 'processing';
   progress_percent?: number; // minimum: 0, maximum: 100, Процент выполнения
   processed_students?: number; // Количество обработанных учеников
   total_students?: number; // Общее количество учеников
