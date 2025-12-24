@@ -1,6 +1,5 @@
 export type UUID = string;
 export type DateTime = string;
-
 export type ProcessingStatusType = 'processing' | 'completed' | 'failed';
 export type ProcessingErrorCode =
   | 'validation_error'
@@ -37,13 +36,10 @@ export interface BaseResponse {
   created_at: DateTime;
 }
 
-export interface UploadResponse {
-  request_id?: string; //($uuid) Уникальный идентификатор запроса
-  status?: ProcessingStatusType; //Статус обработки
+export interface UploadResponse extends BaseResponse {
   accepted_files?: number; //minimum: 2, Количество принятых файлов
   students_count?: number; //minimum: 1, Количество учеников для обработки
   estimated_completion_sec?: number; //Ожидаемое время завершения в секундах
-  created_at: DateTime; //Время создания запроса
 }
 
 export interface ProcessingStatus extends BaseResponse {
