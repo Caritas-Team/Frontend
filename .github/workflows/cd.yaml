@@ -1,0 +1,39 @@
+---
+name: CD develop
+on:
+  push:
+    branches: [develop, devops/test-deploy]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      VITE_API_URL: ${{ vars.VITE_API_URL }}
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v3
+
+      - name: Install npm
+        run: |
+          sudo apt install nodejs npm -y
+          npm ci 
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test (if present)
+        run: npm test --if-present
+
+      - name: Build
+        run: |
+          npm run build
+
+      - name: Copy dist folder to server
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ vars.SSH_DEPLOY_HOST }}
+          username: ${{ secrets.SSH_DEPLOY_USER }}
+          key: ${{ secrets.SSH_DEPLOY_KEY }}
+          overwrite: true
+          source: 'dist'
+          target: '~/frontend/'
