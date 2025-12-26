@@ -1,5 +1,5 @@
 ---
-name: CD develop
+name: Deploy
 on:
   push:
     branches: [develop, devops/test-deploy]
