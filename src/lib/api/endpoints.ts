@@ -1,4 +1,4 @@
 export const API_ENDPOINTS = {
-  upload: '/upload',
-  results: '/results',
+  upload: 'assessments/upload',
+  results: '/assessments/{request_id}',
 };

@@ -3,8 +3,13 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import styles from './MainBlockForm.module.css';
 import { PersonForm } from './PersonForm/index';
 import { v4 as uuidv4 } from 'uuid';
+import type { UploadAssessmentParams } from '../../../../api/types';
 
 const MAX_PERSONS = 10;
+
+interface IuploadAssessment extends UploadAssessmentParams {
+  request_id: string;
+}
 
 export type PersonFormData = {
   id: string;
@@ -44,6 +49,82 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
       (person.currentFileValid ? 1 : 0)
     );
   }, 0);
+
+  const uploadAssessment = async (data: IuploadAssessment) => {
+    const formData = new FormData();
+    data.files?.forEach(file => {
+      formData.append('files', file);
+    });
+    const meta = {
+      ...data.meta,
+      organization: data.meta?.organization || '',
+      specialist: data.meta?.specialist || '',
+    };
+    formData.append('meta', JSON.stringify(meta));
+
+    console.log(data);
+
+    try {
+      const response = await fetch(
+        'https://caritas.rassokha.pro/api/v1/assessments/upload',
+        {
+          method: 'POST',
+          headers: {
+            'X-Request-Id': data.request_id,
+          },
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        const errorBody = await response.json();
+
+        switch (response.status) {
+          case 400:
+            console.log('Ошибка 400', errorBody.message);
+            break;
+          case 409:
+            console.log('Ошибка 409', errorBody.message);
+            break;
+          case 500:
+            console.log('Ошибка 500', errorBody.message);
+            break;
+          default:
+            console.error('Ошибка', response.status, errorBody.message);
+        }
+      }
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
+  const getAssessment = async (request_id: string) => {
+    await new Promise(resolve => setTimeout(resolve, 30000));
+    const response = await fetch(
+      `https://caritas.rassokha.pro/api/v1/assessments/${request_id}`
+    );
+
+    if (!response.ok) {
+      const errorBody = await response.json();
+      switch (response.status) {
+        case 404:
+          console.log('Ошибка 404', errorBody.message || 'Результат не найден');
+          break;
+        case 500:
+          console.log('Ошибка 500', errorBody.message || 'Ошибка сервера');
+          break;
+        default:
+          console.error('Ошибка', response.status, errorBody.message);
+      }
+      return null;
+    }
+    const result = await response.json();
+    console.log(result);
+    return result;
+  };
 
   const addPerson = () => {
     if (persons.length <= MAX_PERSONS) {
@@ -104,13 +185,27 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
 
     e.preventDefault();
 
-    if (isFormValid) {
-      alert(
-        `Отправлено данных: ${persons.length} обследуемых, ${counterFiles} файлов`
-      );
+    if (!isFormValid) return;
 
-      resetForm();
-    }
+    const data: IuploadAssessment = {
+      files: [],
+      meta: {},
+      request_id: uuidv4(),
+    };
+
+    persons.forEach(person => {
+      if (person.previousFileValid) {
+        data.files?.push(person.previouFile!);
+      }
+      if (person.currentFileValid) {
+        data.files?.push(person.currentFile!);
+      }
+    });
+
+    uploadAssessment(data);
+    getAssessment(data.request_id);
+
+    resetForm();
   };
 
   return (
