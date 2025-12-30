@@ -62,24 +62,35 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
     };
     formData.append('meta', JSON.stringify(meta));
 
-    console.log(data);
+    const response = await fetch(
+      'https://caritas.rassokha.pro/api/v1/assessments/upload',
+      {
+        method: 'POST',
+        headers: {
+          'X-Request-Id': data.request_id,
+        },
+        body: formData,
+      }
+    );
 
+    return response;
+  };
+
+  const getAssessment = async (request_id: string) => {
+    const response = await fetch(
+      `https://caritas.rassokha.pro/api/v1/assessments/${request_id}`
+    );
+
+    return response;
+  };
+
+  const exchangeWithServer = async (data: IuploadAssessment) => {
     try {
-      const response = await fetch(
-        'https://caritas.rassokha.pro/api/v1/assessments/upload',
-        {
-          method: 'POST',
-          headers: {
-            'X-Request-Id': data.request_id,
-          },
-          body: formData,
-        }
-      );
+      const postFile = await uploadAssessment(data);
 
-      if (!response.ok) {
-        const errorBody = await response.json();
-
-        switch (response.status) {
+      if (!postFile.ok) {
+        const errorBody = await postFile.json();
+        switch (postFile.status) {
           case 400:
             console.log('Ошибка 400', errorBody.message);
             break;
@@ -90,40 +101,82 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
             console.log('Ошибка 500', errorBody.message);
             break;
           default:
-            console.error('Ошибка', response.status, errorBody.message);
+            console.error('Ошибка', postFile.status, errorBody.message);
         }
+        throw new Error('Ошибка при загрузке файлов');
       }
-      const result = await response.json();
-      console.log(result);
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  };
 
-  const getAssessment = async (request_id: string) => {
-    await new Promise(resolve => setTimeout(resolve, 30000));
-    const response = await fetch(
-      `https://caritas.rassokha.pro/api/v1/assessments/${request_id}`
-    );
+      const resultPost = await postFile.json();
+      console.log('PostResult:', resultPost);
 
-    if (!response.ok) {
-      const errorBody = await response.json();
-      switch (response.status) {
-        case 404:
-          console.log('Ошибка 404', errorBody.message || 'Результат не найден');
-          break;
-        case 500:
-          console.log('Ошибка 500', errorBody.message || 'Ошибка сервера');
-          break;
-        default:
-          console.error('Ошибка', response.status, errorBody.message);
+      if (resultPost.status === 'processing') {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+
+        let resultGet;
+        let attempts = 0;
+        const maxAttempts = 12;
+
+        do {
+          attempts++;
+          console.log(`Попытка ${attempts} из ${maxAttempts}`);
+
+          const getAssessmentResponse = await getAssessment(data.request_id);
+
+          if (!getAssessmentResponse.ok) {
+            const errorBody = await getAssessmentResponse.json();
+            switch (getAssessmentResponse.status) {
+              case 404:
+                console.log('Ошибка 404', errorBody.message);
+                if (attempts > 3) {
+                  throw new Error(
+                    'Результаты не найдены после нескольких попыток'
+                  );
+                }
+                await new Promise(resolve => setTimeout(resolve, 5000));
+                continue;
+              case 500:
+                console.log('Ошибка 500', errorBody.message);
+                throw new Error('Ошибка сервера при получении результата');
+              default:
+                console.error(
+                  'Ошибка',
+                  getAssessmentResponse.status,
+                  errorBody.message
+                );
+                throw new Error(`Ошибка ${getAssessmentResponse.status}`);
+            }
+          }
+
+          const responseData = await getAssessmentResponse.json();
+          resultGet = responseData;
+          console.log('GetResult:', responseData);
+
+          if (resultGet.status === 'failed') {
+            console.error('Обработка завершилась с ошибкой');
+            throw new Error(
+              `Расчет завершился с ошибкой: ${resultGet.error?.message}`
+            );
+          }
+
+          if (resultGet.status !== 'completed') {
+            console.log('Статус не completed, ждем 5 секунд...');
+            await new Promise(resolve => setTimeout(resolve, 5000));
+          }
+
+          if (attempts >= maxAttempts && resultGet.status !== 'completed') {
+            throw new Error('Превышено максимальное количество попыток');
+          }
+        } while (resultGet.status !== 'completed');
+
+        console.log('Расчет успешно завершен!');
+        return resultGet;
       }
-      return null;
+
+      return resultPost;
+    } catch (e) {
+      console.log('error', e);
+      throw e;
     }
-    const result = await response.json();
-    console.log(result);
-    return result;
   };
 
   const addPerson = () => {
@@ -202,8 +255,13 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
       }
     });
 
-    uploadAssessment(data);
-    getAssessment(data.request_id);
+    exchangeWithServer(data)
+      .then(result => {
+        console.log('Итоговый результат', result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
     resetForm();
   };
