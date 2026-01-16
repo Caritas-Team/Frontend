@@ -9,7 +9,7 @@ import { GroupWordsSection } from './components/groupWordsSection';
 import { GroupDescription } from './components/groupDescription';
 import type { TGroupItem } from './components/groupDescription/GroupDescription';
 import defaultGroupImageSrc from './components/groupDescription/assets/group.png';
-
+import { useLocation } from 'react-router-dom';
 import { TitleSectionResult } from '@ui/titleSectionResult';
 
 type TChartDataItem = {
@@ -114,6 +114,11 @@ const mockGroupData: TGroupItem[] = [
 export const ResultGroupPage: React.FC = () => {
   const [groupName, setGroupName] = useState<string>('');
   const [photoUrl, setPhotoUrl] = useState(defaultGroupImageSrc);
+
+  const location = useLocation();
+  const dataFromServer = location.state;
+
+  console.log('Групповой результат', dataFromServer);
 
   return (
     <main className={styles.main}>

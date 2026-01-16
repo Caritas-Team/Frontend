@@ -3,13 +3,11 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import styles from './MainBlockForm.module.css';
 import { PersonForm } from './PersonForm/index';
 import { v4 as uuidv4 } from 'uuid';
-import type { UploadAssessmentParams } from '../../../../api/types';
+import { useNavigate } from 'react-router-dom';
+import { exchangeWithServer } from '../../../../lib/api/exchangeWithServer';
+import type { IuploadAssessment } from '../../../../lib/api/exchangeWithServer';
 
 const MAX_PERSONS = 10;
-
-interface IuploadAssessment extends UploadAssessmentParams {
-  request_id: string;
-}
 
 export type PersonFormData = {
   id: string;
@@ -23,6 +21,8 @@ export type PersonFormData = {
 
 interface MainBlockFormProps {
   openPopup: () => void;
+  openLoader: () => void;
+  openErrorPopup: (errors: string[]) => void;
 }
 
 const createMainForm = (): PersonFormData => ({
@@ -35,10 +35,14 @@ const createMainForm = (): PersonFormData => ({
   currentFile: null,
 });
 
-export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
+export const MainBlockForm = ({
+  openPopup,
+  openLoader,
+  openErrorPopup,
+}: MainBlockFormProps) => {
+  const navigate = useNavigate();
   const [persons, setPersons] = useState<PersonFormData[]>([createMainForm()]);
   const [counterDiscovered, setCounterDiscovered] = useState<number>(1);
-
   const buttonSumbit = useRef<HTMLButtonElement>(null);
   const [form, setForm] = useState<boolean>(false); // Ключ для принудительного пересоздания
 
@@ -49,135 +53,6 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
       (person.currentFileValid ? 1 : 0)
     );
   }, 0);
-
-  const uploadAssessment = async (data: IuploadAssessment) => {
-    const formData = new FormData();
-    data.files?.forEach(file => {
-      formData.append('files', file);
-    });
-    const meta = {
-      ...data.meta,
-      organization: data.meta?.organization || '',
-      specialist: data.meta?.specialist || '',
-    };
-    formData.append('meta', JSON.stringify(meta));
-
-    const response = await fetch(
-      'https://caritas.rassokha.pro/api/v1/assessments/upload',
-      {
-        method: 'POST',
-        headers: {
-          'X-Request-Id': data.request_id,
-        },
-        body: formData,
-      }
-    );
-
-    return response;
-  };
-
-  const getAssessment = async (request_id: string) => {
-    const response = await fetch(
-      `https://caritas.rassokha.pro/api/v1/assessments/${request_id}`
-    );
-
-    return response;
-  };
-
-  const exchangeWithServer = async (data: IuploadAssessment) => {
-    try {
-      const postFile = await uploadAssessment(data);
-
-      if (!postFile.ok) {
-        const errorBody = await postFile.json();
-        switch (postFile.status) {
-          case 400:
-            console.log('Ошибка 400', errorBody.message);
-            break;
-          case 409:
-            console.log('Ошибка 409', errorBody.message);
-            break;
-          case 500:
-            console.log('Ошибка 500', errorBody.message);
-            break;
-          default:
-            console.error('Ошибка', postFile.status, errorBody.message);
-        }
-        throw new Error('Ошибка при загрузке файлов');
-      }
-
-      const resultPost = await postFile.json();
-      console.log('PostResult:', resultPost);
-
-      if (resultPost.status === 'processing') {
-        await new Promise(resolve => setTimeout(resolve, 5000));
-
-        let resultGet;
-        let attempts = 0;
-        const maxAttempts = 12;
-
-        do {
-          attempts++;
-          console.log(`Попытка ${attempts} из ${maxAttempts}`);
-
-          const getAssessmentResponse = await getAssessment(data.request_id);
-
-          if (!getAssessmentResponse.ok) {
-            const errorBody = await getAssessmentResponse.json();
-            switch (getAssessmentResponse.status) {
-              case 404:
-                console.log('Ошибка 404', errorBody.message);
-                if (attempts > 3) {
-                  throw new Error(
-                    'Результаты не найдены после нескольких попыток'
-                  );
-                }
-                await new Promise(resolve => setTimeout(resolve, 5000));
-                continue;
-              case 500:
-                console.log('Ошибка 500', errorBody.message);
-                throw new Error('Ошибка сервера при получении результата');
-              default:
-                console.error(
-                  'Ошибка',
-                  getAssessmentResponse.status,
-                  errorBody.message
-                );
-                throw new Error(`Ошибка ${getAssessmentResponse.status}`);
-            }
-          }
-
-          const responseData = await getAssessmentResponse.json();
-          resultGet = responseData;
-          console.log('GetResult:', responseData);
-
-          if (resultGet.status === 'failed') {
-            console.error('Обработка завершилась с ошибкой');
-            throw new Error(
-              `Расчет завершился с ошибкой: ${resultGet.error?.message}`
-            );
-          }
-
-          if (resultGet.status !== 'completed') {
-            console.log('Статус не completed, ждем 5 секунд...');
-            await new Promise(resolve => setTimeout(resolve, 5000));
-          }
-
-          if (attempts >= maxAttempts && resultGet.status !== 'completed') {
-            throw new Error('Превышено максимальное количество попыток');
-          }
-        } while (resultGet.status !== 'completed');
-
-        console.log('Расчет успешно завершен!');
-        return resultGet;
-      }
-
-      return resultPost;
-    } catch (e) {
-      console.log('error', e);
-      throw e;
-    }
-  };
 
   const addPerson = () => {
     if (persons.length <= MAX_PERSONS) {
@@ -255,14 +130,21 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
       }
     });
 
+    openLoader();
     exchangeWithServer(data)
       .then(result => {
-        console.log('Итоговый результат', result);
+        openLoader();
+        if (data.files && data.files?.length > 2) {
+          navigate('/result_group', { state: { result } });
+        }
+        if (data.files && data.files?.length === 2) {
+          navigate('/result', { state: { result } });
+        }
       })
       .catch(err => {
-        console.log(err);
+        openLoader();
+        openErrorPopup(err.message);
       });
-
     resetForm();
   };
 

@@ -14,6 +14,8 @@ import type { CommunicationType } from './components/CommunicativesFunctionChart
 import type { Statuses } from './components/ThreeCommunicativeFunction';
 import type { FinalTableProps } from './components/finalTable/FinalTable';
 import { TitleSectionResult } from '@ui/titleSectionResult';
+import { useLocation } from 'react-router-dom';
+//import type { CompletedResult } from '../../api/types';
 
 type TCardSection = {
   className?: string;
@@ -166,6 +168,12 @@ const communicativeData: {
 };
 
 export const ResultPage: React.FC = () => {
+  const location = useLocation();
+  const dataFromServer = location.state;
+
+  console.log('Индивидуальный результат', dataFromServer.result.results);
+  console.log('Студент', dataFromServer.result.results[0].student_id);
+
   return (
     <main className={styles.main}>
       <div className={styles.with_padding}>
