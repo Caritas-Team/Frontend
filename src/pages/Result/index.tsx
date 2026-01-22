@@ -169,16 +169,17 @@ const communicativeData: {
 
 export const ResultPage: React.FC = () => {
   const location = useLocation();
-  const dataFromServer = location.state;
-
-  console.log('Индивидуальный результат', dataFromServer.result.results);
-  console.log('Студент', dataFromServer.result.results[0].student_id);
+  const dataFromServer = location.state; //данные с сервера
+  const reportDate = dataFromServer.completionsData;
 
   return (
     <main className={styles.main}>
       <div className={styles.with_padding}>
         <Header />
-        <TitleSectionResult className={styles.title_section} />
+        <TitleSectionResult
+          reportDate={reportDate}
+          className={styles.title_section}
+        />
         <CardSection className={styles.card_section} {...mockPersonData} />
         <LangCommunicAssessment
           className={styles.language_section}

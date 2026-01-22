@@ -114,17 +114,15 @@ const mockGroupData: TGroupItem[] = [
 export const ResultGroupPage: React.FC = () => {
   const [groupName, setGroupName] = useState<string>('');
   const [photoUrl, setPhotoUrl] = useState(defaultGroupImageSrc);
-
   const location = useLocation();
-  const dataFromServer = location.state;
-
-  console.log('Групповой результат', dataFromServer);
+  const dataFromServer = location.state; //данные с сервера
+  const reportDate = dataFromServer.completionsData;
 
   return (
     <main className={styles.main}>
       <Header />
       {/* Строка заголовка страницы */}
-      <TitleSectionResult />
+      <TitleSectionResult reportDate={reportDate} />
       <GroupDescription
         className={styles.groupDescriptionSection}
         data={mockGroupData}

@@ -20,6 +20,7 @@ export type PersonFormData = {
 };
 
 interface MainBlockFormProps {
+  completionsData: string;
   openPopup: () => void;
   openLoader: () => void;
   openErrorPopup: (errors: string[]) => void;
@@ -36,6 +37,7 @@ const createMainForm = (): PersonFormData => ({
 });
 
 export const MainBlockForm = ({
+  completionsData,
   openPopup,
   openLoader,
   openErrorPopup,
@@ -45,7 +47,6 @@ export const MainBlockForm = ({
   const [counterDiscovered, setCounterDiscovered] = useState<number>(1);
   const buttonSumbit = useRef<HTMLButtonElement>(null);
   const [form, setForm] = useState<boolean>(false); // Ключ для принудительного пересоздания
-
   const counterFiles = persons.reduce((total, person) => {
     return (
       total +
@@ -91,11 +92,17 @@ export const MainBlockForm = ({
   );
 
   const isFormValid = useMemo(() => {
-    return persons.every(
-      person =>
-        person.nameValid && person.previousFileValid && person.currentFileValid
+    const isCompletionsDataValid = completionsData.trim().length > 0;
+    return (
+      isCompletionsDataValid &&
+      persons.every(
+        person =>
+          person.nameValid &&
+          person.previousFileValid &&
+          person.currentFileValid
+      )
     );
-  }, [persons]);
+  }, [persons, completionsData]);
 
   // Самбит формы
   const resetForm = () => {
@@ -135,10 +142,10 @@ export const MainBlockForm = ({
       .then(result => {
         openLoader();
         if (data.files && data.files?.length > 2) {
-          navigate('/result_group', { state: { result } });
+          navigate('/result_group', { state: { result, completionsData } });
         }
         if (data.files && data.files?.length === 2) {
-          navigate('/result', { state: { result } });
+          navigate('/result', { state: { result, completionsData } });
         }
       })
       .catch(err => {

@@ -77,6 +77,7 @@ function HomePage() {
               openPopup={handleTargetPopup}
               openLoader={toggleLoader}
               openErrorPopup={openErrorPopup}
+              completionsData={selectDate}
             />
           </main>
           <InstructionPopup isOpen={isOpenPopup} doClose={handleTargetPopup} />
