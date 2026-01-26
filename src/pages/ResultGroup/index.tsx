@@ -116,7 +116,7 @@ export const ResultGroupPage: React.FC = () => {
   const [photoUrl, setPhotoUrl] = useState(defaultGroupImageSrc);
   const location = useLocation();
   const dataFromServer = location.state; //данные с сервера
-  const reportDate = dataFromServer.completionsData;
+  const reportDate = dataFromServer.completionsDate;
 
   return (
     <main className={styles.main}>

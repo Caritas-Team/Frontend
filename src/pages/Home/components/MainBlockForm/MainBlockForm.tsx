@@ -20,7 +20,7 @@ export type PersonFormData = {
 };
 
 interface MainBlockFormProps {
-  completionsData: string;
+  completionsDate: string;
   openPopup: () => void;
   openLoader: () => void;
   openErrorPopup: (errors: string[]) => void;
@@ -37,7 +37,7 @@ const createMainForm = (): PersonFormData => ({
 });
 
 export const MainBlockForm = ({
-  completionsData,
+  completionsDate,
   openPopup,
   openLoader,
   openErrorPopup,
@@ -92,7 +92,7 @@ export const MainBlockForm = ({
   );
 
   const isFormValid = useMemo(() => {
-    const isCompletionsDataValid = completionsData.trim().length > 0;
+    const isCompletionsDataValid = completionsDate.trim().length > 0;
     return (
       isCompletionsDataValid &&
       persons.every(
@@ -102,7 +102,7 @@ export const MainBlockForm = ({
           person.currentFileValid
       )
     );
-  }, [persons, completionsData]);
+  }, [persons, completionsDate]);
 
   // Самбит формы
   const resetForm = () => {
@@ -142,10 +142,10 @@ export const MainBlockForm = ({
       .then(result => {
         openLoader();
         if (data.files && data.files?.length > 2) {
-          navigate('/result_group', { state: { result, completionsData } });
+          navigate('/result_group', { state: { result, completionsDate } });
         }
         if (data.files && data.files?.length === 2) {
-          navigate('/result', { state: { result, completionsData } });
+          navigate('/result', { state: { result, completionsDate } });
         }
       })
       .catch(err => {
