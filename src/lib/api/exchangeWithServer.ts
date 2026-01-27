@@ -57,15 +57,18 @@ export const exchangeWithServer = async (data: IuploadAssessment) => {
   const resultPost = await postFile.json();
 
   if (resultPost.status === 'processing') {
-    await new Promise(resolve => setTimeout(resolve, 5000));
-
+    const initialPollInterval = 2000;
+    const maxPollInterval = 5000;
+    const maxAttempts = 13;
+    const sleep = (ms: number) =>
+      new Promise(resolve => setTimeout(resolve, ms));
     let resultGet;
     let attempts = 0;
-    const maxAttempts = 12;
+    let pollInterval = initialPollInterval;
 
     do {
       attempts++;
-
+      await sleep(pollInterval);
       const getAssessmentResponse = await getAssessment(data.request_id);
 
       if (!getAssessmentResponse.ok) {
@@ -75,7 +78,7 @@ export const exchangeWithServer = async (data: IuploadAssessment) => {
             if (attempts > 3) {
               throw new Error('Результаты не найдены после нескольких попыток');
             }
-            await new Promise(resolve => setTimeout(resolve, 5000));
+            pollInterval = Math.min(pollInterval + 1000, maxPollInterval);
             continue;
           case 500:
             throw new Error('Ошибка сервера при получении результата');
@@ -99,7 +102,7 @@ export const exchangeWithServer = async (data: IuploadAssessment) => {
       }
 
       if (resultGet.status !== 'completed') {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        pollInterval = Math.min(pollInterval + 1000, maxPollInterval);
       }
 
       if (attempts >= maxAttempts && resultGet.status !== 'completed') {
