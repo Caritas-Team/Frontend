@@ -4,14 +4,13 @@ import { Header } from '@ui/header';
 import { CardSection } from './components/cardSection';
 import { LangCommunicAssessment } from './components/langCommunicAssessment';
 import { CommunicativesFunctionChart } from './components/CommunicativesFunctionChart';
-import { CheckSection } from '@ui/checkSection';
 import { ThreeCommunicativeFunction } from './components/ThreeCommunicativeFunction';
 import { WordsSection } from './components/wordsSection';
 import { SocialCircles } from './components/socialCircles';
 import { FinalTable } from './components/finalTable';
 import type { TChartData } from './components/langCommunicAssessment/types';
 import type { CommunicationType } from './components/CommunicativesFunctionChart';
-import type { Statuses } from './components/ThreeCommunicativeFunction';
+import type { ThreeCommunicativeFunctionProps } from './components/ThreeCommunicativeFunction';
 import type { FinalTableProps } from './components/finalTable/FinalTable';
 import { TitleSectionResult } from '@ui/titleSectionResult';
 
@@ -140,29 +139,58 @@ const finalTableData: FinalTableProps = {
   spokenWordsCount: '4',
 };
 
-const communicativeData: {
-  gettingDesired: Statuses;
-  socialInteraction: Statuses;
-  informationExchange: Statuses;
-} = {
-  gettingDesired: {
-    Выбирает: 'уже не используется',
-    'Просит ещё действие или предмет': 'уже не используется',
-    'Просит действие': 'уже не используется',
-    'Просит предмет (объект)': 'уже не используется',
+const communicativeData: ThreeCommunicativeFunctionProps = {
+  control: {
+    protoLanguage: 'arrowUp',
+    protoLanguageValue: 18,
+    holoPhrase: 'equal',
+    Phrase: 'manyArrowsUp',
   },
-  socialInteraction: {
-    'Привлекает внимание': 'превзошел',
-    'Просит о помощи': 'превзошел',
-    'Здоровается, прощается, использует вежливые формы обращения': 'превзошел',
-    'Выражает эмоции, чувства, состояние': 'превзошел',
-  },
-  informationExchange: {
-    'Задаёт вопросы': 'недоступно',
-    'Комментирует и выражает мнение': 'недоступно',
-    'Объясняет что-то или описывает': 'недоступно',
-    'Рассказывает (что было, что будет, что происходит сейчас)': 'недоступно',
-  },
+
+  gettingDesired: [
+    {
+      name: { Выбирает: 'превзошел' },
+      subCategory: [{ name: 'Голофраза', icon: 'complete' }],
+    },
+    {
+      name: { 'Просит ещё действие или предмет': 'превзошел' },
+      subCategory: [{ name: 'Фраза', icon: 'arrowDown', value: 15 }],
+    },
+    {
+      name: { 'Просит действие': 'превзошел' },
+      subCategory: [
+        { name: 'Голофраза', icon: 'arrowUp', value: 27 },
+        { name: 'Фраза', icon: 'arrowUp', value: 27 },
+      ],
+    },
+    {
+      name: { 'Просит предмет (объект)': 'уже не используется' },
+    },
+  ],
+
+  socialInteraction: [
+    { name: { 'Привлекает внимание': 'уже не используется' } },
+    { name: { 'Просит о помощи': 'уже не используется' } },
+    {
+      name: {
+        'Здоровляется, прощается, использует вежливые формы обращения':
+          'уже не используется',
+      },
+    },
+    { name: { 'Выражает эмоции, чувства, состояние': 'уже не используется' } },
+  ],
+
+  informationExchange: [
+    { name: { 'Задаёт вопросы': 'недоступно' } },
+    { name: { 'Комментирует и выражает мнение': 'недоступно' } },
+    { name: { 'Объясняет что-то или описывает': 'недоступно' } },
+    {
+      name: {
+        'Рассказывает (что было, что будет, что происходит сейчас)':
+          'недоступно',
+      },
+    },
+  ],
 };
 
 export const ResultPage: React.FC = () => {
@@ -183,20 +211,10 @@ export const ResultPage: React.FC = () => {
           dataPrevData={dataPrevData}
           dataCurrentData={dataCurrentData}
         />
-        <CheckSection
-          className={styles.check_section}
-          date1="15 Апр. 2025"
-          formed1={20}
-          initiative1={35}
-          frequency1={50}
-          date2="1 Мая 2025"
-          formed2={90}
-          initiative2={20}
-          frequency2={55}
-          description="-"
-        />
+
         <ThreeCommunicativeFunction
           className={styles.three_functions}
+          control={communicativeData.control}
           gettingDesired={communicativeData.gettingDesired}
           socialInteraction={communicativeData.socialInteraction}
           informationExchange={communicativeData.informationExchange}

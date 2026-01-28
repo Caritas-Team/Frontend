@@ -137,9 +137,7 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
             {data.map((row, index) => (
               <React.Fragment key={index}>
                 <div className={styles.cellName}>{row.name}</div>
-                <div
-                  className={styles.cellAge}
-                >{`${row.date}, ${row.age}`}</div>
+                <div className={styles.cellAge}>{`${row.date}`}</div>
               </React.Fragment>
             ))}
           </div>
