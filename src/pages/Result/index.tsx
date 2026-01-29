@@ -14,6 +14,8 @@ import type { CommunicationType } from './components/CommunicativesFunctionChart
 import type { Statuses } from './components/ThreeCommunicativeFunction';
 import type { FinalTableProps } from './components/finalTable/FinalTable';
 import { TitleSectionResult } from '@ui/titleSectionResult';
+import { useLocation, useNavigate } from 'react-router-dom';
+//import type { CompletedResult } from '../../api/types';
 
 type TCardSection = {
   className?: string;
@@ -166,11 +168,23 @@ const communicativeData: {
 };
 
 export const ResultPage: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dataFromServer = location.state; //данные с сервера
+  const reportDate = dataFromServer.completionsDate;
+
+  if (!dataFromServer || Object.keys(dataFromServer).length === 0) {
+    navigate('/');
+  }
+
   return (
     <main className={styles.main}>
       <div className={styles.with_padding}>
         <Header />
-        <TitleSectionResult className={styles.title_section} />
+        <TitleSectionResult
+          reportDate={reportDate}
+          className={styles.title_section}
+        />
         <CardSection className={styles.card_section} {...mockPersonData} />
         <LangCommunicAssessment
           className={styles.language_section}
