@@ -107,7 +107,7 @@ export const MainBlockForm = ({
   // Самбит формы
   const resetForm = () => {
     //Список объектов для отправкм
-    console.log(persons);
+    //console.log(persons);
     // Создаем новый массив
     setPersons([createMainForm()]);
     setCounterDiscovered(1);
@@ -141,6 +141,7 @@ export const MainBlockForm = ({
     exchangeWithServer(data)
       .then(result => {
         openLoader();
+        resetForm();
         if (data.files && data.files?.length > 2) {
           navigate('/result_group', { state: { result, completionsDate } });
         }
@@ -152,7 +153,6 @@ export const MainBlockForm = ({
         openLoader();
         openErrorPopup(err.message);
       });
-    resetForm();
   };
 
   return (
