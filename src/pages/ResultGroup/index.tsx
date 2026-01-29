@@ -8,7 +8,7 @@ import { GroupWordsSection } from './components/groupWordsSection';
 import { GroupDescription } from './components/groupDescription';
 import type { TGroupItem } from './components/groupDescription/GroupDescription';
 import defaultGroupImageSrc from './components/groupDescription/assets/group.png';
-
+import { useLocation, useNavigate } from 'react-router-dom';
 import { TitleSectionResult } from '@ui/titleSectionResult';
 
 type TChartDataItem = {
@@ -113,12 +113,20 @@ const mockGroupData: TGroupItem[] = [
 export const ResultGroupPage: React.FC = () => {
   const [groupName, setGroupName] = useState<string>('');
   const [photoUrl, setPhotoUrl] = useState(defaultGroupImageSrc);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dataFromServer = location.state; //данные с сервера
+  const reportDate = dataFromServer.completionsDate;
+
+  if (!dataFromServer || Object.keys(dataFromServer).length === 0) {
+    navigate('/');
+  }
 
   return (
     <main className={styles.main}>
       <Header />
       {/* Строка заголовка страницы */}
-      <TitleSectionResult />
+      <TitleSectionResult reportDate={reportDate} />
       <GroupDescription
         className={styles.groupDescriptionSection}
         data={mockGroupData}
