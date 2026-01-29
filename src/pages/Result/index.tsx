@@ -142,26 +142,30 @@ const finalTableData: FinalTableProps = {
 };
 
 const communicativeData: ThreeCommunicativeFunctionProps = {
-  control: {
-    protoLanguage: 'arrowUp',
-    protoLanguageValue: 18,
-    holoPhrase: 'equal',
-    Phrase: 'manyArrowsUp',
-  },
+  control: [
+    {
+      name: { 'Отказывается, отклоняет': 'прогресс' },
+      subCategory: [
+        { name: 'Протоязык', icon: 'arrowDown', value: 18 },
+        { name: 'Голофраза', icon: 'equal' },
+        { name: 'Фраза', icon: 'manyArrowsUp' },
+      ],
+    },
+  ],
 
   gettingDesired: [
     {
-      name: { Выбирает: 'превзошел' },
+      name: { Выбирает: 'прогресс' },
       subCategory: [{ name: 'Голофраза', icon: 'complete' }],
     },
     {
-      name: { 'Просит ещё действие или предмет': 'превзошел' },
+      name: { 'Просит ещё действие или предмет': 'прогресс' },
       subCategory: [{ name: 'Фраза', icon: 'arrowDown', value: 15 }],
     },
     {
-      name: { 'Просит действие': 'превзошел' },
+      name: { 'Просит действие': 'прогресс' },
       subCategory: [
-        { name: 'Голофраза', icon: 'arrowUp', value: 27 },
+        { name: 'Голофраза', icon: 'complete' },
         { name: 'Фраза', icon: 'arrowUp', value: 27 },
       ],
     },
@@ -171,11 +175,11 @@ const communicativeData: ThreeCommunicativeFunctionProps = {
   ],
 
   socialInteraction: [
-    { name: { 'Привлекает внимание': 'уже не используется' } },
-    { name: { 'Просит о помощи': 'уже не используется' } },
+    { name: { 'Привлекает внимание': 'превзошел' } },
+    { name: { 'Просит о помощи': 'превзошел' } },
     {
       name: {
-        'Здоровляется, прощается, использует вежливые формы обращения':
+        'Здоровается, прощается, использует вежливые формы обращения':
           'уже не используется',
       },
     },

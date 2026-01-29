@@ -2,51 +2,61 @@
 
 // как использовать компонент
 const communicativeData: ThreeCommunicativeFunctionProps = {
-  control: {
-    protoLanguage: "arrowUp",
-    protoLanguageValue: 18,
-    holoPhrase: "equal",
-    Phrase: "manyArrowsUp",
-  },
-
-  gettingDesired: [
+  control: [
     {
-      name: { "Выбирает": "превзошел" },
+      name: { 'Отказывается, отклоняет': 'прогресс' },
       subCategory: [
-        { name: "Голофраза", icon: "complete" }
-      ]
-    },
-    {
-      name: { "Просит ещё действие или предмет": "превзошел" },
-      subCategory: [
-        { name: "Фраза", icon: "arrowDown", value: 15 }
-      ]
-    },
-    {
-      name: { "Просит действие": "превзошел" },
-      subCategory: [
-        { name: "Голофраза", icon: "arrowUp", value: 27 },
-        { name: "Фраза", icon: "arrowUp", value: 27 }
-      ]
-    },
-    {
-      name: { "Просит предмет (объект)": "уже не используется" }
+        { name: 'Протоязык', icon: 'arrowDown', value: 18 },
+        { name: 'Голофраза', icon: 'equal' },
+        { name: 'Фраза', icon: 'manyArrowsUp'}
+      ],
     }
   ],
 
+  gettingDesired: [
+    {
+      name: { Выбирает: 'прогресс' },
+      subCategory: [{ name: 'Голофраза', icon: 'complete' }],
+    },
+    {
+      name: { 'Просит ещё действие или предмет': 'прогресс' },
+      subCategory: [{ name: 'Фраза', icon: 'arrowDown', value: 15 }],
+    },
+    {
+      name: { 'Просит действие': 'прогресс' },
+      subCategory: [
+        { name: 'Голофраза', icon: 'complete' },
+        { name: 'Фраза', icon: 'arrowUp', value: 27 },
+      ],
+    },
+    {
+      name: { 'Просит предмет (объект)': 'уже не используется' },
+    },
+  ],
+
   socialInteraction: [
-    { name: { "Привлекает внимание": "уже не используется" } },
-    { name: { "Просит о помощи": "уже не используется" } },
-    { name: { "Здоровляется, прощается, использует вежливые формы обращения": "уже не используется" } },
-    { name: { "Выражает эмоции, чувства, состояние": "уже не используется" } }
+    { name: { 'Привлекает внимание': 'превзошел' } },
+    { name: { 'Просит о помощи': 'превзошел' } },
+    {
+      name: {
+        'Здоровается, прощается, использует вежливые формы обращения':
+          'уже не используется',
+      },
+    },
+    { name: { 'Выражает эмоции, чувства, состояние': 'уже не используется' } },
   ],
 
   informationExchange: [
-    { name: { "Задаёт вопросы": "недоступно" } },
-    { name: { "Комментирует и выражает мнение": "недоступно" } },
-    { name: { "Объясняет что-то или описывает": "недоступно" } },
-    { name: { "Рассказывает (что было, что будет, что происходит сейчас)": "недоступно" } }
-  ]
+    { name: { 'Задаёт вопросы': 'недоступно' } },
+    { name: { 'Комментирует и выражает мнение': 'недоступно' } },
+    { name: { 'Объясняет что-то или описывает': 'недоступно' } },
+    {
+      name: {
+        'Рассказывает (что было, что будет, что происходит сейчас)':
+          'недоступно',
+      },
+    },
+  ],
 };
 
 // В JSX
@@ -61,11 +71,11 @@ control={communicativeData.control}
 import styles from './ThreeCommunicativeFunction.module.css';
 import iconEqual from '../../../../assets/icon_equal.svg';
 import iconComplete from '../../../../assets/icon_complete.svg';
-import iconArrowUp from '../../../../assets/double-arrow-up.svg';
-import iconArrowDown from '../../../../assets/double-arrow-down.svg';
+import iconArrowUp from '../../../../assets/keyboard_double_arrow_up.svg';
+import iconArrowDown from '../../../../assets/keyboard_double_arrow_down.svg';
 import iconManyArrowsUp from '../../../../assets/icon_manyArrowsUp.svg';
 
-type Status = 'уже не используется' | 'превзошел' | 'недоступно';
+type Status = 'уже не используется' | 'превзошел' | 'недоступно' | 'прогресс';
 type IconValue =
   | 'arrowUp'
   | 'arrowDown'
@@ -86,17 +96,9 @@ interface StatusInfo {
   subCategory?: IsubCategory[];
 }
 
-interface IControl {
-  protoLanguage: IconValue;
-  protoLanguageValue?: number;
-  holoPhrase: IconValue;
-  holoPhraseValue?: number;
-  Phrase: IconValue;
-  PhraseValue?: number;
-}
 interface ThreeCommunicativeFunctionProps {
   className?: string;
-  control: IControl;
+  control: StatusInfo[];
   gettingDesired: StatusInfo[];
   socialInteraction: StatusInfo[];
   informationExchange: StatusInfo[];
@@ -106,6 +108,7 @@ const validStatuses: Status[] = [
   'уже не используется',
   'превзошел',
   'недоступно',
+  'прогресс',
 ];
 
 const isValidStatus = (status: string): status is Status => {
@@ -116,6 +119,7 @@ const statusClassMap: Record<Status, string> = {
   ['уже не используется']: styles.notUsed,
   ['превзошел']: styles.surpassed,
   ['недоступно']: styles.notAvailable,
+  ['прогресс']: styles.progress,
 };
 
 const iconMap: Record<IconValue, string> = {
@@ -149,26 +153,19 @@ export const ThreeCommunicativeFunction: React.FC<
             const hasSubCategory =
               statusInfo.subCategory && statusInfo.subCategory.length > 0;
             const shouldShowSubCategory =
-              hasSubCategory &&
-              statusValue !== 'уже не используется' &&
-              statusValue !== 'недоступно';
+              hasSubCategory && statusValue === 'прогресс';
 
             return (
               <div key={`${actionName}-${index}`} className={styles.item}>
                 <span className={styles.action}>{actionName}</span>
 
-                {statusValue !== 'превзошел' && (
+                {statusValue !== 'прогресс' && (
                   <span
                     className={`${styles.status} ${statusClassMap[statusValue]}`}
                   >
                     {statusValue.toUpperCase()}
                   </span>
                 )}
-
-                {statusValue === 'превзошел' && (
-                  <span className={styles.emptyStatus}></span>
-                )}
-
                 {shouldShowSubCategory && (
                   <div className={styles.subCategoryContainer}>
                     <ul className={styles.statusList}>
@@ -208,70 +205,13 @@ export const ThreeCommunicativeFunction: React.FC<
     </div>
   );
 
-  const renderControl = (data: IControl) => (
-    <div className={styles.section}>
-      <h2 className={styles.title}>Коммуникативная функция «контроль»</h2>
-      <div className={styles.content}>
-        <div className={styles.item}>
-          <span className={styles.action}>Отказывается, отклоняет</span>
-          <div className={styles.statusContainer}>
-            <ul className={styles.statusList}>
-              <li className={styles.statusItem}>
-                <span className={styles.statusText}>Протоязык</span>
-                <div className={styles.statusIconValue}>
-                  <img
-                    className={styles.statusIcon}
-                    src={iconMap[data.protoLanguage]}
-                  />
-                  {data.protoLanguageValue !== undefined && (
-                    <span className={styles.statusValue}>
-                      {data.protoLanguageValue}%
-                    </span>
-                  )}
-                </div>
-              </li>
-              <li className={styles.statusItem}>
-                <span className={styles.statusText}>Голофраза</span>
-                <div className={styles.statusIconValue}>
-                  <img
-                    className={styles.statusIcon}
-                    src={iconMap[data.holoPhrase]}
-                  />
-                  {data.holoPhraseValue !== undefined && (
-                    <span className={styles.statusValue}>
-                      {data.holoPhraseValue}%
-                    </span>
-                  )}
-                </div>
-              </li>
-              <li className={styles.statusItem}>
-                <span className={styles.statusText}>Фраза</span>
-                <div className={styles.statusIconValue}>
-                  <img
-                    className={styles.statusIcon}
-                    src={iconMap[data.Phrase]}
-                  />
-                  {data.PhraseValue !== undefined && (
-                    <span className={styles.statusValue}>
-                      {data.PhraseValue}%
-                    </span>
-                  )}
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
     <section
       className={
         className ? `${styles.container} ${className}` : styles.container
       }
     >
-      {renderControl(control)}
+      {renderStatusGroup('Коммуникативная функция «контроль»', control)}
       {renderStatusGroup(
         'Коммуникативная функция «получение желаемого»',
         gettingDesired
