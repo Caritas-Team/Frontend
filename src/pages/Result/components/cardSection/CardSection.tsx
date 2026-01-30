@@ -1,10 +1,6 @@
 import React from 'react';
 import styles from './CardSection.module.css';
-import {
-  calculateAge,
-  formatDateShort,
-  isValidDate,
-} from '../../../../lib/utils';
+import { formatDateShort, isValidDate } from '../../../../lib/utils';
 
 export type TCardSection = {
   className?: string;
@@ -48,7 +44,7 @@ export const CardSection: React.FC<TCardSection> = ({
             <p className={`${styles.text} ${styles.title}`}>Дата рождения</p>
             <p className={`${styles.text} ${styles.value}`}>
               {dateOfBirth && isValidDate(dateOfBirth)
-                ? `${formatDateShort(dateOfBirth)}, ${calculateAge(dateOfBirth)}`
+                ? `${formatDateShort(dateOfBirth)}`
                 : 'Не указана'}
             </p>
           </div>

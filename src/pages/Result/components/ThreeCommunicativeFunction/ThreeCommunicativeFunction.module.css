@@ -21,12 +21,17 @@
   flex-direction: column;
   gap: 16px;
 }
+.icon {
+  width: 20px;
+  height: 20px;
+}
 
 .item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 3px;
 }
 
 .action {
@@ -34,12 +39,44 @@
   color: var(--text-disabled-color);
   text-align: left;
 }
+.statusContainer {
+  display: flex;
+  flex-direction: row;
+}
+.statusList {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.statusItem {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.statusText {
+  font: var(--font-body-20);
+  color: var(--gray-3);
+}
+.statusIconValue {
+  display: flex;
+  align-items: center;
+}
+.statusIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.statusValue {
+  font: var(--font-chart-reg-15);
+  color: var(--gray-4);
+}
 
 .status {
   height: 48px;
   padding: 14.5px 44px 14.5px 12px;
   font: var(--font-tag-16-caps);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .notUsed {
@@ -107,11 +144,6 @@
   z-index: 2;
 }
 
-.statusIcon {
-  width: 20px;
-  height: 20px;
-}
-
 /* cтили для мобильной версии */
 @media (width < 834px) {
   .container {
@@ -128,6 +160,7 @@
   }
   .action {
     text-align: left;
+    font: var(--font-button-semi-20);
   }
   .item {
     display: flex;
@@ -139,5 +172,10 @@
     justify-content: left;
     width: min-content;
     white-space: nowrap;
+  }
+  .statusList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 }
