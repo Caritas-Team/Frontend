@@ -42,6 +42,7 @@
   padding-left: 8px;
   font: var(--font-body-16-light);
   letter-spacing: 0;
+  background-color: var(--white);
 }
 
 .input-error {
