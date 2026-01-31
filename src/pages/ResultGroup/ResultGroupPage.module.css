@@ -56,3 +56,18 @@
     margin-top: 42px;
   }
 }
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .language_section {
+    margin-top: 40px;
+  }
+
+  .initiative_section {
+    margin-top: 30px;
+  }
+}
