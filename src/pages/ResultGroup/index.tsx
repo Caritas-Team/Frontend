@@ -10,6 +10,7 @@ import type { TGroupItem } from './components/groupDescription/GroupDescription'
 import defaultGroupImageSrc from './components/groupDescription/assets/group.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { TitleSectionResult } from '@ui/titleSectionResult';
+import { useEffect } from 'react';
 
 type TChartDataItem = {
   name: string;
@@ -118,9 +119,15 @@ export const ResultGroupPage: React.FC = () => {
   const dataFromServer = location.state; //данные с сервера
   const reportDate = dataFromServer.completionsDate;
 
-  if (!dataFromServer || Object.keys(dataFromServer).length === 0) {
-    navigate('/');
-  }
+  useEffect(() => {
+    if (
+      !dataFromServer ||
+      typeof dataFromServer !== 'object' ||
+      Object.keys(dataFromServer || {}).length === 0
+    ) {
+      navigate('/');
+    }
+  }, [dataFromServer, navigate]);
 
   return (
     <main className={styles.main}>

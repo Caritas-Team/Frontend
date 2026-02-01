@@ -14,6 +14,7 @@ import type { ThreeCommunicativeFunctionProps } from './components/ThreeCommunic
 import type { FinalTableProps } from './components/finalTable/FinalTable';
 import { TitleSectionResult } from '@ui/titleSectionResult';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 //import type { CompletedResult } from '../../api/types';
 
 type TCardSection = {
@@ -205,9 +206,15 @@ export const ResultPage: React.FC = () => {
   const dataFromServer = location.state; //данные с сервера
   const reportDate = dataFromServer.completionsDate;
 
-  if (!dataFromServer || Object.keys(dataFromServer).length === 0) {
-    navigate('/');
-  }
+  useEffect(() => {
+    if (
+      !dataFromServer ||
+      typeof dataFromServer !== 'object' ||
+      Object.keys(dataFromServer || {}).length === 0
+    ) {
+      navigate('/');
+    }
+  }, [dataFromServer, navigate]);
 
   return (
     <main className={styles.main}>
