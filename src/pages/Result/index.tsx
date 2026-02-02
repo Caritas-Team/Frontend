@@ -204,7 +204,6 @@ export const ResultPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dataFromServer = location.state; //данные с сервера
-  const reportDate = dataFromServer.completionsDate;
 
   useEffect(() => {
     if (
@@ -215,6 +214,9 @@ export const ResultPage: React.FC = () => {
       navigate('/');
     }
   }, [dataFromServer, navigate]);
+
+  if (!dataFromServer) return;
+  const reportDate = dataFromServer.completionsDate;
 
   return (
     <main className={styles.main}>
