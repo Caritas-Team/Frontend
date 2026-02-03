@@ -124,11 +124,11 @@ export const ResultGroupPage: React.FC = () => {
       typeof dataFromServer !== 'object' ||
       Object.keys(dataFromServer || {}).length === 0
     ) {
-      navigate('/');
+      navigate('/', { replace: true });
     }
   }, [dataFromServer, navigate]);
 
-  if (!dataFromServer) return;
+  if (!dataFromServer) return null;
   const reportDate = dataFromServer.completionsDate;
 
   return (
