@@ -8,7 +8,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import prettier from 'eslint-plugin-prettier';
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'docs']),
   js.configs.recommended,
   tseslint.configs.recommended,
   reactHooks.configs['recommended-latest'],
