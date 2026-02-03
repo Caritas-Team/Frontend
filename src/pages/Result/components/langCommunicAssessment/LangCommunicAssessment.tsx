@@ -13,6 +13,73 @@ import type { TChartDataItem, TChartData } from './types';
 
 export type TLangCommunicAssessment = TChartData & { className?: string };
 
+/**
+ * Компонент "Языковая и коммуникативная оценка"
+ *
+ * Отображает визуализацию прогресса языковых и коммуникативных навыков
+ * с использованием столбчатой диаграммы и двойной круговой диаграммы.
+ *
+ * @component
+ * @example
+ * const data = [
+ *   { name: 'Грамматика', prevValue: 65, currentValue: 75 },
+ *   { name: 'Лексика', prevValue: 70, currentValue: 80 }
+ * ];
+ *
+ * const initiative = [
+ *   { name: 'Активность', prevValue: 60, currentValue: 70 }
+ * ];
+ *
+ * return (
+ *   <LangCommunicAssessment
+ *     data={data}
+ *     initiative={initiative}
+ *     prevDate="2024-01-15"
+ *     currentDate="2024-03-20"
+ *   />
+ * );
+ *
+ * @typedef {Object} TChartDataItem
+ * @property {string} name - Название навыка/параметра
+ * @property {number|string} prevValue - Значение на предыдущую дату
+ * @property {number|string} currentValue - Значение на текущую дату
+ *
+ * @typedef {Object} TChartData
+ * @property {TChartDataItem[]} data - Данные для столбчатой диаграммы
+ * @property {TChartDataItem[]} initiative - Данные для круговой диаграммы "Инициатива"
+ * @property {string|Date} prevDate - Дата предыдущей оценки
+ * @property {string|Date} currentDate - Дата текущей оценки
+ *
+ * @typedef {TChartData & { className?: string }} TLangCommunicAssessment
+ * @property {string} [className] - Дополнительные CSS-классы для контейнера
+ *
+ * @param {TLangCommunicAssessment} props - Пропсы компонента
+ * @param {TChartDataItem[]} props.data - Массив данных для отображения уровней навыков
+ * @param {TChartDataItem[]} props.initiative - Массив данных для отображения инициативы
+ * @param {string|Date} props.prevDate - Дата предыдущей оценки (форматируемая дата)
+ * @param {string|Date} props.currentDate - Дата текущей оценки (форматируемая дата)
+ * @param {string} [props.className] - Дополнительный CSS-класс для стилизации
+ *
+ * @returns {JSX.Element|null} Возвращает разметку компонента или null при некорректных данных
+ *
+ * @description
+ * Компонент включает:
+ * 1. Столбчатую диаграмму (Chart) для сравнения уровней навыков между двумя датами
+ * 2. Двойную круговую диаграмму (TwoPieCharts) для визуализации показателей инициативы
+ * 3. Легенду с периодами оценки
+ * 4. Список навыков с отображением динамики изменений
+ *
+ * @requires Chart - Компонент столбчатой диаграммы
+ * @requires TwoPieCharts - Компонент двойной круговой диаграммы
+ * @requires formatDateShort - Функция форматирования даты
+ * @requires isValidDate - Функция проверки корректности даты
+ * @requires makeShortName - Функция сокращения длинных названий
+ *
+ * @todo Добавить обработку ошибок при некорректных значениях данных
+ * @todo Реализовать адаптивную верстку для мобильных устройств
+ * @note Компонент возвращает null при отсутствии обязательных данных или некорректных датах
+ */
+
 const LegendSkillItem: React.FC<TChartDataItem> = ({
   name,
   prevValue,

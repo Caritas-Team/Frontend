@@ -21,6 +21,116 @@ export type TGroupDescription = {
   onChangeGroupName: (groupName: string) => void;
 };
 
+/**
+ * Компонент "Описание группы" для управления информацией о группе пользователей
+ *
+ * Предоставляет интерфейс для редактирования названия группы, загрузки фотографии
+ * и отображения табличных данных о участниках группы.
+ *
+ * @component
+ * @example
+ * // Пример использования
+ * const [photoUrl, setPhotoUrl] = useState('');
+ * const [groupName, setGroupName] = useState('Моя группа');
+ *
+ * const data = [
+ *   { name: 'Иван Иванов', date: '01.01.2020', age: '25 лет' },
+ *   { name: 'Мария Петрова', date: '15.03.2019', age: '30 лет' }
+ * ];
+ *
+ * <GroupDescription
+ *   data={data}
+ *   photoUrl={photoUrl}
+ *   onChangePhotoUrl={setPhotoUrl}
+ *   groupName={groupName}
+ *   onChangeGroupName={setGroupName}
+ * />
+ *
+ * @typedef {Object} TGroupItem
+ * @property {string} name - Имя участника группы
+ * @property {string} date - Дата в формате строки (например, "01.01.2020")
+ * @property {string} age - Возраст или другой дополнительный параметр
+ *
+ * @typedef {Object} TGroupDescription
+ * @property {string} [className] - Дополнительные CSS-классы для контейнера
+ * @property {TGroupItem[]} data - Массив данных об участниках группы
+ * @property {string} photoUrl - URL текущей фотографии группы
+ * @property {(url: string) => void} onChangePhotoUrl - Callback при изменении фотографии
+ * @property {string} groupName - Название группы
+ * @property {(groupName: string) => void} onChangeGroupName - Callback при изменении названия группы
+ *
+ * @param {TGroupDescription} props - Пропсы компонента
+ * @param {string} [props.className] - Дополнительный CSS-класс для стилизации
+ * @param {TGroupItem[]} props.data - Данные участников группы для отображения в таблице
+ * @param {string} props.photoUrl - URL текущего изображения группы
+ * @param {(url: string) => void} props.onChangePhotoUrl - Функция обновления URL фотографии
+ * @param {string} props.groupName - Текущее название группы
+ * @param {(groupName: string) => void} props.onChangeGroupName - Функция обновления названия группы
+ *
+ * @returns {JSX.Element} Возвращает секцию с формой управления данными группы
+ *
+ * @description
+ * Компонент состоит из двух основных секций:
+ * 1. Левая часть: Название группы и таблица данных участников
+ * 2. Правая часть: Загрузка и отображение фотографии группы
+ *
+ * @features
+ * #### Управление названием группы:
+ * - Текстовое поле ввода с максимальной длиной 150 символов
+ * - Кнопка очистки поля (крестик) при заполненном названии
+ * - Кнопка редактирования (карандаш) при пустом названии
+ * - Автоматический фокус на поле при клике на кнопку редактирования
+ *
+ * #### Таблица участников:
+ * - Отображает данные в виде двухколоночной сетки
+ * - Левая колонка: имена участников
+ * - Правая колонка: даты и возраст
+ *
+ * #### Управление фотографией:
+ * - Предпросмотр текущей фотографии
+ * - Кнопка для выбора файла с компьютера
+ * - Валидация загружаемых файлов
+ * - Отображение ошибок загрузки
+ *
+ * @validation
+ * При загрузке фотографии выполняется проверка:
+ * 1. Только файлы изображений (MIME type начинается с 'image/')
+ * 2. Максимальный размер файла: {@link MAX_FILE_SIZE} (5 МБ)
+ * 3. Корректность создания Object URL
+ *
+ * @constants
+ * - `MAX_FILE_SIZE`: Максимальный размер загружаемого файла (5 МБ)
+ *
+ * @hooks
+ * - `useRef`: Для ссылок на DOM-элементы и хранения текущего Object URL
+ * - `useState`: Для состояния ошибки загрузки и статуса заполнения названия
+ * - `useEffect`: Для очистки Object URL при размонтировании и синхронизации состояния
+ *
+ * @cleanup
+ * При размонтировании компонента автоматически освобождает Object URL
+ * для предотвращения утечек памяти
+ *
+ * @error-handling
+ * Отображает ошибки загрузки с иконкой предупреждения:
+ * - "Только изображения!" - при попытке загрузить не-изображение
+ * - "Файл слишком большой (макс. 5 МБ)" - при превышении размера
+ * - "Не удалось обработать изображение..." - при ошибке создания URL
+ *
+ * @accessibility
+ * - Кнопки имеют aria-label для скринридеров
+ * - Поле ввода имеет placeholder для подсказки
+ *
+ * @assets
+ * Используемые иконки:
+ * - photoImgSrc: фотоаппарат (загрузка фото)
+ * - editImgSrc: карандаш (редактирование)
+ * - clearImgSrc: крестик (очистка)
+ * - reportImgSrc: восклицательный знак (ошибка)
+ *
+ * @note Формат даты отображается как есть, без дополнительной обработки
+ * @note Возраст участников отображается во второй колонке таблицы
+ */
+
 export const GroupDescription: React.FC<TGroupDescription> = ({
   className,
   data,
@@ -60,7 +170,7 @@ export const GroupDescription: React.FC<TGroupDescription> = ({
     }
 
     if (file.size > MAX_FILE_SIZE) {
-      setUploadError('Файл слишком большой (макс. 5 МБ)');
+      setUploadError('Файл слишком большой (макс. 5 МБ)');
       return;
     }
 

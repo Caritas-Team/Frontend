@@ -1,0 +1,10 @@
+{
+  "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "exclude": ["**/node_modules/**", "**/*.test.*", "**/*.spec.*"],
+  "name": "Документация проекта",
+  "readme": "README.md",
+  "theme": "default",
+  "includeVersion": true
+}
