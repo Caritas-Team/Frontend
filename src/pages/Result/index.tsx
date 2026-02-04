@@ -204,6 +204,7 @@ export const ResultPage: React.FC = () => {
   const navigate = useNavigate();
   const dataFromServer = location.state; //данные с сервера
   const reportDate = dataFromServer.completionsDate;
+  console.log(dataFromServer);
 
   if (!dataFromServer || Object.keys(dataFromServer).length === 0) {
     navigate('/');
