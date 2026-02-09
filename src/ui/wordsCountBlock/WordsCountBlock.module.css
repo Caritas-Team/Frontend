@@ -65,8 +65,8 @@
   }
 }
 
-@media print {
+/* @media print {
   .block {
     border: 1px solid black !important;
   }
-}
+} */

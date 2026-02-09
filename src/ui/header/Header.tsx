@@ -15,14 +15,10 @@ export const Header: React.FC = () => {
       </Link>
 
       <div className={styles.header__buttons}>
-        <Button
-          label="Сохранить"
-          secondary
-          onClick={() => {
-            console.log('Button Save has been pressed');
-          }}
-        ></Button>
-
+        <p className={styles.header__text}>
+          Если хотите сохранить результат расчета как файл - нажмите кнопку
+          "Печать" и в окне выбора принтера выберите - "Сохранить как pdf"
+        </p>
         <Button
           label="Печать"
           tertiary

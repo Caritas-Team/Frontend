@@ -208,12 +208,14 @@
   .section {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    background-color: transparent;
-    border: 2px solid #9a9a9a;
   }
 
   .content {
     flex-direction: row !important;
+  }
+
+  .textInput input {
+    border: 2px solid #9a9a9a;
   }
 
   .imageButton {

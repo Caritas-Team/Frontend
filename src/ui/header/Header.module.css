@@ -7,22 +7,34 @@
 
 .header__buttons {
   display: flex;
+  justify-content: flex-end;
   padding-block: 12px;
   gap: 24px;
+}
+
+.header__text {
+  display: flex;
+  align-items: center;
+  width: 400px;
+  font: var(--font-body-14);
+  color: var(--gray-2);
+  text-align: end;
 }
 
 .button_icon {
   margin-right: 10px;
 }
 
-/* стили для планшетной версии */
-@media (834px <= width < 1200px) {
-}
-
 /* Стили компонента для мобильной версии */
 @media (width < 834px) {
   .header__buttons {
-    gap: 8px;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .header__text {
+    width: 75%;
   }
 
   .button_icon {
@@ -39,10 +51,4 @@
   .header {
     margin-bottom: 40px;
   }
-
-  /* .main > header > a > div {
-    height: 67px;
-    width: 191px;
-    margin-bottom: 40px;
-  } */
 }
