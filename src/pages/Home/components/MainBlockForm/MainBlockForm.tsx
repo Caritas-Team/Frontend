@@ -3,6 +3,9 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import styles from './MainBlockForm.module.css';
 import { PersonForm } from './PersonForm/index';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+import { exchangeWithServer } from '../../../../lib/api/exchangeWithServer';
+import type { IuploadAssessment } from '../../../../lib/api/exchangeWithServer';
 
 const MAX_PERSONS = 10;
 
@@ -17,7 +20,10 @@ export type PersonFormData = {
 };
 
 interface MainBlockFormProps {
+  completionsDate: string;
   openPopup: () => void;
+  openLoader: () => void;
+  openErrorPopup: (errors: string[]) => void;
 }
 
 const createMainForm = (): PersonFormData => ({
@@ -30,13 +36,17 @@ const createMainForm = (): PersonFormData => ({
   currentFile: null,
 });
 
-export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
+export const MainBlockForm = ({
+  completionsDate,
+  openPopup,
+  openLoader,
+  openErrorPopup,
+}: MainBlockFormProps) => {
+  const navigate = useNavigate();
   const [persons, setPersons] = useState<PersonFormData[]>([createMainForm()]);
   const [counterDiscovered, setCounterDiscovered] = useState<number>(1);
-
   const buttonSumbit = useRef<HTMLButtonElement>(null);
   const [form, setForm] = useState<boolean>(false); // Ключ для принудительного пересоздания
-
   const counterFiles = persons.reduce((total, person) => {
     return (
       total +
@@ -82,16 +92,22 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
   );
 
   const isFormValid = useMemo(() => {
-    return persons.every(
-      person =>
-        person.nameValid && person.previousFileValid && person.currentFileValid
+    const isCompletionsDataValid = completionsDate.trim().length > 0;
+    return (
+      isCompletionsDataValid &&
+      persons.every(
+        person =>
+          person.nameValid &&
+          person.previousFileValid &&
+          person.currentFileValid
+      )
     );
-  }, [persons]);
+  }, [persons, completionsDate]);
 
   // Самбит формы
   const resetForm = () => {
     //Список объектов для отправкм
-    console.log(persons);
+    //console.log(persons);
     // Создаем новый массив
     setPersons([createMainForm()]);
     setCounterDiscovered(1);
@@ -104,13 +120,39 @@ export const MainBlockForm = ({ openPopup }: MainBlockFormProps) => {
 
     e.preventDefault();
 
-    if (isFormValid) {
-      alert(
-        `Отправлено данных: ${persons.length} обследуемых, ${counterFiles} файлов`
-      );
+    if (!isFormValid) return;
 
-      resetForm();
-    }
+    const data: IuploadAssessment = {
+      files: [],
+      meta: {},
+      request_id: uuidv4(),
+    };
+
+    persons.forEach(person => {
+      if (person.previousFileValid) {
+        data.files?.push(person.previouFile!);
+      }
+      if (person.currentFileValid) {
+        data.files?.push(person.currentFile!);
+      }
+    });
+
+    openLoader();
+    exchangeWithServer(data)
+      .then(result => {
+        openLoader();
+        resetForm();
+        if (data.files && data.files?.length > 2) {
+          navigate('/result_group', { state: { result, completionsDate } });
+        }
+        if (data.files && data.files?.length === 2) {
+          navigate('/result', { state: { result, completionsDate } });
+        }
+      })
+      .catch(err => {
+        openLoader();
+        openErrorPopup(err.message);
+      });
   };
 
   return (

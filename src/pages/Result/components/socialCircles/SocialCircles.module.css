@@ -27,6 +27,7 @@
   padding: 12px 0;
   font: var(--font-tag-16-medium);
   text-transform: uppercase;
+  text-align: center;
 }
 
 .card__circle {
