@@ -1,73 +1,3 @@
-/* 
-
-// как использовать компонент
-const communicativeData: ThreeCommunicativeFunctionProps = {
-  control: [
-    {
-      name: { 'Отказывается, отклоняет': 'прогресс' },
-      subCategory: [
-        { name: 'Протоязык', icon: 'arrowDown', value: 18 },
-        { name: 'Голофраза', icon: 'equal' },
-        { name: 'Фраза', icon: 'manyArrowsUp'}
-      ],
-    }
-  ],
-
-  gettingDesired: [
-    {
-      name: { Выбирает: 'прогресс' },
-      subCategory: [{ name: 'Голофраза', icon: 'complete' }],
-    },
-    {
-      name: { 'Просит ещё действие или предмет': 'прогресс' },
-      subCategory: [{ name: 'Фраза', icon: 'arrowDown', value: 15 }],
-    },
-    {
-      name: { 'Просит действие': 'прогресс' },
-      subCategory: [
-        { name: 'Голофраза', icon: 'complete' },
-        { name: 'Фраза', icon: 'arrowUp', value: 27 },
-      ],
-    },
-    {
-      name: { 'Просит предмет (объект)': 'уже не используется' },
-    },
-  ],
-
-  socialInteraction: [
-    { name: { 'Привлекает внимание': 'превзошел' } },
-    { name: { 'Просит о помощи': 'превзошел' } },
-    {
-      name: {
-        'Здоровается, прощается, использует вежливые формы обращения':
-          'уже не используется',
-      },
-    },
-    { name: { 'Выражает эмоции, чувства, состояние': 'уже не используется' } },
-  ],
-
-  informationExchange: [
-    { name: { 'Задаёт вопросы': 'недоступно' } },
-    { name: { 'Комментирует и выражает мнение': 'недоступно' } },
-    { name: { 'Объясняет что-то или описывает': 'недоступно' } },
-    {
-      name: {
-        'Рассказывает (что было, что будет, что происходит сейчас)':
-          'недоступно',
-      },
-    },
-  ],
-};
-
-// В JSX
-<ThreeCommunicativeFunction 
-control={communicativeData.control}
-  gettingDesired={communicativeData.gettingDesired}
-  socialInteraction={communicativeData.socialInteraction}
-  informationExchange={communicativeData.informationExchange}
-/>
-*/
-
 import styles from './ThreeCommunicativeFunction.module.css';
 import iconEqual from '../../../../assets/icon_equal.svg';
 import iconComplete from '../../../../assets/icon_complete.svg';
@@ -129,6 +59,107 @@ const iconMap: Record<IconValue, string> = {
   complete: iconComplete,
   manyArrowsUp: iconManyArrowsUp,
 };
+
+/**
+ * Компонент "Три коммуникативные функции" для визуализации статусов коммуникативных навыков
+ *
+ * Отображает четыре группы коммуникативных функций с их статусами и подкатегориями.
+ * Используется для оценки прогресса в различных аспектах коммуникации.
+ *
+ * @component
+ * @example
+ * // Пример использования
+ * <ThreeCommunicativeFunction
+ *   control={[
+ *     { name: { "Управление средой": "прогресс" },
+ *       subCategory: [{ name: "Включение света", icon: "arrowUp", value: 25 }] }
+ *   ]}
+ *   gettingDesired={[
+ *     { name: { "Просьба о помощи": "превзошел" } }
+ *   ]}
+ *   socialInteraction={[
+ *     { name: { "Приветствие": "уже не используется" } }
+ *   ]}
+ *   informationExchange={[
+ *     { name: { "Обмен новостями": "недоступно" } }
+ *   ]}
+ * />
+ *
+ * @typedef {'уже не используется' | 'превзошел' | 'недоступно' | 'прогресс'} Status
+ * @typedef {'arrowUp' | 'arrowDown' | 'equal' | 'complete' | 'manyArrowsUp'} IconValue
+ * @typedef {Object.<string, Status>} Statuses - Объект с ключом-действием и значением-статусом
+ *
+ * @typedef {Object} IsubCategory
+ * @property {string} name - Название подкатегории
+ * @property {IconValue} icon - Тип иконки для отображения
+ * @property {number} [value] - Числовое значение в процентах (опционально)
+ *
+ * @typedef {Object} StatusInfo
+ * @property {Statuses} name - Объект с действием и его статусом
+ * @property {IsubCategory[]} [subCategory] - Массив подкатегорий (только для статуса 'прогресс')
+ *
+ * @typedef {Object} ThreeCommunicativeFunctionProps
+ * @property {string} [className] - Дополнительные CSS-классы для контейнера
+ * @property {StatusInfo[]} control - Данные для функции "контроль"
+ * @property {StatusInfo[]} gettingDesired - Данные для функции "получение желаемого"
+ * @property {StatusInfo[]} socialInteraction - Данные для функции "социальное взаимодействие"
+ * @property {StatusInfo[]} informationExchange - Данные для функции "обмен информацией"
+ *
+ * @param {ThreeCommunicativeFunctionProps} props - Пропсы компонента
+ * @param {string} [props.className] - Дополнительный CSS-класс для стилизации
+ * @param {StatusInfo[]} props.control - Массив статусов для коммуникативной функции контроля
+ * @param {StatusInfo[]} props.gettingDesired - Массив статусов для функции получения желаемого
+ * @param {StatusInfo[]} props.socialInteraction - Массив статусов для социального взаимодействия
+ * @param {StatusInfo[]} props.informationExchange - Массив статусов для обмена информацией
+ *
+ * @returns {JSX.Element} Возвращает секцию с четырьмя группами коммуникативных функций
+ *
+ * @description
+ * Компонент отображает четыре ключевые коммуникативные функции:
+ * 1. Контроль - управление окружающей средой и ресурсами
+ * 2. Получение желаемого - выражение потребностей и просьб
+ * 3. Социальное взаимодействие - установление и поддержание социальных связей
+ * 4. Обмен информацией - передача и получение информации
+ *
+ * @structure
+ * Для каждой функции отображается:
+ * - Заголовок группы
+ * - Список действий с их статусами
+ * - Подкатегории с иконками и значениями (только для статуса 'прогресс')
+ *
+ * @statuses
+ * Поддерживаются четыре типа статусов:
+ * - 'уже не используется' (серый цвет)
+ * - 'превзошел' (зеленый цвет)
+ * - 'недоступно' (красный цвет)
+ * - 'прогресс' (синий цвет) - единственный статус, показывающий подкатегории
+ *
+ * @icons
+ * Используются пять типов иконок для подкатегорий:
+ * - arrowUp: стрелка вверх (рост)
+ * - arrowDown: стрелка вниз (снижение)
+ * - equal: знак равенства (стабильность)
+ * - complete: галочка (завершено)
+ * - manyArrowsUp: несколько стрелок вверх (быстрый рост)
+ *
+ * @validation
+ * Компонент включает валидацию статусов через функцию `isValidStatus`
+ * Только валидные статусы отображаются, некорректные - игнорируются
+ *
+ * @mapping
+ * - `statusClassMap`: сопоставляет статусы с CSS-классами для стилизации
+ * - `iconMap`: сопоставляет типы иконок с путями к SVG-файлам
+ *
+ * @note Подкатегории отображаются только для статуса 'прогресс'
+ * @note Названия статусов отображаются в верхнем регистре
+ * @note Значения подкатегорий показываются с символом процента (если есть)
+ *
+ * @exports
+ * - ThreeCommunicativeFunction: основной компонент
+ * - ThreeCommunicativeFunctionProps: тип пропсов
+ * - Status: тип статусов
+ * - Statuses: тип объекта статусов
+ */
 
 export const ThreeCommunicativeFunction: React.FC<
   ThreeCommunicativeFunctionProps

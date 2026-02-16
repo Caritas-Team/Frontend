@@ -1,58 +1,3 @@
-/* 
-Пример использования элемента CommunicativesFunctionChart
-
-// Даты
-  const prevDate = '15.04.2025';
-  const currentDate = '01.05.2025';
-  // Данные для предыдущего периода (01.05.2025)
-  const dataPrevData: CommunicationType = {
-    ExchangeOfInformation: {
-      name: 'Обмен информацией',
-      value: 40,
-    },
-    SocialInteraction: {
-      name: 'Социальное взаимодействие',
-      value: 48,
-    },
-    GetWhatYouWant: {
-      name: 'Получение желаемого результата',
-      value: 39,
-    },
-    Control: {
-      name: 'Контроль',
-      value: 41,
-    },
-  };
-
-  // Данные для текущего периода (01.05.2025)
-  const dataCurrentData: CommunicationType = {
-    ExchangeOfInformation: {
-      name: 'Обмен информацией',
-      value: 99,
-    },
-    SocialInteraction: {
-      name: 'Социальное взаимодействие',
-      value: 41,
-    },
-    GetWhatYouWant: {
-      name: 'Получение желаемого результата',
-      value: 75,
-    },
-    Control: {
-      name: 'Контроль',
-      value: 59,
-    },
-  };
-
-
-  <CommunicativesFunctionChart
-        prevDate={prevDate}
-        currentDate={currentDate}
-        dataPrevData={dataPrevData}
-        dataCurrentData={dataCurrentData}
-      />
-*/
-
 import styles from './CommunicativesFunctionChart.module.css';
 import React from 'react';
 import type { JSX } from 'react';
@@ -62,10 +7,26 @@ import { Charts } from './Charts';
 import type { ChartDataItem } from './Charts';
 import { formatDateShort } from '../../../../lib/utils';
 
+/**
+ * Тип данных для отдельного показателя коммуникативной функции
+ * @typedef {Object} BarData
+ * @property {string} name - Название показателя
+ * @property {number} value - Значение показателя в процентах
+ */
+
 type BarData = {
   name: string;
   value: number;
 };
+
+/**
+ * Тип данных для всех коммуникативных функций
+ * @typedef {Object} CommunicationType
+ * @property {BarData} GetWhatYouWant - Функция "Получение желаемого результата"
+ * @property {BarData} SocialInteraction - Функция "Социальное взаимодействие"
+ * @property {BarData} ExchangeOfInformation - Функция "Обмен информацией"
+ * @property {BarData} Control - Функция "Контроль"
+ */
 
 type CommunicationType = {
   GetWhatYouWant: BarData;
@@ -74,6 +35,16 @@ type CommunicationType = {
   Control: BarData;
 };
 
+/**
+ * Тип пропсов для компонента CommunicativesFunctionChart
+ * @typedef {Object} CommunicatiovesFunctionProps
+ * @property {string} [className] - Дополнительные CSS-классы
+ * @property {string} prevDate - Дата предыдущего измерения (формат YYYY-MM-DD)
+ * @property {string} currentDate - Дата текущего измерения (формат YYYY-MM-DD)
+ * @property {CommunicationType} dataPrevData - Данные предыдущего измерения
+ * @property {CommunicationType} dataCurrentData - Данные текущего измерения
+ */
+
 interface CommunicatiovesFunctionProps {
   className?: string;
   prevDate: string;
@@ -81,6 +52,218 @@ interface CommunicatiovesFunctionProps {
   dataPrevData: CommunicationType;
   dataCurrentData: CommunicationType;
 }
+
+/**
+ * Компонент визуализации динамики коммуникативных функций
+ *
+ * @component CommunicativesFunctionChart
+ * @description
+ * Компонент для отображения сравнительного анализа четырех коммуникативных функций
+ * между двумя временными точками. Включает в себя график сравнения и детализированный
+ * список показателей с визуализацией изменений через стрелки и процентные значения.
+ *
+ * **Коммуникативные функции (по Б.Ф. Скиннеру):**
+ * 1. Обмен информацией (Exchange of Information)
+ * 2. Социальное взаимодействие (Social Interaction)
+ * 3. Получение желаемого результата (Get What You Want)
+ * 4. Контроль (Control)
+ *
+ * **Структура компонента:**
+ * 1. Заголовок "Коммуникативные функции"
+ * 2. Список показателей с детализацией изменений
+ * 3. Сравнительный график (компонент Charts)
+ * 4. Визуальные индикаторы роста/падения (стрелки вверх/вниз)
+ *
+ * **Визуальная обратная связь:**
+ * - Стрелка вверх (↑): рост показателя
+ * - Стрелка вниз (↓): снижение показателя
+ * - Отсутствие стрелки: показатель не изменился
+ * - Процентное значение: абсолютное изменение
+ * - График: наглядное сравнение двух периодов
+ *
+ * @param {CommunicatiovesFunctionProps} props - Свойства компонента
+ * @returns {JSX.Element | null} Компонент визуализации коммуникативных функций или null при некорректных данных
+ *
+ * @example
+ * // Базовое использование с валидными данными
+ * const prevData = {
+ *   GetWhatYouWant: { name: 'Получение желаемого', value: 30 },
+ *   SocialInteraction: { name: 'Социальное взаимодействие', value: 40 },
+ *   ExchangeOfInformation: { name: 'Обмен информацией', value: 50 },
+ *   Control: { name: 'Контроль', value: 60 }
+ * };
+ *
+ * const currentData = {
+ *   GetWhatYouWant: { name: 'Получение желаемого', value: 45 },
+ *   SocialInteraction: { name: 'Социальное взаимодействие', value: 55 },
+ *   ExchangeOfInformation: { name: 'Обмен информацией', value: 65 },
+ *   Control: { name: 'Контроль', value: 70 }
+ * };
+ *
+ * <CommunicativesFunctionChart
+ *   prevDate="2023-01-15"
+ *   currentDate="2023-02-15"
+ *   dataPrevData={prevData}
+ *   dataCurrentData={currentData}
+ * />
+ *
+ * @example
+ * // Интеграция с API данных диагностики
+ * const DiagnosticResultsChart = ({ diagnosticResults }) => {
+ *   const formatData = (results) => ({
+ *     GetWhatYouWant: { name: 'Получение желаемого', value: results.getWhatYouWant },
+ *     SocialInteraction: { name: 'Социальное взаимодействие', value: results.socialInteraction },
+ *     ExchangeOfInformation: { name: 'Обмен информацией', value: results.exchangeOfInformation },
+ *     Control: { name: 'Контроль', value: results.control }
+ *   });
+ *
+ *   return (
+ *     <CommunicativesFunctionChart
+ *       prevDate={diagnosticResults.previous.date}
+ *       currentDate={diagnosticResults.current.date}
+ *       dataPrevData={formatData(diagnosticResults.previous)}
+ *       dataCurrentData={formatData(diagnosticResults.current)}
+ *     />
+ *   );
+ * };
+ *
+ * @example
+ * // Использование с кастомными стилями
+ * <CommunicativesFunctionChart
+ *   className="custom-styles"
+ *   prevDate="2023-03-01"
+ *   currentDate="2023-04-01"
+ *   dataPrevData={prevData}
+ *   dataCurrentData={currentData}
+ * />
+ *
+ * @note
+ * - Даты форматируются через утилиту formatDateShort (YYYY-MM-DD → DD.MM.YYYY)
+ * - Компонент возвращает null при отсутствии или некорректности входных данных
+ * - Все значения должны быть в диапазоне 0-100 (проценты)
+ * - Изменение рассчитывается как абсолютная разница между текущим и предыдущим значениями
+ * - Стрелки отображаются только при наличии изменения (value ≠ 0)
+ * - Процентные значения показываются только если хотя бы одно значение не равно 0
+ *
+ * @validation
+ * Компонент выполняет строгую проверку входных данных:
+ * 1. Наличие всех обязательных дат
+ * 2. Наличие всех объектов данных
+ * 3. Наличие всех свойств внутри объектов данных
+ * При несоответствии любого условия компонент возвращает null
+ *
+ * @accessibility
+ * - Заголовок использует h2 для правильной иерархии
+ * - Список показателей использует семантические ul/li
+ * - Стрелки имеют alt-текст "arrow" (можно улучшить для описания направления)
+ * - График наследует accessibility-функции от компонента Charts
+ * - Процентные значения не имеют описательного контекста для скринридеров
+ * - Рекомендуется добавить aria-label для каждого элемента списка
+ *
+ * @data_processing
+ * **Преобразование данных для графика:**
+ * ```
+ * chartData = [
+ *   { name: dataCurrentData.ExchangeOfInformation.name, previous: prevValue, current: currValue },
+ *   // ... остальные 3 функции
+ * ]
+ * ```
+ *
+ * **Расчет изменений:**
+ * ```
+ * calculateChange(current, previous) = Math.abs(current - previous)
+ * ```
+ *
+ * **Определение направления изменения:**
+ * - current > previous → стрелка вверх
+ * - current < previous → стрелка вниз
+ * - current == previous → без стрелки
+ *
+ * @layout
+ * Структура компонента:
+ * ```
+ * <div class="container [additional-classes]">
+ *   <h2 class="title">Коммуникативные функции</h2>
+ *   <div class="chartWrapper">
+ *     <div class="titleConteiner">
+ *       <div class="chartTitle">
+ *         <ul class="title_chart__list">
+ *           <li class="chart__item">
+ *             <span class="chart__itemTitle">Обмен информацией</span>
+ *             <div class="procentInfo">
+ *               <div class="imgConteiner">
+ *                 <img class="chart__itemArrow" src={arrowUp/Down} alt="arrow" />
+ *               </div>
+ *               <span>{change}%</span>
+ *             </div>
+ *           </li>
+ *           <!-- остальные 3 функции аналогично -->
+ *         </ul>
+ *       </div>
+ *     </div>
+ *     <div class="chartLine">
+ *       <Charts data={chartData} ... />
+ *     </div>
+ *   </div>
+ * </div>
+ * ```
+ *
+ * @css_classes
+ * Основные CSS-классы (из CommunicativesFunctionChart.module.css):
+ * - .container - Основной контейнер компонента
+ * - .title - Заголовок компонента
+ * - .chartWrapper - Обертка для всего контента графика
+ * - .titleConteiner - Контейнер заголовка и списка
+ * - .chartTitle - Контейнер заголовка графика
+ * - .title_chart__list - Список показателей
+ * - .chart__item - Элемент списка показателя
+ * - .chart__itemTitle - Название показателя
+ * - .procentInfo - Контейнер процентной информации
+ * - .imgConteiner - Контейнер для иконки стрелки
+ * - .chart__itemArrow - Иконка стрелки изменения
+ * - .chartLine - Контейнер для графика
+ *
+ * @dependencies
+ * - Charts: компонент сравнительного графика
+ * - formatDateShort: утилита форматирования дат
+ * - arrowUp/arrowDown: SVG иконки стрелок
+ *
+ * @see Charts - Компонент сравнительного графика
+ * @see formatDateShort - Утилита форматирования даты
+ * @see arrowUp.svg - Иконка стрелки вверх
+ * @see arrowDown.svg - Иконка стрелки вниз
+ * @see CommunicativesFunctionChart.module.css - Стили компонента
+ *
+ * @design
+ * Компонент решает следующие задачи:
+ * 1. Визуализация динамики развития коммуникативных навыков
+ * 2. Наглядное сравнение результатов двух диагностических срезов
+ * 3. Предоставление количественной оценки изменений
+ * 4. Создание профессионального отчета для специалистов
+ * 5. Упрощение анализа многомерных данных через графическое представление
+ * 6. Интеграция с системой диагностики в области коммуникации
+ *
+ * @clinical_significance
+ * Компонент используется в контексте диагностики коммуникативных нарушений:
+ * - Оценка эффективности коррекционных программ
+ * - Мониторинг прогресса в развитии коммуникативных навыков
+ * - Сравнение результатов разных методик диагностики
+ * - Визуализация данных для мультидисциплинарных консилиумов
+ * - Создание наглядных материалов для родителей/опекунов
+ *
+ * @data_interpretation
+ * **Интерпретация изменений:**
+ * - Рост показателей: положительная динамика развития
+ * - Снижение показателей: возможный регресс или проблемы
+ * - Отсутствие изменений: стагнация в развитии
+ * - Высокие абсолютные изменения: значительные сдвиги в навыках
+ *
+ * **Рекомендации по использованию:**
+ * 1. Рассматривать изменения в контексте общего развития
+ * 2. Учитывать погрешность измерения
+ * 3. Сопоставлять с качественными наблюдениями
+ * 4. Интерпретировать в рамках индивидуальной траектории развития
+ */
 
 const CommunicativesFunctionChart: React.FC<CommunicatiovesFunctionProps> = (
   props: CommunicatiovesFunctionProps
