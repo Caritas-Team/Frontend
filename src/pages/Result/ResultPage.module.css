@@ -161,8 +161,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
   }
 
   .title_section h1 {
@@ -184,12 +182,17 @@
   }
 
   .social_circles > div {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
     flex-direction: row;
     width: 1020px;
-    background-color: transparent;
-    border: 2px solid #9a9a9a;
     padding: 36px 96px;
+  }
+
+  .language_section,
+  .three_functions > div > div > div,
+  .words_section,
+  .social_circles > div,
+  .final_table {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }

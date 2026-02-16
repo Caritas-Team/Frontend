@@ -1,7 +1,7 @@
 .finalTable {
   width: 100%;
   background-color: var(--blue-light);
-  padding: 20px 46px 57px 16px;
+  padding: 20px 16px 57px 16px;
   border-radius: 20px;
   margin: 0 1px;
 }
@@ -10,7 +10,7 @@
   font: var(--font-h3);
   color: var(--gray-4);
   text-align: start;
-  margin-bottom: 62px;
+  margin-bottom: 20px;
   font-weight: 500;
   line-height: 100%;
 }
@@ -18,17 +18,24 @@
 .gridContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows: minmax(auto, 44px);
+  grid-auto-rows: max(auto, 44px);
   border: 1px solid var(--black);
   border-radius: 4px;
+  gap: 1px;
+  background-color: var(--black);
 }
 
 /* Таблица */
+.gridHeader,
+.gridParameter,
+.gridValue {
+  padding: 10px 12px;
+  background-color: var(--blue-light);
+}
+
 /* Header */
 .gridHeader {
-  padding: 10px 12px;
   font: var(--font-button-semi-20);
-  border-bottom: 1px solid var(--black);
 }
 
 .gridHeaderParameters {
@@ -36,32 +43,24 @@
 }
 
 .gridHeaderValue {
-  border-left: 1px solid var(--black);
+  text-align: center;
 }
 
 /* Строки */
-.gridParameter {
-  padding: 10px 12px;
-  text-align: start;
-  font: var(--font-body-12);
-  border-bottom: 1px solid var(--black);
+.gridParameter,
+.gridValue {
   display: flex;
   align-items: center;
+}
+
+.gridParameter {
+  text-align: start;
+  font: var(--font-body-12);
 }
 
 .gridValue {
-  padding: 10px 12px;
   font: var(--font-chart-reg-15);
-  border-bottom: 1px solid var(--black);
-  border-left: 1px solid var(--black);
-  display: flex;
-  align-items: center;
   justify-content: center;
-}
-
-.gridContainer > *:nth-last-child(2),
-.gridContainer > *:nth-last-child(1) {
-  border-bottom: none;
 }
 
 .boxDelta {
@@ -108,5 +107,19 @@
 
   .gridParameter {
     line-height: 1.4;
+  }
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .gridContainer {
+    border: 2px solid #141414 !important;
+    background-color: #141414 !important;
+    border-radius: 0;
+    gap: 2px !important;
   }
 }
